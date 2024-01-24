@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:ghosn_app/Features/splash/presentation/views/widgets/logo_view.dart';
 import 'package:ghosn_app/core/utils/app_router.dart';
-import 'package:ghosn_app/core/widgets/custom_button.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../../../core/utils/assets_data.dart';
+import '../../../../../core/utils/style.dart';
+import '../../../../../core/widgets/custom_button.dart';
 
 class SplashViewBody extends StatelessWidget {
   const SplashViewBody({super.key});
@@ -13,14 +15,24 @@ class SplashViewBody extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Spacer(),
-        const Expanded(child: LogoView()),
+        Image.asset(
+          AssetsData.logo,
+        ),
+        const SizedBox(
+          height: 27,
+        ),
+        const Center(
+          child: Text(
+            'Welcome To Planta World',
+            style: Styles.textStyle32Itim,
+          ),
+        ),
         const Spacer(),
         CustomButton(
           text: 'Get Started',
           onPressed: () {
             GoRouter.of(context).push(AppRoute.kLoginOptionView);
           },
-          childIcon:const Icon(Icons.arrow_forward_ios_rounded),
         ),
         const SizedBox(
           height: 25,
