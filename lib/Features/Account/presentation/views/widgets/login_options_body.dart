@@ -10,7 +10,10 @@ class LoginOptionsBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Center(child: Image.asset(AssetsData.loginOption)),
+        const Spacer(),
+        Image.asset(
+          AssetsData.loginOption,
+        ),
         const CustomIconButton(
           text: 'I\'ll use email or phone',
           childIcon: Icon(
@@ -56,6 +59,7 @@ class LoginOptionsBody extends StatelessWidget {
             ),
           ],
         ),
+        const Spacer(),
       ],
     );
   }
