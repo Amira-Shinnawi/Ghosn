@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/core/utils/app_router.dart';
+import 'package:ghosn_app/generated/l10n.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/utils/assets_data.dart';
@@ -21,15 +22,15 @@ class SplashViewBody extends StatelessWidget {
         const SizedBox(
           height: 27,
         ),
-        const Center(
+         Center(
           child: Text(
-            'Welcome To Planta World',
+            S.of(context).title,
             style: Styles.textStyle32Itim,
           ),
         ),
         const Spacer(),
         CustomButton(
-          text: 'Get Started',
+          text: S.of(context).getStarted,
           onPressed: () {
             GoRouter.of(context).push(AppRoute.kLoginOptionView);
           },

@@ -11,6 +11,6 @@ abstract class Styles {
   static const textStyle32Itim = TextStyle(
     fontSize: 32,
     fontWeight: FontWeight.w800,
-    fontFamily: kItim,
+    fontFamily: kArefRuqaa,
   );
 }

@@ -3,6 +3,7 @@ import 'package:ghosn_app/core/utils/app_router.dart';
 import 'package:ghosn_app/core/utils/assets_data.dart';
 import 'package:ghosn_app/core/utils/style.dart';
 import 'package:ghosn_app/core/widgets/custom_icon_button.dart';
+import 'package:ghosn_app/generated/l10n.dart';
 import 'package:go_router/go_router.dart';
 
 class LoginOptionsBody extends StatelessWidget {
@@ -19,7 +20,7 @@ class LoginOptionsBody extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 1.2,
           ),
           CustomIconButton(
-            text: 'I\'ll use email or phone',
+            text: S.of(context).useEmailOrPhone,
             childIcon: const Icon(
               Icons.email_outlined,
               color: Color(0xff39579A),
@@ -29,14 +30,14 @@ class LoginOptionsBody extends StatelessWidget {
             },
           ),
           CustomIconButton(
-            text: 'Continue with Facebook',
+            text: S.of(context).continueWithFacebook,
             childIcon: Image.asset(
               AssetsData.facebook,
               width: 30,
             ),
           ),
           CustomIconButton(
-            text: 'Continue with Google',
+            text: S.of(context).continueWithGoogle,
             childIcon: Image.asset(
               AssetsData.google,
               width: 25,
@@ -50,7 +51,7 @@ class LoginOptionsBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                'Already have an account? ',
+                S.of(context).alreadyhaveaccount,
                 style: Styles.textStyle22Inter.copyWith(
                   color: Colors.black,
                   fontWeight: FontWeight.w400,
@@ -58,7 +59,7 @@ class LoginOptionsBody extends StatelessWidget {
                 ),
               ),
               Text(
-                'Signup',
+                S.of(context).Signup,
                 style: Styles.textStyle22Inter.copyWith(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
