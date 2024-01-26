@@ -5,9 +5,9 @@ import 'package:ghosn_app/translations/local_keys.g.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/utils/assets_data.dart';
+import '../../../../../core/utils/functions/save_language.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_button.dart';
-import '../../../../../main.dart';
 
 class SplashViewBody extends StatelessWidget {
   const SplashViewBody({super.key});
