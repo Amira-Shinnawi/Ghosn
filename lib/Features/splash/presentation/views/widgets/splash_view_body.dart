@@ -8,7 +8,6 @@ import '../../../../../core/utils/assets_data.dart';
 import '../../../../../core/utils/functions/save_language.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_button.dart';
-import '../../../../../main.dart';
 
 class SplashViewBody extends StatelessWidget {
   const SplashViewBody({super.key});
