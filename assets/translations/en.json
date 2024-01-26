@@ -2,7 +2,7 @@
     "getStarted":"Get Started",
     "title":"Welcome To Palnta World",
     "appbartitle":"Language App",
-    "useEmailOrPhone":"I will use email or phone",
+    "useEmailOrPhone":"I'll use email or phone",
     "continueWithFacebook":"Continue with Facebook",
     "continueWithGoogle":"Continue with Google",
     "alreadyhaveaccount":"Already have an account? ",
@@ -11,9 +11,12 @@
     "Email":"Email",
     "Password":"Password",
     "LOGIN":"LOGIN",
-    "forgotPassword":"Forgot Your Password?"
-
-    
-
+    "forgotPassword":"Forgot Your Password?",
+    "createAccount":"CREATE AN ACCOUNT",
+    "confirmpassword":"Confirm Password",
+    "phone":"Phone",
+    "appPolicy":"I agree to the terms and conditions",
+    "changepassword":"Change Password",
+    "newPassword":" Enter your New Password"
 
 }

@@ -1,25 +1,24 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:ghosn_app/core/utils/app_router.dart';
-import 'package:ghosn_app/core/utils/assets_data.dart';
-import 'package:ghosn_app/core/widgets/custom_button.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter/services.dart';
+import 'package:ghosn_app/constants.dart';
 
-import '../../../../../constants.dart';
-import '../../../../../core/utils/functions/is_arabic.dart';
+import '../../../../../core/utils/assets_data.dart';
 import '../../../../../core/utils/style.dart';
+import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_text_field.dart';
 import '../../../../../translations/local_keys.g.dart';
 
-class LoginPageBody extends StatefulWidget {
-  const LoginPageBody({super.key});
+class RegisterPageBody extends StatefulWidget {
+  const RegisterPageBody({super.key});
 
   @override
-  State<LoginPageBody> createState() => _LoginPageBodyState();
+  State<RegisterPageBody> createState() => _RegisterPageBodyState();
 }
 
-class _LoginPageBodyState extends State<LoginPageBody> {
+class _RegisterPageBodyState extends State<RegisterPageBody> {
   bool obscureText = true;
+  bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -56,10 +55,10 @@ class _LoginPageBodyState extends State<LoginPageBody> {
                 children: [
                   Center(
                     child: Text(
-                      LocaleKeys.signInYourAccount.tr(),
+                      LocaleKeys.createAccount.tr(),
                       style: Styles.textStyle22Inter.copyWith(
                         color: Colors.black,
-                        fontSize: isArabic() ? 24 : 22,
+                        fontSize: 24,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -76,7 +75,7 @@ class _LoginPageBodyState extends State<LoginPageBody> {
                     keyboardType: TextInputType.emailAddress,
                   ),
                   SizedBox(
-                    height: height * .03,
+                    height: height * .018,
                   ),
                   CustomTextFelid(
                     pass: obscureText,
@@ -92,33 +91,75 @@ class _LoginPageBodyState extends State<LoginPageBody> {
                         color: kHintColor,
                       ),
                     ),
-                    keyboardType: TextInputType.emailAddress,
+                    keyboardType: TextInputType.visiblePassword,
                   ),
                   SizedBox(
-                    height: height * .03,
+                    height: height * .018,
                   ),
-                  CustomButton(
-                    onPressed: () {},
-                    text: LocaleKeys.LOGIN.tr(),
+                  CustomTextFelid(
+                    pass: obscureText,
+                    hinText: LocaleKeys.confirmpassword.tr(),
+                    prefixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          obscureText = !obscureText;
+                        });
+                      },
+                      icon: Icon(
+                        obscureText ? Icons.visibility_off : Icons.visibility,
+                        color: kHintColor,
+                      ),
+                    ),
+                    keyboardType: TextInputType.visiblePassword,
                   ),
+                  SizedBox(
+                    height: height * .018,
+                  ),
+                  CustomTextFelid(
+                    prefixIcon: const Icon(
+                      Icons.phone,
+                      color: kHintColor,
+                    ),
+                    hinText: LocaleKeys.phone.tr(),
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  ),
+                  Row(
+                    children: [
+                      Checkbox(
+                        fillColor: MaterialStateProperty.resolveWith((states) {
+                          if (states.contains(MaterialState.selected)) {
+                            return kGreenColor;
+                          }
+                          return Colors.transparent;
+                        }),
+                        value: isChecked,
+                        onChanged: (newValue) {
+                          setState(() {
+                            isChecked = newValue!;
+                          });
+                        },
+                      ),
+                      Text(
+                        LocaleKeys.appPolicy.tr(),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ],
+                  ),
+                  isChecked
+                      ? CustomButton(
+                          onPressed: () {},
+                          text: LocaleKeys.Signup.toUpperCase().tr(),
+                        )
+                      : CustomButton(
+                          backgroundColor: const Color(0xff7F53AC5F),
+                          text: LocaleKeys.Signup.toUpperCase().tr(),
+                        ),
                   SizedBox(
                     height: height * .015,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      GoRouter.of(context).push(AppRoute.kChangePassword);
-                    },
-                    child: Text(
-                      LocaleKeys.forgotPassword.tr(),
-                      textAlign: TextAlign.center,
-                      style: Styles.textStyle22Inter.copyWith(
-                          color: Colors.black,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ),
-                  SizedBox(
-                    height: height * .03,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

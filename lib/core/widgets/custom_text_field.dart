@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/utils/style.dart';
 
@@ -11,7 +12,8 @@ class CustomTextFelid extends StatelessWidget {
       this.validator,
       this.onChanged,
       this.keyboardType,
-      this.pass = false});
+      this.pass = false,
+      this.inputFormatters});
 
   final Widget? prefixIcon;
   final String hinText;
@@ -20,6 +22,7 @@ class CustomTextFelid extends StatelessWidget {
   void Function(String)? onChanged;
   TextInputType? keyboardType;
   bool pass;
+  List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +32,7 @@ class CustomTextFelid extends StatelessWidget {
       controller: controller,
       validator: validator,
       keyboardType: keyboardType,
+      inputFormatters:inputFormatters,
       style: Styles.textStyle22Inter.copyWith(
         fontSize: 18,
         color: Colors.black,

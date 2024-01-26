@@ -10,13 +10,14 @@ class CustomButton extends StatelessWidget {
     required this.text,
     this.fontSize,
     this.onPressed,
-    this.width,
+    this.width, this.backgroundColor,
   });
   final String text;
   final BorderRadius? borderRadius;
   final double? fontSize;
   final void Function()? onPressed;
   final double? width;
+ final Color? backgroundColor;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,7 +28,7 @@ class CustomButton extends StatelessWidget {
         child: TextButton(
           onPressed: onPressed,
           style: TextButton.styleFrom(
-            backgroundColor: kGreenColor,
+            backgroundColor:backgroundColor?? kGreenColor,
             shape: RoundedRectangleBorder(
               borderRadius: borderRadius ??
                   BorderRadius.circular(
