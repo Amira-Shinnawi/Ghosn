@@ -1,59 +1,52 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/utils/app_router.dart';
-import 'package:intl/intl.dart';
+import 'package:ghosn_app/translations/codegen_loader.g.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import 'generated/l10n.dart';
-
-void main() {
-  runApp(const GhosnApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+  final savedLocale = await getSavedLanguage();
+  Locale? initialLocale = savedLocale ?? const Locale('en');
+  runApp(EasyLocalization(
+      path: 'assets/translations',
+      supportedLocales: const [
+        Locale('en'),
+        Locale('ar'),
+      ],
+      fallbackLocale: initialLocale,
+      assetLoader: const CodegenLoader(),
+      child: const GhosnApp()));
 }
 
-class GhosnApp extends StatefulWidget {
+class GhosnApp extends StatelessWidget {
   const GhosnApp({super.key});
-
-  @override
-  State<GhosnApp> createState() => _GhosnAppState();
-}
-
-class _GhosnAppState extends State<GhosnApp> {
-  Locale _currentLocale = Locale('ar');
-
-  void _toggleLanguage() {
-    setState(() {
-      _currentLocale = isArabic() ? Locale('en') : Locale('ar');
-    });
-  }
-
-  bool isArabic() {
-    return Intl.getCurrentLocale() == 'ar';
-  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-        routerConfig: AppRoute.router,
-        debugShowCheckedModeBanner: false,
-        locale: _currentLocale,
-        localizationsDelegates: const [
-          S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: S.delegate.supportedLocales,
-        theme: ThemeData(
-          brightness: Brightness.light,
-          fontFamily: isArabic() ? kInter : kArefRuqaa,
-        ),
-        builder: (context, router) {
-          return Scaffold(
-            body: GestureDetector(
-              onDoubleTap: _toggleLanguage,
-              child: router!,
-            ),
-          );
-        });
+      routerConfig: AppRoute.router,
+      debugShowCheckedModeBanner: false,
+      supportedLocales: context.supportedLocales,
+      localizationsDelegates: context.localizationDelegates,
+      locale: context.locale,
+      theme: ThemeData(
+        brightness: Brightness.light,
+        fontFamily: kInter,
+      ),
+    );
   }
+}
+
+Future<void> saveLanguage(Locale locale) async {
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.setString('languageCode', locale.languageCode);
+}
+
+Future<Locale?> getSavedLanguage() async {
+  final prefs = await SharedPreferences.getInstance();
+  final languageCode = prefs.getString('languageCode');
+  return languageCode != null ? Locale(languageCode) : null;
 }
