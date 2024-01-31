@@ -137,18 +137,38 @@ packages:
     dependency: "direct main"
     description:
       name: font_awesome_flutter
+<<<<<<< Updated upstream
       sha256: "52671aea66da73b58d42ec6d0912b727a42248dd9a7c76d6c20f275783c48c08"
       url: "https://pub.flutter-io.cn"
+=======
+      sha256: "275ff26905134bcb59417cf60ad979136f1f8257f2f449914b2c3e05bbb4cd6f"
+      url: "https://pub.dev"
+>>>>>>> Stashed changes
     source: hosted
-    version: "10.6.0"
+    version: "10.7.0"
   go_router:
     dependency: "direct main"
     description:
       name: go_router
+<<<<<<< Updated upstream
       sha256: "3b40e751eaaa855179b416974d59d29669e750d2e50fcdb2b37f1cb0ca8c803a"
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "13.0.1"
+=======
+      sha256: "07ee2436909f749d606f53521dc1725dd738dc5196e5ff815bc254253c594075"
+      url: "https://pub.dev"
+    source: hosted
+    version: "13.1.0"
+  http_parser:
+    dependency: transitive
+    description:
+      name: http_parser
+      sha256: "2aa08ce0341cc9b354a498388e30986515406668dbcc4f7c950c3e715496693b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.2"
+>>>>>>> Stashed changes
   intl:
     dependency: transitive
     description:
