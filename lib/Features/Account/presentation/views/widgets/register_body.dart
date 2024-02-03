@@ -152,11 +152,11 @@ class _RegisterPageBodyState extends State<RegisterPageBody> {
                   isChecked
                       ? CustomButton(
                           onPressed: () {},
-                          text: LocaleKeys.Signup.toUpperCase().tr(),
+                          text: LocaleKeys.Signup.tr().toUpperCase(),
                         )
                       : CustomButton(
                           backgroundColor: const Color(0xff7F53AC5F),
-                          text: LocaleKeys.Signup.toUpperCase().tr(),
+                          text: LocaleKeys.Signup.tr().toUpperCase(),
                         ),
                   SizedBox(
                     height: height * .015,
