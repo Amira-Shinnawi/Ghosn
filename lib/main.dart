@@ -27,6 +27,7 @@ class GhosnApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      
       routerConfig: AppRoute.router,
       debugShowCheckedModeBanner: false,
       supportedLocales: context.supportedLocales,
