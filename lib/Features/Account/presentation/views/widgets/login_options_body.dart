@@ -7,6 +7,7 @@ import 'package:ghosn_app/core/widgets/custom_icon_button.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../translations/local_keys.g.dart';
+import '../../../data/repo/google_signin_api_repo.dart';
 
 class LoginOptionsBody extends StatelessWidget {
   const LoginOptionsBody({super.key});
@@ -31,7 +32,7 @@ class LoginOptionsBody extends StatelessWidget {
               color: Color(0xff39579A),
             ),
             onPressed: () {
-              GoRouter.of(context).push(AppRoute.kLoginPage);
+              GoRouter.of(context).push(AppRouter.kLoginPage);
             },
           ),
           CustomIconButton(
@@ -47,7 +48,16 @@ class LoginOptionsBody extends StatelessWidget {
               AssetsData.google,
               width: 25,
             ),
+            // onPressed: () async {
+            //   var user = await GoogleSignInApi.login();
+            //   if (user != null) {
+            //     print('ok');
+            //     print(user.displayName);
+            //     print(user.email);
+            //   }
+            // },
           ),
+         
           SizedBox(
             height: height * .025,
           ),
@@ -65,7 +75,7 @@ class LoginOptionsBody extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  GoRouter.of(context).push(AppRoute.kRegisterPage);
+                  GoRouter.of(context).push(AppRouter.kRegisterPage);
                 },
                 child: Text(
                   LocaleKeys.Signup.tr(),

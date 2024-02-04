@@ -27,7 +27,7 @@ class CustompayTextField extends StatelessWidget {
           style: Styles.textStyle16Inter,
           
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Container(
           height: 48,
        decoration: BoxDecoration(
@@ -42,15 +42,15 @@ class CustompayTextField extends StatelessWidget {
             decoration: InputDecoration(
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(30),
-                borderSide: BorderSide(color: kGreenColor, width: 2.0),
+                borderSide: const BorderSide(color: kGreenColor, width: 2.0),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(30),
-                borderSide: BorderSide(color: Colors.black,width: 2.0),
+                borderSide: const BorderSide(color: Colors.black,width: 2.0),
               ),
  
         
-               contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+               contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
             ),
           ),
         ),

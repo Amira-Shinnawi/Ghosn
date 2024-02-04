@@ -9,7 +9,6 @@ class CustomTextFelid extends StatelessWidget {
       this.prefixIcon,
       required this.hinText,
       this.controller,
-      this.validator,
       this.onChanged,
       this.keyboardType,
       this.pass = false,
@@ -18,7 +17,6 @@ class CustomTextFelid extends StatelessWidget {
   final Widget? prefixIcon;
   final String hinText;
   TextEditingController? controller;
-  String? Function(String?)? validator;
   void Function(String)? onChanged;
   TextInputType? keyboardType;
   bool pass;
@@ -30,7 +28,12 @@ class CustomTextFelid extends StatelessWidget {
       obscureText: pass,
       onChanged: onChanged,
       controller: controller,
-      validator: validator,
+      validator:  (data) {
+        if (data!.isEmpty) {
+          return 'field is required';
+        }
+        return null;
+      },
       keyboardType: keyboardType,
       inputFormatters:inputFormatters,
       style: Styles.textStyle22Inter.copyWith(
