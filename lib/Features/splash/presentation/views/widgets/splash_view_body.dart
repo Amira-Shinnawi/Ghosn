@@ -5,7 +5,7 @@ import 'package:ghosn_app/translations/local_keys.g.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/utils/assets_data.dart';
-import '../../../../../core/utils/functions/save_language.dart';
+import '../../../../../core/utils/functions/shared_pref_cache.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_button.dart';
 
@@ -41,7 +41,7 @@ class SplashViewBody extends StatelessWidget {
               ElevatedButton(
                 onPressed: () async {
                   await context.setLocale(const Locale('en'));
-                  await saveLanguage(const Locale('en'));
+                  await SharedPrefCache.saveLanguage(const Locale('en'));
                 },
                 child: const Text(
                   'English',
@@ -54,7 +54,7 @@ class SplashViewBody extends StatelessWidget {
               ElevatedButton(
                 onPressed: () async {
                   await context.setLocale(const Locale('ar'));
-                  await saveLanguage(const Locale('ar'));
+                  await SharedPrefCache.saveLanguage(const Locale('ar'));
                 },
                 child: const Text('العربية',
                     style: TextStyle(
@@ -66,7 +66,7 @@ class SplashViewBody extends StatelessWidget {
           CustomButton(
             text: LocaleKeys.getStarted.tr(),
             onPressed: () {
-              GoRouter.of(context).push(AppRoute.kLoginOptionView);
+              GoRouter.of(context).push(AppRouter.kPaymentPage);
             },
           ),
           SizedBox(

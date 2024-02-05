@@ -18,17 +18,20 @@ final _formKey = GlobalKey<FormState>();
   String _country = '';
   String _state = '';
   String _city = '';
-  
 
   final _paymentMethodChoices = ['Visa', 'PayPal'];
   final _phoneNumberController = TextEditingController();
   final _addressController = TextEditingController();
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: custom_appbar(title: "Payment Page"),
+      appBar: 
+      AppBar(
+        
+      )
+      // CustomAppBar(title: "Payment Page")
+      ,
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -185,25 +188,15 @@ final _formKey = GlobalKey<FormState>();
                     print("Please fill in all required fields.");
                   }
                 },
-              width: 300,
-              fontSize: 10,
-              
-
-              
-            ),
-            SizedBox(height: 60),
-
-            Text("Help",
-            style:Styles.textStyle16Intergreen)
-           
-],
+                width: 300,
+                fontSize: 10,
+              ),
+              const SizedBox(height: 60),
+              const Text("Help", style: Styles.textStyle16Intergreen)
+            ],
+          ),
         ),
       ),
-      ),
-      );
-    
-  
+    );
   }
-
-  
 }

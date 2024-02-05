@@ -9,7 +9,7 @@ import 'package:ghosn_app/core/widgets/custom_dash_line.dart';
 
 
 class Bill extends StatelessWidget {
-  Bill(
+  const Bill(
       {super.key,
       required this.address,
       required this.phoneNumber,
@@ -27,12 +27,12 @@ class Bill extends StatelessWidget {
 
       body: Container(
         color: Colors.grey[200],
-        padding: EdgeInsets.only(top: 40),
+        padding: const EdgeInsets.only(top: 40),
         child: Stack(
           clipBehavior: Clip.none,
           children: [
             Padding(
-                padding:  EdgeInsets.all(20),
+                padding:  const EdgeInsets.all(20),
                 child: Container(
                   decoration: ShapeDecoration(
                     color: Colors.white,
@@ -58,11 +58,11 @@ class Bill extends StatelessWidget {
                         const Text("Payment was completed successfully",
                             style: Styles.textStyle18Intergray,
                             textAlign: TextAlign.center),
-                        SizedBox(
+                        const SizedBox(
                           height: 32,
                         ),
-                        dash_line(),
-                        SizedBox(
+                        const dash_line(),
+                        const SizedBox(
                           height: 45,
                         ),
                         Padding(
@@ -70,57 +70,57 @@ class Bill extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              const Text(
                                 "Total Paid Amount:",
                                 textAlign: TextAlign.start,
                                 style: Styles.textStyle20Inter,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 14.5,
                               ),
-                              Text(
+                              const Text(
                                 "123",
                                 style: Styles.textStyle18Intergray,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 32,
                               ),
-                              Text(
+                              const Text(
                                 "Phone Number:",
                                 style: Styles.textStyle20Inter,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 14.5,
                               ),
                               Text(
                                 phoneNumber,
                                 style: Styles.textStyle18Intergray,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 32,
                               ),
-                              Text(
+                              const Text(
                                 "Address:",
                                 style: Styles.textStyle20Inter,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 14.5,
                               ),
                               Text(
                                 address+ "-"+street,
                                 style: Styles.textStyle18Intergray,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 32,
                               ),
-                              Text(
+                              const Text(
                                 "Name:",
                                 style: Styles.textStyle20Inter,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 14.5,
                               ),
-                              Text(
+                              const Text(
                                 "esraa",
                                 style: Styles.textStyle18Intergray,
                               ),

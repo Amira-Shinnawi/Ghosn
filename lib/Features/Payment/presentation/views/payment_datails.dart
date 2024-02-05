@@ -50,7 +50,7 @@ class _RadioListTitleWidgetState extends State<RadioListTitleWidget> {
   Widget build(BuildContext context) {
       bool showCreditCard = _selectedIndex == 0;
     return Scaffold(
-      appBar: custom_appbar(title: "Payment Details"),
+      appBar: CustomAppBar(title: "Payment Details"),
       body: SingleChildScrollView(
         child: Column(children: [
           Padding(

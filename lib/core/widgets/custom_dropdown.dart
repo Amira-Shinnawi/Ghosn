@@ -25,7 +25,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
         Text(
           widget.labelText,
           style:Styles.textStyle16Inter,),
-         SizedBox(height: 8),
+         const SizedBox(height: 8),
         GestureDetector(
           onTap: () {
             setState(() {

@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:ghosn_app/core/utils/app_router.dart';
 import 'package:ghosn_app/core/utils/assets_data.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/widgets/custom_button.dart';
@@ -74,7 +76,7 @@ class _ChangePasswordBodyState extends State<ChangePasswordBody> {
             ),
             CustomButton(
               onPressed: () {
-                Navigator.pop(context);
+                GoRouter.of(context).push(AppRouter.kLoginOptionView);
               },
               text: LocaleKeys.LOGIN.tr(),
             ),

@@ -1,15 +1,23 @@
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/utils/app_router.dart';
-import 'package:ghosn_app/core/utils/functions/save_language.dart';
+import 'package:ghosn_app/core/utils/functions/shared_pref_cache.dart';
 import 'package:ghosn_app/translations/codegen_loader.g.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  final savedLocale = await getSavedLanguage();
+
+  await SharedPrefCache.cacheInitialization();
+  userToken = await SharedPrefCache.getCacheData(key: 'token');
+  log("User token is : $userToken");
+
+  final savedLocale = await SharedPrefCache.getSavedLanguage();
   Locale? initialLocale = savedLocale ?? const Locale('en');
+
   runApp(EasyLocalization(
       path: 'assets/translations',
       supportedLocales: const [
@@ -27,8 +35,7 @@ class GhosnApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      
-      routerConfig: AppRoute.router,
+      routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
@@ -40,4 +47,3 @@ class GhosnApp extends StatelessWidget {
     );
   }
 }
-

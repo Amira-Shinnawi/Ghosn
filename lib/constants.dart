@@ -4,5 +4,6 @@ const kGreenColor = Color(0xff53AC5F);
 const kInter = 'Inter';
 const kItim = 'Itim';
 const kArefRuqaa = 'ArefRuqaa';
-const kHintColor=Colors.grey;
+const kHintColor = Colors.grey;
 
+String? userToken;

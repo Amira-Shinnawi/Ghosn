@@ -31,7 +31,7 @@ class LoginOptionsBody extends StatelessWidget {
               color: Color(0xff39579A),
             ),
             onPressed: () {
-              GoRouter.of(context).push(AppRoute.kLoginPage);
+              GoRouter.of(context).push(AppRouter.kLoginPage);
             },
           ),
           CustomIconButton(
@@ -47,7 +47,16 @@ class LoginOptionsBody extends StatelessWidget {
               AssetsData.google,
               width: 25,
             ),
+            // onPressed: () async {
+            //   var user = await GoogleSignInApi.login();
+            //   if (user != null) {
+            //     print('ok');
+            //     print(user.displayName);
+            //     print(user.email);
+            //   }
+            // },
           ),
+         
           SizedBox(
             height: height * .025,
           ),
@@ -65,7 +74,7 @@ class LoginOptionsBody extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  GoRouter.of(context).push(AppRoute.kRegisterPage);
+                  GoRouter.of(context).push(AppRouter.kRegisterPage);
                 },
                 child: Text(
                   LocaleKeys.Signup.tr(),
