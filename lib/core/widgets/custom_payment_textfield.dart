@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/utils/style.dart';
 
@@ -8,17 +9,21 @@ class CustompayTextField extends StatelessWidget {
   
   final bool obscureText;
   final TextInputType keyboardType;
+   
 
-  CustompayTextField({
+  const CustompayTextField({super.key, 
     required this.labelText,
     required this.controller,
+   
     
     this.obscureText = false,
-    this.keyboardType = TextInputType.text, required String? Function(dynamic value) validator,
+    this.keyboardType = TextInputType.text, 
   });
+   
 
   @override
   Widget build(BuildContext context) {
+    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -27,30 +32,57 @@ class CustompayTextField extends StatelessWidget {
           style: Styles.textStyle16Inter,
           
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Container(
-          height: 48,
+          height: 58,
        decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(30),
       
       ),
-          child: TextField(
-            controller: controller,
-            obscureText: obscureText,
-            keyboardType: keyboardType,
-            decoration: InputDecoration(
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30),
-                borderSide: BorderSide(color: kGreenColor, width: 2.0),
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical:3, horizontal: 2),
+
+            child: TextFormField(
+              controller: controller,
+              obscureText: obscureText,
+              keyboardType: keyboardType,
+               
+              
+                  style: Styles.textStyle22Inter.copyWith(
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
+                validator: (value) {
+                    if (value == null || value.isEmpty) {
+            return 'Please enter $labelText';
+                    }
+                    return null;
+                  },
+              decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: BorderSide(color: kGreenColor, width: 2.5),
+                ),
+              enabledBorder:OutlineInputBorder (
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: BorderSide(color: Colors.black,width: 2.5),
+                
+                ),
+                 errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: BorderSide(color: Colors.red, width: 2.5),
+                 
+                ),
+                focusedErrorBorder: new OutlineInputBorder(
+               borderRadius:   BorderRadius.circular(30),
+              borderSide: new BorderSide(color: Colors.red, width: 2.5),
+                    ),
+             
+                    
+                //  contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal:15),
+                 
               ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30),
-                borderSide: BorderSide(color: Colors.black,width: 2.0),
-              ),
- 
-        
-               contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
             ),
           ),
         ),

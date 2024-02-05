@@ -13,7 +13,7 @@ class PaymentPage extends StatefulWidget {
 }
 
 class _PaymentPageState extends State<PaymentPage> {
- final _formKey = GlobalKey<FormState>();
+final _formKey = GlobalKey<FormState>();
   String _paymentMethod = 'Visa';
   String _country = '';
   String _state = '';
@@ -42,6 +42,12 @@ class _PaymentPageState extends State<PaymentPage> {
             const SizedBox(height: 24),
             CustomDropdown(
   labelText: 'Address',
+   validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter Address';
+        }
+        return null;
+      },
   
   child: CSCPicker(
     onCountryChanged: (value) {
@@ -67,12 +73,7 @@ class _PaymentPageState extends State<PaymentPage> {
               labelText: 'Street:',
               controller:_addressController ,
               keyboardType: TextInputType.streetAddress,
-              validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your street address';
-                  }
-               
-                },
+            
             ),
             
             const SizedBox(height: 24),
@@ -81,12 +82,7 @@ class _PaymentPageState extends State<PaymentPage> {
               labelText: 'Phone Number:',
               controller: _phoneNumberController,
               keyboardType: TextInputType.phone,
-               validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your phone number';
-                  }
-                 
-                },
+             
             ),
             
             const SizedBox(height: 24),
@@ -102,27 +98,45 @@ class _PaymentPageState extends State<PaymentPage> {
     
 
  
-           Container(
-            decoration: BoxDecoration(
-    border: Border.all(
-      color: Colors.black,
-      width: 2.0,
-    ),
-       borderRadius: BorderRadius.circular(30),
-  ),
-             child: DropdownButtonFormField<String>(
+  //          Container(
+  //           decoration: BoxDecoration(
+  //   border: Border.all(
+  //     color: Colors.black,
+  //     width: 2.0,
+  //   ),
+  //      borderRadius: BorderRadius.circular(30),
+  // ),
+             DropdownButtonFormField<String>(
                 value: _paymentMethod,
+                decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.grey[100],
+       
+        labelStyle: TextStyle(
+          color: Colors.grey[500],
+        ),
+        enabledBorder: OutlineInputBorder(
+          
+           borderRadius: BorderRadius.circular(30),
+           borderSide: BorderSide(color: Colors.black,width:2.5),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30),
+          borderSide: BorderSide(
+            color: Colors.black,
+            width:2.5,
+          ),
+        ),
+         contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal:15),
+      ),
                 onChanged: (value) {
                   setState(() {
                     _paymentMethod = value!;
                   });
                 },
-                 validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please select a payment method';
-                      }
-                      return null;
-                    },
+                 icon: Icon(Icons.arrow_drop_down),
+      iconSize: 24,
+                
                 items: _paymentMethodChoices.map((choice) {
                   return  DropdownMenuItem<String>(
                       value: choice,
@@ -138,7 +152,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   
                 }).toList(),
              ),
-           ),
+          //  ),
            
           ]),
         
@@ -152,18 +166,21 @@ class _PaymentPageState extends State<PaymentPage> {
               
               
             onPressed: () {
-                  if (_formKey.currentState?.validate() == true) {
-                    // All form fields are valid, proceed with your logic
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => RadioListTitleWidget(selectedPaymentMethod: _paymentMethod,
+                    if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                        // builder: (context) => 
+                        Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return  RadioListTitleWidget(selectedPaymentMethod: _paymentMethod,
                             address: '$_country, $_state, $_city',
                             phoneNumber: _phoneNumberController.text,
-                            street:_addressController.text),
-                      ),
-                    );
-                  } else {
+                            street:_addressController.text
+                      );
+                }));
+              } else {
                     // Form fields are not valid, show an error message or handle accordingly
                     print("Please fill in all required fields.");
                   }
