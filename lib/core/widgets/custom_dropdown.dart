@@ -30,7 +30,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
         Text(
           widget.labelText,
           style:Styles.textStyle16Inter,),
-         SizedBox(height: 8),
+         const SizedBox(height: 8),
         GestureDetector(
           onTap: () {
             setState(() {
@@ -58,8 +58,8 @@ class _CustomDropdownState extends State<CustomDropdown> {
             //   borderRadius: BorderRadius.circular(20),
             //   border: Border.all(color: Colors.green),
             // ),
-            padding: EdgeInsets.symmetric(vertical: 13, horizontal: 12),
-            child: Row(
+            padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 12),
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text('Select'),
@@ -70,7 +70,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
         ),
         if (isOpen)
           Container(
-            padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
             child: widget.child,
           ),
       ],

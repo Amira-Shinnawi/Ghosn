@@ -7,7 +7,6 @@ import 'package:ghosn_app/core/widgets/custom_icon_button.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../translations/local_keys.g.dart';
-import '../../../data/repo/google_signin_api_repo.dart';
 
 class LoginOptionsBody extends StatelessWidget {
   const LoginOptionsBody({super.key});

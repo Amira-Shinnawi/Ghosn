@@ -9,7 +9,7 @@ import 'package:ghosn_app/core/widgets/custom_dash_line.dart';
 
 
 class Bill extends StatelessWidget {
-  Bill(
+  const Bill(
       {super.key,
       required this.address,
       required this.phoneNumber,

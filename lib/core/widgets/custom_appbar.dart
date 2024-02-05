@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/core/utils/style.dart';
 
-AppBar custom_appbar({required final String title}) {
-    return AppBar(
-      leading: const Icon(
-        Icons.arrow_back_ios_new_outlined,
+AppBar CustomAppBar({required final String title}) {
+  return AppBar(
+    leading: const Icon(
+      Icons.arrow_back_ios,
+    ),
+    centerTitle: true,
+    title: Text(
+      title,
+      style: Styles.textStyle22Inter.copyWith(
+        fontSize: 25,
         color: Colors.black,
+        fontWeight: FontWeight.w600,
       ),
-      centerTitle: true,
-      title:  Text(title, style: Styles.textStyle32Itim,),
-
-    );
-  }
+    ),
+  );
+}

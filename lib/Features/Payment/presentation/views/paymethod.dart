@@ -26,7 +26,12 @@ class _PaymentPageState extends State<PaymentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: custom_appbar(title: "Payment Page"),
+      appBar: 
+      AppBar(
+        
+      )
+      // CustomAppBar(title: "Payment Page")
+      ,
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Form(

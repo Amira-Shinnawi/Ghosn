@@ -35,7 +35,7 @@ class _RadioListTitleWidgetState extends State<RadioListTitleWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: custom_appbar(title: "Payment Details"),
+      appBar: CustomAppBar(title: "Payment Details"),
       body: SingleChildScrollView(
         child: Column(children: [
           Padding(

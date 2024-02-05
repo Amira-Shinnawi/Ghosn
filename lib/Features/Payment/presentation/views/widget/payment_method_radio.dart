@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:ghosn_app/core/utils/style.dart';
 
 // class Payment_Method_RadioButton extends StatefulWidget {
@@ -102,13 +101,13 @@ class Payment_Method_RadioButton extends StatefulWidget {
   final String imagePath;
 
   const Payment_Method_RadioButton({
-    Key? key,
+    super.key,
     required this.title,
     required this.value,
     required this.groupValue,
     required this.onChanged,
     required this.imagePath,
-  }) : super(key: key);
+  });
 
   @override
   _PaymentMethodState createState() => _PaymentMethodState();
