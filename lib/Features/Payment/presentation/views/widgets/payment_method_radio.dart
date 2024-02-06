@@ -66,9 +66,9 @@ import 'package:ghosn_app/core/utils/style.dart';
 // //             groupValue: widget.groupValue,
 // //             onChanged: widget.onChanged,
 // //           ),
-        
+
 // //           //  Expanded(
-// //             //  child:   
+// //             //  child:
 // //              Expanded(
 // //                child: Row(
 // //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -77,7 +77,7 @@ import 'package:ghosn_app/core/utils/style.dart';
 // //                     widget.title,
 // //                     style: Styles.textStyle18Inter,
 // //                   ),
-                 
+
 // //                   Image.asset(
 // //                     widget.imagePath,
 // //                     width: 90, // Adjust the width as needed
@@ -87,7 +87,7 @@ import 'package:ghosn_app/core/utils/style.dart';
 // //                         //  ),
 // //                           ),
 // //              ),
-         
+
 // //         ],
 // //       ),
 // //     );
@@ -124,28 +124,24 @@ class _PaymentMethodState extends State<Payment_Method_RadioButton> {
             groupValue: widget.groupValue,
             onChanged: widget.onChanged,
           ),
-        
-           Expanded(
-             child: Row(
+          Expanded(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   widget.title,
                   style: Styles.textStyle18Inter,
                 ),
-               
                 Image.asset(
                   widget.imagePath,
                   width: 90, // Adjust the width as needed
                   height: 80, // Adjust the height as needed
                 ),
               ],
-                       ),
-           ),
-         
+            ),
+          ),
         ],
       ),
     );
   }
 }
-

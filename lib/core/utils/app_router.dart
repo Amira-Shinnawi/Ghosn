@@ -2,7 +2,7 @@ import 'package:ghosn_app/Features/Account/presentation/views/change_pass.dart';
 import 'package:ghosn_app/Features/Account/presentation/views/login_options_view.dart';
 import 'package:ghosn_app/Features/Account/presentation/views/login_page.dart';
 import 'package:ghosn_app/Features/Account/presentation/views/register_page.dart';
-import 'package:ghosn_app/Features/Payment/presentation/views/paymethod.dart';
+import 'package:ghosn_app/Features/Payment/presentation/views/payment_method.dart';
 import 'package:ghosn_app/Features/splash/presentation/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -15,6 +15,7 @@ abstract class AppRouter {
   static const kLoginPage = '/loginPage';
   static const kRegisterPage = '/registerPage';
   static const kChangePassword = '/changePassword';
+  static const kRadioListTitleWidget='/radioListTitleWidget';
 
   static final router =
       GoRouter(initialLocation: userToken != null ? '/' : kSplashView, routes: [
@@ -45,7 +46,7 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: kPaymentPage,
-      builder: (context, state) =>  PaymentPage(),
+      builder: (context, state) =>const PaymentPage(),
     ),
   ]);
 }

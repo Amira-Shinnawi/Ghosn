@@ -1,20 +1,14 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/core/utils/style.dart';
 import 'package:ghosn_app/core/widgets/custom_dash_line.dart';
-
-
-
-
 
 class Bill extends StatelessWidget {
   const Bill(
       {super.key,
       required this.address,
       required this.phoneNumber,
-      required this.paymentMethod, required this.street
-      });
+      required this.paymentMethod,
+      required this.street});
 
   final String address;
   final String phoneNumber;
@@ -32,7 +26,7 @@ class Bill extends StatelessWidget {
           clipBehavior: Clip.none,
           children: [
             Padding(
-                padding:  const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Container(
                   decoration: ShapeDecoration(
                     color: Colors.white,
@@ -61,7 +55,7 @@ class Bill extends StatelessWidget {
                         const SizedBox(
                           height: 32,
                         ),
-                        const dash_line(),
+                        const DashLine(),
                         const SizedBox(
                           height: 45,
                         ),
@@ -107,7 +101,7 @@ class Bill extends StatelessWidget {
                                 height: 14.5,
                               ),
                               Text(
-                                address+ "-"+street,
+                                address + "-" + street,
                                 style: Styles.textStyle18Intergray,
                               ),
                               const SizedBox(
@@ -130,8 +124,6 @@ class Bill extends StatelessWidget {
                       ],
                     ),
                   ),
-                  
-                  
                 )),
             const Positioned(
               top: -30,
@@ -160,4 +152,3 @@ class Bill extends StatelessWidget {
     );
   }
 }
-
