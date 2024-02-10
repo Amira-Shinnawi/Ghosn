@@ -46,8 +46,14 @@ abstract class Styles {
     fontWeight: FontWeight.w700,
   );
   static const textStyle18Intergray = TextStyle(
-    color: Color(0xFF6A6A6A),
+    color:  Color.fromARGB(255, 85, 84, 84),
     fontSize: 18,
+    fontFamily: 'Almarai',
+    fontWeight: FontWeight.w400,
+  );
+   static const textStyle16Intergray = TextStyle(
+    color:  Color.fromARGB(255, 85, 84, 84),
+    fontSize: 16,
     fontFamily: 'Almarai',
     fontWeight: FontWeight.w400,
   );
@@ -57,4 +63,5 @@ abstract class Styles {
     fontFamily: 'Inter',
     fontWeight: FontWeight.w700,
   );
+ 
 }

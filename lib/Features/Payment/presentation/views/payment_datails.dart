@@ -6,10 +6,11 @@ import 'package:ghosn_app/Features/Payment/data/model/amount_model/amount_model.
 import 'package:ghosn_app/Features/Payment/data/model/amount_model/details.dart';
 import 'package:ghosn_app/Features/Payment/data/model/item_list_model/item_list_model.dart';
 import 'package:ghosn_app/Features/Payment/data/model/item_list_model/items.dart';
-import 'package:ghosn_app/Features/Payment/presentation/views/Bill.dart';
+import 'package:ghosn_app/Features/Payment/presentation/views/ConfirmPayment.dart';
 import 'package:ghosn_app/Features/Payment/presentation/views/Executepaypal.dart';
 import 'package:ghosn_app/Features/Payment/presentation/views/credit_card_view.dart';
 import 'package:ghosn_app/Features/Payment/presentation/views/paypal_body.dart';
+import 'package:ghosn_app/Features/Payment/presentation/views/widget/PaymentDate.dart';
 import 'package:ghosn_app/Features/Payment/presentation/views/widget/credit_card.dart';
 import 'package:ghosn_app/Features/Payment/presentation/views/widget/payment_method_radio.dart';
 import 'package:ghosn_app/constants.dart';
@@ -20,15 +21,12 @@ import 'package:go_router/go_router.dart';
 
 class RadioListTitleWidget extends StatefulWidget {
   final String selectedPaymentMethod;
-  final String address;
-  final String phoneNumber;
-  final String street;
+   final PaymentData paymentData;
+
   const RadioListTitleWidget(
       {super.key,
-      required this.selectedPaymentMethod,
-      required this.address,
-      required this.phoneNumber,
-      required this.street});
+      required this.selectedPaymentMethod, required this.paymentData,
+   });
   @override
   _RadioListTitleWidgetState createState() => _RadioListTitleWidgetState();
 }
@@ -38,7 +36,8 @@ class _RadioListTitleWidgetState extends State<RadioListTitleWidget> {
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   bool showCreditCard = false;
-  late int _selectedIndex;
+   int _selectedIndex = 0;
+  // late int _selectedIndex;
   @override
   void initState() {
     super.initState();
@@ -151,15 +150,12 @@ class _RadioListTitleWidgetState extends State<RadioListTitleWidget> {
             onPressed: () {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) {
-                  return Bill(
-                    paymentMethod: widget.selectedPaymentMethod,
-                    address: widget.address,
-                    phoneNumber: widget.phoneNumber,
-                    street: widget.street,
-                  );
-                }));
+               Navigator.push(
+  context,
+  MaterialPageRoute(
+    builder: (context) => ConfirmPayment(paymentData: widget.paymentData),
+  ),
+);
               } else {
                 autovalidateMode = AutovalidateMode.always;
                 setState(() {});

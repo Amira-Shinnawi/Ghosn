@@ -6,7 +6,7 @@ class CustomDropdown extends StatefulWidget {
   final String labelText;
     final FormFieldValidator<String>? validator;
 
-  CustomDropdown({required this.child,required this.labelText, this.validator});
+  CustomDropdown({required this.child,required this.labelText, this.validator, required String value, required List<DropdownMenuItem<String>> items, required Null Function(String? value) onChanged});
 
   @override
   _CustomDropdownState createState() => _CustomDropdownState();

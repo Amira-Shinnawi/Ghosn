@@ -16,6 +16,24 @@
     "phone":"رقم الهاتف",
     "appPolicy":"الموافقة علي سياسة التطبيق",
     "changepassword":"تغيير كلمة المرور",
-    "newPassword":"ادخل كلمة المرور الجديدة"
+    "newPassword":"ادخل كلمة المرور الجديدة",
+    "paymentpage":"صفحه الدفع",
+    "address":"العنوان",
+    "street":"الشارع",
+    "phoneNumber":"رقم الهاتف",
+    "PaymentMethod":"طريقه الدفع",
+    "Pay":"ادفع",
+    "CardNumber":"رقم الكارت",
+    "ExpiryDate":"تاريخ الانتهاء",
+    "CVV":"الرقم السري",
+    "CardHolder":"اسم صاحب الكارت",
+    "PayNow":"ادفع الان",
+    "ThankYou":"شكرا لك",
+    "PaymentWasCompletedSuccessfully":"تمت عمليه الدفع بنجاح",
+    "TotalPaidAmount":"اجمالي المبلغ المدفوع",
+    "PhoneNumber":"رقم الهاتف",
+    "Address":"العنوان",
+    "Name":"الاسم"
 
 }
+

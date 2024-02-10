@@ -17,6 +17,37 @@
     "phone":"Phone",
     "appPolicy":"I agree to the terms and conditions",
     "changepassword":"Change Password",
-    "newPassword":" Enter your New Password"
+    "newPassword":" Enter your New Password",
+
+    "paymentpage":"Payment Page",
+    "address":"Address",
+    "street":"Street",
+    "phoneNumber":"Phone Number",
+    "PaymentMethod":"Payment Method",
+    "Pay":"Pay",
+
+    "CardNumber":"Card Number",
+    "ExpiryDate":"Expiry Date",
+    "CVV":"CVV",
+    "CardHolder":"Card Holder",
+    "PayNow":"Pay Now",
+    "ThankYou":"Thank You",
+    "PaymentWasCompletedSuccessfully":"Payment Was Completed Successfully",
+    "TotalPaidAmount":"Total Paid Amount",
+    "PhoneNumber":"Phone Number",
+    "Address":"Address",
+    "Name":"Name"
+
+
+
+
+    
+  
+    
+
+
 
 }
+
+
+
