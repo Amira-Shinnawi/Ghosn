@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class DashLine extends StatelessWidget {
-  const DashLine({
+class dash_line extends StatelessWidget {
+  const dash_line({
     super.key,
   });
 

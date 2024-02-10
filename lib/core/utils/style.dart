@@ -19,14 +19,7 @@ abstract class Styles {
     fontFamily: 'Almarai',
     fontWeight: FontWeight.w700,
   );
-  static const textStyle16Intergreen = TextStyle(
-    color: kGreenColor,
-    fontSize: 16,
-    fontWeight: FontWeight.bold,
-    fontFamily: 'Inter',
-    decoration: TextDecoration.underline,
-    decorationColor: kGreenColor,
-  );
+
   static const textStyle16Itim = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w800,

@@ -4,23 +4,35 @@ import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/utils/style.dart';
 
 class CustomTextFelid extends StatelessWidget {
-  CustomTextFelid(
-      {super.key,
-      this.prefixIcon,
-      required this.hinText,
-      this.controller,
-      this.onChanged,
-      this.keyboardType,
-      this.pass = false,
-      this.inputFormatters});
+  CustomTextFelid({
+    super.key,
+    this.prefixIcon,
+    required this.hinText,
+    this.controller,
+    this.onChanged,
+    this.keyboardType,
+    this.pass = false,
+    this.inputFormatters,
+    this.suffixIcon,
+    this.width,
+    this.color,
+    this.onTap,
+    this.readOnly = false,
+  });
 
   final Widget? prefixIcon;
+  final Widget? suffixIcon;
   final String hinText;
+
   TextEditingController? controller;
   void Function(String)? onChanged;
   TextInputType? keyboardType;
   bool pass;
   List<TextInputFormatter>? inputFormatters;
+  final double? width;
+  final Color? color;
+  final void Function()? onTap;
+  final bool readOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +40,16 @@ class CustomTextFelid extends StatelessWidget {
       obscureText: pass,
       onChanged: onChanged,
       controller: controller,
-      validator:  (data) {
+      validator: (data) {
         if (data!.isEmpty) {
-          return 'field is required';
+          return 'Please Enter $hinText';
         }
         return null;
       },
+      onTap: onTap,
+      readOnly: readOnly,
       keyboardType: keyboardType,
-      inputFormatters:inputFormatters,
+      inputFormatters: inputFormatters,
       style: Styles.textStyle22Inter.copyWith(
         fontSize: 18,
         color: Colors.black,
@@ -49,22 +63,24 @@ class CustomTextFelid extends StatelessWidget {
         ),
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-        border: builtOutLineBorder(),
-        enabledBorder: builtOutLineBorder(),
-        focusedBorder: builtOutLineBorder(),
+        border: builtOutLineBorder(width: width, color: color),
+        enabledBorder: builtOutLineBorder(width: width, color: color),
+        focusedBorder: builtOutLineBorder(width: width, color: color),
         prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon,
       ),
     );
   }
 
-  OutlineInputBorder builtOutLineBorder() {
-    return const OutlineInputBorder(
-      borderRadius: BorderRadius.all(
+  OutlineInputBorder builtOutLineBorder(
+      {required final double? width, required final Color? color}) {
+    return OutlineInputBorder(
+      borderRadius: const BorderRadius.all(
         Radius.circular(30),
       ),
       borderSide: BorderSide(
-        color: kGreenColor,
-        width: 3,
+        color: color ?? kGreenColor,
+        width: width ?? 3,
       ),
     );
   }

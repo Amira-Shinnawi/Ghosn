@@ -5,4 +5,6 @@ class AssetsData {
   static const google = 'assets/images/google.png';
   static const signUpImage = 'assets/images/signup_image.png';
   static const changepass = 'assets/images/changepass.png';
+  static const paypal = 'assets/images/paypal.png';
+  static const visa = 'assets/images/visa.png';
 }

@@ -1,17 +1,30 @@
 import 'package:flutter/material.dart';
 
-import 'package:ghosn_app/Features/Payment/presentation/views/widget/PaymentDate.dart';
-import 'package:ghosn_app/Features/Payment/presentation/views/widget/SpaceColumn.dart';
+
+import 'package:ghosn_app/Features/Payment/presentation/views/widgets/PaymentDate.dart';
+import 'package:ghosn_app/Features/Payment/presentation/views/widgets/SpaceColumn.dart';
 
 import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/utils/style.dart';
 
 
+import 'package:ghosn_app/core/widgets/custom_dash_line.dart';
 
 class Bill extends StatelessWidget {
   final PaymentData paymentData;
   const Bill({Key? key, required this.paymentData}) : super(key: key);
 
+  const Bill(
+      {super.key,
+      required this.address,
+      required this.phoneNumber,
+      required this.paymentMethod,
+      required this.street});
+
+  final String address;
+  final String phoneNumber;
+  final String paymentMethod;
+  final String street;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -155,3 +168,4 @@ class CompletedContainer extends StatelessWidget {
     );
   }
 }
+

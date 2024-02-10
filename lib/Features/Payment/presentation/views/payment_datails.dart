@@ -1,23 +1,19 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ghosn_app/Features/Payment/data/model/amount_model/amount_model.dart';
 import 'package:ghosn_app/Features/Payment/data/model/amount_model/details.dart';
 import 'package:ghosn_app/Features/Payment/data/model/item_list_model/item_list_model.dart';
 import 'package:ghosn_app/Features/Payment/data/model/item_list_model/items.dart';
-import 'package:ghosn_app/Features/Payment/presentation/views/ConfirmPayment.dart';
+import 'package:ghosn_app/Features/Payment/presentation/views/Bill.dart';
 import 'package:ghosn_app/Features/Payment/presentation/views/Executepaypal.dart';
 import 'package:ghosn_app/Features/Payment/presentation/views/credit_card_view.dart';
 import 'package:ghosn_app/Features/Payment/presentation/views/paypal_body.dart';
-import 'package:ghosn_app/Features/Payment/presentation/views/widget/PaymentDate.dart';
-import 'package:ghosn_app/Features/Payment/presentation/views/widget/credit_card.dart';
-import 'package:ghosn_app/Features/Payment/presentation/views/widget/payment_method_radio.dart';
+import 'package:ghosn_app/Features/Payment/presentation/views/widgets/PaymentDate.dart';
+
 import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/widgets/custom_appbar.dart';
-import 'package:ghosn_app/core/widgets/custom_button.dart';
 
-import 'package:go_router/go_router.dart';
+import 'widgets/payment_detail_body.dart';
 
 class RadioListTitleWidget extends StatefulWidget {
   final String selectedPaymentMethod;
@@ -36,8 +32,7 @@ class _RadioListTitleWidgetState extends State<RadioListTitleWidget> {
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   bool showCreditCard = false;
-   int _selectedIndex = 0;
-  // late int _selectedIndex;
+  late int _selectedIndex;
   @override
   void initState() {
     super.initState();
@@ -47,7 +42,6 @@ class _RadioListTitleWidgetState extends State<RadioListTitleWidget> {
 
   @override
   Widget build(BuildContext context) {
-      bool showCreditCard = _selectedIndex == 0;
     return Scaffold(
       appBar: CustomAppBar(title: "Payment Details"),
       body: SingleChildScrollView(
@@ -150,12 +144,15 @@ class _RadioListTitleWidgetState extends State<RadioListTitleWidget> {
             onPressed: () {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
-               Navigator.push(
-  context,
-  MaterialPageRoute(
-    builder: (context) => ConfirmPayment(paymentData: widget.paymentData),
-  ),
-);
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return Bill(
+                    paymentMethod: widget.selectedPaymentMethod,
+                    address: widget.address,
+                    phoneNumber: widget.phoneNumber,
+                    street: widget.street,
+                  );
+                }));
               } else {
                 autovalidateMode = AutovalidateMode.always;
                 setState(() {});
@@ -167,37 +164,3 @@ class _RadioListTitleWidgetState extends State<RadioListTitleWidget> {
     );
   }
 }
- ({AmountModel amount, ItemListModel itemlist}) getTransactionsDate() {
-    var amount = AmountModel(
-        total: "100",
-        currency: "USD",
-        details: Details(
-          shipping: "0",
-          shippingDiscount: 0,
-          subtotal: "100",
-        ));
-    List<OrderItemModel> orders = [
-      OrderItemModel(
-        currency: "USD",
-        name: "Apple",
-        price: "4",
-        quantity: 10,
-      ),
-      OrderItemModel(
-        currency: "USD",
-        name: "Apple",
-        price: "5",
-        quantity: 12,
-      )
-    ];
-    var ItemList = ItemListModel(
-      orders: orders,
-    );
-    return (
-      amount: amount,
-      itemlist: ItemList,
-    );
-
-  
-  }
-

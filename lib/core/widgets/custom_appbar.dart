@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/core/utils/style.dart';
 
-AppBar CustomAppBar({required final String title}) {
+AppBar CustomAppBar({
+  required final String title,
+  required final Widget leading,
+  List<Widget>? actions
+}) {
   return AppBar(
-    leading: const Icon(
-      Icons.arrow_back_ios,
-    ),
+    leading: leading,
+    elevation: 0.0,
     centerTitle: true,
     title: Text(
       title,
@@ -15,5 +18,6 @@ AppBar CustomAppBar({required final String title}) {
         fontWeight: FontWeight.w600,
       ),
     ),
+    actions: actions,
   );
 }
