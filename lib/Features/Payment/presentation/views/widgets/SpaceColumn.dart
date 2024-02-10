@@ -34,7 +34,7 @@ class SpaceColumn extends StatelessWidget {
   final String label;
   final String value;
 
-  SpaceColumn({required this.label, required this.value});
+   SpaceColumn({required this.label, required this.value});
 
   @override
   Widget build(BuildContext context) {

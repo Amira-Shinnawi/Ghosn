@@ -2,32 +2,46 @@ import 'package:csc_picker/csc_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ghosn_app/Features/Payment/presentation/views/payment_datails.dart';
+import 'package:ghosn_app/Features/Payment/presentation/views/widgets/PaymentDate.dart';
 import 'package:ghosn_app/constants.dart';
+import 'package:ghosn_app/core/widgets/custom_dropdown.dart';
 import 'package:ghosn_app/core/widgets/custom_text_field.dart';
-
+import 'package:ghosn_app/core/widgets/customdropDownItem.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_button.dart';
-import '../../../../../core/widgets/custom_drop_down.dart';
 
 class PaymentMethodBody extends StatefulWidget {
-  const PaymentMethodBody({
-    super.key,
-  });
+  const PaymentMethodBody({super.key});
+
   @override
-  State<PaymentMethodBody> createState() => _PaymentMethodBodyState();
+  _PaymentMethodBody createState() => _PaymentMethodBody();
 }
 
-class _PaymentMethodBodyState extends State<PaymentMethodBody> {
-  
+class _PaymentMethodBody extends State<PaymentMethodBody> {
   final _formKey = GlobalKey<FormState>();
-  String _paymentMethod = 'Visa';
-  String _country = '';
-  String _state = '';
-  String _city = '';
-
-  final _paymentMethodChoices = ['Visa', 'PayPal'];
+  final _streetController = TextEditingController();
   final _phoneNumberController = TextEditingController();
-  final _addressController = TextEditingController();
+  final List<String> _paymentMethodChoices = ['Credit Card', 'PayPal'];
+  late String _selectedPaymentMethod;
+  late PaymentData paymentData;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedPaymentMethod = _paymentMethodChoices[0];
+    paymentData = PaymentData(
+      street: '',
+      phoneNumber: '',
+      paymentMethod: _paymentMethodChoices[0],
+      country: '',
+      state: '',
+      city: '',
+    );
+  }
+
+  String getAddress() {
+    return '${paymentData.street}, ${paymentData.country}, ${paymentData.state}, ${paymentData.city}';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,31 +54,25 @@ class _PaymentMethodBodyState extends State<PaymentMethodBody> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // const Text(
-            //   'Date: 26 January 2024',
-            //   style: Styles.textStyle16Inter,
-            // ),
-            // const SizedBox(height: 24),
-
             CustomDropdown(
               labelText: 'Address',
-              controller: TextEditingController(
-                text: '$_country, $_state, $_city',
-              ),
+              value: paymentData.country,
+              items: [],
+              onChanged: (String? value) {},
               child: CSCPicker(
                 onCountryChanged: (value) {
                   setState(() {
-                    _country = value.toString();
+                    paymentData.country = value.toString();
                   });
                 },
                 onStateChanged: (value) {
                   setState(() {
-                    _state = value.toString();
+                    paymentData.state = value.toString();
                   });
                 },
                 onCityChanged: (value) {
                   setState(() {
-                    _city = value.toString();
+                    paymentData.city = value.toString();
                   });
                 },
               ),
@@ -77,7 +85,7 @@ class _PaymentMethodBodyState extends State<PaymentMethodBody> {
             SizedBox(height: height * .008),
             CustomTextFelid(
               hinText: 'Street',
-              controller: _addressController,
+              controller: _streetController,
               keyboardType: TextInputType.streetAddress,
               width: 1,
               color: Colors.black,
@@ -97,42 +105,26 @@ class _PaymentMethodBodyState extends State<PaymentMethodBody> {
               color: Colors.black,
             ),
             SizedBox(height: height * .024),
-            const Text(
-              'Payment Method',
-              style: Styles.textStyle20Inter,
-            ),
-            SizedBox(height: height * .008),
-            DropdownButtonFormField(
-              value: _paymentMethod,
-              decoration: InputDecoration(
-                filled: true,
-                enabledBorder: builtOutLineBorder(),
-                focusedBorder: builtOutLineBorder(),
-                contentPadding:
-                    const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-              ),
-              onChanged: (value) {
-                setState(() {
-                  _paymentMethod = value!;
-                });
-              },
-              icon: const Icon(
-                Icons.arrow_drop_down,
-              ),
-              items: _paymentMethodChoices.map((choice) {
-                return DropdownMenuItem(
-                  value: choice,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 8, right: 8),
-                    child: Text(
-                      choice,
-                      style: Styles.textStyle20Inter.copyWith(
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
+            CustomDropdownItem<String>(
+              labelText: 'Payment Method',
+              value: paymentData.paymentMethod,
+              items: _paymentMethodChoices.map((value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
                 );
               }).toList(),
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please select a payment method';
+                }
+                return null;
+              },
+              onChanged: (String? value) {
+                setState(() {
+                  paymentData.paymentMethod = value!;
+                });
+              },
             ),
             SizedBox(height: height * .05),
             Center(
@@ -140,19 +132,25 @@ class _PaymentMethodBodyState extends State<PaymentMethodBody> {
                 text: 'Pay',
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
-
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return RadioListTitleWidget(
-                          selectedPaymentMethod: _paymentMethod,
-                          address: '$_country, $_state, $_city',
-                          phoneNumber: _phoneNumberController.text,
-                          street: _addressController.text);
-                    }));
-                  } else {
-                    // Form fields are not valid, show an error message or handle accordingly
-                    print("Please fill in all required fields.");
+                    // Construct PaymentData object with entered data
+                    paymentData = PaymentData(
+                      street: _streetController.text,
+                      phoneNumber: _phoneNumberController.text,
+                      paymentMethod: _selectedPaymentMethod,
+                      country: paymentData.country,
+                      state: paymentData.state,
+                      city: paymentData.city,
+                    );
+                    // Navigate to the next page with paymentData
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RadioListTitleWidget(
+                          paymentData: paymentData,
+                          selectedPaymentMethod: _selectedPaymentMethod,
+                        ),
+                      ),
+                    );
                   }
                 },
               ),
@@ -172,13 +170,6 @@ class _PaymentMethodBodyState extends State<PaymentMethodBody> {
           ],
         ),
       ),
-    );
-  }
-
-  OutlineInputBorder builtOutLineBorder() {
-    return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30),
-      borderSide: const BorderSide(width: 1),
     );
   }
 }

@@ -56,5 +56,11 @@ abstract class Styles {
     fontFamily: 'Inter',
     fontWeight: FontWeight.w700,
   );
+     static const textStyle16Intergreen = TextStyle(
+   color:kGreenColor,
+    fontSize: 16,
+    fontFamily: 'Almarai',
+    fontWeight: FontWeight.w400,
+  );
  
 }

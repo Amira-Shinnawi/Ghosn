@@ -1,34 +1,19 @@
 import 'package:flutter/material.dart';
 
-
 import 'package:ghosn_app/Features/Payment/presentation/views/widgets/PaymentDate.dart';
 import 'package:ghosn_app/Features/Payment/presentation/views/widgets/SpaceColumn.dart';
 
 import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/utils/style.dart';
 
-
-import 'package:ghosn_app/core/widgets/custom_dash_line.dart';
-
 class Bill extends StatelessWidget {
   final PaymentData paymentData;
   const Bill({Key? key, required this.paymentData}) : super(key: key);
 
-  const Bill(
-      {super.key,
-      required this.address,
-      required this.phoneNumber,
-      required this.paymentMethod,
-      required this.street});
-
-  final String address;
-  final String phoneNumber;
-  final String paymentMethod;
-  final String street;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    double width= MediaQuery.of(context).size.width;
+    double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Expanded(
         child: Scaffold(
@@ -44,22 +29,22 @@ class Bill extends StatelessWidget {
                   label: 'Date:',
                   value: '26jan2025',
                 ),
-                SizedBox(height: height*.022),
+                SizedBox(height: height * .022),
                 SpaceColumn(
                   label: 'Name:',
                   value: "Esraa",
                 ),
-                SizedBox(height: height*.022),
+                SizedBox(height: height * .022),
                 SpaceColumn(
                   label: 'Address:',
                   value: paymentData.address,
                 ),
-                SizedBox(height: height*.022),
+                SizedBox(height: height * .022),
                 SpaceColumn(
                   label: 'Phone Number:',
                   value: paymentData.phoneNumber,
                 ),
-                 SizedBox(height: height*.022),
+                SizedBox(height: height * .022),
                 //  SpaceColumn(label: 'Payment Method', value: paymentData.paymentMethod,
                 Row(
                   children: [
@@ -75,22 +60,15 @@ class Bill extends StatelessWidget {
                   ],
                 ),
 
-               
-
-                SizedBox(height: height*.040),
+                SizedBox(height: height * .040),
                 CreditCardContainer(width: width),
-                SizedBox(height: height*.035),
-                 const Center(
-                   child: Text("Please keep a copy of this receipt via a screenshot until needed when receiving the order to ensure user rights.",
-                                   style: Styles.textStyle16Intergray,
-                                   
-                                   ),
-                 )
-
-                
-
-             
-                
+                SizedBox(height: height * .035),
+                const Center(
+                  child: Text(
+                    "Please keep a copy of this receipt via a screenshot until needed when receiving the order to ensure user rights.",
+                    style: Styles.textStyle16Intergray,
+                  ),
+                )
               ],
             ),
           ),
@@ -111,31 +89,41 @@ class CreditCardContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width:366 ,
+      width: 366,
       height: 87,
-       decoration: BoxDecoration(
-            color: const Color.fromRGBO(250, 246, 246, 1),
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(color:const Color.fromRGBO(229, 220, 220, 1)
-            , width: 1.0),
+      decoration: BoxDecoration(
+        color: const Color.fromRGBO(250, 246, 246, 1),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+            color: const Color.fromRGBO(229, 220, 220, 1), width: 1.0),
+      ),
+      child: Row(
+        children: [
+          Image.asset(
+            'assets/images/mascard.png',
+            width: 100,
+            height: 100,
           ),
-          child: Row(children: [
-            Image.asset('assets/images/mascard.png',  width: 100,
-            height: 100,),
-            SizedBox(width:width*.013 ,),
-            const Padding(
-              padding: EdgeInsets.only(top: 17),
-              child: Column(
-              
-                children: [
-                  Text("Credit Card",style:Styles.textStyle18Inter,),
-                   Text("Master Card",style:Styles.textStyle18Intergray,),
-                ],
-              ),
-            )
-    
-    
-          ],),
+          SizedBox(
+            width: width * .013,
+          ),
+          const Padding(
+            padding: EdgeInsets.only(top: 17),
+            child: Column(
+              children: [
+                Text(
+                  "Credit Card",
+                  style: Styles.textStyle18Inter,
+                ),
+                Text(
+                  "Master Card",
+                  style: Styles.textStyle18Intergray,
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
@@ -160,12 +148,9 @@ class CompletedContainer extends StatelessWidget {
         child: Text(
           'Completed',
           style: TextStyle(
-              fontSize: 14,
-              color: kGreenColor,
-              fontWeight: FontWeight.bold),
+              fontSize: 14, color: kGreenColor, fontWeight: FontWeight.bold),
         ),
       ),
     );
   }
 }
-

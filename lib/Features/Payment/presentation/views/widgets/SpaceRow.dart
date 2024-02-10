@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ghosn_app/core/utils/style.dart';
@@ -32,7 +32,7 @@ class SpaceBetweenRow extends StatelessWidget {
           ],
         ),
         Container(
-          child: DashLine(),
+          child: const DashLine(),
         )
       ],
     );

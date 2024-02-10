@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/Features/Payment/data/model/item_list_model/items.dart';
-import 'package:ghosn_app/Features/Payment/presentation/views/Bill.dart';
+
+import 'package:ghosn_app/Features/Payment/presentation/views/ConfirmPayment.dart';
+import 'package:ghosn_app/Features/Payment/presentation/views/widgets/PaymentDate.dart';
 import 'package:ghosn_app/Features/Payment/presentation/views/widgets/payment_method_radio.dart';
 import 'package:ghosn_app/core/utils/assets_data.dart';
-
 import '../../../../../constants.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../data/model/amount_model/amount_model.dart';
@@ -16,15 +17,10 @@ class PaymentDetailsBody extends StatefulWidget {
   const PaymentDetailsBody({
     super.key,
     required this.selectedPaymentMethod,
-    required this.address,
-    required this.phoneNumber,
-    required this.street,
+    required this.paymentData,
   });
   final String selectedPaymentMethod;
-  final String address;
-  final String phoneNumber;
-  final String street;
-
+  final PaymentData paymentData;
   @override
   State<PaymentDetailsBody> createState() => _PaymentDetailsBodyState();
 }
@@ -135,14 +131,13 @@ class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
           onPressed: () {
             if (formKey.currentState!.validate()) {
               formKey.currentState!.save();
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return Bill(
-                  paymentMethod: widget.selectedPaymentMethod,
-                  address: widget.address,
-                  phoneNumber: widget.phoneNumber,
-                  street: widget.street,
-                );
-              }));
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      ConfirmPayment(paymentData: widget.paymentData),
+                ),
+              );
             } else {
               autovalidateMode = AutovalidateMode.always;
               setState(() {});

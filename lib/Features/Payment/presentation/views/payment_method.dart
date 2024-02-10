@@ -17,7 +17,7 @@ class PaymentPage extends StatelessWidget {
             icon: const Icon(Icons.arrow_back_ios)),
         title: "Payment Page",
       ),
-      body: SafeArea(
+      body: const SafeArea(
         child: PaymentMethodBody(),
       ),
     );
