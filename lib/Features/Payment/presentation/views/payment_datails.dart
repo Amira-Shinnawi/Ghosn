@@ -1,25 +1,18 @@
 import 'package:flutter/material.dart';
-
-
-import 'package:ghosn_app/Features/Payment/presentation/views/Bill.dart';
-import 'package:ghosn_app/Features/Payment/presentation/views/Executepaypal.dart';
-
-import 'package:ghosn_app/Features/Payment/presentation/views/widgets/PaymentDate.dart';
-import 'package:ghosn_app/Features/Payment/presentation/views/widgets/payment_method_radio.dart';
-
-import 'package:ghosn_app/constants.dart';
+import 'package:ghosn_app/Features/Payment/data/model/payment_date_model.dart';
 import 'package:ghosn_app/core/widgets/custom_appbar.dart';
 
 import 'widgets/payment_detail_body.dart';
 
 class RadioListTitleWidget extends StatefulWidget {
   final String selectedPaymentMethod;
-   final PaymentData paymentData;
+  final PaymentDataModel paymentData;
 
-  const RadioListTitleWidget(
-      {super.key,
-      required this.selectedPaymentMethod, required this.paymentData,
-   });
+  const RadioListTitleWidget({
+    super.key,
+    required this.selectedPaymentMethod,
+    required this.paymentData,
+  });
   @override
   _RadioListTitleWidgetState createState() => _RadioListTitleWidgetState();
 }
@@ -40,14 +33,19 @@ class _RadioListTitleWidgetState extends State<RadioListTitleWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Payment Details", 
-      leading: IconButton(
+      appBar: CustomAppBar(
+        title: "Payment Details",
+        leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
           icon: const Icon(Icons.arrow_back_ios),
-        ),),
-      body: PaymentDetailsBody(paymentData: widget.paymentData,    selectedPaymentMethod:widget.selectedPaymentMethod )
+        ),
+      ),
+      body: PaymentDetailsBody(
+        paymentData: widget.paymentData,
+        selectedPaymentMethod: widget.selectedPaymentMethod,
+      ),
     );
   }
 }

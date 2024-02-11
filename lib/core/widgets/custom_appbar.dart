@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/core/utils/style.dart';
 
-AppBar CustomAppBar({
-  required final String title,
-  required final Widget leading,
-  List<Widget>? actions
-}) {
+AppBar CustomAppBar(
+    {required final String title,
+    required final Widget leading,
+    List<Widget>? actions}) {
   return AppBar(
     leading: leading,
     elevation: 0.0,

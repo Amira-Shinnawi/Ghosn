@@ -1,4 +1,4 @@
-class PaymentData {
+class PaymentDataModel {
   String street;
   String phoneNumber;
   String paymentMethod;
@@ -6,13 +6,12 @@ class PaymentData {
   String country;
   String state;
   String city;
-   String get address => ' $city, $state ,$street';
+  String get address => '$city, $state ,$street';
 
-  PaymentData({
+  PaymentDataModel({
     required this.street,
     required this.phoneNumber,
     required this.paymentMethod,
-   
     required this.country,
     required this.state,
     required this.city,

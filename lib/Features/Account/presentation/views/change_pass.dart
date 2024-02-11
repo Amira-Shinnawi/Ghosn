@@ -15,7 +15,7 @@ class ChangePassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-          title: LocaleKeys.changepassword.tr(),
+          title: LocaleKeys.changePassword.tr(),
           leading: IconButton(
             onPressed: () {
               GoRouter.of(context).push(AppRouter.kLoginOptionView);

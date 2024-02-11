@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/Features/Payment/data/model/item_list_model/items.dart';
-
-import 'package:ghosn_app/Features/Payment/presentation/views/ConfirmPayment.dart';
-import 'package:ghosn_app/Features/Payment/presentation/views/widgets/PaymentDate.dart';
+import 'package:ghosn_app/Features/Payment/data/model/payment_date_model.dart';
+import 'package:ghosn_app/Features/Payment/presentation/views/confirm_payment.dart';
 import 'package:ghosn_app/Features/Payment/presentation/views/widgets/payment_method_radio.dart';
 import 'package:ghosn_app/core/utils/assets_data.dart';
+
 import '../../../../../constants.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../data/model/amount_model/amount_model.dart';
 import '../../../data/model/amount_model/details.dart';
 import '../../../data/model/item_list_model/item_list_model.dart';
-import '../Executepaypal.dart';
+import '../execute_paypal.dart';
 import 'credit_card.dart';
 
 class PaymentDetailsBody extends StatefulWidget {
@@ -20,7 +20,7 @@ class PaymentDetailsBody extends StatefulWidget {
     required this.paymentData,
   });
   final String selectedPaymentMethod;
-  final PaymentData paymentData;
+  final PaymentDataModel paymentData;
   @override
   State<PaymentDetailsBody> createState() => _PaymentDetailsBodyState();
 }

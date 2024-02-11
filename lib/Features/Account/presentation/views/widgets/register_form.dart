@@ -90,7 +90,7 @@ class _RegisterFormState extends State<RegisterForm> {
                         color: kHintColor,
                       ),
                       controller: emailController,
-                      hinText: LocaleKeys.Email.tr(),
+                      hinText: LocaleKeys.email.tr(),
                       keyboardType: TextInputType.emailAddress,
                     ),
                     SizedBox(
@@ -110,7 +110,7 @@ class _RegisterFormState extends State<RegisterForm> {
                     CustomTextFelid(
                       pass: obscureText,
                       controller: passController,
-                      hinText: LocaleKeys.Password.tr(),
+                      hinText: LocaleKeys.password.tr(),
                       prefixIcon: IconButton(
                         onPressed: () {
                           setState(() {
@@ -194,11 +194,11 @@ class _RegisterFormState extends State<RegisterForm> {
                             },
                             text: state is RegisterLoadingState
                                 ? 'Loading...'
-                                : LocaleKeys.Signup.tr().toUpperCase(),
+                                : LocaleKeys.signUp.tr().toUpperCase(),
                           )
                         : CustomButton(
                             backgroundColor: const Color(0xff7F53AC5F),
-                            text: LocaleKeys.Signup.tr().toUpperCase(),
+                            text: LocaleKeys.signUp.tr().toUpperCase(),
                           ),
                     SizedBox(
                       height: height * .015,

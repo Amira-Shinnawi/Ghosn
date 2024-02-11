@@ -7,17 +7,19 @@ class DashLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-   return Column(
+    return Column(
       children: [
         Wrap(
-          spacing:5,
+          spacing: 10,
           children: List.generate(
-            17,
-            (index) => Expanded(
-                  child: Container(
-                      color: const Color.fromARGB(255, 214, 214, 214), width:13, height:1),
-                )),
+              17,
+              growable: true,
+              (index) => Expanded(
+                    child: Container(
+                        color: const Color.fromARGB(255, 214, 214, 214),
+                        width: 13,
+                        height: 1),
+                  )),
         ),
       ],
     );

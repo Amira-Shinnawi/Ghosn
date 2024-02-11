@@ -14,13 +14,12 @@
 
 // class _CustomDropdownState extends State<CustomDropdown> {
 //   bool isOpen = false;
-   
 
 //   @override
 //   Widget build(BuildContext context) {
 //     return Column(
 //       crossAxisAlignment: CrossAxisAlignment.stretch,
-   
+
 //        children: [
 //         Text(
 //           widget.labelText,
@@ -32,7 +31,7 @@
 //               isOpen = !isOpen;
 //             });
 //           },
-         
+
 //           child: Container(
 //             height: 57,
 
@@ -40,9 +39,9 @@
 //         color: Colors.white,
 //          border: Border.all(color: const Color.fromARGB(255, 0, 0, 0),width: 2.5),
 //         borderRadius: BorderRadius.circular(30),
-    
+
 //       ),
-          
+
 //             padding: EdgeInsets.symmetric(vertical: 13, horizontal: 12),
 //             child: Row(
 //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,17 +55,16 @@
 //         if (isOpen)
 //           Container(
 //             padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-              
+
 //             child: widget.child,
 //           ),
-       
+
 //       ],
 //     );
 //   }
-// 
+//
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/core/utils/style.dart';
-import 'package:ghosn_app/core/widgets/custom_text_field.dart';
 
 class CustomDropdown extends StatefulWidget {
   final Widget child;
@@ -76,7 +74,10 @@ class CustomDropdown extends StatefulWidget {
     super.key,
     required this.child,
     required this.labelText,
-    this.controller, required String value, required List items, required Null Function(String? value) onChanged,
+    this.controller,
+    required String value,
+    required List items,
+    required Null Function(String? value) onChanged,
   });
 
   @override
@@ -98,24 +99,19 @@ class _CustomDropdownState extends State<CustomDropdown> {
           ),
         ),
         SizedBox(height: height * .008),
-       
-          GestureDetector(
+        GestureDetector(
           onTap: () {
             setState(() {
               isOpen = !isOpen;
             });
           },
-          
           child: Container(
             height: 58,
             decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(30),
-        border: Border.all(color: Colors.black),
-    
-      ),
-        
-          
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(30),
+              border: Border.all(color: Colors.black),
+            ),
             padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 12),
             child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -126,7 +122,6 @@ class _CustomDropdownState extends State<CustomDropdown> {
             ),
           ),
         ),
-
         if (isOpen)
           Container(
             padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),

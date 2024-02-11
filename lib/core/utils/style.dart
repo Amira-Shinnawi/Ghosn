@@ -6,7 +6,6 @@ abstract class Styles {
     color: Colors.white,
     fontSize: 22,
     fontWeight: FontWeight.bold,
-    fontFamily: kInter,
   );
   static const textStyle32Itim = TextStyle(
     fontSize: 32,
@@ -35,17 +34,15 @@ abstract class Styles {
   static const textStyle18Inter = TextStyle(
     color: Colors.black,
     fontSize: 18,
-    fontFamily: 'Inter',
     fontWeight: FontWeight.w700,
   );
   static const textStyle18Intergray = TextStyle(
-    color:  Color.fromARGB(255, 85, 84, 84),
+    color: kGreyColor,
     fontSize: 18,
-    fontFamily: 'Almarai',
     fontWeight: FontWeight.w400,
   );
-   static const textStyle16Intergray = TextStyle(
-    color:  Color.fromARGB(255, 85, 84, 84),
+  static const textStyle16Intergray = TextStyle(
+    color: kGreyColor,
     fontSize: 16,
     fontFamily: 'Almarai',
     fontWeight: FontWeight.w400,
@@ -53,14 +50,12 @@ abstract class Styles {
   static const textStyle20Inter = TextStyle(
     color: Colors.black,
     fontSize: 20,
-    fontFamily: 'Inter',
     fontWeight: FontWeight.w700,
   );
-     static const textStyle16Intergreen = TextStyle(
-   color:kGreenColor,
+  static const textStyle16Intergreen = TextStyle(
+    color: kGreenColor,
     fontSize: 16,
     fontFamily: 'Almarai',
     fontWeight: FontWeight.w400,
   );
- 
 }

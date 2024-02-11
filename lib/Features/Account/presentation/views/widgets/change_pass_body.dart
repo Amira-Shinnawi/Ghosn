@@ -57,7 +57,7 @@ class _ChangePasswordBodyState extends State<ChangePasswordBody> {
             ),
             CustomTextFelid(
               pass: obscureText,
-              hinText: LocaleKeys.confirmpassword.tr(),
+              hinText: LocaleKeys.confirmPassword.tr(),
               prefixIcon: IconButton(
                 onPressed: () {
                   setState(() {
@@ -78,7 +78,7 @@ class _ChangePasswordBodyState extends State<ChangePasswordBody> {
               onPressed: () {
                 GoRouter.of(context).push(AppRouter.kLoginOptionView);
               },
-              text: LocaleKeys.LOGIN.tr(),
+              text: LocaleKeys.login.tr(),
             ),
           ],
         ),

@@ -1,12 +1,13 @@
 import 'package:csc_picker/csc_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ghosn_app/Features/Payment/data/model/payment_date_model.dart';
 import 'package:ghosn_app/Features/Payment/presentation/views/payment_datails.dart';
-import 'package:ghosn_app/Features/Payment/presentation/views/widgets/PaymentDate.dart';
 import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/widgets/custom_dropdown.dart';
 import 'package:ghosn_app/core/widgets/custom_text_field.dart';
-import 'package:ghosn_app/core/widgets/customdropDownItem.dart';
+import 'package:ghosn_app/core/widgets/custom_drop_down_item.dart';
+
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_button.dart';
 
@@ -23,13 +24,13 @@ class _PaymentMethodBody extends State<PaymentMethodBody> {
   final _phoneNumberController = TextEditingController();
   final List<String> _paymentMethodChoices = ['Credit Card', 'PayPal'];
   late String _selectedPaymentMethod;
-  late PaymentData paymentData;
+  late PaymentDataModel paymentData;
 
   @override
   void initState() {
     super.initState();
     _selectedPaymentMethod = _paymentMethodChoices[0];
-    paymentData = PaymentData(
+    paymentData = PaymentDataModel(
       street: '',
       phoneNumber: '',
       paymentMethod: _paymentMethodChoices[0],
@@ -57,7 +58,7 @@ class _PaymentMethodBody extends State<PaymentMethodBody> {
             CustomDropdown(
               labelText: 'Address',
               value: paymentData.country,
-              items: [],
+              items: const [],
               onChanged: (String? value) {},
               child: CSCPicker(
                 onCountryChanged: (value) {
@@ -133,7 +134,7 @@ class _PaymentMethodBody extends State<PaymentMethodBody> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     // Construct PaymentData object with entered data
-                    paymentData = PaymentData(
+                    paymentData = PaymentDataModel(
                       street: _streetController.text,
                       phoneNumber: _phoneNumberController.text,
                       paymentMethod: _selectedPaymentMethod,

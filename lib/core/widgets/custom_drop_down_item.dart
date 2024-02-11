@@ -10,6 +10,7 @@ class CustomDropdownItem<T> extends StatefulWidget {
   final Widget? child;
 
   const CustomDropdownItem({
+    super.key,
     required this.labelText,
     required this.value,
     required this.items,
@@ -38,20 +39,18 @@ class _CustomDropdownState<T> extends State<CustomDropdownItem<T>> {
       children: [
         Text(
           widget.labelText,
-          style:  Styles.textStyle20Inter,
-          ),
-        
+          style: Styles.textStyle20Inter,
+        ),
         const SizedBox(height: 8),
         DropdownButtonFormField<T>(
           value: _selectedValue,
-              decoration: InputDecoration(
-                filled: true,
-                enabledBorder: builtOutLineBorder(),
-                focusedBorder: builtOutLineBorder(),
-                  contentPadding:
-                    const EdgeInsets.symmetric(vertical: 18, horizontal: 15),
-              ),
-
+          decoration: InputDecoration(
+            filled: true,
+            enabledBorder: builtOutLineBorder(),
+            focusedBorder: builtOutLineBorder(),
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 18, horizontal: 15),
+          ),
           validator: widget.validator,
           onChanged: (T? newValue) {
             setState(() {
@@ -67,9 +66,10 @@ class _CustomDropdownState<T> extends State<CustomDropdownItem<T>> {
     );
   }
 }
-  OutlineInputBorder builtOutLineBorder() {
-    return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30),
-      borderSide: const BorderSide(width: 1),
-    );
-  }
+
+OutlineInputBorder builtOutLineBorder() {
+  return OutlineInputBorder(
+    borderRadius: BorderRadius.circular(30),
+    borderSide: const BorderSide(width: 1),
+  );
+}

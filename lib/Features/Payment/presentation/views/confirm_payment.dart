@@ -2,20 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:ghosn_app/Features/Payment/data/model/payment_date_model.dart';
 import 'package:ghosn_app/core/widgets/custom_appbar.dart';
 
-import 'widgets/bill_payment_body.dart';
+import 'widgets/confirm_payment_body.dart';
 
-class Bill extends StatelessWidget {
-  const Bill({
-    super.key,
-    required this.paymentData,
-  });
+class ConfirmPayment extends StatelessWidget {
+  const ConfirmPayment({super.key, required this.paymentData});
   final PaymentDataModel paymentData;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'Bill Payment',
+        title: 'Confirm Payment',
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -23,10 +20,11 @@ class Bill extends StatelessWidget {
           icon: const Icon(Icons.arrow_back_ios),
         ),
       ),
-      body: BillPaymentBody(
-        paymentData: paymentData,
+      body: SafeArea(
+        child: ConfirmPaymentBody(
+          paymentData: paymentData,
+        ),
       ),
     );
   }
 }
-
