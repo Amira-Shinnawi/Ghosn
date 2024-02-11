@@ -12,8 +12,13 @@ void main() async {
   await EasyLocalization.ensureInitialized();
 
   await SharedPrefCache.cacheInitialization();
+
   userToken = await SharedPrefCache.getCacheData(key: 'token');
+  tokenFacebookOrGoogle =
+      await SharedPrefCache.getCacheData(key: 'accessToken');
+
   log("User token is : $userToken");
+  log("User token Facebook Or Google is : $tokenFacebookOrGoogle");
 
   final savedLocale = await SharedPrefCache.getSavedLanguage();
   Locale? initialLocale = savedLocale ?? const Locale('en');
@@ -35,6 +40,7 @@ class GhosnApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      title: 'Ghosn',
       routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
       supportedLocales: context.supportedLocales,

@@ -15,8 +15,14 @@ class RegisterPageBody extends StatelessWidget {
           top: 0,
           right: 0,
           left: 0,
-          child: Image.asset(
-            AssetsData.signUpImage,
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: Image.asset(
+                AssetsData.signUpImage,
+              ),
+            ),
           ),
         ),
         Positioned(

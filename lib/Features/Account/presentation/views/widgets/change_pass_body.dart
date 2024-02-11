@@ -27,11 +27,12 @@ class _ChangePasswordBodyState extends State<ChangePasswordBody> {
         padding: const EdgeInsets.symmetric(horizontal: 31, vertical: 10),
         child: Column(
           children: [
-            Image.asset(
-              AssetsData.changepass,
-              height: MediaQuery.of(context).size.height * .4,
-              width: MediaQuery.of(context).size.width * .8,
-              fit: BoxFit.fill,
+            AspectRatio(
+              aspectRatio: 1,
+              child: Image.asset(
+                AssetsData.changepass,
+                fit: BoxFit.fill,
+              ),
             ),
             SizedBox(
               height: height * .1,

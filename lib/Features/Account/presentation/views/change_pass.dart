@@ -28,7 +28,10 @@ class ChangePassword extends StatelessWidget {
             IconButton(
                 onPressed: () async {
                   await SharedPrefCache.deleteCacheItem(key: 'token');
-                  GoRouter.of(context).pushReplacement(AppRouter.kSplashView);
+                  await SharedPrefCache.deleteCacheItem(key: 'accessToken');
+
+                  GoRouter.of(context)
+                      .pushReplacement(AppRouter.kLoginOptionView);
                 },
                 icon: const Icon(Icons.logout)),
           ]),

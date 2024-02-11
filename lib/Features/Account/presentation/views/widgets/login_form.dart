@@ -2,12 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ghosn_app/Features/Account/presentation/manager/cubit/auth_cubit.dart';
+import 'package:ghosn_app/Features/Account/presentation/views/widgets/google_facebook_login.dart';
 import 'package:ghosn_app/constants.dart';
 import 'package:go_router/go_router.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 
 import '../../../../../core/utils/app_router.dart';
-import '../../../../../core/utils/assets_data.dart';
 import '../../../../../core/utils/functions/is_arabic.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_button.dart';
@@ -35,7 +35,6 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
 
     return BlocProvider(
       create: (context) => AuthCubit(),
@@ -146,20 +145,7 @@ class _LoginFormState extends State<LoginForm> {
                     SizedBox(
                       height: height * .03,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          AssetsData.google,
-                        ),
-                        SizedBox(
-                          width: width * .05,
-                        ),
-                        Image.asset(
-                          AssetsData.facebook,
-                        ),
-                      ],
-                    )
+                    const GoogleFacebookLogin()
                   ],
                 ),
               ),

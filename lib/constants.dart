@@ -7,3 +7,4 @@ const kArefRuqaa = 'ArefRuqaa';
 const kHintColor = Colors.grey;
 const kGreyColor = Color(0xff6A6A6A);
 String? userToken;
+String? tokenFacebookOrGoogle;

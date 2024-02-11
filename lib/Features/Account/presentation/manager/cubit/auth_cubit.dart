@@ -1,99 +1,98 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:ghosn_app/core/utils/functions/shared_pref_cache.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
+
+import '../../../../../core/utils/functions/shared_pref_cache.dart';
 
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
 
-  final dio = Dio();
   final _baseURL = 'http://10.0.2.2:5000/api/Auth';
 
-  Future<void> registerUser({
-    required String userName,
-    required String email,
-    required String password,
-  }) async {
+  Future<void> registerUser(
+      {required String userName,
+      required String email,
+      required String password}) async {
     emit(RegisterLoadingState());
 
-    try {
-      final response = await dio.post(
+    Response response = await http.post(
+      Uri.parse(
         '$_baseURL/Register',
-        data: {
-          'UserName': userName,
-          'Password': password,
-          'Email': email,
-        },
-        options: Options(
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Accept': 'application/json',
-          },
-        ),
-      );
+      ),
+      // headers: {
+      //   'lang':'en',
+      // },
+      body: {
+        'UserName': userName,
+        'Password': password,
+        'Email': email,
+      },
+    );
 
-      if (response.statusCode == 200) {
-        final responseBody = response.data;
-        if (responseBody['isSuccess'] == true) {
-          log('User Registration Success ');
-          emit(RegisterSuccessState());
-        } else {
-          debugPrint(
-              'User Failed Registration and the error message is: ${responseBody['errorMessages']}');
-          emit(RegisterFailureState(
-              errorMessage: responseBody['errorMessages']));
-        }
-      }
-    } catch (error) {
-      print('Error : $error');
-      emit(RegisterFailureState(errorMessage: error.toString()));
+    var responseBody = jsonDecode(response.body);
+
+    if (responseBody['isSuccess'] == true) {
+      print(responseBody);
+      emit(RegisterSuccessState());
+    } else {
+      print(responseBody);
+      //responseBody['errorMessages']
+      emit(RegisterFailureState(
+          errorMessage:
+              'This account has already Registered Please Try Again Later'));
     }
   }
 
-  Future<void> loginUser({
-    required String userName,
-    required String password,
-  }) async {
+  Future<void> loginUser(
+      {required String userName, required String password}) async {
     emit(LoginLoadingState());
 
     try {
-      final response = await dio.post(
-        '$_baseURL/Login',
-        data: {
+      Response response = await http.post(
+        Uri.parse(
+          '$_baseURL/Login',
+        ),
+        // headers: {
+        //   'lang':'en',
+        // },
+        body: {
           'UserName': userName,
           'Password': password,
         },
-        options: Options(
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Accept': 'application/json',
-          },
-        ),
       );
+      var responseBody = jsonDecode(response.body);
 
       if (response.statusCode == 200) {
-        final responseBody = response.data;
-
         if (responseBody['isSuccess'] == true) {
-          log('User Login Success and his Data is: $responseBody');
-
+          print(responseBody);
           await SharedPrefCache.insertToCache(
               key: 'token', value: responseBody['result']['token']);
-
+          log(responseBody['result']['token']);
           emit(LoginSuccessState());
         } else {
-          print(
-              'User Failed Login and his Data is: ${responseBody['errorMessages']}');
-          emit(LoginFailureState(errorMessage: responseBody['errorMessages']));
+          //responseBody['errorMessages']
+
+          emit(LoginFailureState(
+              errorMessage:
+                  'Login Failed Please Try Again or Registered:${responseBody['errorMessages']}'));
         }
+      } else {
+        emit(
+          LoginFailureState(
+              errorMessage:
+                  '${responseBody['errorMessages']} Please Try Again'),
+        );
       }
     } catch (error) {
-      print('Other error: $error');
-      emit(LoginFailureState(errorMessage: error.toString()));
+      emit(
+        LoginFailureState(errorMessage: error.toString()),
+      );
     }
   }
 }

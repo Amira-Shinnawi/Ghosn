@@ -15,38 +15,43 @@ abstract class AppRouter {
   static const kLoginPage = '/loginPage';
   static const kRegisterPage = '/registerPage';
   static const kChangePassword = '/changePassword';
-  static const kRadioListTitleWidget='/radioListTitleWidget';
+  static const kRadioListTitleWidget = '/radioListTitleWidget';
 
-  static final router =
-      GoRouter(initialLocation: userToken != null ? '/' : kSplashView, routes: [
-    GoRoute(
-      path: '/',
-      builder: (context, state) =>
-          userToken != null ? const ChangePassword() : const SplashView(),
-    ),
-    GoRoute(
-      path: kSplashView,
-      builder: (context, state) => const SplashView(),
-    ),
-    GoRoute(
-      path: kLoginOptionView,
-      builder: (context, state) => const LoginOptionsView(),
-    ),
-    GoRoute(
-      path: kLoginPage,
-      builder: (context, state) => const LoginPage(),
-    ),
-    GoRoute(
-      path: kRegisterPage,
-      builder: (context, state) => const RegisterPage(),
-    ),
-    GoRoute(
-      path: kChangePassword,
-      builder: (context, state) => const ChangePassword(),
-    ),
-    GoRoute(
-      path: kPaymentPage,
-      builder: (context, state) =>const PaymentPage(),
-    ),
-  ]);
+  static final router = GoRouter(
+      initialLocation: (userToken != null || tokenFacebookOrGoogle != null)
+          ? '/'
+          : kSplashView,
+      routes: [
+        GoRoute(
+          path: '/',
+          builder: (context, state) =>
+              (userToken != null || tokenFacebookOrGoogle != null)
+                  ? const ChangePassword()
+                  : const SplashView(),
+        ),
+        GoRoute(
+          path: kSplashView,
+          builder: (context, state) => const SplashView(),
+        ),
+        GoRoute(
+          path: kLoginOptionView,
+          builder: (context, state) => const LoginOptionsView(),
+        ),
+        GoRoute(
+          path: kLoginPage,
+          builder: (context, state) => const LoginPage(),
+        ),
+        GoRoute(
+          path: kRegisterPage,
+          builder: (context, state) => const RegisterPage(),
+        ),
+        GoRoute(
+          path: kChangePassword,
+          builder: (context, state) => const ChangePassword(),
+        ),
+        GoRoute(
+          path: kPaymentPage,
+          builder: (context, state) => const PaymentPage(),
+        ),
+      ]);
 }

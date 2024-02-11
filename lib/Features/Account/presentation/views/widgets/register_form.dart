@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ghosn_app/Features/Account/presentation/manager/cubit/auth_cubit.dart';
 import 'package:ghosn_app/core/utils/app_router.dart';
-import 'package:ghosn_app/core/utils/assets_data.dart';
 import 'package:go_router/go_router.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 
@@ -12,6 +11,7 @@ import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_text_field.dart';
 import '../../../../../translations/local_keys.g.dart';
+import 'google_facebook_login.dart';
 
 class RegisterForm extends StatefulWidget {
   const RegisterForm({
@@ -36,7 +36,6 @@ class _RegisterFormState extends State<RegisterForm> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
 
     return BlocProvider(
       create: (context) => AuthCubit(),
@@ -203,20 +202,7 @@ class _RegisterFormState extends State<RegisterForm> {
                     SizedBox(
                       height: height * .015,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          AssetsData.google,
-                        ),
-                        SizedBox(
-                          width: width * .05,
-                        ),
-                        Image.asset(
-                          AssetsData.facebook,
-                        ),
-                      ],
-                    )
+                    const GoogleFacebookLogin(),
                   ],
                 ),
               ),

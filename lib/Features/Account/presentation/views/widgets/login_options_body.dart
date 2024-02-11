@@ -1,10 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:ghosn_app/Features/Account/data/repo/auth_login_options_control.dart';
 import 'package:ghosn_app/core/utils/app_router.dart';
 import 'package:ghosn_app/core/utils/assets_data.dart';
 import 'package:ghosn_app/core/utils/style.dart';
 import 'package:ghosn_app/core/widgets/custom_icon_button.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../translations/local_keys.g.dart';
 
@@ -14,15 +16,15 @@ class LoginOptionsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
 
     return SingleChildScrollView(
       child: Column(
         children: [
-          Image.asset(
-            AssetsData.loginOption,
-            height: height * .6,
-            width: width * 1.2,
+          AspectRatio(
+            aspectRatio: 6 / 8,
+            child: Image.asset(
+              AssetsData.loginOption,
+            ),
           ),
           CustomIconButton(
             text: LocaleKeys.useEmailOrPhone.tr(),
@@ -40,6 +42,10 @@ class LoginOptionsBody extends StatelessWidget {
               AssetsData.facebook,
               width: 30,
             ),
+            onPressed: () {
+              Provider.of<AuthController>(context, listen: false)
+                  .allowUserToLogInFacebook();
+            },
           ),
           CustomIconButton(
             text: LocaleKeys.continueWithGoogle.tr(),
@@ -47,14 +53,10 @@ class LoginOptionsBody extends StatelessWidget {
               AssetsData.google,
               width: 25,
             ),
-            // onPressed: () async {
-            //   var user = await GoogleSignInApi.login();
-            //   if (user != null) {
-            //     print('ok');
-            //     print(user.displayName);
-            //     print(user.email);
-            //   }
-            // },
+            onPressed: () {
+              Provider.of<AuthController>(context, listen: false)
+                  .allowUserToLoginGoogle();
+            },
           ),
           SizedBox(
             height: height * .025,
