@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ghosn_app/Features/Payment/presentation/views/widgets/check_out_body.dart';
 import 'package:ghosn_app/Features/Payment/presentation/views/widgets/credit_card_container.dart';
+
+import 'package:ghosn_app/core/widgets/custom_button.dart';
 import 'package:ghosn_app/core/widgets/space_column.dart';
 
 import '../../../../../core/utils/style.dart';
@@ -9,17 +12,19 @@ import 'complete_container.dart';
 class BillPaymentBody extends StatelessWidget {
   const BillPaymentBody({
     super.key,
-    required this.paymentData,
+    required this.paymentData, 
   });
 
   final PaymentDataModel paymentData;
+   
 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+     
 
     return SingleChildScrollView(
-      padding: EdgeInsets.only(top: height * 0.064, left: 24, right: 24),
+      padding: EdgeInsets.only(top: height * 0.045, left: 24, right: 24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -39,9 +44,9 @@ class BillPaymentBody extends StatelessWidget {
           SizedBox(
             height: height * .024,
           ),
-          const SpaceColumn(
+           const SpaceColumn(
             label: 'Name',
-            value: "Esraa",
+            value: "esraa"
           ),
           SizedBox(
             height: height * .024,
@@ -70,14 +75,25 @@ class BillPaymentBody extends StatelessWidget {
               CompletedContainer(),
             ],
           ),
-          SizedBox(height: height * .04),
+          SizedBox(height: height * .03),
           const CreditCardContainer(),
-          SizedBox(height: height * .035),
+          SizedBox(height: height * .030),
           const Text(
             "Please keep a copy of this receipt via a screenshot until needed when receiving the order to ensure user rights.",
             style: Styles.textStyle16Intergray,
             textAlign: TextAlign.center,
-          )
+          ),
+           SizedBox(height: height * .015),
+            CustomButton(text: "Done",
+           onPressed: () {
+               Navigator.push(
+       context,
+      MaterialPageRoute(builder: (context) => const CheckOutBody()),
+     );
+           },
+           )
+           
+          
         ],
       ),
     );

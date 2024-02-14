@@ -23,20 +23,32 @@
     "address":"Address",
     "street":"Street",
     "phoneNumber":"Phone Number",
-    "PaymentMethod":"Payment Method",
     "Pay":"Pay",
 
+    "paymentdetails":"Payment Details",
     "CardNumber":"Card Number",
     "ExpiryDate":"Expiry Date",
     "CVV":"CVV",
     "CardHolder":"Card Holder",
     "PayNow":"Pay Now",
-    "ThankYou":"Thank You",
-    "PaymentWasCompletedSuccessfully":"Payment Was Completed Successfully",
-    "TotalPaidAmount":"Total Paid Amount",
+
+    "confirmpayment":"Confirm Payment",
+    "Date":"Date",
+    "TotalAmount":"Total Amount ",
     "PhoneNumber":"Phone Number",
     "Address":"Address",
-    "Name":"Name"
+    "confirm":"Confirm",
+    "help":"Help",
+    "bill payment":"Bill Payment",
+    "reciet":"Please keep a copy of this receipt via a screenshot until needed when receiving the order to ensure user rights.",
+
+ "payment success":"The payment was completed successfully",
+ "finishorder":"Your order has been placed and will be delivered to your specified address within 3 days."
+
+   
+
+
+
 
 
 

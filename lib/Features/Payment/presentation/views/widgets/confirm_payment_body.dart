@@ -8,8 +8,9 @@ import '../../../../../core/widgets/custom_button.dart';
 import '../../../data/model/payment_date_model.dart';
 
 class ConfirmPaymentBody extends StatelessWidget {
-  const ConfirmPaymentBody({super.key, required this.paymentData});
+  const ConfirmPaymentBody({super.key, required this.paymentData, required this.paymentMethod});
   final PaymentDataModel paymentData;
+    final String paymentMethod;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class ConfirmPaymentBody extends StatelessWidget {
             ),
             SpaceBetweenRow(
               label: 'Payment Method',
-              value: paymentData.paymentMethod,
+              value:paymentMethod,
             ),
             SizedBox(
               height: height * .024,

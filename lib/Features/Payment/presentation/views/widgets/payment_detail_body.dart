@@ -16,11 +16,11 @@ import 'credit_card.dart';
 class PaymentDetailsBody extends StatefulWidget {
   const PaymentDetailsBody({
     super.key,
-    required this.selectedPaymentMethod,
     required this.paymentData,
   });
-  final String selectedPaymentMethod;
+
   final PaymentDataModel paymentData;
+
   @override
   State<PaymentDetailsBody> createState() => _PaymentDetailsBodyState();
 }
@@ -28,19 +28,16 @@ class PaymentDetailsBody extends StatefulWidget {
 class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  int? selectedPaymentMethod = 0;
 
-  bool showCreditCard = false;
-  late int _selectedIndex;
   @override
   void initState() {
     super.initState();
-    _selectedIndex = widget.selectedPaymentMethod == 'Visa' ? 0 : 1;
-    showCreditCard = false;
   }
 
   @override
   Widget build(BuildContext context) {
-    bool showCreditCard = _selectedIndex == 0;
+    bool showCreditCard = true;
     double height = MediaQuery.of(context).size.height;
 
     return SingleChildScrollView(
@@ -54,21 +51,21 @@ class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
               shape: RoundedRectangleBorder(
                 side: BorderSide(
                   width: 2,
-                  color: _selectedIndex == 0 ? kGreenColor : kHintColor,
+                  color: selectedPaymentMethod == 0 ? kGreenColor : kHintColor,
                 ),
                 borderRadius: BorderRadius.circular(8),
               ),
             ),
             child: Row(
               children: [
-                Payment_Method_RadioButton(
+               PaymentMethodRadioButton(
                   title: 'Credit Card',
                   value: 0,
-                  groupValue: _selectedIndex,
+                  groupValue: selectedPaymentMethod,
                   onChanged: (int? value) {
                     setState(() {
-                      _selectedIndex = value!;
-                      showCreditCard = _selectedIndex == 0;
+                      selectedPaymentMethod = value!;
+                     
                     });
                   },
                   imagePath: AssetsData.visa,
@@ -86,20 +83,21 @@ class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
               shape: RoundedRectangleBorder(
                 side: BorderSide(
                   width: 2,
-                  color: _selectedIndex == 1 ? kGreenColor : kHintColor,
+                  color: selectedPaymentMethod == 1 ? kGreenColor : kHintColor,
                 ),
                 borderRadius: BorderRadius.circular(8),
               ),
             ),
             child: Row(
               children: [
-                Payment_Method_RadioButton(
+               PaymentMethodRadioButton(
                   title: 'PayPal',
                   value: 1,
-                  groupValue: _selectedIndex,
+                  groupValue: selectedPaymentMethod,
                   onChanged: (int? value) {
                     setState(() {
-                      _selectedIndex = value!;
+                      selectedPaymentMethod = value!;
+
                       var transactionData = getTransactionsDate();
                       ExecutePaypal(context, transactionData);
                     });
@@ -110,19 +108,21 @@ class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
             ),
           ),
         ),
-        AnimatedCrossFade(
-          duration: const Duration(milliseconds: 300),
-          crossFadeState: showCreditCard
-              ? CrossFadeState.showFirst
-              : CrossFadeState.showSecond,
-          firstChild: CreditCard(
-            formKey: formKey,
-            autovalidateMode: autovalidateMode,
+        if (selectedPaymentMethod == 0)
+          AnimatedCrossFade(
+            duration: const Duration(milliseconds: 300),
+            crossFadeState: showCreditCard
+                ? CrossFadeState.showFirst
+                // ignore: dead_code
+                : CrossFadeState.showSecond,
+            firstChild: CreditCard(
+              formKey: formKey,
+              autovalidateMode: autovalidateMode, 
+            ),
+            secondChild: SizedBox(
+              height: height * .3,
+            ),
           ),
-          secondChild: SizedBox(
-            height: height * .3,
-          ),
-        ),
         SizedBox(
           height: height * .08,
         ),
@@ -134,8 +134,11 @@ class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) =>
-                      ConfirmPayment(paymentData: widget.paymentData),
+                  builder: (context) => ConfirmPayment(
+                    paymentData: widget.paymentData,
+                    paymentMethod:
+                        selectedPaymentMethod == 0 ? 'Credit Card' : 'PayPal',
+                  ),
                 ),
               );
             } else {

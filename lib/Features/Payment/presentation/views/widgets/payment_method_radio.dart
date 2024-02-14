@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/core/utils/style.dart';
 
-
-class Payment_Method_RadioButton extends StatefulWidget {
+class PaymentMethodRadioButton extends StatefulWidget {
   final String title;
   final int value;
-  final int groupValue;
+  final int? groupValue;
   final Function(int?) onChanged;
   final String imagePath;
 
-  const Payment_Method_RadioButton({
+  const PaymentMethodRadioButton({
     super.key,
     required this.title,
     required this.value,
@@ -22,7 +21,7 @@ class Payment_Method_RadioButton extends StatefulWidget {
   _PaymentMethodState createState() => _PaymentMethodState();
 }
 
-class _PaymentMethodState extends State<Payment_Method_RadioButton> {
+class _PaymentMethodState extends State<PaymentMethodRadioButton> {
   @override
   Widget build(BuildContext context) {
     return Expanded(

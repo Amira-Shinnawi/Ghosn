@@ -9,8 +9,8 @@ import 'package:go_router/go_router.dart';
 import '../../constants.dart';
 
 abstract class AppRouter {
-  static const kSplashView = '/splashView';
-  static const kPaymentPage = '/paymentpage';
+  static const kSplashView = '/paymentpage';//'/splashView';
+  // static const kPaymentPage = '/paymentpage';
   static const kLoginOptionView = '/loginOptionView';
   static const kLoginPage = '/loginPage';
   static const kRegisterPage = '/registerPage';
@@ -31,8 +31,13 @@ abstract class AppRouter {
         ),
         GoRoute(
           path: kSplashView,
-          builder: (context, state) => const SplashView(),
+          builder: (context, state) => const PaymentPage(),
+          //  SplashView(),
         ),
+        //   GoRoute(
+        //   path: kPaymentPage,
+        //   builder: (context, state) => const PaymentPage(),
+        // ),
         GoRoute(
           path: kLoginOptionView,
           builder: (context, state) => const LoginOptionsView(),
@@ -49,9 +54,6 @@ abstract class AppRouter {
           path: kChangePassword,
           builder: (context, state) => const ChangePassword(),
         ),
-        GoRoute(
-          path: kPaymentPage,
-          builder: (context, state) => const PaymentPage(),
-        ),
+      
       ]);
 }

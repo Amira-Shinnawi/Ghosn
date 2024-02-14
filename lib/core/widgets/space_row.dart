@@ -30,12 +30,16 @@ class SpaceBetweenRow extends StatelessWidget {
             ),
             const Spacer(),
             Expanded(
-              child: Text(
-                value,
-                textAlign: TextAlign.center,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: Styles.textStyle18Intergray,
+              child: SingleChildScrollView
+              (
+                scrollDirection: Axis.horizontal,
+                child: Text(
+                  value,
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: Styles.textStyle18Intergray,
+                ),
               ),
             ),
           ],
