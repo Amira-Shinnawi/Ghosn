@@ -66,7 +66,7 @@ class LoginOptionsBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                LocaleKeys.alreadyHaveAccount.tr(),
+                LocaleKeys.alreadyhaveaccount.tr(),
                 style: Styles.textStyle22Inter.copyWith(
                   color: Colors.black,
                   fontWeight: FontWeight.w400,
@@ -78,7 +78,7 @@ class LoginOptionsBody extends StatelessWidget {
                   GoRouter.of(context).push(AppRouter.kRegisterPage);
                 },
                 child: Text(
-                  LocaleKeys.signUp.tr(),
+                  LocaleKeys.Signup.tr(),
                   style: Styles.textStyle22Inter.copyWith(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,

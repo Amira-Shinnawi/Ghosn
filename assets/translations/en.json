@@ -39,10 +39,10 @@
     "Address":"Address",
     "confirm":"Confirm",
     "help":"Help",
-    "bill payment":"Bill Payment",
+    "billpayment":"Bill Payment",
     "reciet":"Please keep a copy of this receipt via a screenshot until needed when receiving the order to ensure user rights.",
 
- "payment success":"The payment was completed successfully",
+ "paymentsuccess":"The payment was completed successfully",
  "finishorder":"Your order has been placed and will be delivered to your specified address within 3 days."
 
    

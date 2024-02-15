@@ -88,7 +88,7 @@ class _LoginFormState extends State<LoginForm> {
                         color: kHintColor,
                       ),
                       controller: userNameController,
-                      hinText: LocaleKeys.email.tr(),
+                      hinText: LocaleKeys.Email.tr(),
                       keyboardType: TextInputType.emailAddress,
                     ),
                     SizedBox(
@@ -97,7 +97,7 @@ class _LoginFormState extends State<LoginForm> {
                     CustomTextFelid(
                       pass: obscureText,
                       controller: passController,
-                      hinText: LocaleKeys.password.tr(),
+                      hinText: LocaleKeys.Password.tr(),
                       prefixIcon: IconButton(
                         onPressed: () {
                           setState(() {
@@ -124,7 +124,7 @@ class _LoginFormState extends State<LoginForm> {
                       },
                       text: state is LoginLoadingState
                           ? 'Loading...'
-                          : LocaleKeys.login.tr(),
+                          : LocaleKeys.LOGIN.tr(),
                     ),
                     SizedBox(
                       height: height * .015,
