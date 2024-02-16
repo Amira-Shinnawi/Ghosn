@@ -161,8 +161,8 @@ class _ProductState extends State<Product> {
           child: Image.asset(imaGe),
         ),
         Padding(
-          padding: const EdgeInsets.only(
-            top: 610,
+          padding:  EdgeInsets.only(
+            top: .85 * height,
           ),
           child: Container(
               color: Colors.white,
