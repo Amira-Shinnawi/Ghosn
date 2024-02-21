@@ -40,6 +40,7 @@ class GhosnApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      
       title: 'Ghosn',
       routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,

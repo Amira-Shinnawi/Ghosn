@@ -20,7 +20,9 @@
     "newPassword":" Enter your New Password",
 
     "paymentpage":"Payment Page",
+    "select":"select",
     "address":"Address",
+    
     "street":"Street",
     "phoneNumber":"Phone Number",
     "Pay":"Pay",
@@ -33,17 +35,23 @@
     "PayNow":"Pay Now",
 
     "confirmpayment":"Confirm Payment",
-    "Date":"Date",
+    "date":"Date",
+    "creditcard":"Credit Card",
+
     "TotalAmount":"Total Amount ",
-    "PhoneNumber":"Phone Number",
-    "Address":"Address",
+    "paymentmethod":"payment Method",
     "confirm":"Confirm",
     "help":"Help",
     "billpayment":"Bill Payment",
+    "time":"Time",
+    "name":"Name",
+    "completed":"completed",
+    "done":"Done",
     "reciet":"Please keep a copy of this receipt via a screenshot until needed when receiving the order to ensure user rights.",
 
  "paymentsuccess":"The payment was completed successfully",
- "finishorder":"Your order has been placed and will be delivered to your specified address within 3 days."
+ "finishorder":"Your order has been placed and will be delivered to your specified address within 3 days.",
+ "ok":"OK"
 
    
 

@@ -63,8 +63,10 @@
 //     );
 //   }
 //
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/core/utils/style.dart';
+import 'package:ghosn_app/translations/local_keys.g.dart';
 
 class CustomDropdown extends StatefulWidget {
   final Widget child;
@@ -113,11 +115,11 @@ class _CustomDropdownState extends State<CustomDropdown> {
               border: Border.all(color: Colors.black),
             ),
             padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 12),
-            child: const Row(
+            child:  Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Select'),
-                Icon(Icons.arrow_drop_down),
+                Text(LocaleKeys.select.tr()),
+                const Icon(Icons.arrow_drop_down),
               ],
             ),
           ),

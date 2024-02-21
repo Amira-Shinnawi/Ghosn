@@ -1,4 +1,5 @@
 import 'package:csc_picker/csc_picker.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ghosn_app/Features/Payment/data/model/payment_date_model.dart';
@@ -9,6 +10,7 @@ import 'package:ghosn_app/core/widgets/custom_text_field.dart';
 
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_button.dart';
+import '../../../../../translations/local_keys.g.dart';
 
 class PaymentMethodBody extends StatefulWidget {
   const PaymentMethodBody({super.key});
@@ -52,12 +54,14 @@ class _PaymentMethodBody extends State<PaymentMethodBody> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomDropdown(
-              labelText: 'Address',
+              labelText: LocaleKeys.address.tr(),
               value: paymentData.country,
               items: const [],
               onChanged: (String? value) {},
               child: CSCPicker(
+              
                 onCountryChanged: (value) {
+
                   setState(() {
                     paymentData.country = value.toString();
                   });
@@ -72,29 +76,30 @@ class _PaymentMethodBody extends State<PaymentMethodBody> {
                     paymentData.city = value.toString();
                   });
                 },
+                
               ),
             ),
-            SizedBox(height: height * .024),
-            const Text(
-              'Street',
+            SizedBox(height: height * .050),
+            Text(
+              LocaleKeys.street.tr(),
               style: Styles.textStyle20Inter,
             ),
             SizedBox(height: height * .008),
             CustomTextFelid(
-              hinText: 'Street',
+              hinText: LocaleKeys.street.tr(),
               controller: _streetController,
               keyboardType: TextInputType.streetAddress,
               width: 1,
               color: Colors.black,
             ),
-            SizedBox(height: height * .024),
-            const Text(
-              'Phone Number',
+            SizedBox(height: height * .050),
+           Text(
+             LocaleKeys.phoneNumber.tr(),
               style: Styles.textStyle20Inter,
             ),
             SizedBox(height: height * .008),
             CustomTextFelid(
-              hinText: 'Phone Number',
+              hinText: LocaleKeys.phoneNumber.tr(),
               controller: _phoneNumberController,
               keyboardType: TextInputType.phone,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -102,10 +107,10 @@ class _PaymentMethodBody extends State<PaymentMethodBody> {
               color: Colors.black,
             ),
             SizedBox(height: height * .024),
-            SizedBox(height: height * .05),
+            SizedBox(height: height * .1),
             Center(
               child: CustomButton(
-                text: 'Pay',
+                text:  LocaleKeys.Pay.tr(),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     paymentData = PaymentDataModel(
@@ -131,7 +136,7 @@ class _PaymentMethodBody extends State<PaymentMethodBody> {
             SizedBox(height: height * .05),
             Center(
               child: Text(
-                'Help',
+                LocaleKeys.help.tr(),
                 style: Styles.textStyle22Inter.copyWith(
                   fontSize: 16,
                   color: kGreenColor,

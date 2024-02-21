@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/Features/Payment/data/model/payment_date_model.dart';
 
@@ -5,6 +6,7 @@ import 'package:ghosn_app/Features/Payment/data/model/payment_date_model.dart';
 
 import 'package:ghosn_app/core/widgets/custom_appbar.dart';
 
+import '../../../../translations/local_keys.g.dart';
 import 'widgets/payment_detail_body.dart';
 
 class RadioListTitleWidget extends StatefulWidget {
@@ -36,7 +38,7 @@ class _RadioListTitleWidgetState extends State<RadioListTitleWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Payment Details", 
+      appBar: CustomAppBar(title:  LocaleKeys.paymentdetails.tr(),
       leading: IconButton(
           onPressed: () {
             Navigator.pop(context);

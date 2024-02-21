@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/core/utils/app_router.dart';
 import 'package:ghosn_app/core/utils/style.dart';
@@ -5,6 +6,7 @@ import 'package:ghosn_app/core/widgets/custom_appbar.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/widgets/custom_button.dart';
+import '../../../../../translations/local_keys.g.dart';
 
 class CheckOutBody extends StatelessWidget {
   const CheckOutBody({super.key});
@@ -26,8 +28,8 @@ class CheckOutBody extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'The payment was completed successfully',
+              Text(
+                 LocaleKeys.paymentsuccess.tr(),
                 style: Styles.textStyle20Inter,
                 textAlign: TextAlign.center,
               ),
@@ -37,10 +39,10 @@ class CheckOutBody extends StatelessWidget {
                 height: 320,
               ),
               const SizedBox(height: 20),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
+             Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  ' Your order has been placed and will be delivered to your specified address within 3 days.',
+                  LocaleKeys.finishorder.tr(),
                   textAlign: TextAlign.center,
                   style: Styles.textStyle18Inter,
                 ),
@@ -49,7 +51,7 @@ class CheckOutBody extends StatelessWidget {
                 height: height * .06,
               ),
               CustomButton(
-                text: "OK ",
+                text: LocaleKeys.ok.tr(),
                 width: 183,
                 onPressed: () {
                   GoRouter.of(context).push(AppRouter.kSplashView);

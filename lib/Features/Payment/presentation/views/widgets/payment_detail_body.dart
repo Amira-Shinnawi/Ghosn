@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/Features/Payment/data/model/item_list_model/items.dart';
 import 'package:ghosn_app/Features/Payment/data/model/payment_date_model.dart';
@@ -7,6 +8,7 @@ import 'package:ghosn_app/core/utils/assets_data.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/widgets/custom_button.dart';
+import '../../../../../translations/local_keys.g.dart';
 import '../../../data/model/amount_model/amount_model.dart';
 import '../../../data/model/amount_model/details.dart';
 import '../../../data/model/item_list_model/item_list_model.dart';
@@ -27,6 +29,7 @@ class PaymentDetailsBody extends StatefulWidget {
 
 class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
   final GlobalKey<FormState> formKey = GlobalKey();
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   int? selectedPaymentMethod = 0;
 
@@ -98,8 +101,7 @@ class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
                     setState(() {
                       selectedPaymentMethod = value!;
 
-                      var transactionData = getTransactionsDate();
-                      ExecutePaypal(context, transactionData);
+                    
                     });
                   },
                   imagePath: AssetsData.paypal,
@@ -124,28 +126,62 @@ class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
             ),
           ),
         SizedBox(
-          height: height * .08,
+          height: height * .1,
         ),
         CustomButton(
-          text: 'Pay Now',
-          onPressed: () {
-            if (formKey.currentState!.validate()) {
-              formKey.currentState!.save();
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ConfirmPayment(
-                    paymentData: widget.paymentData,
-                    paymentMethod:
-                        selectedPaymentMethod == 0 ? 'Credit Card' : 'PayPal',
-                  ),
-                ),
-              );
-            } else {
-              autovalidateMode = AutovalidateMode.always;
-              setState(() {});
-            }
-          },
+          text:  LocaleKeys.PayNow.tr(),
+          onPressed: () async {
+  if (selectedPaymentMethod == 0) {
+    
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+      
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ConfirmPayment(
+            paymentData: widget.paymentData,
+            paymentMethod:  LocaleKeys.creditcard.tr(),
+          ),
+        ),
+      );
+    } else {
+      // If form validation fails, enable auto validation and update the UI
+      setState(() {
+        autovalidateMode = AutovalidateMode.always;
+      });
+    }
+  } else if (selectedPaymentMethod == 1) {
+    // If PayPal is selected, process the PayPal transaction
+    var transactionData = getTransactionsDate();
+   
+     bool transactionCompleted = await ExecutePaypal(
+      context,
+       paymentData: widget.paymentData,
+    
+      amount: transactionData.amount,
+      itemlist: transactionData.itemlist,
+    );
+    if (!transactionCompleted) {
+      // If PayPal transaction is completed, navigate to the confirmation page
+ 
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ConfirmPayment(
+            paymentData: widget.paymentData,
+            paymentMethod: 'PayPal',
+          ),
+        ),
+      );
+    } else {
+      
+      print("please complete the process");
+    }
+  }
+},
+
+          
         ),
       ]),
     );
