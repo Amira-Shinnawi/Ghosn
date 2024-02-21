@@ -58,4 +58,8 @@ abstract class Styles {
     fontFamily: 'Almarai',
     fontWeight: FontWeight.w400,
   );
+  static const textStyle18White = TextStyle(
+    color: Colors.white,
+    fontSize: 18,
+  );
 }

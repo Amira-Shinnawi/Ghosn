@@ -14,9 +14,10 @@ class SplashViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(horizontal: width * .020),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

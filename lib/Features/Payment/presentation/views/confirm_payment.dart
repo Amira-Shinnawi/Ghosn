@@ -7,9 +7,10 @@ import '../../../../translations/local_keys.g.dart';
 import 'widgets/confirm_payment_body.dart';
 
 class ConfirmPayment extends StatelessWidget {
-  const ConfirmPayment({super.key, required this.paymentData,  required this.paymentMethod});
+  const ConfirmPayment(
+      {super.key, required this.paymentData, required this.paymentMethod});
   final PaymentDataModel paymentData;
-   final String paymentMethod; 
+  final String paymentMethod;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,8 @@ class ConfirmPayment extends StatelessWidget {
       ),
       body: SafeArea(
         child: ConfirmPaymentBody(
-          paymentData: paymentData, paymentMethod:paymentMethod,
+          paymentData: paymentData,
+          paymentMethod: paymentMethod,
         ),
       ),
     );

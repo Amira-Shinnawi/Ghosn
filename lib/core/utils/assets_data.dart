@@ -7,4 +7,7 @@ class AssetsData {
   static const changepass = 'assets/images/changepass.png';
   static const paypal = 'assets/images/paypal.png';
   static const visa = 'assets/images/visa.png';
+  static const imageTest1 = 'assets/images/image 30.png';
+  static const imageTest2 = 'assets/images/na 2.png';
+  static const imageTest3 = 'assets/images/plant.png';
 }

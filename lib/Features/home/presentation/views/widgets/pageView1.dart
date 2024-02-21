@@ -11,7 +11,7 @@ class Page1 extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             child: Row(children: [
               Container(
-                color: Color(0xffEBF8E2),
+                color: const Color(0xffEBF8E2),
                 child: const Text('نباتات منزلية'),
               ),
               const Spacer(),
@@ -20,8 +20,8 @@ class Page1 extends StatelessWidget {
               Container(child: const Text('مزهرة'))
             ]),
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
+          const Padding(
+            padding: EdgeInsets.only(right: 20),
             child: Row(
               children: [
                 Text(
@@ -31,11 +31,11 @@ class Page1 extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
               width: 330,
               height: 200,
               child: Image(image: AssetImage('assets/images/Component 1.jpg'))),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Expanded(
@@ -44,10 +44,10 @@ class Page1 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    color: Color(0xffF0F0F0),
+                    color: const Color(0xffF0F0F0),
                     width: 155,
                     height: 240,
-                    child: Column(
+                    child: const Column(
                       children: [
                         Image(image: AssetImage('assets/images/image 16.jpg')),
                         Text('الثعبان الفضي',
@@ -61,14 +61,14 @@ class Page1 extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Container(
-                    color: Color(0xffF0F0F0),
+                    color: const Color(0xffF0F0F0),
                     width: 155,
                     height: 240,
-                    child: Column(
+                    child: const Column(
                       children: [
                         Image(image: AssetImage('assets/images/image 16.jpg')),
                         Text('الثعبان الفضي',

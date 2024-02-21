@@ -31,4 +31,3 @@ class Bill extends StatelessWidget {
     );
   }
 }
-

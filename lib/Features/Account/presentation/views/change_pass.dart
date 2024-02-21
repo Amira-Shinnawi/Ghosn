@@ -7,6 +7,7 @@ import 'package:ghosn_app/translations/local_keys.g.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/utils/app_router.dart';
+import '../../../../core/utils/style.dart';
 
 class ChangePassword extends StatelessWidget {
   const ChangePassword({super.key});
@@ -15,7 +16,14 @@ class ChangePassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-          title: LocaleKeys.changepassword.tr(),
+          titleAppBar: Text(
+            LocaleKeys.changepassword.tr(),
+            style: Styles.textStyle22Inter.copyWith(
+              fontSize: 25,
+              color: Colors.black,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
           leading: IconButton(
             onPressed: () {
               GoRouter.of(context).push(AppRouter.kLoginOptionView);

@@ -16,7 +16,6 @@ class CheckOutBody extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
         appBar: CustomAppBar(
-          title: "",
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);

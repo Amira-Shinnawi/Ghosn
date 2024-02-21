@@ -1,23 +1,18 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/Features/Payment/data/model/payment_date_model.dart';
-
-
-
 import 'package:ghosn_app/core/widgets/custom_appbar.dart';
 
 import '../../../../translations/local_keys.g.dart';
 import 'widgets/payment_detail_body.dart';
 
 class RadioListTitleWidget extends StatefulWidget {
+  final PaymentDataModel paymentData;
 
-   final PaymentDataModel paymentData;
-
-  const RadioListTitleWidget(
-      {super.key,
-     
-      required this.paymentData,
-   });
+  const RadioListTitleWidget({
+    super.key,
+    required this.paymentData,
+  });
   @override
   _RadioListTitleWidgetState createState() => _RadioListTitleWidgetState();
 }
@@ -31,7 +26,7 @@ class _RadioListTitleWidgetState extends State<RadioListTitleWidget> {
   @override
   void initState() {
     super.initState();
-   
+
     showCreditCard = false;
   }
 
