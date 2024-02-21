@@ -17,7 +17,7 @@ class Bill extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title:  LocaleKeys.billpayment.tr(),
+      titleAppBar: Text(LocaleKeys.billpayment.tr(),),
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);

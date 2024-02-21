@@ -33,7 +33,7 @@ class _RadioListTitleWidgetState extends State<RadioListTitleWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title:  LocaleKeys.paymentdetails.tr(),
+      appBar: CustomAppBar(titleAppBar:Text(  LocaleKeys.paymentdetails.tr(),),
       leading: IconButton(
           onPressed: () {
             Navigator.pop(context);

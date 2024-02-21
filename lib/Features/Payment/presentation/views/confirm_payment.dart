@@ -16,7 +16,7 @@ class ConfirmPayment extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title:  LocaleKeys.confirmpayment.tr(),
+       titleAppBar:Text( LocaleKeys.confirmpayment.tr(),),
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
