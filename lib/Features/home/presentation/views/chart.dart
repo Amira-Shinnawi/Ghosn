@@ -16,9 +16,9 @@ class Chart extends StatelessWidget {
                     onPressed: () {},
                     icon: Image.asset("assets/images/image 18.png"),
                   ),
-                  Spacer(),
-                  Text('سلة المشتريات', style: TextStyle(fontSize: 20)),
-                  Spacer(),
+                  const Spacer(),
+                  const Text('سلة المشتريات', style: const TextStyle(fontSize: 20)),
+                  const Spacer(),
                   IconButton(
                     onPressed: () {},
                     icon: Image.asset("assets/images/image 27.png"),
@@ -26,7 +26,7 @@ class Chart extends StatelessWidget {
                 ]),
               ),
             ),
-            Text('لا توجد عناصر حتى الآن',
+            const Text('لا توجد عناصر حتى الآن',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
           ],
         ),
@@ -44,7 +44,7 @@ class Chart extends StatelessWidget {
                   icon: Image.asset("assets/images/image 10.jpg"),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               SizedBox(
                 width: 50,
                 child: IconButton(
@@ -52,7 +52,7 @@ class Chart extends StatelessWidget {
                   icon: Image.asset("assets/images/image 11.jpg"),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               SizedBox(
                 width: 50,
                 child: IconButton(
@@ -60,7 +60,7 @@ class Chart extends StatelessWidget {
                   icon: Image.asset("assets/images/image 22.jpg"),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               SizedBox(
                 width: 50,
                 child: IconButton(
@@ -68,7 +68,7 @@ class Chart extends StatelessWidget {
                   icon: Image.asset("assets/images/image 9.jpg"),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               SizedBox(
                 width: 50,
                 child: IconButton(

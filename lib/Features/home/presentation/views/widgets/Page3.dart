@@ -16,10 +16,10 @@ class Page3 extends StatelessWidget {
               const Spacer(),
               Container(child: const Text('حدائق')),
               const Spacer(),
-              Container(color: Color(0xffEBF8E2), child: const Text('مزهرة'))
+              Container(color: const Color(0xffEBF8E2), child: const Text('مزهرة'))
             ]),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Expanded(
@@ -28,10 +28,10 @@ class Page3 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    color: Color(0xffF0F0F0),
+                    color: const Color(0xffF0F0F0),
                     width: 155,
                     height: 240,
-                    child: Column(
+                    child: const Column(
                       children: [
                         Image(image: AssetImage('assets/images/image 21.jpg')),
                         Text('الثعبان الفضي',
@@ -45,14 +45,14 @@ class Page3 extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Container(
-                    color: Color(0xffF0F0F0),
+                    color: const Color(0xffF0F0F0),
                     width: 155,
                     height: 240,
-                    child: Column(
+                    child: const Column(
                       children: [
                         Image(image: AssetImage('assets/images/image 21.jpg')),
                         Text('الثعبان الفضي',
@@ -68,17 +68,17 @@ class Page3 extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    color: Color(0xffF0F0F0),
+                    color: const Color(0xffF0F0F0),
                     width: 155,
                     height: 240,
-                    child: Column(
+                    child: const Column(
                       children: [
                         Image(image: AssetImage('assets/images/image 21.jpg')),
                         Text('الثعبان الفضي',
@@ -92,14 +92,14 @@ class Page3 extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Container(
-                    color: Color(0xffF0F0F0),
+                    color: const Color(0xffF0F0F0),
                     width: 155,
                     height: 240,
-                    child: Column(
+                    child: const Column(
                       children: [
                         Image(image: AssetImage('assets/images/image 21.jpg')),
                         Text('الثعبان الفضي',

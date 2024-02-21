@@ -6,6 +6,8 @@ import 'package:ghosn_app/Features/Payment/presentation/views/payment_method.dar
 import 'package:ghosn_app/Features/splash/presentation/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../Features/home/presentation/views/home.dart';
+import '../../Features/home/presentation/views/product_details_home.dart';
 import '../../constants.dart';
 
 abstract class AppRouter {
@@ -16,6 +18,8 @@ abstract class AppRouter {
   static const kRegisterPage = '/registerPage';
   static const kChangePassword = '/changePassword';
   static const kRadioListTitleWidget = '/radioListTitleWidget';
+  static const kProductDetailsHome = '/product';
+  static const kHomePage = '/homePage';
 
   static final router = GoRouter(
       initialLocation: (userToken != null || tokenFacebookOrGoogle != null)
@@ -52,6 +56,14 @@ abstract class AppRouter {
         GoRoute(
           path: kChangePassword,
           builder: (context, state) => const ChangePassword(),
+        ),
+        GoRoute(
+          path: kProductDetailsHome,
+          builder: (context, state) => const ProductDetailsHome(),
+        ),
+         GoRoute(
+          path: kHomePage,
+          builder: (context, state) =>  HomePage(),
         ),
       ]);
 }

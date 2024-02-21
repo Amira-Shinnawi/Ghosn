@@ -3,6 +3,8 @@ import 'package:ghosn_app/Features/home/presentation/views/widgets/Page2.dart';
 import 'package:ghosn_app/Features/home/presentation/views/widgets/Page3.dart';
 import 'package:ghosn_app/Features/home/presentation/views/widgets/pageView1.dart';
 
+import '../../../../core/widgets/custom_text_field.dart';
+
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
@@ -12,65 +14,78 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: const Text(
-            "مرحبا,المستخدم",
-            style: TextStyle(color: Colors.black),
+            "Welcome,User",
+            style: TextStyle(
+              color: Colors.black,
+            ),
           ),
           actions: [
             IconButton(
               onPressed: () {},
-              icon: Image.asset("assets/images/image 13.jpg"),
+              icon: const Icon(
+                Icons.notifications_none_outlined,
+                size: 30,
+              ),
             ),
             IconButton(
-                onPressed: () {},
-                icon: Image.asset("assets/images/image 12.jpg")),
+              onPressed: () {},
+              icon: const Icon(
+                Icons.shopping_cart_outlined,
+                size: 30,
+              ),
+            ),
           ],
         ),
         body: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               child: Row(
                 children: [
+                  Expanded(
+                      child: Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0xffFAF6F6),
+                      boxShadow: const [
+                        BoxShadow(
+                            blurRadius: 4,
+                            color: Colors.black12,
+                            offset: Offset(0, 4))
+                      ],
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: CustomTextFelid(
+                      hinText: 'Search',
+                      width: 0,
+                      color: Colors.transparent,
+                      prefixIcon: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.search_rounded,
+                          size: 30,
+                        ),
+                      ),
+                    ),
+                  )),
                   Container(
-                    width: 230,
+                    width: 100,
                     height: 50,
                     decoration: BoxDecoration(
-                        color: Color(0xffFAF6F6),
-                        boxShadow: [
+                        color: const Color(0xffFAF6F6),
+                        boxShadow: const [
                           BoxShadow(
                               blurRadius: 4,
                               color: Colors.black12,
                               offset: Offset(0, 4))
                         ],
                         borderRadius: BorderRadius.circular(30)),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: 'بحث',
-                        hintStyle: TextStyle(color: Colors.grey),
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        prefixIcon: Icon(
-                          Icons.search,
-                          color: Colors.black,
-                        ),
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.filter_list_rounded,
+                        size: 30,
                       ),
                     ),
-                  ),
-                  Container(
-                    width: 100,
-                    height: 50,
-                    decoration: BoxDecoration(
-                        color: Color(0xffFAF6F6),
-                        boxShadow: [
-                          BoxShadow(
-                              blurRadius: 4,
-                              color: Colors.black12,
-                              offset: Offset(0, 4))
-                        ],
-                        borderRadius: BorderRadius.circular(10)),
-                    child: IconButton(
-                        onPressed: () {},
-                        icon: Image.asset('assets/images/image 14.png')),
                   )
                 ],
               ),
@@ -97,7 +112,7 @@ class HomePage extends StatelessWidget {
                   icon: Image.asset("assets/images/image 10.jpg"),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               SizedBox(
                 width: 50,
                 child: IconButton(
@@ -105,7 +120,7 @@ class HomePage extends StatelessWidget {
                   icon: Image.asset("assets/images/image 11.jpg"),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               SizedBox(
                 width: 50,
                 child: IconButton(
@@ -113,7 +128,7 @@ class HomePage extends StatelessWidget {
                   icon: Image.asset("assets/images/image 22.jpg"),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               SizedBox(
                 width: 50,
                 child: IconButton(
@@ -121,7 +136,7 @@ class HomePage extends StatelessWidget {
                   icon: Image.asset("assets/images/image 9.jpg"),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               SizedBox(
                 width: 50,
                 child: IconButton(
