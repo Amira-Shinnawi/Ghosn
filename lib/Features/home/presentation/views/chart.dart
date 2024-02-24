@@ -17,7 +17,8 @@ class Chart extends StatelessWidget {
                     icon: Image.asset("assets/images/image 18.png"),
                   ),
                   const Spacer(),
-                  const Text('سلة المشتريات', style:  TextStyle(fontSize: 20)),
+                  const Text('سلة المشتريات',
+                      style: const TextStyle(fontSize: 20)),
                   const Spacer(),
                   IconButton(
                     onPressed: () {},
