@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/Features/home/presentation/views/widgets/Page2.dart';
 import 'package:ghosn_app/Features/home/presentation/views/widgets/Page3.dart';
-import 'package:ghosn_app/Features/home/presentation/views/widgets/bottomBar.dart';
 import 'package:ghosn_app/Features/home/presentation/views/widgets/pageView1.dart';
 import 'package:ghosn_app/Features/home/presentation/views/widgets/search&menu.dart';
+import 'package:ghosn_app/Features/home/presentation/views/widgets/bottomBar.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
+class gardens extends StatelessWidget {
+  gardens({super.key});
 
   final _controller = PageController();
   @override
@@ -20,12 +20,10 @@ class HomePage extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {},
-              icon: Icon(Icons.shopping_cart_outlined),
+              icon: Image.asset("assets/image 13.jpg"),
             ),
             IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.notifications_outlined),
-            )
+                onPressed: () {}, icon: Image.asset("assets/image 12.jpg")),
           ],
         ),
         body: Column(
@@ -35,9 +33,9 @@ class HomePage extends StatelessWidget {
               child: PageView(
                 controller: _controller,
                 children: const [
-                  Page1(),
-                  Page3(),
                   Page2(),
+                  Page3(),
+                  Page1(),
                 ],
               ),
             ),

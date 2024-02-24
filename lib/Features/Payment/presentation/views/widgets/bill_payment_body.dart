@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/Features/Payment/presentation/views/widgets/check_out_body.dart';
 import 'package:ghosn_app/Features/Payment/presentation/views/widgets/credit_card_container.dart';
@@ -6,6 +7,7 @@ import 'package:ghosn_app/core/widgets/custom_button.dart';
 import 'package:ghosn_app/core/widgets/space_column.dart';
 
 import '../../../../../core/utils/style.dart';
+import '../../../../../translations/local_keys.g.dart';
 import '../../../data/model/payment_date_model.dart';
 import 'complete_container.dart';
 
@@ -28,15 +30,15 @@ class BillPaymentBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Row(
+           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SpaceColumn(
-                label: 'Date',
+                label: LocaleKeys.date.tr(),
                 value: '26jan2025',
               ),
               SpaceColumn(
-                label: 'Time',
+                label: LocaleKeys.time.tr(),
                 value: '12:20:20',
               ),
             ],
@@ -44,47 +46,47 @@ class BillPaymentBody extends StatelessWidget {
           SizedBox(
             height: height * .024,
           ),
-           const SpaceColumn(
-            label: 'Name',
+            SpaceColumn(
+            label: LocaleKeys.name.tr(),
             value: "esraa"
           ),
           SizedBox(
             height: height * .024,
           ),
           SpaceColumn(
-            label: 'Address',
+            label:  LocaleKeys.address.tr(),
             value: paymentData.address,
           ),
           SizedBox(
             height: height * .024,
           ),
           SpaceColumn(
-            label: 'Phone Number',
+            label: LocaleKeys.phoneNumber.tr(),
             value: paymentData.phoneNumber,
           ),
           SizedBox(
             height: height * .024,
           ), //  SpaceColumn(label: 'Payment Method', value: paymentData.paymentMethod,
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SpaceColumn(
-                label: 'Total Amount',
+                label:  LocaleKeys.TotalAmount.tr(),
                 value: '123 EGP',
               ),
-              CompletedContainer(),
+              const CompletedContainer(),
             ],
           ),
           SizedBox(height: height * .03),
           const CreditCardContainer(),
           SizedBox(height: height * .030),
-          const Text(
-            "Please keep a copy of this receipt via a screenshot until needed when receiving the order to ensure user rights.",
+         Text(
+           LocaleKeys.reciet.tr(),
             style: Styles.textStyle16Intergray,
             textAlign: TextAlign.center,
           ),
            SizedBox(height: height * .015),
-            CustomButton(text: "Done",
+            CustomButton(text:LocaleKeys.done.tr(),
            onPressed: () {
                Navigator.push(
        context,

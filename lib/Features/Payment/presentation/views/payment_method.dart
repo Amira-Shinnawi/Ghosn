@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/Features/Payment/presentation/views/widgets/payment_method_body.dart';
+import 'package:ghosn_app/translations/local_keys.g.dart';
 
-import '../../../../core/utils/style.dart';
+
 import '../../../../core/widgets/custom_appbar.dart';
 
 class PaymentPage extends StatelessWidget {
@@ -16,14 +18,7 @@ class PaymentPage extends StatelessWidget {
               Navigator.pop(context);
             },
             icon: const Icon(Icons.arrow_back_ios)),
-        titleAppBar: Text(
-          "Payment Page",
-          style: Styles.textStyle22Inter.copyWith(
-            fontSize: 25,
-            color: Colors.black,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
+        titleAppBar:Text( LocaleKeys.paymentpage.tr(),),
       ),
       body: const SafeArea(
         child: PaymentMethodBody(),
