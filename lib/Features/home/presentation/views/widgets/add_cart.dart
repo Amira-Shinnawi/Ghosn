@@ -1,6 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/utils/style.dart';
+
+import '../../../../../translations/local_keys.g.dart';
+import '../chart.dart';
 
 class AddCart extends StatefulWidget {
   const AddCart({
@@ -25,14 +29,21 @@ class _AddCartState extends State<AddCart> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Chart(),
+                ),
+              );
+            },
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(
                 kGreenColor,
               ),
             ),
             child: Text(
-              'Add To Cart',
+              LocaleKeys.AddCart.tr(),
               style: Styles.textStyle20Inter.copyWith(
                 color: Colors.white,
               ),

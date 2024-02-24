@@ -42,10 +42,31 @@
     "billpayment":"Bill Payment",
     "reciet":"Please keep a copy of this receipt via a screenshot until needed when receiving the order to ensure user rights.",
 
- "paymentsuccess":"The payment was completed successfully",
- "finishorder":"Your order has been placed and will be delivered to your specified address within 3 days."
+    "paymentsuccess":"The payment was completed successfully",
+    "finishorder":"Your order has been placed and will be delivered to your specified address within 3 days.",
 
-   
+    "Notifications":"Notifications",
+    "Today":"Today",
+    "Earlier":"Earlier",
+    "Temperature":"Temperature",
+    "Humidity":"Humidity",
+    "Sunlight":"Sunlight",
+    "Height":"Height",
+    "BowlColor":"Bowl Color",
+    "Details":"Details",
+    "moreInfo":"For more information,",
+    "clickHere":"click here",
+    "OtherPhotos":"Other photos",
+    "AddCart":"Add To Cart",
+    "Favorites":"Favorites",
+    "ShowProduct":"Show Product",
+    "ShoppingCart":"Shopping Cart",
+    "Checkout":"Checkout"
+
+
+
+
+
 
 
 

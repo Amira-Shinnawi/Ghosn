@@ -42,8 +42,25 @@
 
 
     "paymentsuccess":"تمت عملية الدفع بنجاح",
-    "finishorder":"تم حجز المنتج المطلوب وسيصل إلي العنوان المحدد في غضون 3 أيام"
-   
+    "finishorder":"تم حجز المنتج المطلوب وسيصل إلي العنوان المحدد في غضون 3 أيام",
+
+    "Notifications":"الاشعارات",
+    "Today":"اليوم",
+    "Earlier":"قديما",
+    "Temperature":"الحرارة",
+    "Humidity":"الرطوبة",
+    "Sunlight":"ضوء الشمس",
+    "Height":"الارتفاع",
+    "BowlColor":"لون الوعاء",
+    "Details":"التفاصيل",
+    "moreInfo":"لمزيد من العلومات,",
+    "clickHere":"اضغط هنا",
+    "OtherPhotos":"صور اخري",
+    "AddCart":"اضف لسلة المشتريات",
+    "Favorites":"المفضلات",
+    "ShowProduct":"عرض المنتج",
+    "ShoppingCart":"سلة المشتريات",
+    "Checkout":"الدفع باستخدام"
 
 }
 

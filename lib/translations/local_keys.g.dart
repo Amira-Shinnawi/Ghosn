@@ -36,8 +36,25 @@ abstract class LocaleKeys {
   static const Address = 'Address';
   static const confirm = 'confirm';
   static const help = 'help';
-  static const billpayment = 'bill payment';
+  static const billpayment = 'billpayment';
   static const reciet = 'reciet';
-  static const paymentsuccess = 'payment success';
+  static const paymentsuccess = 'paymentsuccess';
   static const finishorder = 'finishorder';
+  static const Notifications = 'Notifications';
+  static const Today = 'Today';
+  static const Earlier = 'Earlier';
+  static const Temperature = 'Temperature';
+  static const Humidity = 'Humidity';
+  static const Sunlight = 'Sunlight';
+  static const Height = 'Height';
+  static const BowlColor = 'BowlColor';
+  static const Details = 'Details';
+  static const moreInfo = 'moreInfo';
+  static const clickHere = 'click here';
+  static const OtherPhotos = 'OtherPhotos';
+  static const AddCart = 'AddCart';
+  static const Favorites = 'Favorites';
+  static const ShowProduct = 'ShowProduct';
+  static const ShoppingCart = 'ShoppingCart';
+  static const Checkout = 'Checkout';
 }

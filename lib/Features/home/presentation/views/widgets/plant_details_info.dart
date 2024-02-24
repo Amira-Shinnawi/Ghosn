@@ -1,5 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/utils/style.dart';
+
+import '../../../../../translations/local_keys.g.dart';
 
 class PlantDetailsInfo extends StatelessWidget {
   const PlantDetailsInfo({
@@ -11,6 +15,8 @@ class PlantDetailsInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double blockHeight = (height / 100);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -29,7 +35,8 @@ class PlantDetailsInfo extends StatelessWidget {
                 Text(
                   '150 EGP',
                   style: Styles.textStyle20Inter.copyWith(
-                    fontSize: 22,
+                    fontSize: 20,
+                    color: kGreenColor,
                   ),
                 ),
               ],
@@ -37,7 +44,7 @@ class PlantDetailsInfo extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  'Bowl color',
+                  LocaleKeys.BowlColor.tr(),
                   style: Styles.textStyle20Inter.copyWith(
                     fontSize: 22,
                   ),
@@ -49,8 +56,11 @@ class PlantDetailsInfo extends StatelessWidget {
             ),
           ],
         ),
+        SizedBox(
+          height: blockHeight * 1,
+        ),
         Text(
-          'Details',
+          LocaleKeys.Details.tr(),
           style: Styles.textStyle20Inter.copyWith(
             fontWeight: FontWeight.bold,
           ),
@@ -63,17 +73,17 @@ class PlantDetailsInfo extends StatelessWidget {
           maxLines: 3,
           overflow: TextOverflow.ellipsis,
         ),
-        const Row(
+        Row(
           children: [
             Text(
-              'For more information,',
-              style: TextStyle(
+              LocaleKeys.moreInfo.tr(),
+              style: const TextStyle(
                 fontSize: 18,
               ),
             ),
             Text(
-              'click here',
-              style: TextStyle(
+              LocaleKeys.clickHere.tr(),
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 decoration: TextDecoration.underline,
@@ -81,11 +91,11 @@ class PlantDetailsInfo extends StatelessWidget {
             )
           ],
         ),
-        const SizedBox(
-          height: 15,
+        SizedBox(
+          height: blockHeight * 1.5,
         ),
         Text(
-          'Other photos',
+          LocaleKeys.OtherPhotos.tr(),
           style: Styles.textStyle20Inter.copyWith(
             fontWeight: FontWeight.bold,
           ),

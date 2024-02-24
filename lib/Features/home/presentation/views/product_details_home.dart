@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ghosn_app/core/utils/app_router.dart';
 import 'package:ghosn_app/core/widgets/custom_appbar.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../constants.dart';
 import 'widgets/product_details_body.dart';
@@ -19,7 +21,11 @@ class _ProductDetailsHomeState extends State<ProductDetailsHome> {
     return Scaffold(
       appBar: CustomAppBar(
         backgroundColor: kGreenColor,
-        leading: const Icon(Icons.arrow_back_ios),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back_ios)),
         actions: [
           IconButton(
             icon: Icon(
@@ -31,6 +37,7 @@ class _ProductDetailsHomeState extends State<ProductDetailsHome> {
               setState(() {
                 favProductAdd = !favProductAdd;
               });
+              GoRouter.of(context).push(AppRouter.kFavorite);
             },
           )
         ],

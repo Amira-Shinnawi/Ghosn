@@ -28,6 +28,8 @@ class _ShowImageState extends State<ShowImage> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    double blockHeight = (height / 100);
+    double blockWidth = (width / 100);
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -42,13 +44,13 @@ class _ShowImageState extends State<ShowImage> {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: width * .04, vertical: height * .02),
+              horizontal: blockWidth * 4, vertical: blockHeight * 2),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Expanded(
                 child: SizedBox(
-                  height: height * .5,
+                  height: blockHeight * 50,
                   child: PageView.builder(
                     physics: const BouncingScrollPhysics(),
                     itemCount: widget.image.length,
@@ -71,7 +73,7 @@ class _ShowImageState extends State<ShowImage> {
                 ),
               ),
               SizedBox(
-                height: height * .05,
+                height: blockHeight * 5,
               ),
               Text(
                 '${(_selectedIndex + 1).toString()}/${widget.image.length.toString()}',
@@ -81,10 +83,10 @@ class _ShowImageState extends State<ShowImage> {
                 ),
               ),
               SizedBox(
-                height: height * .05,
+                height: blockHeight * 5,
               ),
               SizedBox(
-                height: height * .2,
+                height: blockHeight * 20,
                 child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
                   itemCount: widget.image.length,
@@ -92,7 +94,7 @@ class _ShowImageState extends State<ShowImage> {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: ((context, index) {
                     return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      padding: EdgeInsets.symmetric(horizontal: blockWidth * 3),
                       child: GestureDetector(
                         onTap: () {
                           _pageController.animateToPage(
@@ -105,8 +107,8 @@ class _ShowImageState extends State<ShowImage> {
                           aspectRatio: 2 / 3,
                           child: _selectedIndex == index
                               ? Container(
-                                  height: height * 0.120,
-                                  width: width * 0.120,
+                                  height: blockHeight * 10,
+                                  width: blockWidth * 12,
                                   decoration: BoxDecoration(
                                     border: Border.all(
                                       width: 2,
@@ -120,12 +122,16 @@ class _ShowImageState extends State<ShowImage> {
                                 )
                               : Image.asset(
                                   widget.image[index],
+                                  fit: BoxFit.cover,
                                 ),
                         ),
                       ),
                     );
                   }),
                 ),
+              ),
+              SizedBox(
+                height: blockHeight * 2,
               ),
             ],
           ),

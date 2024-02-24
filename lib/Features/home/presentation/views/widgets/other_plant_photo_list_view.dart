@@ -20,6 +20,8 @@ class _OtherPlantsPhotoListViewState extends State<OtherPlantsPhotoListView> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    double blockHeight = (height / 100);
+    double blockWidth = (width / 100);
 
     List<String> imageAssets = [
       AssetsData.imageTest1,
@@ -28,7 +30,7 @@ class _OtherPlantsPhotoListViewState extends State<OtherPlantsPhotoListView> {
     ];
 
     return SizedBox(
-      height: height * .15,
+      height: blockHeight * 15,
       child: ListView.builder(
         physics: const BouncingScrollPhysics(),
         itemCount: imageAssets.length,
@@ -36,7 +38,7 @@ class _OtherPlantsPhotoListViewState extends State<OtherPlantsPhotoListView> {
         scrollDirection: Axis.horizontal,
         itemBuilder: ((context, index) {
           return Padding(
-            padding: EdgeInsets.symmetric(horizontal: width * .02),
+            padding: EdgeInsets.symmetric(horizontal: blockWidth * 3),
             child: GestureDetector(
               onTap: () {
                 Navigator.push(

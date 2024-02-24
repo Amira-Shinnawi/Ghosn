@@ -3,9 +3,12 @@ import 'package:ghosn_app/Features/Account/presentation/views/login_options_view
 import 'package:ghosn_app/Features/Account/presentation/views/login_page.dart';
 import 'package:ghosn_app/Features/Account/presentation/views/register_page.dart';
 import 'package:ghosn_app/Features/Payment/presentation/views/payment_method.dart';
+import 'package:ghosn_app/Features/home/presentation/views/chart.dart';
+import 'package:ghosn_app/Features/home/presentation/views/notification_home.dart';
 import 'package:ghosn_app/Features/splash/presentation/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../Features/home/presentation/views/favorite_home.dart';
 import '../../Features/home/presentation/views/home.dart';
 import '../../Features/home/presentation/views/product_details_home.dart';
 import '../../constants.dart';
@@ -20,6 +23,10 @@ abstract class AppRouter {
   static const kRadioListTitleWidget = '/radioListTitleWidget';
   static const kProductDetailsHome = '/product';
   static const kHomePage = '/homePage';
+  static const kChart = '/chartPage';
+  static const kFavorite = '/favorite';
+  static const kMainHome = '/main';
+  static const kNotification = '/notification';
 
   static final router = GoRouter(
       initialLocation: (userToken != null || tokenFacebookOrGoogle != null)
@@ -61,9 +68,21 @@ abstract class AppRouter {
           path: kProductDetailsHome,
           builder: (context, state) => const ProductDetailsHome(),
         ),
-         GoRoute(
+        GoRoute(
           path: kHomePage,
-          builder: (context, state) =>  HomePage(),
+          builder: (context, state) => HomePage(),
+        ),
+        GoRoute(
+          path: kChart,
+          builder: (context, state) => const Chart(),
+        ),
+        GoRoute(
+          path: kFavorite,
+          builder: (context, state) => const FavoriteHome(),
+        ),
+        GoRoute(
+          path: kNotification,
+          builder: (context, state) => const NotificationHome(),
         ),
       ]);
 }

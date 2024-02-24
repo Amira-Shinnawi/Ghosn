@@ -11,9 +11,9 @@ class ProductProperty extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-
+    double blockHeight = (height / 100);
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: height * .01),
+      padding: EdgeInsets.symmetric(vertical: blockHeight * 1),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

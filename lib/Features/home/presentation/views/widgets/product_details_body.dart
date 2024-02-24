@@ -31,20 +31,25 @@ class _ProductDetailsBodyState extends State<ProductDetailsBody> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    double blockHeight = (height / 100);
+    double blockWidth = (width / 100);
     return Stack(
       children: [
         Positioned(
           top: 0,
           right: 0,
           left: 0,
-          child: ProductProperties(height: height),
+          child: ProductProperties(
+            height: blockHeight,
+            width: blockWidth,
+          ),
         ),
         Positioned(
           bottom: 0,
           left: 0,
           right: 0,
           child: Container(
-            height: height * .55,
+            height: blockHeight * 55,
             decoration: const ShapeDecoration(
               color: Colors.white,
               shape: RoundedRectangleBorder(
@@ -56,15 +61,16 @@ class _ProductDetailsBodyState extends State<ProductDetailsBody> {
             ),
             child: PlantDetails(
               colorBowlListView: SizedBox(
-                height: height * .05,
-                width: width * .25,
+                height: blockHeight * 5,
+                width: blockWidth * 25,
                 child: ListView.builder(
                     physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     itemCount: colorBowl.length,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 2),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: blockWidth * 1),
                         child: GestureDetector(
                           onTap: () {
                             currentIndex = index;
@@ -88,11 +94,16 @@ class _ProductDetailsBodyState extends State<ProductDetailsBody> {
           child: AddCart(),
         ),
         Positioned(
-          right: -20,
-          child: Image.asset(
-            imageAssets[currentIndex],
-            width: width * .6,
-            height: height * .4,
+          right: 0,
+          left: 0,
+          top: -10,
+          child: Align(
+            alignment: AlignmentDirectional.bottomEnd,
+            child: Image.asset(
+              imageAssets[currentIndex],
+              width: blockWidth * 60,
+              height: blockHeight * 40,
+            ),
           ),
         ),
       ],
