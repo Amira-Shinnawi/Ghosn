@@ -42,7 +42,7 @@ class SpaceBetweenRow extends StatelessWidget {
           SizedBox(
             height: blocHeight * 2,
           ),
-          const MySeparator(
+          const DashedLine(
             color: Color.fromARGB(255, 214, 214, 214),
           ),
         ],
