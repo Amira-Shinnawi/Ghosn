@@ -20,10 +20,9 @@ class blooming extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {},
-              icon: Image.asset("assets/image 13.jpg"),
+              icon: Icon(Icons.shopping_cart),
             ),
-            IconButton(
-                onPressed: () {}, icon: Image.asset("assets/image 12.jpg")),
+            IconButton(onPressed: () {}, icon: Icon(Icons.notifications)),
           ],
         ),
         body: Column(

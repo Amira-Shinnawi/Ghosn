@@ -41,8 +41,7 @@ class searchPmenu extends StatelessWidget {
                     blurRadius: 4, color: Colors.black12, offset: Offset(0, 4))
               ],
               borderRadius: BorderRadius.circular(10)),
-          child: IconButton(
-              onPressed: () {}, icon: Image.asset('assets/image 14.png')),
+          child: IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
         )
       ],
     );

@@ -33,7 +33,7 @@ class bottomBar extends StatelessWidget {
             width: 50,
             child: IconButton(
               onPressed: () {},
-              icon: Image.asset("assets/image 22.jpg"),
+              icon: FaIcon(FontAwesomeIcons.qrcode),
             ),
           ),
           Spacer(),
@@ -41,7 +41,7 @@ class bottomBar extends StatelessWidget {
             width: 50,
             child: IconButton(
               onPressed: () {},
-              icon: Image.asset("assets/image 11.jpg"),
+              icon: FaIcon(Icons.favorite),
             ),
           ),
           Spacer(),

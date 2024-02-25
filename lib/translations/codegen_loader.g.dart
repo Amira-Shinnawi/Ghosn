@@ -6,7 +6,7 @@ import 'dart:ui';
 
 import 'package:easy_localization/easy_localization.dart' show AssetLoader;
 
-class CodegenLoader extends AssetLoader {
+class CodegenLoader extends AssetLoader{
   const CodegenLoader();
 
   @override
@@ -50,10 +50,39 @@ class CodegenLoader extends AssetLoader {
   "Address": "العنوان",
   "confirm": "تأكيد",
   "help": "للمساعده",
-  "bill payment": "فاتورة الدفع",
+  "billpayment": "فاتورة الدفع",
   "reciet": "يرجي الاحتفاظ بصورة هذا الايصال عن طريق لقطة شاشة لحين الحاجة اليه عند الاستلام الاوردر لضمان حقوق المستخدم.",
   "paymentsuccess": "تمت عملية الدفع بنجاح",
-  "finishorder": "تم حجز المنتج المطلوب وسيصل إلي العنوان المحدد في غضون 3 أيام"
+  "finishorder": "تم حجز المنتج المطلوب وسيصل إلي العنوان المحدد في غضون 3 أيام",
+  "country": "الدوله",
+  "state": "المحافظه",
+  "city": "المدينه",
+  "select": "اختر",
+  "date": "التاريخ",
+  "creditcard": "البطاقه الائتمانيه",
+  "paymentmethod": "وسيله الدفع",
+  "time": "الوقت",
+  "completed": "مكتمل",
+  "name": "الاسم",
+  "done": "تم",
+  "ok": "حسنا",
+  "Notifications": "الاشعارات",
+  "Today": "اليوم",
+  "Earlier": "قديما",
+  "Temperature": "الحرارة",
+  "Humidity": "الرطوبة",
+  "Sunlight": "ضوء الشمس",
+  "Height": "الارتفاع",
+  "BowlColor": "لون الوعاء",
+  "Details": "التفاصيل",
+  "moreInfo": "لمزيد من العلومات,",
+  "clickHere": "اضغط هنا",
+  "OtherPhotos": "صور اخري",
+  "AddCart": "اضف لسلة المشتريات",
+  "Favorites": "المفضلات",
+  "ShowProduct": "عرض المنتج",
+  "ShoppingCart": "سلة المشتريات",
+  "Checkout": "الدفع باستخدام"
 };
 static const Map<String,dynamic> en = {
   "getStarted": "Get Started",
@@ -96,7 +125,33 @@ static const Map<String,dynamic> en = {
   "billpayment": "Bill Payment",
   "reciet": "Please keep a copy of this receipt via a screenshot until needed when receiving the order to ensure user rights.",
   "paymentsuccess": "The payment was completed successfully",
-  "finishorder": "Your order has been placed and will be delivered to your specified address within 3 days."
+  "finishorder": "Your order has been placed and will be delivered to your specified address within 3 days.",
+  "select": "select",
+  "date": "Date",
+  "creditcard": "Credit Card",
+  "paymentmethod": "payment Method",
+  "time": "Time",
+  "name": "Name",
+  "completed": "completed",
+  "done": "Done",
+  "ok": "OK",
+  "Notifications": "Notifications",
+  "Today": "Today",
+  "Earlier": "Earlier",
+  "Temperature": "Temperature",
+  "Humidity": "Humidity",
+  "Sunlight": "Sunlight",
+  "Height": "Height",
+  "BowlColor": "Bowl Color",
+  "Details": "Details",
+  "moreInfo": "For more information,",
+  "clickHere": "click here",
+  "OtherPhotos": "Other photos",
+  "AddCart": "Add To Cart",
+  "Favorites": "Favorites",
+  "ShowProduct": "Show Product",
+  "ShoppingCart": "Shopping Cart",
+  "Checkout": "Checkout"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};
 }

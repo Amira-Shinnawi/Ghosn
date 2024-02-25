@@ -1,90 +1,46 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ghosn_app/core/widgets/custom_appbar.dart';
+import 'package:ghosn_app/Features/home/presentation/views/widgets/chart_body.dart';
 
 import '../../../../core/utils/style.dart';
+import '../../../../core/widgets/custom_appbar.dart';
 import '../../../../translations/local_keys.g.dart';
-import 'widgets/chart_body.dart';
 
 class Chart extends StatelessWidget {
   const Chart({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(50),
-              child: Container(
-                child:
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: Image.asset("assets/images/image 18.png"),
-                  ),
-                  const Spacer(),
-                  const Text('سلة المشتريات', style: const TextStyle(fontSize: 20)),
-                  const Spacer(),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Image.asset("assets/images/image 27.png"),
-                  ),
-                ]),
-              ),
-            ),
-            const Text('لا توجد عناصر حتى الآن',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
-          ],
-        ),
-        bottomNavigationBar: Container(
-          decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(10)),
-          height: 50,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(
-                width: 50,
-                child: IconButton(
-                  onPressed: () {},
-                  icon: Image.asset("assets/images/image 10.jpg"),
-                ),
-              ),
-              const Spacer(),
-              SizedBox(
-                width: 50,
-                child: IconButton(
-                  onPressed: () {},
-                  icon: Image.asset("assets/images/image 11.jpg"),
-                ),
-              ),
-              const Spacer(),
-              SizedBox(
-                width: 50,
-                child: IconButton(
-                  onPressed: () {},
-                  icon: Image.asset("assets/images/image 22.jpg"),
-                ),
-              ),
-              const Spacer(),
-              SizedBox(
-                width: 50,
-                child: IconButton(
-                  onPressed: () {},
-                  icon: Image.asset("assets/images/image 9.jpg"),
-                ),
-              ),
-              const Spacer(),
-              SizedBox(
-                width: 50,
-                child: IconButton(
-                  onPressed: () {},
-                  icon: Image.asset("assets/images/image 8.png"),
-                ),
-              ),
-            ],
+      appBar: CustomAppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios,
           ),
-        ));
+        ),
+        titleAppBar: Text(
+          LocaleKeys.ShoppingCart.tr(),
+          style: Styles.textStyle22Inter.copyWith(
+            color: Colors.black,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              FontAwesomeIcons.trashCan,
+              size: 25,
+            ),
+          ),
+        ],
+      ),
+      body: const SafeArea(
+        child: ShoppingCartBody(),
+      ),
+    );
   }
 }

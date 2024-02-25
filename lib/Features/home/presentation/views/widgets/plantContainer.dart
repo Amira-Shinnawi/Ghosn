@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/constants.dart';
+import 'package:ghosn_app/core/utils/assets_data.dart';
 
 class plantContainer extends StatelessWidget {
   plantContainer({super.key});
@@ -9,14 +10,14 @@ class plantContainer extends StatelessWidget {
       color: kWhiteColor,
       width: 150,
       height: 400,
-      child: Column(
+      child: const Column(
         children: [
-          const Image(image: AssetImage('assets/image 21.jpg')),
-          const Text('sliver snak plant',
+          Image(image: AssetImage(AssetsData.imageTest2)),
+          Text('sliver snak plant',
               style: TextStyle(
                 fontSize: 20,
               )),
-          const Text('150 e.l',
+          Text('150 EGP',
               style: TextStyle(
                 fontSize: 20,
               )),

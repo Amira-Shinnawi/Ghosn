@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ghosn_app/Features/home/presentation/views/widgets/categoriesBar.dart';
 import 'package:ghosn_app/Features/home/presentation/views/widgets/plantContainer.dart';
 import 'package:ghosn_app/constants.dart';
+import 'package:ghosn_app/core/utils/assets_data.dart';
 
 class Page1 extends StatelessWidget {
   const Page1({super.key});
@@ -28,7 +29,7 @@ class Page1 extends StatelessWidget {
           SizedBox(
               width: 330,
               height: 200,
-              child: Image(image: AssetImage('assets/Component 1.jpg'))),
+              child: Image.asset(AssetsData.imageTest2)),
           SizedBox(
             height: 30,
           ),

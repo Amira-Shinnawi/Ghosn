@@ -44,6 +44,15 @@
 
     "paymentsuccess":"The payment was completed successfully",
     "finishorder":"Your order has been placed and will be delivered to your specified address within 3 days.",
+    "select":"select",
+    "date":"Date",
+    "creditcard":"Credit Card",
+    "paymentmethod":"payment Method",
+    "time":"Time",
+    "name":"Name",
+    "completed":"completed",
+    "done":"Done",
+ "ok":"OK",
 
     "Notifications":"Notifications",
     "Today":"Today",
@@ -62,23 +71,6 @@
     "ShowProduct":"Show Product",
     "ShoppingCart":"Shopping Cart",
     "Checkout":"Checkout"
-
-
-
-
-
-
-
-
-
-
-
-
-    
-  
-    
-
-
 
 }
 

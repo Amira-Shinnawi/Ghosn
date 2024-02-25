@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/Features/home/presentation/views/widgets/Page2.dart';
 import 'package:ghosn_app/Features/home/presentation/views/widgets/Page3.dart';
+import 'package:ghosn_app/Features/home/presentation/views/widgets/bottomBar.dart';
 import 'package:ghosn_app/Features/home/presentation/views/widgets/pageView1.dart';
 import 'package:ghosn_app/Features/home/presentation/views/widgets/search&menu.dart';
-import 'package:ghosn_app/Features/home/presentation/views/widgets/bottomBar.dart';
 
 class gardens extends StatelessWidget {
   gardens({super.key});
@@ -20,10 +20,9 @@ class gardens extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {},
-              icon: Image.asset("assets/image 13.jpg"),
+              icon: Icon(Icons.shopping_cart),
             ),
-            IconButton(
-                onPressed: () {}, icon: Image.asset("assets/image 12.jpg")),
+            IconButton(onPressed: () {}, icon: Icon(Icons.notifications)),
           ],
         ),
         body: Column(
