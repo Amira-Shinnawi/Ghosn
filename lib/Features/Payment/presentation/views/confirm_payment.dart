@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ghosn_app/Features/Payment/data/model/payment_date_model.dart';
 import 'package:ghosn_app/core/widgets/custom_appbar.dart';
 
+import '../../../../core/utils/style.dart';
 import '../../../../translations/local_keys.g.dart';
 import 'widgets/confirm_payment_body.dart';
 
@@ -16,7 +17,13 @@ class ConfirmPayment extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-       titleAppBar:Text( LocaleKeys.confirmpayment.tr(),),
+        titleAppBar: Text(
+          LocaleKeys.confirmpayment.tr(),
+          style: Styles.textStyle22Inter.copyWith(
+            color: Colors.black,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);

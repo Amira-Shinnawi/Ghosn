@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/Features/Payment/data/model/payment_date_model.dart';
+import 'package:ghosn_app/core/utils/style.dart';
 import 'package:ghosn_app/core/widgets/custom_appbar.dart';
 
 import '../../../../translations/local_keys.g.dart';
@@ -17,7 +18,13 @@ class Bill extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-      titleAppBar: Text(LocaleKeys.billpayment.tr(),),
+        titleAppBar: Text(
+          LocaleKeys.billpayment.tr(),
+          style: Styles.textStyle22Inter.copyWith(
+            color: Colors.black,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);

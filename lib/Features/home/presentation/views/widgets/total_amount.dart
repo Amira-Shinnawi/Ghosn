@@ -2,8 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../constants.dart';
+import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../translations/local_keys.g.dart';
@@ -69,6 +71,9 @@ class TotalAmount extends StatelessWidget {
       ),
       CustomButton(
         text: LocaleKeys.Checkout.tr().toUpperCase(),
+        onPressed: () {
+          GoRouter.of(context).push(AppRouter.kPaymentPage);
+        },
       ),
     ]);
   }

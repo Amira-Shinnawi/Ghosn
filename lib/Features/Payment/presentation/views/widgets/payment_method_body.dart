@@ -45,9 +45,13 @@ class _PaymentMethodBody extends State<PaymentMethodBody> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
 
+    double blocHeight = (height / 100);
+    double blocWidth = (width / 100);
     return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
+      padding: EdgeInsets.symmetric(
+          vertical: blocHeight * 4, horizontal: blocWidth * 4),
       child: Form(
         key: _formKey,
         child: Column(
@@ -59,9 +63,7 @@ class _PaymentMethodBody extends State<PaymentMethodBody> {
               items: const [],
               onChanged: (String? value) {},
               child: CSCPicker(
-              
                 onCountryChanged: (value) {
-
                   setState(() {
                     paymentData.country = value.toString();
                   });
@@ -76,15 +78,14 @@ class _PaymentMethodBody extends State<PaymentMethodBody> {
                     paymentData.city = value.toString();
                   });
                 },
-                
               ),
             ),
-            SizedBox(height: height * .050),
+            SizedBox(height: blocHeight * 2),
             Text(
               LocaleKeys.street.tr(),
               style: Styles.textStyle20Inter,
             ),
-            SizedBox(height: height * .008),
+            SizedBox(height: blocHeight * 2),
             CustomTextFelid(
               hinText: LocaleKeys.street.tr(),
               controller: _streetController,
@@ -92,12 +93,12 @@ class _PaymentMethodBody extends State<PaymentMethodBody> {
               width: 1,
               color: Colors.black,
             ),
-            SizedBox(height: height * .050),
-           Text(
-             LocaleKeys.phoneNumber.tr(),
+            SizedBox(height: blocHeight * 4),
+            Text(
+              LocaleKeys.phoneNumber.tr(),
               style: Styles.textStyle20Inter,
             ),
-            SizedBox(height: height * .008),
+            SizedBox(height: blocHeight * 2),
             CustomTextFelid(
               hinText: LocaleKeys.phoneNumber.tr(),
               controller: _phoneNumberController,
@@ -106,11 +107,10 @@ class _PaymentMethodBody extends State<PaymentMethodBody> {
               width: 1,
               color: Colors.black,
             ),
-            SizedBox(height: height * .024),
-            SizedBox(height: height * .1),
+            SizedBox(height: blocHeight * 8),
             Center(
               child: CustomButton(
-                text:  LocaleKeys.Pay.tr(),
+                text: LocaleKeys.Pay.tr(),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     paymentData = PaymentDataModel(
@@ -133,7 +133,7 @@ class _PaymentMethodBody extends State<PaymentMethodBody> {
                 },
               ),
             ),
-            SizedBox(height: height * .05),
+            SizedBox(height: blocHeight * 3),
             Center(
               child: Text(
                 LocaleKeys.help.tr(),

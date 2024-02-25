@@ -14,6 +14,10 @@ class CheckOutBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
+    double blocHeight = (height / 100);
+    double blocWidth = (width / 100);
     return Scaffold(
         appBar: CustomAppBar(
           leading: IconButton(
@@ -23,12 +27,14 @@ class CheckOutBody extends StatelessWidget {
             icon: const Icon(Icons.arrow_back_ios),
           ),
         ),
-        body: Center(
+        body: Padding(
+          padding: EdgeInsets.symmetric(
+              vertical: blocHeight * 6, horizontal: blocWidth * 4),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                 LocaleKeys.paymentsuccess.tr(),
+                LocaleKeys.paymentsuccess.tr(),
                 style: Styles.textStyle20Inter,
                 textAlign: TextAlign.center,
               ),
@@ -37,8 +43,8 @@ class CheckOutBody extends StatelessWidget {
                 width: 342,
                 height: 320,
               ),
-              const SizedBox(height: 20),
-             Padding(
+              SizedBox(height: blocHeight * 2),
+              Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   LocaleKeys.finishorder.tr(),
@@ -47,7 +53,7 @@ class CheckOutBody extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: height * .06,
+                height: blocHeight * 6,
               ),
               CustomButton(
                 text: LocaleKeys.ok.tr(),

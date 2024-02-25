@@ -10,52 +10,45 @@ import '../../../../../translations/local_keys.g.dart';
 import '../../../data/model/payment_date_model.dart';
 
 class ConfirmPaymentBody extends StatelessWidget {
-  const ConfirmPaymentBody({super.key, required this.paymentData, required this.paymentMethod});
+  const ConfirmPaymentBody(
+      {super.key, required this.paymentData, required this.paymentMethod});
   final PaymentDataModel paymentData;
-    final String paymentMethod;
+  final String paymentMethod;
 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
 
+    double blocHeight = (height / 100);
+    double blocWidth = (width / 100);
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.only(top: height * 0.064, left: 24, right: 24),
+        padding: EdgeInsets.symmetric(
+            vertical: blocHeight * 4, horizontal: blocWidth * 6),
         child: Column(
           children: [
-           SpaceBetweenRow(
-              label:  LocaleKeys.date.tr(),
+            SpaceBetweenRow(
+              label: LocaleKeys.date.tr(),
               value: '26jan2025',
             ),
-            SizedBox(
-              height: height * .024,
-            ),
             SpaceBetweenRow(
-              label:  LocaleKeys.address.tr(),
+              label: LocaleKeys.address.tr(),
               value: paymentData.address,
-            ),
-            SizedBox(
-              height: height * .024,
             ),
             SpaceBetweenRow(
               label: LocaleKeys.paymentmethod.tr(),
-              value:paymentMethod,
-            ),
-            SizedBox(
-              height: height * .024,
+              value: paymentMethod,
             ),
             SpaceBetweenRow(
               label: LocaleKeys.phoneNumber.tr(),
               value: paymentData.phoneNumber,
             ),
-            SizedBox(
-              height: height * .024,
-            ),
             SpaceBetweenRow(
-              label:LocaleKeys.TotalAmount.tr(),
+              label: LocaleKeys.TotalAmount.tr(),
               value: '123 EGP',
             ),
-            SizedBox(height: height * .04),
+            SizedBox(height: blocHeight * 4),
             Center(
               child: CustomButton(
                 text: LocaleKeys.confirm.tr(),
@@ -69,7 +62,7 @@ class ConfirmPaymentBody extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(height: height * .1),
+            SizedBox(height: blocHeight * 4),
             Center(
               child: Text(
                 LocaleKeys.help.tr(),
