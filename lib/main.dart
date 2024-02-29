@@ -2,10 +2,13 @@ import 'dart:developer';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/utils/app_router.dart';
 import 'package:ghosn_app/core/utils/functions/shared_pref_cache.dart';
 import 'package:ghosn_app/translations/codegen_loader.g.dart';
+
+import 'core/utils/functions/controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,8 +42,8 @@ class GhosnApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(main_controller());
     return MaterialApp.router(
-      
       title: 'Ghosn',
       routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,

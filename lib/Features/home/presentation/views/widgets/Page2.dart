@@ -4,7 +4,10 @@ import 'package:ghosn_app/Features/home/presentation/views/widgets/plantContaine
 import 'package:ghosn_app/constants.dart';
 
 class Page2 extends StatelessWidget {
-  const Page2({super.key});
+  Page2({super.key, required this.i2, required this.n2, required this.p2});
+  String i2;
+  String n2;
+  int p2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +26,7 @@ class Page2 extends StatelessWidget {
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2),
                 itemBuilder: (context, index) {
-                  return plantContainer();
+                  return plantContainer(image: i2, name: n2, price: p2);
                 }),
           ),
         ],

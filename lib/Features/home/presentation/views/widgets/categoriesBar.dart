@@ -1,10 +1,12 @@
-import 'package:ghosn_app/Features/home/presentation/views/gardens.dart';
 import 'package:flutter/material.dart';
-import 'package:ghosn_app/Features/home/presentation/views/home.dart';
-import 'package:ghosn_app/Features/home/presentation/views/blooming.dart';
+import 'package:get/get.dart';
+import 'package:ghosn_app/Features/home/presentation/views/widgets/pageView1.dart';
+import '../../../../../core/utils/functions/controller.dart';
+import 'Page2.dart';
+import 'Page3.dart';
 
 class categoriesBar extends StatelessWidget {
-  const categoriesBar(
+  categoriesBar(
       {super.key,
       required this.color1,
       required this.color2,
@@ -12,7 +14,7 @@ class categoriesBar extends StatelessWidget {
   final Color color1;
   final Color color2;
   final Color color3;
-
+  main_controller controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,9 +22,20 @@ class categoriesBar extends StatelessWidget {
       child: Row(children: [
         GestureDetector(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return HomePage();
-            }));
+            controller.articl = [
+              Page1(
+                i1: 'assets/image 16.jpg',
+                n1: 'silver snak plant',
+                p1: 150,
+              ),
+              Page2(i2: 'assets/image 20.jpg', n2: 'tree', p2: 150),
+              Page3(
+                i3: 'assets/image 21.jpg',
+                n3: 'red flowers',
+                p3: 150,
+              )
+            ];
+            controller.update();
           },
           child: Container(
             color: color1,
@@ -32,17 +45,39 @@ class categoriesBar extends StatelessWidget {
         const Spacer(),
         GestureDetector(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return gardens();
-              }));
+              controller.articl = [
+                Page2(i2: 'assets/image 20.jpg', n2: 'tree', p2: 150),
+                Page3(
+                  i3: 'assets/image 21.jpg',
+                  n3: 'red flowers',
+                  p3: 150,
+                ),
+                Page1(
+                  i1: 'assets/image 16.jpg',
+                  n1: 'silver snak plant',
+                  p1: 150,
+                )
+              ];
+              controller.update();
             },
             child: Container(color: color2, child: const Text('gardens'))),
         const Spacer(),
         GestureDetector(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return blooming();
-              }));
+              controller.articl = [
+                Page3(
+                  i3: 'assets/image 21.jpg',
+                  n3: 'red flowers',
+                  p3: 150,
+                ),
+                Page1(
+                  i1: 'assets/image 16.jpg',
+                  n1: 'silver snak plant',
+                  p1: 150,
+                ),
+                Page2(i2: 'assets/image 20.jpg', n2: 'tree', p2: 150)
+              ];
+              controller.update();
             },
             child: Container(color: color3, child: const Text('bloombing')))
       ]),
