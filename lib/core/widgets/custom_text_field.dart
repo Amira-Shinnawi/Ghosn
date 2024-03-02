@@ -17,7 +17,7 @@ class CustomTextFelid extends StatelessWidget {
     this.width,
     this.color,
     this.onTap,
-    this.readOnly = false,
+    this.readOnly = false, this.validator,
   });
 
   final Widget? prefixIcon;
@@ -33,6 +33,7 @@ class CustomTextFelid extends StatelessWidget {
   final Color? color;
   final void Function()? onTap;
   final bool readOnly;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class CustomTextFelid extends StatelessWidget {
       obscureText: pass,
       onChanged: onChanged,
       controller: controller,
-      validator: (data) {
+      validator:validator?? (data) {
         if (data!.isEmpty) {
           return 'Please Enter $hinText';
         }

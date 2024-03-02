@@ -67,7 +67,7 @@ class SplashViewBody extends StatelessWidget {
           CustomButton(
             text: LocaleKeys.getStarted.tr(),
             onPressed: () {
-              GoRouter.of(context).push(AppRouter.kHomePage);
+              GoRouter.of(context).push(AppRouter.kLoginOptionView);
             },
           ),
           SizedBox(

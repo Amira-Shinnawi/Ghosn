@@ -69,5 +69,10 @@ abstract class  LocaleKeys {
   static const ShowProduct = 'ShowProduct';
   static const ShoppingCart = 'ShoppingCart';
   static const Checkout = 'Checkout';
+  static const gender = 'gender';
+  static const chooseLocation = 'chooseLocation';
+  static const Loading = 'Loading';
+  static const Male = 'Male';
+  static const Female = 'Female';
 
 }

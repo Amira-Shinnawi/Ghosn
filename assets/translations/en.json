@@ -70,7 +70,13 @@
     "Favorites":"Favorites",
     "ShowProduct":"Show Product",
     "ShoppingCart":"Shopping Cart",
-    "Checkout":"Checkout"
+    "Checkout":"Checkout",
+
+    "gender":"Gender",
+    "chooseLocation":"Choose Your Current Location",
+    "Loading":"Loading...",
+    "Male":"Male",
+"Female":"Female"
 
 }
 

@@ -12,6 +12,7 @@ import '../../../../../core/utils/functions/is_arabic.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_text_field.dart';
+import '../../../../../core/widgets/show_snack_bar.dart';
 import '../../../../../translations/local_keys.g.dart';
 
 class LoginForm extends StatefulWidget {
@@ -46,17 +47,7 @@ class _LoginFormState extends State<LoginForm> {
             GoRouter.of(context).pushReplacement(AppRouter.kChangePassword);
             isLoading = false;
           } else if (state is LoginFailureState) {
-            showDialog(
-              context: context,
-              builder: (context) => AlertDialog(
-                content: Text(
-                  state.errorMessage,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
-                ),
-                backgroundColor: Colors.red,
-              ),
-            );
+            showSnackBar(context, state.errorMessage);
             isLoading = false;
           }
         },

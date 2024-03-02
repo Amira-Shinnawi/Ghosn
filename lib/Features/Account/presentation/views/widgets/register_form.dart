@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ghosn_app/Features/Account/presentation/manager/cubit/auth_cubit.dart';
 import 'package:ghosn_app/core/utils/app_router.dart';
 import 'package:go_router/go_router.dart';
@@ -10,6 +11,7 @@ import '../../../../../constants.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_text_field.dart';
+import '../../../../../core/widgets/show_snack_bar.dart';
 import '../../../../../translations/local_keys.g.dart';
 import 'google_facebook_login.dart';
 
@@ -32,10 +34,31 @@ class _RegisterFormState extends State<RegisterForm> {
   final userNameController = TextEditingController();
   final emailController = TextEditingController();
   final passController = TextEditingController();
+  final confirmPassController = TextEditingController();
+
+  bool gender = true;
+
+  bool showLocationFields = false;
+  final cityController = TextEditingController();
+  final stateController = TextEditingController();
+
+  String city = '';
+  String yourState = '';
+
+  @override
+  void dispose() {
+    cityController.dispose();
+    stateController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+    double blockHeight = (height / 100);
+
+    double width = MediaQuery.of(context).size.width;
+    double blockWidth = (width / 100);
 
     return BlocProvider(
       create: (context) => AuthCubit(),
@@ -47,23 +70,14 @@ class _RegisterFormState extends State<RegisterForm> {
             GoRouter.of(context).pushReplacement(AppRouter.kChangePassword);
             isLoading = false;
           } else if (state is RegisterFailureState) {
-            showDialog(
-              context: context,
-              builder: (context) => AlertDialog(
-                content: Text(
-                  state.errorMessage,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
-                ),
-                backgroundColor: Colors.red,
-              ),
-            );
+            showSnackBar(context, state.errorMessage);
             isLoading = false;
           }
         },
         builder: (context, state) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 27),
+            padding: EdgeInsets.symmetric(
+                horizontal: blockWidth * 5, vertical: blockHeight * 2),
             child: LoadingOverlay(
               isLoading: isLoading,
               child: Form(
@@ -81,7 +95,7 @@ class _RegisterFormState extends State<RegisterForm> {
                       ),
                     ),
                     SizedBox(
-                      height: height * .028,
+                      height: blockHeight * 2,
                     ),
                     CustomTextFelid(
                       prefixIcon: const Icon(
@@ -93,18 +107,19 @@ class _RegisterFormState extends State<RegisterForm> {
                       keyboardType: TextInputType.emailAddress,
                     ),
                     SizedBox(
-                      height: height * .018,
+                      height: blockHeight * 2,
                     ),
                     CustomTextFelid(
-                        prefixIcon: const Icon(
-                          Icons.email_rounded,
-                          color: kHintColor,
-                        ),
-                        controller: userNameController,
-                        hinText: 'UserName',
-                        keyboardType: TextInputType.name),
+                      prefixIcon: const Icon(
+                        Icons.email_rounded,
+                        color: kHintColor,
+                      ),
+                      controller: userNameController,
+                      hinText: 'UserName',
+                      keyboardType: TextInputType.name,
+                    ),
                     SizedBox(
-                      height: height * .018,
+                      height: blockHeight * 2,
                     ),
                     CustomTextFelid(
                       pass: obscureText,
@@ -124,26 +139,32 @@ class _RegisterFormState extends State<RegisterForm> {
                       keyboardType: TextInputType.visiblePassword,
                     ),
                     SizedBox(
-                      height: height * .018,
+                      height: blockHeight * 2,
                     ),
-                    // CustomTextFelid(
-                    //   pass: obscureText,
-                    //   hinText: LocaleKeys.confirmpassword.tr(),
-                    //   prefixIcon: IconButton(
-                    //     onPressed: () {
-                    //       setState(() {
-                    //         obscureText = !obscureText;
-                    //       });
-                    //     },
-                    //     icon: Icon(
-                    //       obscureText ? Icons.visibility_off : Icons.visibility,
-                    //       color: kHintColor,
-                    //     ),
-                    //   ),
-                    //   keyboardType: TextInputType.visiblePassword,
-                    // ),
+                    CustomTextFelid(
+                      pass: obscureText,
+                      hinText: LocaleKeys.confirmpassword.tr(),
+                      validator: (value) {
+                        if (value != passController.text) {
+                          return 'Passwords do not match';
+                        }
+                        return null;
+                      },
+                      prefixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            obscureText = !obscureText;
+                          });
+                        },
+                        icon: Icon(
+                          obscureText ? Icons.visibility_off : Icons.visibility,
+                          color: kHintColor,
+                        ),
+                      ),
+                      keyboardType: TextInputType.visiblePassword,
+                    ),
                     // SizedBox(
-                    //   height: height * .018,
+                    //   height: blockHeight * 2,
                     // ),
                     // CustomTextFelid(
                     //   prefixIcon: const Icon(
@@ -154,6 +175,153 @@ class _RegisterFormState extends State<RegisterForm> {
                     //   keyboardType: TextInputType.number,
                     //   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     // ),
+                    SizedBox(
+                      height: blockHeight * 2,
+                    ),
+                    Container(
+                      height: blockHeight * 6.5,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        border: Border.all(
+                          color: kGreenColor,
+                          width: 3,
+                        ),
+                      ),
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: blockWidth * 2.5),
+                        child: Row(
+                          children: [
+                            const Icon(
+                              FontAwesomeIcons.venusMars,
+                              size: 20,
+                              color: kHintColor,
+                            ),
+                            SizedBox(
+                              width: blockWidth * 4,
+                            ),
+                            Text(
+                              LocaleKeys.gender.tr(),
+                              style: TextStyle(
+                                color: Colors.black
+                                    .withOpacity(0.4000000059604645),
+                                fontSize: 18,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Radio<bool>(
+                                  value: true,
+                                  activeColor: kGreenColor,
+                                  groupValue: gender,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      gender = value!;
+                                    });
+                                  },
+                                ),
+                                Text(
+                                  LocaleKeys.Male.tr(),
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Radio<bool>(
+                                  value: false,
+                                  groupValue: gender,
+                                  activeColor: kGreenColor,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      gender = value!;
+                                    });
+                                  },
+                                ),
+                                Text(
+                                  LocaleKeys.Female.tr(),
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: blockHeight * 2,
+                    ),
+                    CustomTextFelid(
+                      onTap: () {
+                        setState(() {
+                          showLocationFields = !showLocationFields;
+                        });
+                      },
+                      hinText: LocaleKeys.chooseLocation.tr(),
+                      suffixIcon: const Icon(
+                        FontAwesomeIcons.chevronDown,
+                        size: 20,
+                        color: kGreenColor,
+                      ),
+                      controller: TextEditingController(
+                          text:
+                              '${cityController.text}${stateController.text}'),
+                      readOnly: true,
+                      prefixIcon: const Icon(
+                        FontAwesomeIcons.locationDot,
+                        size: 20,
+                        color: kHintColor,
+                      ),
+                    ),
+                    SizedBox(
+                      height: blockHeight * 1,
+                    ),
+                    if (showLocationFields)
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: blockWidth * 2.5),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: CustomTextFelid(
+                                    hinText: LocaleKeys.city.tr(),
+                                    controller: cityController,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        city = value;
+                                      });
+                                    },
+                                  ),
+                                ),
+                                SizedBox(width: blockWidth * 2),
+                                Expanded(
+                                  child: CustomTextFelid(
+                                    hinText: LocaleKeys.state.tr(),
+                                    controller: stateController,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        yourState = value;
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+
                     Row(
                       children: [
                         Checkbox(
@@ -192,7 +360,7 @@ class _RegisterFormState extends State<RegisterForm> {
                               }
                             },
                             text: state is RegisterLoadingState
-                                ? 'Loading...'
+                                ? LocaleKeys.Loading.tr()
                                 : LocaleKeys.Signup.tr().toUpperCase(),
                           )
                         : CustomButton(
@@ -200,7 +368,7 @@ class _RegisterFormState extends State<RegisterForm> {
                             text: LocaleKeys.Signup.tr().toUpperCase(),
                           ),
                     SizedBox(
-                      height: height * .015,
+                      height: blockHeight * 1.5,
                     ),
                     const GoogleFacebookLogin(),
                   ],

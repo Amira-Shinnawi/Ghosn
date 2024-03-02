@@ -24,13 +24,13 @@ class categoriesBar extends StatelessWidget {
           onTap: () {
             controller.articl = [
               Page1(
-                i1: 'assets/image 16.jpg',
+                i1: 'assets/images/image 16.jpg',
                 n1: 'silver snak plant',
                 p1: 150,
               ),
-              Page2(i2: 'assets/image 20.jpg', n2: 'tree', p2: 150),
+              Page2(i2: 'assets/images/image 20.jpg', n2: 'tree', p2: 150),
               Page3(
-                i3: 'assets/image 21.jpg',
+                i3: 'assets/images/image 21.jpg',
                 n3: 'red flowers',
                 p3: 150,
               )
@@ -46,14 +46,14 @@ class categoriesBar extends StatelessWidget {
         GestureDetector(
             onTap: () {
               controller.articl = [
-                Page2(i2: 'assets/image 20.jpg', n2: 'tree', p2: 150),
+                Page2(i2: 'assets/images/image 20.jpg', n2: 'tree', p2: 150),
                 Page3(
-                  i3: 'assets/image 21.jpg',
+                  i3: 'assets/images/image 21.jpg',
                   n3: 'red flowers',
                   p3: 150,
                 ),
                 Page1(
-                  i1: 'assets/image 16.jpg',
+                  i1: 'assets/images/image 16.jpg',
                   n1: 'silver snak plant',
                   p1: 150,
                 )
@@ -66,16 +66,16 @@ class categoriesBar extends StatelessWidget {
             onTap: () {
               controller.articl = [
                 Page3(
-                  i3: 'assets/image 21.jpg',
+                  i3: 'assets/images/image 21.jpg',
                   n3: 'red flowers',
                   p3: 150,
                 ),
                 Page1(
-                  i1: 'assets/image 16.jpg',
+                  i1: 'assets/images/image 16.jpg',
                   n1: 'silver snak plant',
                   p1: 150,
                 ),
-                Page2(i2: 'assets/image 20.jpg', n2: 'tree', p2: 150)
+                Page2(i2: 'assets/images/image 20.jpg', n2: 'tree', p2: 150)
               ];
               controller.update();
             },

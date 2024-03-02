@@ -72,7 +72,15 @@
     "Favorites":"المفضلات",
     "ShowProduct":"عرض المنتج",
     "ShoppingCart":"سلة المشتريات",
-    "Checkout":"الدفع باستخدام"
+    "Checkout":"الدفع باستخدام",
+
+    "gender":"الجنس",
+    "chooseLocation":"اختر موقعك الحالي",
+
+    "Loading":"تحميل....",
+    "Male":"ذكر",
+"Female":"أنثي"
+    
 
 }
 
