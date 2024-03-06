@@ -76,7 +76,36 @@
     "chooseLocation":"Choose Your Current Location",
     "Loading":"Loading...",
     "Male":"Male",
-"Female":"Female"
+    "Female":"Female",
+
+    "profile":"Profile",
+    "editProfile":"Edit Profile",
+    "documents":"Documents",
+    "articles":"Articles",
+    "settings":"Settings",
+    "signOut":"Sign Out",
+    "services":"Services",
+
+    "posts":"Posts",
+    "purchases":"Purchases",
+    "followers":"Followers",
+    "following":"Following",
+"hello":"Hello, ",
+"show": "Show",
+"showProfile": "Show Profile",
+"ProfilePicture": "Profile Picture",
+"edit":"Edit",
+"work":"Work",
+"currentCity":"Current City",
+"socialLinks":"Social Links",
+"save":"Save",
+"contactWith":"Contact with us",
+"needHelp":"Do you need help?",
+"inquiry":"For inquiries or assistance, you will be transferred to our distinguished customer service",
+"okContinue":"Continue"
+
+
+
 
 }
 

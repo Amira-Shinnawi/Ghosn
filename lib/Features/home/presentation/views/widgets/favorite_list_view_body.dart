@@ -6,14 +6,19 @@ class FavoriteListViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double blockHeight = (height / 100);
+    double width = MediaQuery.of(context).size.width;
+    double blockWidth = (width / 100);
     return ListView.builder(
         physics: const BouncingScrollPhysics(),
         itemCount: 15,
         scrollDirection: Axis.vertical,
         itemBuilder: (context, index) {
-          return const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 37, vertical: 13),
-            child: FavoriteItem(),
+          return Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: blockWidth * 7, vertical: blockHeight * 1),
+            child: const FavoriteItem(),
           );
         });
   }

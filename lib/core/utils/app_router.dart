@@ -1,4 +1,5 @@
 import 'package:ghosn_app/Features/Account/presentation/views/change_pass.dart';
+import 'package:ghosn_app/Features/Account/presentation/views/edit_profile.dart';
 import 'package:ghosn_app/Features/Account/presentation/views/login_options_view.dart';
 import 'package:ghosn_app/Features/Account/presentation/views/login_page.dart';
 import 'package:ghosn_app/Features/Account/presentation/views/register_page.dart';
@@ -8,6 +9,7 @@ import 'package:ghosn_app/Features/home/presentation/views/notification_home.dar
 import 'package:ghosn_app/Features/splash/presentation/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../Features/Account/presentation/views/profile_view.dart';
 import '../../Features/home/presentation/views/favorite_home.dart';
 import '../../Features/home/presentation/views/home.dart';
 import '../../Features/home/presentation/views/product_details_home.dart';
@@ -27,6 +29,8 @@ abstract class AppRouter {
   static const kFavorite = '/favorite';
   static const kMainHome = '/main';
   static const kNotification = '/notification';
+  static const kProfile = '/profile';
+  static const kEditProfile = '/editProfile';
 
   static final router = GoRouter(
       initialLocation: (userToken != null || tokenFacebookOrGoogle != null)
@@ -83,6 +87,14 @@ abstract class AppRouter {
         GoRoute(
           path: kNotification,
           builder: (context, state) => const NotificationHome(),
+        ),
+        GoRoute(
+          path: kProfile,
+          builder: (context, state) => const ProfileView(),
+        ),
+         GoRoute(
+          path: kEditProfile,
+          builder: (context, state) => const EditProfile(),
         ),
       ]);
 }

@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 
 AppBar CustomAppBar(
     {Widget? titleAppBar,
-    required final Widget leading,
+    Widget? leading,
     Color? backgroundColor,
-    List<Widget>? actions}) {
+    List<Widget>? actions,
+    bool? automaticallyImplyLeading,
+    bool? centerTitle}) {
   return AppBar(
     leading: leading,
     elevation: 0.0,
-    centerTitle: true,
+    centerTitle: centerTitle ?? true,
     backgroundColor: backgroundColor,
     title: titleAppBar,
     actions: actions,
+    surfaceTintColor: Colors.transparent,
+    automaticallyImplyLeading: automaticallyImplyLeading ?? false,
   );
 }

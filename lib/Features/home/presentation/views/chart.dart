@@ -19,11 +19,12 @@ class Chart extends StatelessWidget {
           },
           icon: const Icon(
             Icons.arrow_back_ios,
+            size: 20,
           ),
         ),
         titleAppBar: Text(
           LocaleKeys.ShoppingCart.tr(),
-          style: Styles.textStyle22Inter.copyWith(
+          style: Styles.textStyle20Inter.copyWith(
             color: Colors.black,
             fontWeight: FontWeight.w600,
           ),
@@ -33,7 +34,7 @@ class Chart extends StatelessWidget {
             onPressed: () {},
             icon: const Icon(
               FontAwesomeIcons.trashCan,
-              size: 25,
+              size: 20,
             ),
           ),
         ],

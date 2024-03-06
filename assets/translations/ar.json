@@ -79,7 +79,40 @@
 
     "Loading":"تحميل....",
     "Male":"ذكر",
-"Female":"أنثي"
+    "Female":"أنثي",
+
+    "profile":"حسابك",
+    "editProfile":"تعديل حسابك",
+    "documents":"المستندات",
+    "articles":"المقالات",
+    "settings":"الاعدادات",
+    "signOut":"تسجيل الخروج",
+    "services":"الخدمات",
+
+    "posts":"المنشورات",
+    "purchases":"المشتريات",
+    "followers":"المتابعون",
+    "following":"يتابع",
+    "hello":"مرحبا, ",
+    "show": "عرض",
+    "showProfile": "عرض الملف االشخصي",
+    "ProfilePicture": "الصورة الشخصيه ",
+"edit":"تعديل",
+"work":"العمل",
+"currentCity":"مكان الاقامة",
+"socialLinks":"وسائل تواصل اجتماعي",
+"save":"حفظ",
+"contactWith":"تواصل معنا",
+"needHelp":"هل تحتاج مساعدة؟",
+"inquiry":"للإستفسار أوطلب المساعدة يتم تحويلك لخدمة عملائنا المميزة",
+"okContinue":"تأكد من بياناتك"
+
+
+
+
+
+    
+
     
 
 }

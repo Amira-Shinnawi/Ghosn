@@ -28,14 +28,14 @@ class PlantDetailsInfo extends StatelessWidget {
               children: [
                 Text(
                   'Silver Plant',
-                  style: Styles.textStyle22Inter.copyWith(
+                  style: Styles.textStyle20Inter.copyWith(
                     color: Colors.black,
                   ),
                 ),
                 Text(
                   '150 EGP',
                   style: Styles.textStyle20Inter.copyWith(
-                    fontSize: 20,
+                    fontSize: 18,
                     color: kGreenColor,
                   ),
                 ),
@@ -46,7 +46,7 @@ class PlantDetailsInfo extends StatelessWidget {
                 Text(
                   LocaleKeys.BowlColor.tr(),
                   style: Styles.textStyle20Inter.copyWith(
-                    fontSize: 22,
+                    fontSize: 18,
                   ),
                 ),
                 Container(
@@ -61,14 +61,14 @@ class PlantDetailsInfo extends StatelessWidget {
         ),
         Text(
           LocaleKeys.Details.tr(),
-          style: Styles.textStyle20Inter.copyWith(
+          style: Styles.textStyle18Inter.copyWith(
             fontWeight: FontWeight.bold,
           ),
         ),
         const Text(
           "This plant has long, broad leaves with dark green lines on the edges.This plant has long, broad leaves with dark green lines on the edgesThis plant has long, broad leaves with dark green lines on the edges",
           style: TextStyle(
-            fontSize: 18,
+            fontSize: 16,
           ),
           maxLines: 3,
           overflow: TextOverflow.ellipsis,
@@ -78,13 +78,13 @@ class PlantDetailsInfo extends StatelessWidget {
             Text(
               LocaleKeys.moreInfo.tr(),
               style: const TextStyle(
-                fontSize: 18,
+                fontSize: 16,
               ),
             ),
             Text(
               LocaleKeys.clickHere.tr(),
               style: const TextStyle(
-                fontSize: 18,
+                fontSize: 16,
                 fontWeight: FontWeight.bold,
                 decoration: TextDecoration.underline,
               ),
@@ -96,7 +96,7 @@ class PlantDetailsInfo extends StatelessWidget {
         ),
         Text(
           LocaleKeys.OtherPhotos.tr(),
-          style: Styles.textStyle20Inter.copyWith(
+          style: Styles.textStyle18Inter.copyWith(
             fontWeight: FontWeight.bold,
           ),
         ),

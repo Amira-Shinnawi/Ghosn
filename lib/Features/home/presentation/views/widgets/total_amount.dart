@@ -38,7 +38,7 @@ class TotalAmount extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: blockWidth * 4),
                 child: Text(
                   LocaleKeys.TotalAmount.tr(),
-                  style: Styles.textStyle18Inter.copyWith(
+                  style: Styles.textStyle16Inter.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -60,7 +60,7 @@ class TotalAmount extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.clip,
                     style: Styles.textStyle22Inter.copyWith(
-                      fontSize: 18,
+                      fontSize: 16,
                     ),
                   ),
                 ),

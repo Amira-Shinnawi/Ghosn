@@ -22,7 +22,7 @@ class NotificationBody extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: blockWidth * 5),
             child: Text(
               LocaleKeys.Today.tr(),
-              style: Styles.textStyle20Inter.copyWith(
+              style: Styles.textStyle18Inter.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -39,7 +39,7 @@ class NotificationBody extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: blockWidth * 5),
                       child: Text(
                         LocaleKeys.Earlier.tr(),
-                        style: Styles.textStyle20Inter.copyWith(
+                        style: Styles.textStyle18Inter.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),

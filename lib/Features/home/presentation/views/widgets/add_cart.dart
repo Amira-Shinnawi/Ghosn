@@ -1,10 +1,9 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:ghosn_app/constants.dart';
+import 'package:ghosn_app/core/utils/app_router.dart';
 import 'package:ghosn_app/core/utils/style.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../../../../translations/local_keys.g.dart';
-import '../chart.dart';
+import '../../../../../core/widgets/custom_elvated_button.dart';
 
 class AddCart extends StatefulWidget {
   const AddCart({
@@ -28,25 +27,13 @@ class _AddCartState extends State<AddCart> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const Chart(),
-                ),
-              );
-            },
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(
-                kGreenColor,
-              ),
-            ),
-            child: Text(
-              LocaleKeys.AddCart.tr(),
-              style: Styles.textStyle20Inter.copyWith(
-                color: Colors.white,
-              ),
+          Expanded(
+            child: CustomElevatedButton(
+              onPressed: () {
+                GoRouter.of(context).push(AppRouter.kChart);
+              },
+              buttonName: 'Add Cart',
+              
             ),
           ),
           Row(
@@ -59,13 +46,13 @@ class _AddCartState extends State<AddCart> {
                 },
                 icon: const Icon(
                   Icons.add,
-                  size: 30,
+                  size: 25,
                   color: Colors.black,
                 ),
               ),
               Text(
                 '$count',
-                style: Styles.textStyle20Inter,
+                style: Styles.textStyle18Inter,
               ),
               IconButton(
                 onPressed: () {
@@ -77,7 +64,7 @@ class _AddCartState extends State<AddCart> {
                 },
                 icon: const Icon(
                   Icons.remove,
-                  size: 30,
+                  size: 25,
                   color: Colors.black,
                 ),
               ),

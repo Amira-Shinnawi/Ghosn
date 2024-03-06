@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ghosn_app/Features/Account/presentation/views/profile_view.dart';
 import 'package:ghosn_app/Features/home/presentation/views/chart.dart';
-import 'package:ghosn_app/Features/home/presentation/views/favorite_home.dart';
 import 'package:ghosn_app/Features/home/presentation/views/home.dart';
 import 'package:ghosn_app/Features/home/presentation/views/product_details_home.dart';
 import 'package:ghosn_app/constants.dart';
@@ -22,7 +22,7 @@ class _BottomNavigationItemState extends State<BottomNavigationItem> {
     HomePage(),
     const ProductDetailsHome(),
     const Chart(),
-    const FavoriteHome(),
+    const ProfileView(),
     const ProductDetailsHome(),
   ];
 

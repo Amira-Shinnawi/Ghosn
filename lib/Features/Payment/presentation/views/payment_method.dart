@@ -19,11 +19,13 @@ class PaymentPage extends StatelessWidget {
           },
           icon: const Icon(
             Icons.arrow_back_ios,
+            color: Colors.black,
+            size: 20,
           ),
         ),
         titleAppBar: Text(
           LocaleKeys.paymentpage.tr(),
-          style: Styles.textStyle22Inter.copyWith(
+          style: Styles.textStyle20Inter.copyWith(
             color: Colors.black,
             fontWeight: FontWeight.w600,
           ),

@@ -74,5 +74,29 @@ abstract class  LocaleKeys {
   static const Loading = 'Loading';
   static const Male = 'Male';
   static const Female = 'Female';
+  static const profile = 'profile';
+  static const editProfile = 'editProfile';
+  static const documents = 'documents';
+  static const articles = 'articles';
+  static const settings = 'settings';
+  static const signOut = 'signOut';
+  static const services = 'services';
+  static const posts = 'posts';
+  static const purchases = 'purchases';
+  static const followers = 'followers';
+  static const following = 'following';
+  static const hello = 'hello';
+  static const show = 'show';
+  static const showProfile = 'showProfile';
+  static const ProfilePicture = 'ProfilePicture';
+  static const edit = 'edit';
+  static const work = 'work';
+  static const currentCity = 'currentCity';
+  static const socialLinks = 'socialLinks';
+  static const save = 'save';
+  static const contactWith = 'contactWith';
+  static const needHelp = 'needHelp';
+  static const inquiry = 'inquiry';
+  static const okContinue = 'okContinue';
 
 }

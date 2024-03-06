@@ -53,6 +53,10 @@ class GhosnApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.light,
         fontFamily: kInter,
+        appBarTheme: const AppBarTheme(
+          color: Colors.white,
+        ),
+        scaffoldBackgroundColor: Colors.white,
       ),
     );
   }

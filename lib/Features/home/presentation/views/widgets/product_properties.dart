@@ -25,7 +25,7 @@ class ProductProperties extends StatelessWidget {
         padding: EdgeInsets.symmetric(
           horizontal: width * 4,
         ),
-        child:  Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [

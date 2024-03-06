@@ -21,11 +21,11 @@ class HomePage extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {},
-              icon: Icon(Icons.shopping_cart_outlined),
+              icon: const Icon(Icons.shopping_cart_outlined),
             ),
             IconButton(
               onPressed: () {},
-              icon: Icon(Icons.notifications_outlined),
+              icon: const Icon(Icons.notifications_outlined),
             )
           ],
         ),

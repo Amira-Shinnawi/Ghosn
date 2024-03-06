@@ -19,11 +19,12 @@ class FavoriteHome extends StatelessWidget {
           },
           icon: const Icon(
             Icons.arrow_back_ios,
+            size: 20,
           ),
         ),
         titleAppBar: Text(
           LocaleKeys.Favorites.tr(),
-          style: Styles.textStyle22Inter.copyWith(
+          style: Styles.textStyle20Inter.copyWith(
             color: Colors.black,
             fontWeight: FontWeight.w600,
           ),

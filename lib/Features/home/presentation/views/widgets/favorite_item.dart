@@ -21,7 +21,7 @@ class FavoriteItem extends StatelessWidget {
       width: blockWidth * 80,
       decoration: BoxDecoration(
         border: Border.all(
-          color: kGreyColor.withOpacity(.3),
+          color: kGreyColor.withOpacity(.2),
           width: 2,
         ),
         borderRadius: BorderRadius.circular(15),
@@ -33,37 +33,39 @@ class FavoriteItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AspectRatio(
-              aspectRatio: 3 / 4,
+              aspectRatio: 2 / 2,
               child: Image.asset(
                 AssetsData.imageTest2,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               ),
             ),
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  const Text(
-                    'Sliver Plant',
-                    style: Styles.textStyle20Inter,
-                  ),
-                  ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
-                          kGreenColor,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    const Text(
+                      'Sliver Plant',
+                      style: Styles.textStyle18Inter,
+                    ),
+                    ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                            kGreenColor,
+                          ),
                         ),
-                      ),
-                      onPressed: () {
-                        GoRouter.of(context)
-                            .push(AppRouter.kProductDetailsHome);
-                      },
-                      child: Text(
-                        LocaleKeys.ShowProduct.tr(),
-                        style: Styles.textStyle18Inter.copyWith(
-                          color: Colors.white,
-                        ),
-                      ))
-                ],
+                        onPressed: () {
+                          GoRouter.of(context)
+                              .push(AppRouter.kProductDetailsHome);
+                        },
+                        child: Text(
+                          LocaleKeys.ShowProduct.tr(),
+                          style: Styles.textStyle16Inter.copyWith(
+                            color: Colors.white,
+                          ),
+                        ))
+                  ],
+                ),
               ),
             ),
           ],

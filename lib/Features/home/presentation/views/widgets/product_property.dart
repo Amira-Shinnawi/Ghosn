@@ -13,20 +13,20 @@ class ProductProperty extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double blockHeight = (height / 100);
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: blockHeight * 1),
+      padding: EdgeInsets.symmetric(vertical: blockHeight * 1.5),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             propertyName,
             style: Styles.textStyle22Inter.copyWith(
-              fontSize: 18,
+              fontSize: 16,
             ),
           ),
           Text(
             propertyValue,
             style: Styles.textStyle22Inter.copyWith(
-              fontSize: 18,
+              fontSize: 16,
             ),
           ),
         ],

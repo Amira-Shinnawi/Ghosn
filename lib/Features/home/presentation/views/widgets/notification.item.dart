@@ -41,7 +41,7 @@ class NotificationItem extends StatelessWidget {
                     'You may like the red rose plant.You may like the red rose plant.',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: Styles.textStyle18Inter.copyWith(
+                    style: Styles.textStyle16Inter.copyWith(
                       fontWeight: FontWeight.w400,
                     ),
                   ),
@@ -65,7 +65,6 @@ class NotificationItem extends StatelessWidget {
             indent: 100,
             endIndent: 100,
           ),
-          
         ],
       ),
     );

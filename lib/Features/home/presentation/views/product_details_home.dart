@@ -22,10 +22,14 @@ class _ProductDetailsHomeState extends State<ProductDetailsHome> {
       appBar: CustomAppBar(
         backgroundColor: kGreenColor,
         leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.arrow_back_ios)),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            size: 20,
+          ),
+        ),
         actions: [
           IconButton(
             icon: Icon(
@@ -39,10 +43,12 @@ class _ProductDetailsHomeState extends State<ProductDetailsHome> {
               });
               GoRouter.of(context).push(AppRouter.kFavorite);
             },
-          )
+          ),
         ],
       ),
-      body: const ProductDetailsBody(),
+      body: const SafeArea(
+        child: ProductDetailsBody(),
+      ),
     );
   }
 }

@@ -44,13 +44,13 @@ class _ChartItemState extends State<ChartItem> {
                 title: const Text(
                   'Sliver Plant',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                   ),
                 ),
                 subtitle: Text(
-                  '${totalPrice}EGP ',
+                  '${totalPrice} EGP ',
                   style: const TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -80,7 +80,7 @@ class _ChartItemState extends State<ChartItem> {
                     const Text(
                       'Remove',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: Colors.red,
                       ),
