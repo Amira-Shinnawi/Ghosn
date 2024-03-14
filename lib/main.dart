@@ -1,14 +1,11 @@
 import 'dart:developer';
 
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/utils/app_router.dart';
 import 'package:ghosn_app/core/utils/functions/shared_pref_cache.dart';
 import 'package:ghosn_app/translations/codegen_loader.g.dart';
-
-import 'Features/splash/presentation/views/no_internet_connection.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,47 +34,22 @@ void main() async {
       child: const GhosnApp()));
 }
 
-class GhosnApp extends StatefulWidget {
+class GhosnApp extends StatelessWidget {
   const GhosnApp({super.key});
 
   @override
-  State<GhosnApp> createState() => _GhosnAppState();
-}
-
-class _GhosnAppState extends State<GhosnApp> {
-  void initState() {
-    super.initState();
-    checkConnectivity();
-  }
-
-  void checkConnectivity() async {
-    var result = await Connectivity().checkConnectivity();
-    print(result.name);
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return StreamBuilder<ConnectivityResult>(
-        stream: Connectivity().onConnectivityChanged,
-        builder: (context, snapshot) {
-          return snapshot.data == ConnectivityResult.none
-              ? const NoInternetConnection()
-              : MaterialApp.router(
-                  title: 'Ghosn',
-                  routerConfig: AppRouter.router,
-                  debugShowCheckedModeBanner: false,
-                  supportedLocales: context.supportedLocales,
-                  localizationsDelegates: context.localizationDelegates,
-                  locale: context.locale,
-                  theme: ThemeData(
-                    brightness: Brightness.light,
-                    fontFamily: kInter,
-                    appBarTheme: const AppBarTheme(
-                      color: Colors.white,
-                    ),
-                    scaffoldBackgroundColor: Colors.white,
-                  ),
-                );
-        });
+    return MaterialApp.router(
+      title: 'Ghosn',
+      routerConfig: AppRouter.router,
+      debugShowCheckedModeBanner: false,
+      supportedLocales: context.supportedLocales,
+      localizationsDelegates: context.localizationDelegates,
+      locale: context.locale,
+      theme: ThemeData(
+        brightness: Brightness.light,
+        fontFamily: kInter,
+      ),
+    );
   }
 }

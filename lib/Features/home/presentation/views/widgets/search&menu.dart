@@ -9,7 +9,7 @@ class searchPmenu extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: .7 * width,
+          width: .76 * width,
           height: 50,
           decoration: BoxDecoration(
               color: Color(0xffFAF6F6),
@@ -32,16 +32,17 @@ class searchPmenu extends StatelessWidget {
           ),
         ),
         Container(
-          width: .25 * width,
+          width: .20 * width,
           height: 50,
           decoration: BoxDecoration(
-              color: Color(0xffFAF6F6),
+              color: Colors.green,
               boxShadow: [
                 BoxShadow(
                     blurRadius: 4, color: Colors.black12, offset: Offset(0, 4))
               ],
               borderRadius: BorderRadius.circular(10)),
-          child: IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
+          child: IconButton(
+              onPressed: () {}, icon: Image.asset('assets/image 14.png')),
         )
       ],
     );
