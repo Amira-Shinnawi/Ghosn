@@ -1,21 +1,24 @@
-import 'package:ghosn_app/Features/Account/presentation/views/change_pass.dart';
-import 'package:ghosn_app/Features/Account/presentation/views/edit_profile.dart';
-import 'package:ghosn_app/Features/Account/presentation/views/login_options_view.dart';
-import 'package:ghosn_app/Features/Account/presentation/views/login_page.dart';
-import 'package:ghosn_app/Features/Account/presentation/views/register_page.dart';
-import 'package:ghosn_app/Features/Payment/presentation/views/payment_method.dart';
-import 'package:ghosn_app/Features/home/presentation/views/chart.dart';
-import 'package:ghosn_app/Features/home/presentation/views/notification_home.dart';
-import 'package:ghosn_app/Features/splash/presentation/views/splash_view.dart';
+import 'package:ghosn_app/Admin%20Features/Article/presentation/views/latest_article_home.dart';
+import 'package:ghosn_app/User%20Features/Account/presentation/views/change_pass.dart';
+import 'package:ghosn_app/User%20Features/Account/presentation/views/edit_profile.dart';
+import 'package:ghosn_app/User%20Features/Account/presentation/views/login_options_view.dart';
+import 'package:ghosn_app/User%20Features/Account/presentation/views/login_page.dart';
+import 'package:ghosn_app/User%20Features/Account/presentation/views/register_page.dart';
+import 'package:ghosn_app/User%20Features/Article/presentation/views/article_home.dart';
+import 'package:ghosn_app/User%20Features/Payment/presentation/views/payment_method.dart';
+import 'package:ghosn_app/User%20Features/home/presentation/views/chart.dart';
+import 'package:ghosn_app/User%20Features/home/presentation/views/notification_home.dart';
+import 'package:ghosn_app/User%20Features/splash/presentation/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../Features/Account/presentation/views/profile_view.dart';
-import '../../Features/home/presentation/views/favorite_home.dart';
-import '../../Features/home/presentation/views/home.dart';
-import '../../Features/home/presentation/views/product_details_home.dart';
+import '../../User Features/Account/presentation/views/profile_view.dart';
+import '../../User Features/home/presentation/views/favorite_home.dart';
+import '../../User Features/home/presentation/views/home.dart';
+import '../../User Features/home/presentation/views/product_details_home.dart';
 import '../../constants.dart';
 
 abstract class AppRouter {
+  // User //
   static const kSplashView = '/splashView';
   static const kPaymentPage = '/paymentpage';
   static const kLoginOptionView = '/loginOptionView';
@@ -31,12 +34,17 @@ abstract class AppRouter {
   static const kNotification = '/notification';
   static const kProfile = '/profile';
   static const kEditProfile = '/editProfile';
+  static const kArticleHome = '/articleHome';
+
+  // Admin //
+  static const kLatestArticle = '/latestArticle';
 
   static final router = GoRouter(
       initialLocation: (userToken != null || tokenFacebookOrGoogle != null)
           ? '/'
           : kSplashView,
       routes: [
+        // User //
         GoRoute(
           path: '/',
           builder: (context, state) =>
@@ -92,9 +100,18 @@ abstract class AppRouter {
           path: kProfile,
           builder: (context, state) => const ProfileView(),
         ),
-         GoRoute(
+        GoRoute(
           path: kEditProfile,
           builder: (context, state) => const EditProfile(),
+        ),
+        GoRoute(
+          path: kArticleHome,
+          builder: (context, state) => const ArticleHome(),
+        ),
+        // Admin//
+         GoRoute(
+          path: kLatestArticle,
+          builder: (context, state) => const LatestArticleHome(),
         ),
       ]);
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../../../Features/home/presentation/views/widgets/Page2.dart';
-import '../../../Features/home/presentation/views/widgets/Page3.dart';
-import '../../../Features/home/presentation/views/widgets/pageView1.dart';
+import '../../../User Features/home/presentation/views/widgets/Page2.dart';
+import '../../../User Features/home/presentation/views/widgets/Page3.dart';
+import '../../../User Features/home/presentation/views/widgets/pageView1.dart';
 
 class main_controller extends GetxController {
   List<Widget> articl = [
