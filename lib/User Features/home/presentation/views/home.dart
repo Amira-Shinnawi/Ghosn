@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ghosn_app/User%20Features/home/presentation/views/widgets/bottomBar.dart';
-import 'package:ghosn_app/User%20Features/home/presentation/views/widgets/search&menu.dart';
+import 'package:ghosn_app/Features/home/presentation/views/widgets/bottomBar.dart';
+import 'package:ghosn_app/Features/home/presentation/views/widgets/search&menu.dart';
 
 import '../../../../core/utils/functions/controller.dart';
 
