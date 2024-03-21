@@ -1,86 +1,90 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../../../../../core/utils/functions/controller.dart';
-import 'Page2.dart';
-import 'Page3.dart';
-import 'pageView1.dart';
+import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:ghosn_app/User%20Features/home/presentation/views/widgets/plantContainer.dart';
 
-class categoriesBar extends StatelessWidget {
-  categoriesBar(
-      {super.key,
-      required this.color1,
-      required this.color2,
-      required this.color3});
-  final Color color1;
-  final Color color2;
-  final Color color3;
-  main_controller controller = Get.find();
+import '../../../../../constants.dart';
+import '../../../data/categoryModel.dart';
+import '../../../data/offersModel.dart';
+import '../../../data/plantModel.dart';
+
+class categoriesBar extends StatefulWidget {
+  categoriesBar({super.key});
+
+  @override
+  State<categoriesBar> createState() => _categoriesBarState();
+}
+
+class _categoriesBarState extends State<categoriesBar> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: Row(children: [
-        GestureDetector(
-          onTap: () {
-            controller.articl = [
-              Page1(
-                i1: 'assets/images/image 16.jpg',
-                n1: 'silver snak plant',
-                p1: 150,
-              ),
-              Page2(i2: 'assets/images/image 20.jpg', n2: 'tree', p2: 150),
-              Page3(
-                i3: 'assets/images/image 21.jpg',
-                n3: 'red flowers',
-                p3: 150,
-              )
-            ];
-            controller.update();
-          },
-          child: Container(
-            color: color1,
-            child: const Text('indoor plants'),
+    return Expanded(
+      child: ListView(
+        shrinkWrap: true,
+        children: [
+          Padding(
+              padding: const EdgeInsets.all(10),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    for (int i = 0; i < categories.length; i++)
+                      GestureDetector(
+                          onTap: () {
+                            setState(() => selectId = categories[i].id);
+                          },
+                          child: Container(
+                            color: selectId == i ? kLightGreenColor : bgColor,
+                            child: Text(categories[i].name),
+                          ))
+                  ])),
+          Padding(
+            padding: const EdgeInsets.only(top: 10, left: 100),
+            child: Text(
+              offerText,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            ),
           ),
-        ),
-        const Spacer(),
-        GestureDetector(
-            onTap: () {
-              controller.articl = [
-                Page2(i2: 'assets/images/image 20.jpg', n2: 'tree', p2: 150),
-                Page3(
-                  i3: 'assets/images/image 21.jpg',
-                  n3: 'red flowers',
-                  p3: 150,
-                ),
-                Page1(
-                  i1: 'assets/images/image 16.jpg',
-                  n1: 'silver snak plant',
-                  p1: 150,
-                )
-              ];
-              controller.update();
-            },
-            child: Container(color: color2, child: const Text('gardens'))),
-        const Spacer(),
-        GestureDetector(
-            onTap: () {
-              controller.articl = [
-                Page3(
-                  i3: 'assets/images/image 21.jpg',
-                  n3: 'red flowers',
-                  p3: 150,
-                ),
-                Page1(
-                  i1: 'assets/images/image 16.jpg',
-                  n1: 'silver snak plant',
-                  p1: 150,
-                ),
-                Page2(i2: 'assets/images/image 20.jpg', n2: 'tree', p2: 150)
-              ];
-              controller.update();
-            },
-            child: Container(color: color3, child: const Text('bloombing')))
-      ]),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: double.infinity,
+              height: 170,
+              child: ImageSlideshow(
+                children: [
+                  Image.asset(offerimages[0]),
+                  Image.asset(offerimages[0]),
+                  Image.asset(offerimages[0])
+                ],
+                autoPlayInterval: 3000,
+                isLoop: true,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 20,
+              top: 10,
+            ),
+            child: Text(
+              "plants",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
+            ),
+          ),
+          Expanded(
+            child: GridView.builder(
+                shrinkWrap: true,
+                itemCount: plants.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2),
+                itemBuilder: (context, index) {
+                  return PlantContainer(
+                    plantModel: plants[index],
+                  );
+                }),
+          )
+        ],
+      ),
     );
   }
+
+  int selectId = 0;
 }

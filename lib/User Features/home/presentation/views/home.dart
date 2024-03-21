@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:ghosn_app/User%20Features/home/presentation/views/widgets/bottomBar.dart';
 
-import '../../../../core/utils/functions/controller.dart';
-import 'widgets/bottomBar.dart';
+import '../../../../constants.dart';
+import 'widgets/categoriesBar.dart';
 import 'widgets/search&menu.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
-  main_controller controller = Get.put(main_controller());
-  final _controller = PageController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: bgColor,
         appBar: AppBar(
+          backgroundColor: bgColor,
           title: const Text(
             "Hi , user",
             style: TextStyle(color: Colors.black),
@@ -29,22 +29,14 @@ class HomePage extends StatelessWidget {
             )
           ],
         ),
-        body: GetBuilder<main_controller>(
-            init: main_controller(),
-            builder: (controller) {
-              return Column(
-                children: [
-                  Padding(
-                      padding: const EdgeInsets.all(8.0), child: searchPmenu()),
-                  Expanded(
-                    child: PageView(
-                      controller: _controller,
-                      children: controller.articl,
-                    ),
-                  ),
-                ],
-              );
-            }),
-        bottomNavigationBar: BottomBar());
+        body: Expanded(
+          child: Column(
+            children: [
+              Padding(padding: const EdgeInsets.all(8.0), child: searchPmenu()),
+              categoriesBar()
+            ],
+          ),
+        ),
+        bottomNavigationBar: const BottomBar());
   }
 }
