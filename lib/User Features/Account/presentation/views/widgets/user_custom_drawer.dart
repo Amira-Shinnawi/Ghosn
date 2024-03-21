@@ -7,8 +7,8 @@ import 'package:ghosn_app/core/utils/assets_data.dart';
 import 'package:ghosn_app/translations/local_keys.g.dart';
 import 'package:go_router/go_router.dart';
 
-class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({super.key});
+class UserCustomDrawer extends StatelessWidget {
+  const UserCustomDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {

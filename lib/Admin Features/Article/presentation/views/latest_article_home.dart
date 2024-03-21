@@ -4,6 +4,7 @@ import 'package:ghosn_app/Admin%20Features/Article/presentation/views/widgets/la
 import 'package:ghosn_app/core/widgets/custom_appbar.dart';
 
 import '../../../../core/utils/style.dart';
+import '../../../Drawer/presentation/views/admin_custom_drawer.dart';
 
 class LatestArticleHome extends StatefulWidget {
   const LatestArticleHome({super.key});
@@ -38,7 +39,8 @@ class _LatestArticleHomeState extends State<LatestArticleHome> {
               ),
             ),
           ]),
-      body: LatestArticleBody(),
+      drawer: const AdminCustomDrawer(),
+      body: const LatestArticleBody(),
     );
   }
 }

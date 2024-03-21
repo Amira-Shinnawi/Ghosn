@@ -5,7 +5,7 @@ import 'package:ghosn_app/core/widgets/custom_appbar.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/utils/app_router.dart';
-import '../../../Account/presentation/views/widgets/custom_drawer.dart';
+import '../../../Account/presentation/views/widgets/user_custom_drawer.dart';
 
 class ArticleDetails extends StatefulWidget {
   const ArticleDetails({super.key});
@@ -53,7 +53,7 @@ class _ArticleDetailsState extends State<ArticleDetails> {
               ),
             ),
           ]),
-      drawer: const CustomDrawer(),
+      drawer: const UserCustomDrawer(),
       body: const ArticleDetailsBody(),
     );
   }
