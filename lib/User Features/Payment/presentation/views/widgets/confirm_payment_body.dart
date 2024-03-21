@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:ghosn_app/Features/Payment/presentation/views/bill.dart';
 import 'package:ghosn_app/core/widgets/space_row.dart';
 
 import '../../../../../constants.dart';
@@ -8,6 +7,7 @@ import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../translations/local_keys.g.dart';
 import '../../../data/model/payment_date_model.dart';
+import '../Bill.dart';
 
 class ConfirmPaymentBody extends StatelessWidget {
   const ConfirmPaymentBody(

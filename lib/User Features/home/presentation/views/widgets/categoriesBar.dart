@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ghosn_app/Features/home/presentation/views/widgets/pageView1.dart';
 import '../../../../../core/utils/functions/controller.dart';
 import 'Page2.dart';
 import 'Page3.dart';
+import 'pageView1.dart';
 
 class categoriesBar extends StatelessWidget {
   categoriesBar(

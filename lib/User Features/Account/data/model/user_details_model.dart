@@ -17,12 +17,12 @@ class UserDetailsModel {
     token = json['accessToken'];
   }
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> mapData = new Map<String, dynamic>();
+    final Map<String, dynamic> mapData = Map<String, dynamic>();
 
-    mapData['displayName'] = this.displayName;
-    mapData['email'] = this.email;
-    mapData['photoURL'] = this.photoURL;
-    mapData['accessToken'] = this.token;
+    mapData['displayName'] = displayName;
+    mapData['email'] = email;
+    mapData['photoURL'] = photoURL;
+    mapData['accessToken'] = token;
 
     return mapData;
   }

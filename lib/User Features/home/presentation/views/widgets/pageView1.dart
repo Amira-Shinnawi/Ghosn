@@ -18,8 +18,8 @@ class Page1 extends StatelessWidget {
               color1: kLightGreenColor,
               color2: kWhiteColor,
               color3: kWhiteColor),
-          Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
+          const Padding(
+            padding: EdgeInsets.only(left: 20, right: 20),
             child: Row(
               children: [
                 Text(
@@ -33,18 +33,18 @@ class Page1 extends StatelessWidget {
               width: 330,
               height: 200,
               child: Image.asset(AssetsData.imageTest2)),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
-          Expanded(
-            child: GridView.builder(
-                itemCount: 6,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2),
-                itemBuilder: (context, index) {
-                  return plantContainer(image: i1, name: n1, price: p1);
-                }),
-          )
+          // Expanded(
+          //   child: GridView.builder(
+          //       itemCount: 6,
+          //       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          //           crossAxisCount: 2),
+          //       itemBuilder: (context, index) {
+          //         return PlantContainer(image: i1, name: n1, price: p1);
+          //       }),
+          // )
         ],
       ),
     );

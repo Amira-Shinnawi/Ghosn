@@ -17,18 +17,18 @@ class Page2 extends StatelessWidget {
               color1: kWhiteColor,
               color2: kLightGreenColor,
               color3: kWhiteColor),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Expanded(
-            child: GridView.builder(
-                itemCount: 6,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2),
-                itemBuilder: (context, index) {
-                  return plantContainer(image: i2, name: n2, price: p2);
-                }),
-          ),
+          // Expanded(
+          //   child: GridView.builder(
+          //       itemCount: 6,
+          //       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          //           crossAxisCount: 2),
+          //       itemBuilder: (context, index) {
+          //         return PlantContainer(image: i2, name: n2, price: p2);
+          //       }),
+          // ),
         ],
       ),
     );

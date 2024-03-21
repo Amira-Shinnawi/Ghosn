@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ghosn_app/Features/home/presentation/views/widgets/bottomBar.dart';
-import 'package:ghosn_app/Features/home/presentation/views/widgets/search&menu.dart';
 
 import '../../../../core/utils/functions/controller.dart';
+import 'widgets/bottomBar.dart';
+import 'widgets/search&menu.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -45,6 +45,6 @@ class HomePage extends StatelessWidget {
                 ],
               );
             }),
-        bottomNavigationBar: bottomBar());
+        bottomNavigationBar: BottomBar());
   }
 }

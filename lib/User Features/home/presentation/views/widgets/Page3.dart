@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/User%20Features/home/presentation/views/widgets/categoriesBar.dart';
-import 'package:ghosn_app/User%20Features/home/presentation/views/widgets/plantContainer.dart';
 import 'package:ghosn_app/constants.dart';
 
 class Page3 extends StatelessWidget {
@@ -17,22 +16,22 @@ class Page3 extends StatelessWidget {
               color1: kWhiteColor,
               color2: kWhiteColor,
               color3: kLightGreenColor),
-          SizedBox(
+        const  SizedBox(
             height: 10,
           ),
-          Expanded(
-            child: GridView.builder(
-                itemCount: 6,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2),
-                itemBuilder: (context, index) {
-                  return plantContainer(
-                    image: i3,
-                    name: n3,
-                    price: p3,
-                  );
-                }),
-          ),
+          // Expanded(
+          //   child: GridView.builder(
+          //       itemCount: 6,
+          //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          //           crossAxisCount: 2),
+          //       itemBuilder: (context, index) {
+          //         return PlantContainer(
+          //           image: i3,
+          //           name: n3,
+          //           price: p3,
+          //         );
+          //       }),
+          // ),
         ],
       ),
     );

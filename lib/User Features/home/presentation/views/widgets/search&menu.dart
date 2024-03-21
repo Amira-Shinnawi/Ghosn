@@ -12,9 +12,9 @@ class searchPmenu extends StatelessWidget {
           width: .76 * width,
           height: 50,
           decoration: BoxDecoration(
-              color: Color(0xffFAF6F6),
+              color: const Color(0xffFAF6F6),
               boxShadow: [
-                BoxShadow(
+                const BoxShadow(
                     blurRadius: 4, color: Colors.black12, offset: Offset(0, 4))
               ],
               borderRadius: BorderRadius.circular(30)),
@@ -37,7 +37,7 @@ class searchPmenu extends StatelessWidget {
           decoration: BoxDecoration(
               color: Colors.green,
               boxShadow: [
-                BoxShadow(
+                const BoxShadow(
                     blurRadius: 4, color: Colors.black12, offset: Offset(0, 4))
               ],
               borderRadius: BorderRadius.circular(10)),

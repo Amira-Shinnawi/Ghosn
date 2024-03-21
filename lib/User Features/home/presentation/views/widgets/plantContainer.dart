@@ -3,8 +3,8 @@ import 'package:ghosn_app/Features/home/data/plantModel.dart';
 
 import '../../../../../constants.dart';
 
-class plantContainer extends StatelessWidget {
-  plantContainer({
+class PlantContainer extends StatelessWidget {
+  PlantContainer({
     super.key,
     required this.plantModel,
   });
@@ -30,7 +30,7 @@ class plantContainer extends StatelessWidget {
               ),
             ),
             Text(plantModel.name,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                 )),
             Padding(
@@ -38,11 +38,11 @@ class plantContainer extends StatelessWidget {
               child: Row(
                 children: [
                   Text(plantModel.price,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20,
                       )),
-                  Spacer(),
-                  ImageIcon(AssetImage('assets/image 24.png'))
+                  const Spacer(),
+                  const ImageIcon(AssetImage('assets/image 24.png'))
                 ],
               ),
             ),
