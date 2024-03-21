@@ -42,9 +42,9 @@ class Page1 extends StatelessWidget {
           //       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           //           crossAxisCount: 2),
           //       itemBuilder: (context, index) {
-          //         return PlantContainer(image: i1, name: n1, price: p1);
+          //         return PlantContainer(image: i1, name: n1, price: p1, plantModel: null,);
           //       }),
-          // )
+          //)
         ],
       ),
     );
