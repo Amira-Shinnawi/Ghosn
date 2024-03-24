@@ -106,7 +106,12 @@
 "needHelp":"هل تحتاج مساعدة؟",
 "inquiry":"للإستفسار أوطلب المساعدة يتم تحويلك لخدمة عملائنا المميزة",
 "okContinue":"تأكد من بياناتك",
-"phototips":"نصائح للتصوير"
+"phototips":"نصائح للتصوير",
+
+"internetConnection":"الاتصال بالإنترنت",
+"refresh":"تحديث",
+"noInternetConnection":"لا يوجد اتصال بالإنترنت",
+"checkYourConnection":"تحقق من اتصالك، ثم قم بتحديث الصفحة"
 
 
 

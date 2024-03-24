@@ -103,7 +103,11 @@
 "needHelp":"Do you need help?",
 "inquiry":"For inquiries or assistance, you will be transferred to our distinguished customer service",
 "okContinue":"Continue",
-"phototips":"Photography tips"
+"phototips":"Photography tips",
+"internetConnection":"Internet Connection",
+"refresh":"Refresh",
+"noInternetConnection":"No Internet Connection",
+"checkYourConnection":"Check your connection, then refresh the page"
 
 
 

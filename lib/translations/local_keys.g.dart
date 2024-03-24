@@ -98,5 +98,9 @@ abstract class  LocaleKeys {
   static const needHelp = 'needHelp';
   static const inquiry = 'inquiry';
   static const okContinue = 'okContinue';
+  static const internetConnection = 'internetConnection';
+  static const refresh = 'refresh';
+  static const noInternetConnection = 'noInternetConnection';
+  static const checkYourConnection = 'checkYourConnection';
 
 }

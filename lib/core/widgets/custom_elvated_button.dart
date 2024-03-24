@@ -4,13 +4,15 @@ import 'package:ghosn_app/core/utils/style.dart';
 import '../../constants.dart';
 
 class CustomElevatedButton extends StatelessWidget {
-  const CustomElevatedButton({
+   CustomElevatedButton({
     required this.onPressed,
     required this.buttonName,
+    this.padding,
     super.key,
   });
   final void Function() onPressed;
   final String buttonName;
+  EdgeInsetsGeometry? padding;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -18,7 +20,7 @@ class CustomElevatedButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         padding: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(20),
         ),
       ),
       child: Ink(
@@ -35,7 +37,7 @@ class CustomElevatedButton extends StatelessWidget {
         ),
         child: Container(
           alignment: Alignment.center,
-          padding: const EdgeInsets.all(10.0),
+          padding:padding?? EdgeInsets.zero,
           child: Text(
             buttonName,
             style: Styles.textStyle22Inter.copyWith(

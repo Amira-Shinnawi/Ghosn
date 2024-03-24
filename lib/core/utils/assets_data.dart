@@ -10,5 +10,9 @@ class AssetsData {
   static const imageTest1 = 'assets/images/image 30.png';
   static const imageTest2 = 'assets/images/na 2.png';
   static const imageTest3 = 'assets/images/plant.png';
+  static const imageTest4 = 'assets/images/imagetest4.png';
   static const logoMenu = 'assets/images/logomenu.png';
+  static const noInternetConnection =
+      'assets/images/no_internet_connection.png';
+  static const article = 'assets/images/article_image.png';
 }

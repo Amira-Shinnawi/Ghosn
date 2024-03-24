@@ -111,7 +111,11 @@ class CodegenLoader extends AssetLoader{
   "contactWith": "تواصل معنا",
   "needHelp": "هل تحتاج مساعدة؟",
   "inquiry": "للإستفسار أوطلب المساعدة يتم تحويلك لخدمة عملائنا المميزة",
-  "okContinue": "تأكد من بياناتك"
+  "okContinue": "تأكد من بياناتك",
+  "internetConnection": "الاتصال بالإنترنت",
+  "refresh": "تحديث",
+  "noInternetConnection": "لا يوجد اتصال بالإنترنت",
+  "checkYourConnection": "تحقق من اتصالك، ثم قم بتحديث الصفحة"
 };
 static const Map<String,dynamic> en = {
   "getStarted": "Get Started",
@@ -209,7 +213,11 @@ static const Map<String,dynamic> en = {
   "contactWith": "Contact with us",
   "needHelp": "Do you need help?",
   "inquiry": "For inquiries or assistance, you will be transferred to our distinguished customer service",
-  "okContinue": "Continue"
+  "okContinue": "Continue",
+  "internetConnection": "Internet Connection",
+  "refresh": "Refresh",
+  "noInternetConnection": "No Internet Connection",
+  "checkYourConnection": "Check your connection, then refresh the page"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};
 }
