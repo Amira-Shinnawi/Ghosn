@@ -1,8 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:ghosn_app/Features/Detection/Presentation/views/detect_result.dart';
+
 import 'package:ghosn_app/core/widgets/custom_button.dart';
+
+import '../detect_result.dart';
 
 class DisplayPictureScreenBody extends StatelessWidget {
   final String imagePath;
@@ -42,9 +44,7 @@ class DisplayPictureScreenBody extends StatelessWidget {
                 );
               },
           ),
-          SizedBox(
-            height: height * .01,
-          ),
+        
           CustomButton(
             text: "Identify plants disease ",
             width: 265,

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ghosn_app/Features/Detection/Presentation/views/camera_detect.dart';
+
 import 'package:ghosn_app/core/utils/style.dart';
 import '../../../../../core/widgets/custom_button.dart';
+import '../camera_detect.dart';
 
 class TipsBody extends StatelessWidget {
   TipsBody({super.key});
@@ -38,7 +39,7 @@ class TipsBody extends StatelessWidget {
     double blocWidth = (width / 100);
     return Padding(
       padding: EdgeInsets.only(
-          left: blocHeight * 3.5, top: blocWidth * 3, right: blocHeight * 3.5),
+          left: blocHeight * 3.5, top: blocWidth * 2, right: blocHeight * 3.5),
       child: Column(
         children: [
           Container(
@@ -66,19 +67,22 @@ class TipsBody extends StatelessWidget {
               endIndent: 8,
             ),
           ),
-          const Text(
-            "The following will cause bad results:",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+          Padding(
+            padding:  EdgeInsets.only(top:blocWidth * .001 ),
+            child: const Text(
+              "The following will cause bad results:",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+            ),
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.only(top: blocWidth * 4),
+              padding: EdgeInsets.only(top: blocWidth * 2),
               child: GridView.builder(
                 itemCount: imagesWithText.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 18.0,
-                  mainAxisSpacing: 18.0,
+                  mainAxisSpacing: 3.0,
                 ),
                 itemBuilder: (BuildContext context, int index) {
                   return GestureDetector(
@@ -86,7 +90,8 @@ class TipsBody extends StatelessWidget {
                     child: Column(
                       children: [
                         Container(
-                          height: height * .150,
+                          height: height * .13,
+                          width: width*.37,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30.0),
                             image: DecorationImage(

@@ -1,4 +1,5 @@
 import 'package:ghosn_app/Admin%20Features/Article/presentation/views/latest_article_home.dart';
+
 import 'package:ghosn_app/User%20Features/Account/presentation/views/change_pass.dart';
 import 'package:ghosn_app/User%20Features/Account/presentation/views/edit_profile.dart';
 import 'package:ghosn_app/User%20Features/Account/presentation/views/login_options_view.dart';
@@ -6,6 +7,7 @@ import 'package:ghosn_app/User%20Features/Account/presentation/views/login_page.
 import 'package:ghosn_app/User%20Features/Account/presentation/views/register_page.dart';
 import 'package:ghosn_app/User%20Features/Article/presentation/views/article_home.dart';
 import 'package:ghosn_app/User%20Features/Payment/presentation/views/payment_method.dart';
+import 'package:ghosn_app/User%20Features/detection/presentation/views/tips_page.dart';
 import 'package:ghosn_app/User%20Features/home/presentation/views/chart.dart';
 import 'package:ghosn_app/User%20Features/home/presentation/views/notification_home.dart';
 import 'package:ghosn_app/User%20Features/splash/presentation/views/splash_view.dart';
@@ -35,11 +37,16 @@ abstract class AppRouter {
   static const kProfile = '/profile';
   static const kEditProfile = '/editProfile';
   static const kArticleHome = '/articleHome';
+    static const kdetectcamerapage = '/Camera';
+      static const ktips = '/tips';
+        static const kdisplyimg= '/DisplayPictureScreen';
+        static const kdetectresult= '/DetectResult';
+
 
   // Admin //
   static const kLatestArticle = '/latestArticle';
-   static const ktipspage = '/Tips';
-   static const kdetectcamerapage = '/Camera';
+
+ 
 
   static final router = GoRouter(
       initialLocation: (userToken != null || tokenFacebookOrGoogle != null)
@@ -56,7 +63,7 @@ abstract class AppRouter {
         ),
         GoRoute(
           path: kSplashView,
-          builder: (context, state) => const SplashView(),
+          builder: (context, state) => const Tips() ,
         ),
         GoRoute(
           path: kPaymentPage,
