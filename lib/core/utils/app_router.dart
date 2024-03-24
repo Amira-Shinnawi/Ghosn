@@ -3,6 +3,8 @@ import 'package:ghosn_app/Features/Account/presentation/views/edit_profile.dart'
 import 'package:ghosn_app/Features/Account/presentation/views/login_options_view.dart';
 import 'package:ghosn_app/Features/Account/presentation/views/login_page.dart';
 import 'package:ghosn_app/Features/Account/presentation/views/register_page.dart';
+import 'package:ghosn_app/Features/Detection/Presentation/views/camera_detect.dart';
+import 'package:ghosn_app/Features/Detection/Presentation/views/tips_page.dart';
 import 'package:ghosn_app/Features/Payment/presentation/views/payment_method.dart';
 import 'package:ghosn_app/Features/home/presentation/views/chart.dart';
 import 'package:ghosn_app/Features/home/presentation/views/notification_home.dart';
@@ -10,6 +12,7 @@ import 'package:ghosn_app/Features/splash/presentation/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../Features/Account/presentation/views/profile_view.dart';
+import '../../Features/Detection/Presentation/views/detect_result.dart';
 import '../../Features/home/presentation/views/favorite_home.dart';
 import '../../Features/home/presentation/views/home.dart';
 import '../../Features/home/presentation/views/product_details_home.dart';
@@ -31,6 +34,8 @@ abstract class AppRouter {
   static const kNotification = '/notification';
   static const kProfile = '/profile';
   static const kEditProfile = '/editProfile';
+   static const ktipspage = '/Tips';
+   static const kdetectcamerapage = '/Camera';
 
   static final router = GoRouter(
       initialLocation: (userToken != null || tokenFacebookOrGoogle != null)
@@ -46,7 +51,7 @@ abstract class AppRouter {
         ),
         GoRoute(
           path: kSplashView,
-          builder: (context, state) => const SplashView(),
+          builder: (context, state) => const Tips(),
         ),
         GoRoute(
           path: kPaymentPage,
@@ -95,6 +100,10 @@ abstract class AppRouter {
          GoRoute(
           path: kEditProfile,
           builder: (context, state) => const EditProfile(),
+        ),
+         GoRoute(
+          path: ktipspage,
+          builder: (context, state) => const Tips(),
         ),
       ]);
 }
