@@ -4,7 +4,6 @@ import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/utils/app_router.dart';
 import 'package:ghosn_app/core/utils/assets_data.dart';
 import 'package:ghosn_app/core/utils/style.dart';
-import 'package:ghosn_app/core/widgets/custom_button.dart';
 import 'package:ghosn_app/translations/local_keys.g.dart';
 import 'package:go_router/go_router.dart';
 
@@ -49,15 +48,22 @@ class FavoriteItem extends StatelessWidget {
                       'Sliver Plant',
                       style: Styles.textStyle18Inter,
                     ),
-                    CustomButton(
-                      height: blockHeight * 6,
-                      width: blockWidth * 50,
-                      onPressed: () {
-                        GoRouter.of(context)
-                            .push(AppRouter.kProductDetailsHome);
-                      },
-                      text: LocaleKeys.ShowProduct.tr(),
-                    )
+                    ElevatedButton(
+                        style: const ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(
+                            kGreenColor,
+                          ),
+                        ),
+                        onPressed: () {
+                          GoRouter.of(context)
+                              .push(AppRouter.kProductDetailsHome);
+                        },
+                        child: Text(
+                          LocaleKeys.ShowProduct.tr(),
+                          style: Styles.textStyle16Inter.copyWith(
+                            color: Colors.white,
+                          ),
+                        ))
                   ],
                 ),
               ),
