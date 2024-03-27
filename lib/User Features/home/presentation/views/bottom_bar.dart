@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ghosn_app/Admin%20Features/Community/presentation/views/community_home.dart';
 
 import '../../../Account/presentation/views/profile_view.dart';
-import 'chart.dart';
+import '../../../detection/presentation/views/tips_page.dart';
 import 'favorite_home.dart';
 
 class BottomBar extends StatefulWidget {
@@ -18,7 +18,7 @@ class _BottomBarState extends State<BottomBar> {
   List<Widget> screens = [
     const ProfileView(),
     const CommunityHome(),
-    const Chart(),
+    const Tips(),
     const FavoriteHome(),
     const ProfileView(),
   ];

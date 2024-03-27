@@ -70,7 +70,7 @@ class SplashViewBody extends StatelessWidget {
             onPressed: () {
               // GoRouter.of(context).push(AppRouter.kCommunity);
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => BottomBar()));
+                  MaterialPageRoute(builder: (context) =>const BottomBar()));
             },
           ),
           SizedBox(

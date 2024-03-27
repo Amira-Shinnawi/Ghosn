@@ -38,11 +38,10 @@ abstract class AppRouter {
   static const kProfile = '/profile';
   static const kEditProfile = '/editProfile';
   static const kArticleHome = '/articleHome';
-    static const kdetectcamerapage = '/Camera';
-      static const ktips = '/tips';
-        static const kdisplyimg= '/DisplayPictureScreen';
-        static const kdetectresult= '/DetectResult';
-
+  static const kdetectcamerapage = '/Camera';
+  static const ktips = '/tips';
+  static const kdisplyimg = '/DisplayPictureScreen';
+  static const kdetectresult = '/DetectResult';
 
   // Admin //
   static const kLatestArticle = '/latestArticle';
@@ -64,7 +63,7 @@ abstract class AppRouter {
         ),
         GoRoute(
           path: kSplashView,
-          builder: (context, state) => const Tips() ,
+          builder: (context, state) => const SplashView(),
         ),
         GoRoute(
           path: kPaymentPage,
@@ -130,6 +129,10 @@ abstract class AppRouter {
         GoRoute(
           path: kCreatePost,
           builder: (context, state) => const CreatePostView(),
+        ),
+        GoRoute(
+          path: ktips,
+          builder: (context, state) => const Tips(),
         ),
       ]);
 }
