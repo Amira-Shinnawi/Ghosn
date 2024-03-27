@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ghosn_app/User%20Features/Account/presentation/views/widgets/custom_drawer.dart';
+import 'package:ghosn_app/User%20Features/Account/presentation/views/widgets/user_custom_drawer.dart';
 import 'package:ghosn_app/core/utils/app_router.dart';
 import 'package:ghosn_app/core/widgets/custom_appbar.dart';
 import 'package:go_router/go_router.dart';
@@ -18,7 +18,7 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
-   GlobalKey<ScaffoldState> scaffoldKey =  GlobalKey();
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +64,7 @@ class _ProfileViewState extends State<ProfileView> {
           ),
         ],
       ),
-      drawer: const CustomDrawer(),
+      drawer: const UserCustomDrawer(),
       body: const SafeArea(
         child: ProfileViewBody(),
       ),

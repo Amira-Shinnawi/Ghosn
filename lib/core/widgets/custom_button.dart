@@ -13,6 +13,7 @@ class CustomButton extends StatelessWidget {
     this.width,
     this.backgroundColor,
     this.height,
+    this.decoration,
   });
   final String text;
   final BorderRadius? borderRadius;
@@ -21,6 +22,7 @@ class CustomButton extends StatelessWidget {
   final double? width;
   final double? height;
   final Color? backgroundColor;
+  final Decoration? decoration;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,19 +30,19 @@ class CustomButton extends StatelessWidget {
       child: Container(
         height: height ?? 50,
         width: width ?? 328,
-        decoration: BoxDecoration(
-          color: kGreenColor,
-          borderRadius: borderRadius ??
-              BorderRadius.circular(
-                40,
+        decoration: decoration ??
+            BoxDecoration(
+              borderRadius: borderRadius ??
+                  BorderRadius.circular(
+                    40,
+                  ),
+              gradient: const LinearGradient(
+                colors: [
+                  Color.fromARGB(255, 4, 102, 53),
+                  kGreenColor,
+                ],
               ),
-          gradient: const LinearGradient(
-            colors: [
-              Color.fromARGB(255, 4, 102, 53),
-              kGreenColor,
-            ],
-          ),
-        ),
+            ),
         child: TextButton(
           onPressed: onPressed,
           child: Text(

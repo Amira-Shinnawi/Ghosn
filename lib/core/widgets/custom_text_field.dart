@@ -19,6 +19,8 @@ class CustomTextFelid extends StatelessWidget {
     this.onTap,
     this.readOnly = false,
     this.validator,
+    this.maxLength,
+    this.minLength,
   });
 
   final Widget? prefixIcon;
@@ -35,6 +37,7 @@ class CustomTextFelid extends StatelessWidget {
   final void Function()? onTap;
   final bool readOnly;
   final String? Function(String?)? validator;
+  final int? maxLength, minLength;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +45,8 @@ class CustomTextFelid extends StatelessWidget {
       obscureText: pass,
       onChanged: onChanged,
       controller: controller,
+      maxLength:maxLength,
+      maxLines: minLength,
       validator: validator ??
           (data) {
             if (data!.isEmpty) {

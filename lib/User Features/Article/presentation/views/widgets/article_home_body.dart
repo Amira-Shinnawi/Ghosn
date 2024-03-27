@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ghosn_app/User%20Features/Article/presentation/views/widgets/article_item.dart';
 import 'package:ghosn_app/core/widgets/custom_text_field.dart';
+
+import 'article_item_list_view.dart';
 
 class ArticleHomeBody extends StatelessWidget {
   const ArticleHomeBody({super.key});
@@ -33,24 +34,10 @@ class ArticleHomeBody extends StatelessWidget {
               ),
             ),
           ),
-          SliverToBoxAdapter(
-            child: ListView.builder(
-                physics: const BouncingScrollPhysics(),
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                itemCount: 15,
-                itemBuilder: (context, index) {
-                  final isOddIndex = index % 2 == 1;
-                  final textDirection =
-                      isOddIndex ? TextDirection.rtl : TextDirection.ltr;
-                  return Directionality(
-                    textDirection: textDirection,
-                    child: const ArticleItem(),
-                  );
-                }),
-          )
+          ArticleItemListView()
         ],
       ),
     );
   }
 }
+

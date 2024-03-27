@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/utils/app_router.dart';
 import '../../../../core/utils/style.dart';
-import '../../../Account/presentation/views/widgets/custom_drawer.dart';
+import '../../../Account/presentation/views/widgets/user_custom_drawer.dart';
 import 'widgets/article_home_body.dart';
 
 class ArticleHome extends StatefulWidget {
@@ -52,7 +52,7 @@ class _ArticleHomeState extends State<ArticleHome> {
               ),
             ),
           ]),
-      drawer: const CustomDrawer(),
+      drawer: const UserCustomDrawer(),
       body: const ArticleHomeBody(),
     );
   }
