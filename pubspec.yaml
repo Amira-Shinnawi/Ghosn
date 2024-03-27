@@ -31,8 +31,10 @@ dependencies:
   badges: ^3.1.2
   comment_tree: ^0.3.0
   connectivity_plus: ^5.0.2
+  
   country_state_city_picker: ^1.2.8
   csc_picker: ^0.2.7
+  
   cupertino_icons: ^1.0.2
   device_preview: ^1.1.0
   dotted_border: ^2.1.0
@@ -53,6 +55,19 @@ dependencies:
   loading_overlay: ^0.3.0
   provider: ^6.1.1
   shared_preferences: ^2.2.2
+  flutter_image_slideshow: ^0.1.6
+  file_picker: ^8.0.0+1
+  dotted_border: ^2.1.0 
+  gap: ^3.0.1
+  
+  
+  camera: ^0.10.5+9
+  media_scanner: ^2.1.0
+  external_path: ^1.0.3
+  path_provider: ^2.1.2
+ 
+   
+
 dev_dependencies:
   flutter_lints: ^3.0.1
   flutter_test:

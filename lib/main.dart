@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:device_preview/device_preview.dart';
+import 'package:camera/camera.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -9,10 +10,11 @@ import 'package:ghosn_app/core/utils/app_router.dart';
 import 'package:ghosn_app/core/utils/functions/shared_pref_cache.dart';
 import 'package:ghosn_app/translations/codegen_loader.g.dart';
 
-
-void main() async {
+List<CameraDescription> camerasList = [];
+Future <void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  camerasList = await availableCameras();
 
   await SharedPrefCache.cacheInitialization();
 
