@@ -51,6 +51,7 @@ class NotificationItem extends StatelessWidget {
                   icon: const Icon(
                     Icons.arrow_forward_ios,
                     color: Colors.black,
+                    size: 20,
                   ),
                 ),
               ],

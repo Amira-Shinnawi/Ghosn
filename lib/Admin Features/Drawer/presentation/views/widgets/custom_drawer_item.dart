@@ -14,7 +14,9 @@ class CustomDrawerItem extends StatelessWidget {
       title: Text(
         drawerItemModel.title,
       ),
-      onTap: drawerItemModel.onTap,
+      onTap: () {
+        drawerItemModel.onTap;
+      },
     );
   }
 }

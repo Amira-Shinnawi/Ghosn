@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ghosn_app/User%20Features/home/presentation/views/widgets/bottomBar.dart';
 
 import '../../../../constants.dart';
 import 'widgets/categoriesBar.dart';
@@ -11,32 +10,32 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: bgColor,
+      appBar: AppBar(
         backgroundColor: bgColor,
-        appBar: AppBar(
-          backgroundColor: bgColor,
-          title: const Text(
-            "Hi , user",
-            style: TextStyle(color: Colors.black),
+        title: const Text(
+          "Hi , user",
+          style: TextStyle(color: Colors.black),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.shopping_cart_outlined),
           ),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.shopping_cart_outlined),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.notifications_outlined),
-            )
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.notifications_outlined),
+          )
+        ],
+      ),
+      body: Expanded(
+        child: Column(
+          children: [
+            Padding(padding: const EdgeInsets.all(8.0), child: searchPmenu()),
+            categoriesBar()
           ],
         ),
-        body: Expanded(
-          child: Column(
-            children: [
-              Padding(padding: const EdgeInsets.all(8.0), child: searchPmenu()),
-              categoriesBar()
-            ],
-          ),
-        ),
-        bottomNavigationBar: const BottomBar());
+      ),
+    );
   }
 }

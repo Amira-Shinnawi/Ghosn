@@ -86,8 +86,8 @@ class _PaymentMethodBody extends State<PaymentMethodBody> {
               style: Styles.textStyle20Inter,
             ),
             SizedBox(height: blocHeight * 2),
-            CustomTextFelid(
-              hinText: LocaleKeys.street.tr(),
+            CustomTextField(
+              hintText: LocaleKeys.street.tr(),
               controller: _streetController,
               keyboardType: TextInputType.streetAddress,
               width: 1,
@@ -99,8 +99,8 @@ class _PaymentMethodBody extends State<PaymentMethodBody> {
               style: Styles.textStyle20Inter,
             ),
             SizedBox(height: blocHeight * 2),
-            CustomTextFelid(
-              hinText: LocaleKeys.phoneNumber.tr(),
+            CustomTextField(
+              hintText: LocaleKeys.phoneNumber.tr(),
               controller: _phoneNumberController,
               keyboardType: TextInputType.phone,
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],

@@ -21,7 +21,7 @@ class LoginOptionsBody extends StatelessWidget {
       child: Column(
         children: [
           AspectRatio(
-            aspectRatio: 6 / 8,
+            aspectRatio: 5 / 6,
             child: Image.asset(
               AssetsData.loginOption,
             ),
@@ -67,10 +67,8 @@ class LoginOptionsBody extends StatelessWidget {
             children: [
               Text(
                 LocaleKeys.alreadyhaveaccount.tr(),
-                style: Styles.textStyle22Inter.copyWith(
-                  color: Colors.black,
+                style: Styles.textStyle16Inter.copyWith(
                   fontWeight: FontWeight.w400,
-                  fontSize: 18,
                 ),
               ),
               GestureDetector(
@@ -79,10 +77,8 @@ class LoginOptionsBody extends StatelessWidget {
                 },
                 child: Text(
                   LocaleKeys.Signup.tr(),
-                  style: Styles.textStyle22Inter.copyWith(
-                    color: Colors.black,
+                  style: Styles.textStyle16Inter.copyWith(
                     fontWeight: FontWeight.bold,
-                    fontSize: 18,
                   ),
                 ),
               ),

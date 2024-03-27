@@ -43,7 +43,9 @@ class CustomIconButton extends StatelessWidget {
               children: [
                 Text(
                   text,
-                  style: Styles.textStyle22Inter,
+                  style: Styles.textStyle22Inter.copyWith(
+                    fontSize: 20,
+                  ),
                 ),
                 CircleAvatar(
                   backgroundColor: Colors.white,

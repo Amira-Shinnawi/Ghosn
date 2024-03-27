@@ -37,9 +37,9 @@ class _ChangePasswordBodyState extends State<ChangePasswordBody> {
             SizedBox(
               height: height * .1,
             ),
-            CustomTextFelid(
+            CustomTextField(
               pass: obscureText,
-              hinText: LocaleKeys.newPassword.tr(),
+              hintText: LocaleKeys.newPassword.tr(),
               prefixIcon: IconButton(
                 onPressed: () {
                   setState(() {
@@ -56,9 +56,9 @@ class _ChangePasswordBodyState extends State<ChangePasswordBody> {
             SizedBox(
               height: height * .018,
             ),
-            CustomTextFelid(
+            CustomTextField(
               pass: obscureText,
-              hinText: LocaleKeys.confirmpassword.tr(),
+              hintText: LocaleKeys.confirmpassword.tr(),
               prefixIcon: IconButton(
                 onPressed: () {
                   setState(() {

@@ -6,6 +6,7 @@ import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/utils/assets_data.dart';
 import 'package:ghosn_app/core/utils/style.dart';
 import 'package:ghosn_app/core/widgets/custom_elvated_button.dart';
+import 'package:ghosn_app/core/widgets/custom_text_field.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../../core/widgets/custom_text_editing.dart';
@@ -120,7 +121,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
             const CustomTextFormEditing(
               hintText: 'User Name',
             ),
-            CustomTextFormEditing(
+            CustomTextField(
               hintText: 'Choose your Birthday',
               controller: dateInput,
               readOnly: true,

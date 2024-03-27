@@ -35,7 +35,7 @@ class _ProductDetailsBodyState extends State<ProductDetailsBody> {
     double blockWidth = (width / 100);
     return Stack(
       children: [
-        Positioned(
+        const Positioned(
           top: 0,
           right: 0,
           left: 0,
@@ -93,7 +93,7 @@ class _ProductDetailsBodyState extends State<ProductDetailsBody> {
         Positioned(
           right: 0,
           left: 0,
-          top: -30,
+          top: -20,
           child: Align(
             alignment: AlignmentDirectional.bottomEnd,
             child: Image.asset(

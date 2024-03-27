@@ -4,6 +4,7 @@ import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/utils/app_router.dart';
 import 'package:ghosn_app/core/utils/assets_data.dart';
 import 'package:ghosn_app/core/utils/style.dart';
+import 'package:ghosn_app/core/widgets/custom_button.dart';
 import 'package:ghosn_app/translations/local_keys.g.dart';
 import 'package:go_router/go_router.dart';
 
@@ -17,7 +18,7 @@ class FavoriteItem extends StatelessWidget {
     double blockHeight = (height / 100);
     double blockWidth = (width / 100);
     return Container(
-      height: blockHeight * 11,
+      height: blockHeight * 12,
       width: blockWidth * 80,
       decoration: BoxDecoration(
         border: Border.all(
@@ -48,22 +49,15 @@ class FavoriteItem extends StatelessWidget {
                       'Sliver Plant',
                       style: Styles.textStyle18Inter,
                     ),
-                    ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            kGreenColor,
-                          ),
-                        ),
-                        onPressed: () {
-                          GoRouter.of(context)
-                              .push(AppRouter.kProductDetailsHome);
-                        },
-                        child: Text(
-                          LocaleKeys.ShowProduct.tr(),
-                          style: Styles.textStyle16Inter.copyWith(
-                            color: Colors.white,
-                          ),
-                        ))
+                    CustomButton(
+                      height: blockHeight * 6,
+                      width: blockWidth * 50,
+                      onPressed: () {
+                        GoRouter.of(context)
+                            .push(AppRouter.kProductDetailsHome);
+                      },
+                      text: LocaleKeys.ShowProduct.tr(),
+                    )
                   ],
                 ),
               ),
