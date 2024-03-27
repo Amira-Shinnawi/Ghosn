@@ -30,39 +30,42 @@ class CheckOutBody extends StatelessWidget {
         body: Padding(
           padding: EdgeInsets.symmetric(
               vertical: blocHeight * 6, horizontal: blocWidth * 4),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                LocaleKeys.paymentsuccess.tr(),
-                style: Styles.textStyle20Inter,
-                textAlign: TextAlign.center,
-              ),
-              Image.asset(
-                'assets/images/image 61.png',
-                width: 342,
-                height: 320,
-              ),
-              SizedBox(height: blocHeight * 2),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  LocaleKeys.finishorder.tr(),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  LocaleKeys.paymentsuccess.tr(),
+                  style: Styles.textStyle20Inter,
                   textAlign: TextAlign.center,
-                  style: Styles.textStyle18Inter,
                 ),
-              ),
-              SizedBox(
-                height: blocHeight * 6,
-              ),
-              CustomButton(
-                text: LocaleKeys.ok.tr(),
-                width: 183,
-                onPressed: () {
-                  GoRouter.of(context).push(AppRouter.kSplashView);
-                },
-              )
-            ],
+                AspectRatio(
+                  aspectRatio: 3 / 2,
+                  child: Image.asset(
+                    'assets/images/image 61.png',
+                  ),
+                ),
+                SizedBox(height: blocHeight * 2),
+                Padding(
+                  padding: EdgeInsets.all(blocHeight * 2),
+                  child: Text(
+                    LocaleKeys.finishorder.tr(),
+                    textAlign: TextAlign.center,
+                    style: Styles.textStyle18Inter,
+                  ),
+                ),
+                SizedBox(
+                  height: blocHeight * 6,
+                ),
+                CustomButton(
+                  text: LocaleKeys.ok.tr(),
+                  width: 183,
+                  onPressed: () {
+                    GoRouter.of(context).push(AppRouter.kSplashView);
+                  },
+                )
+              ],
+            ),
           ),
         ));
   }

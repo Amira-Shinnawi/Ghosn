@@ -14,6 +14,7 @@ class CustomTextFormEditing extends StatelessWidget {
     this.readOnly = false,
     this.prefixIcon,
     this.suffixIcon,
+    this.validator,
   });
   final String hintText;
   final void Function(String?)? onSaved;
@@ -23,6 +24,7 @@ class CustomTextFormEditing extends StatelessWidget {
   final bool readOnly;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +39,13 @@ class CustomTextFormEditing extends StatelessWidget {
         onSaved: onSaved,
         onChanged: onChanged,
         cursorColor: kGreenColor,
+        validator: validator ??
+            (data) {
+              if (data!.isEmpty) {
+                return 'Please Enter $hintText';
+              }
+              return null;
+            },
         style: Styles.textStyle22Inter.copyWith(
           fontSize: 14,
           color: Colors.black,
@@ -44,6 +53,7 @@ class CustomTextFormEditing extends StatelessWidget {
         decoration: InputDecoration(
           enabledBorder: builtOutLineBorder(width: 2, color: kGreenColor),
           focusedBorder: builtOutLineBorder(width: 2, color: kGreenColor),
+          border: builtOutLineBorder(width: 2, color: kGreenColor),
           contentPadding: const EdgeInsets.fromLTRB(20, 10.0, 20.0, 10.0),
           hintText: hintText,
           hintStyle: Styles.textStyle16Inter.copyWith(

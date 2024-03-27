@@ -1,22 +1,21 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:ghosn_app/User%20Features/Account/presentation/views/widgets/follower_list_view.dart';
-import 'package:ghosn_app/User%20Features/Account/presentation/views/widgets/following_list_view.dart';
-import 'package:ghosn_app/Admin%20Features/Community/presentation/views/widgets/post_list_view.dart';
-import 'package:ghosn_app/User%20Features/Account/presentation/views/widgets/purchase_list_view.dart';
-import 'package:ghosn_app/constants.dart';
 
+import '../../../../../User Features/Account/presentation/views/widgets/follower_list_view.dart';
+import '../../../../../User Features/Account/presentation/views/widgets/following_list_view.dart';
+import '../../../../../constants.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../translations/local_keys.g.dart';
+import 'post_list_view.dart';
 
-class HistoryProfileItems extends StatefulWidget {
-  const HistoryProfileItems({super.key});
+class FriendProfileActivity extends StatefulWidget {
+  const FriendProfileActivity({super.key});
 
   @override
-  State<HistoryProfileItems> createState() => _HistoryProfileItemsState();
+  State<FriendProfileActivity> createState() => _FriendProfileActivityState();
 }
 
-class _HistoryProfileItemsState extends State<HistoryProfileItems> {
+class _FriendProfileActivityState extends State<FriendProfileActivity> {
   int _selectedTextIndex = 0;
   late final PageController _pageController = PageController(
     initialPage: _selectedTextIndex,
@@ -24,7 +23,6 @@ class _HistoryProfileItemsState extends State<HistoryProfileItems> {
 
   List<String> historyList = [
     LocaleKeys.posts.tr(),
-    LocaleKeys.purchases.tr(),
     LocaleKeys.followers.tr(),
     LocaleKeys.following.tr(),
   ];
@@ -33,8 +31,6 @@ class _HistoryProfileItemsState extends State<HistoryProfileItems> {
       case 0:
         return const PostsListView();
       case 1:
-        return const PurchasesListView();
-      case 2:
         return const FollowersListView();
       default:
         return const FollowingListView();

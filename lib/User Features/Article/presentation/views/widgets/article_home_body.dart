@@ -22,13 +22,13 @@ class ArticleHomeBody extends StatelessWidget {
               padding: EdgeInsets.only(
                 bottom: blocHeight * .5,
               ),
-              child: CustomTextFelid(
+              child: CustomTextField(
                 prefixIcon: IconButton(
                   onPressed: () {},
                   icon: const Icon(Icons.search),
                   color: Colors.black.withOpacity(.5),
                 ),
-                hinText: 'What are you looking for?',
+                hintText: 'What are you looking for?',
                 width: 1,
                 color: Colors.black.withOpacity(.3),
               ),

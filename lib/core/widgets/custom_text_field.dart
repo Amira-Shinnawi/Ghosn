@@ -3,11 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/utils/style.dart';
 
-class CustomTextFelid extends StatelessWidget {
-  CustomTextFelid({
+class CustomTextField extends StatelessWidget {
+  CustomTextField({
     super.key,
     this.prefixIcon,
-    required this.hinText,
+    required this.hintText,
     this.controller,
     this.onChanged,
     this.keyboardType,
@@ -25,7 +25,7 @@ class CustomTextFelid extends StatelessWidget {
 
   final Widget? prefixIcon;
   final Widget? suffixIcon;
-  final String hinText;
+  final String hintText;
 
   TextEditingController? controller;
   void Function(String)? onChanged;
@@ -37,7 +37,7 @@ class CustomTextFelid extends StatelessWidget {
   final void Function()? onTap;
   final bool readOnly;
   final String? Function(String?)? validator;
-  final int? maxLength, minLength;
+  int? maxLength, minLength;
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +45,12 @@ class CustomTextFelid extends StatelessWidget {
       obscureText: pass,
       onChanged: onChanged,
       controller: controller,
-      maxLength:maxLength,
-      maxLines: minLength,
+      maxLength: maxLength ?? null,
+      maxLines: minLength ?? 1,
       validator: validator ??
           (data) {
             if (data!.isEmpty) {
-              return 'Please Enter $hinText';
+              return 'Please Enter $hintText';
             }
             return null;
           },
@@ -64,7 +64,7 @@ class CustomTextFelid extends StatelessWidget {
         color: Colors.black,
       ),
       decoration: InputDecoration(
-        hintText: hinText,
+        hintText: hintText,
         hintStyle: TextStyle(
           color: Colors.black.withOpacity(0.4000000059604645),
           fontSize: 14,

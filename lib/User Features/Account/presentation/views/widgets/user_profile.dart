@@ -18,7 +18,7 @@ class UserProfile extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double blockWidth = (width / 100);
     return Container(
-      height: blockHeight * 22,
+      height: blockHeight * 23,
       width: double.infinity,
       decoration: BoxDecoration(
         gradient: const LinearGradient(

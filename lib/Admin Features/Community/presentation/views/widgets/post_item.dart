@@ -5,16 +5,18 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/assets_data.dart';
 import '../../../../../core/utils/style.dart';
+import '../add_comment_view.dart';
 
 class PostItem extends StatefulWidget {
-  const PostItem({super.key});
-
+  const PostItem({super.key,this.allComments});
+  final int? allComments;
   @override
   State<PostItem> createState() => _PostItemState();
 }
 
 class _PostItemState extends State<PostItem> {
   bool favProductAdd = false;
+  int likeCount = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +50,10 @@ class _PostItemState extends State<PostItem> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     radius: 20,
-                    child: Image.asset(
+                    backgroundImage: AssetImage(
                       AssetsData.imageTest2,
-                      fit: BoxFit.cover,
                     ),
                   ),
                   SizedBox(
@@ -61,14 +62,17 @@ class _PostItemState extends State<PostItem> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         'User Name',
-                        style: Styles.textStyle16Inter,
+                        style: Styles.textStyle16Inter.copyWith(
+                          fontSize: 15,
+                        ),
                       ),
                       Text(
                         formattedDate,
                         style: Styles.textStyle16Inter.copyWith(
                           fontSize: 14,
+                          color: kHintColor,
                         ),
                       ),
                     ],
@@ -77,7 +81,7 @@ class _PostItemState extends State<PostItem> {
                   IconButton(
                     onPressed: () {},
                     icon: const Icon(
-                      FontAwesomeIcons.ellipsisVertical,
+                      FontAwesomeIcons.ellipsis,
                       size: 20,
                     ),
                   ),
@@ -85,11 +89,11 @@ class _PostItemState extends State<PostItem> {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: blockHeight * .5),
-                child: Text(
+                child: const Text(
                   'Content Post',
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: Styles.textStyle16Inter.copyWith(),
+                  style: Styles.textStyle16Inter,
                 ),
               ),
               Expanded(
@@ -109,8 +113,8 @@ class _PostItemState extends State<PostItem> {
               ),
               Row(
                 children: [
-                  const Text(
-                    '25',
+                  Text(
+                    likeCount.toString(),
                     style: Styles.textStyle16Inter,
                   ),
                   IconButton(
@@ -122,19 +126,31 @@ class _PostItemState extends State<PostItem> {
                     onPressed: () {
                       setState(() {
                         favProductAdd = !favProductAdd;
+                        if (favProductAdd) {
+                          likeCount++;
+                        } else {
+                          likeCount--;
+                        }
                       });
                     },
                   ),
                   const Spacer(),
-                  const Text(
-                    '25',
+                   Text(
+                    widget.allComments.toString(),
                     style: Styles.textStyle16Inter,
                   ),
                   IconButton(
                     icon: const Icon(
                       Icons.mode_comment_outlined,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AddComment(),
+                        ),
+                      );
+                    },
                   ),
                   const Spacer(),
                   const Text(

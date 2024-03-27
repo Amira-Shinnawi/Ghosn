@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ghosn_app/User%20Features/Account/presentation/manager/cubit/auth_cubit.dart';
@@ -31,18 +32,27 @@ class _RegisterFormState extends State<RegisterForm> {
 
   GlobalKey<FormState> formKey = GlobalKey();
 
-  final userNameController = TextEditingController();
+  final firstNameController = TextEditingController();
+  final lastNameController = TextEditingController();
   final emailController = TextEditingController();
+  final userNameController = TextEditingController();
   final passController = TextEditingController();
-  final confirmPassController = TextEditingController();
+  final phoneController = TextEditingController();
+  final cityController = TextEditingController();
+  final stateController = TextEditingController();
+  final dateOfBirthController = TextEditingController();
+
+  @override
+  void initState() {
+    dateOfBirthController.text;
+    super.initState();
+  }
 
   bool gender = true;
 
   bool showLocationFields = false;
-  final cityController = TextEditingController();
-  final stateController = TextEditingController();
 
-  String city = '';
+  int city = 0;
   String yourState = '';
 
   @override
@@ -77,7 +87,7 @@ class _RegisterFormState extends State<RegisterForm> {
         builder: (context, state) {
           return Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: blockWidth * 5, vertical: blockHeight * 2),
+                horizontal: blockWidth * 5, vertical: blockHeight * 1),
             child: LoadingOverlay(
               isLoading: isLoading,
               child: Form(
@@ -89,7 +99,6 @@ class _RegisterFormState extends State<RegisterForm> {
                         LocaleKeys.createAccount.tr(),
                         style: Styles.textStyle22Inter.copyWith(
                           color: Colors.black,
-                          fontSize: 24,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -97,34 +106,62 @@ class _RegisterFormState extends State<RegisterForm> {
                     SizedBox(
                       height: blockHeight * 2,
                     ),
-                    CustomTextFelid(
+                    CustomTextField(
                       prefixIcon: const Icon(
-                        Icons.email_rounded,
+                        FontAwesomeIcons.user,
                         color: kHintColor,
+                        size: 20,
                       ),
-                      controller: emailController,
-                      hinText: LocaleKeys.Email.tr(),
-                      keyboardType: TextInputType.emailAddress,
+                      controller: firstNameController,
+                      hintText: 'First Name',
+                      keyboardType: TextInputType.text,
                     ),
                     SizedBox(
                       height: blockHeight * 2,
                     ),
-                    CustomTextFelid(
+                    CustomTextField(
                       prefixIcon: const Icon(
-                        Icons.email_rounded,
+                        FontAwesomeIcons.user,
                         color: kHintColor,
+                        size: 20,
                       ),
-                      controller: userNameController,
-                      hinText: 'UserName',
+                      controller: lastNameController,
+                      hintText: 'Last Name',
                       keyboardType: TextInputType.name,
                     ),
                     SizedBox(
                       height: blockHeight * 2,
                     ),
-                    CustomTextFelid(
+                    CustomTextField(
+                      prefixIcon: const Icon(
+                        Icons.email_rounded,
+                        color: kHintColor,
+                        size: 20,
+                      ),
+                      controller: emailController,
+                      hintText: LocaleKeys.Email.tr(),
+                      keyboardType: TextInputType.emailAddress,
+                    ),
+                    SizedBox(
+                      height: blockHeight * 2,
+                    ),
+                    CustomTextField(
+                      prefixIcon: const Icon(
+                        FontAwesomeIcons.circleUser,
+                        color: kHintColor,
+                        size: 20,
+                      ),
+                      controller: userNameController,
+                      hintText: 'UserName',
+                      keyboardType: TextInputType.name,
+                    ),
+                    SizedBox(
+                      height: blockHeight * 2,
+                    ),
+                    CustomTextField(
                       pass: obscureText,
                       controller: passController,
-                      hinText: LocaleKeys.Password.tr(),
+                      hintText: LocaleKeys.Password.tr(),
                       prefixIcon: IconButton(
                         onPressed: () {
                           setState(() {
@@ -134,6 +171,7 @@ class _RegisterFormState extends State<RegisterForm> {
                         icon: Icon(
                           obscureText ? Icons.visibility_off : Icons.visibility,
                           color: kHintColor,
+                          size: 20,
                         ),
                       ),
                       keyboardType: TextInputType.visiblePassword,
@@ -141,40 +179,17 @@ class _RegisterFormState extends State<RegisterForm> {
                     SizedBox(
                       height: blockHeight * 2,
                     ),
-                    CustomTextFelid(
-                      pass: obscureText,
-                      hinText: LocaleKeys.confirmpassword.tr(),
-                      validator: (value) {
-                        if (value != passController.text) {
-                          return 'Passwords do not match';
-                        }
-                        return null;
-                      },
-                      prefixIcon: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            obscureText = !obscureText;
-                          });
-                        },
-                        icon: Icon(
-                          obscureText ? Icons.visibility_off : Icons.visibility,
-                          color: kHintColor,
-                        ),
+                    CustomTextField(
+                      prefixIcon: const Icon(
+                        Icons.phone,
+                        color: kHintColor,
+                        size: 20,
                       ),
-                      keyboardType: TextInputType.visiblePassword,
+                      controller: phoneController,
+                      hintText: LocaleKeys.phone.tr(),
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     ),
-                    // SizedBox(
-                    //   height: blockHeight * 2,
-                    // ),
-                    // CustomTextFelid(
-                    //   prefixIcon: const Icon(
-                    //     Icons.phone,
-                    //     color: kHintColor,
-                    //   ),
-                    //   hinText: LocaleKeys.phone.tr(),
-                    //   keyboardType: TextInputType.number,
-                    //   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                    // ),
                     SizedBox(
                       height: blockHeight * 2,
                     ),
@@ -205,7 +220,7 @@ class _RegisterFormState extends State<RegisterForm> {
                               style: TextStyle(
                                 color: Colors.black
                                     .withOpacity(0.4000000059604645),
-                                fontSize: 18,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
@@ -223,11 +238,7 @@ class _RegisterFormState extends State<RegisterForm> {
                                 ),
                                 Text(
                                   LocaleKeys.Male.tr(),
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: Styles.textStyle16Inter,
                                 ),
                               ],
                             ),
@@ -245,11 +256,7 @@ class _RegisterFormState extends State<RegisterForm> {
                                 ),
                                 Text(
                                   LocaleKeys.Female.tr(),
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: Styles.textStyle16Inter,
                                 ),
                               ],
                             ),
@@ -260,13 +267,13 @@ class _RegisterFormState extends State<RegisterForm> {
                     SizedBox(
                       height: blockHeight * 2,
                     ),
-                    CustomTextFelid(
+                    CustomTextField(
                       onTap: () {
                         setState(() {
                           showLocationFields = !showLocationFields;
                         });
                       },
-                      hinText: LocaleKeys.chooseLocation.tr(),
+                      hintText: LocaleKeys.chooseLocation.tr(),
                       suffixIcon: const Icon(
                         FontAwesomeIcons.chevronDown,
                         size: 20,
@@ -294,20 +301,20 @@ class _RegisterFormState extends State<RegisterForm> {
                             Row(
                               children: [
                                 Expanded(
-                                  child: CustomTextFelid(
-                                    hinText: LocaleKeys.city.tr(),
+                                  child: CustomTextField(
+                                    hintText: LocaleKeys.city.tr(),
                                     controller: cityController,
                                     onChanged: (value) {
                                       setState(() {
-                                        city = value;
+                                        city = int.tryParse(value) ?? 0;
                                       });
                                     },
                                   ),
                                 ),
                                 SizedBox(width: blockWidth * 2),
                                 Expanded(
-                                  child: CustomTextFelid(
-                                    hinText: LocaleKeys.state.tr(),
+                                  child: CustomTextField(
+                                    hintText: LocaleKeys.state.tr(),
                                     controller: stateController,
                                     onChanged: (value) {
                                       setState(() {
@@ -321,6 +328,30 @@ class _RegisterFormState extends State<RegisterForm> {
                           ],
                         ),
                       ),
+                    SizedBox(
+                      height: blockHeight * 2,
+                    ),
+                    CustomTextField(
+                      hintText: 'Choose your Birthday',
+                      controller: dateOfBirthController,
+                      readOnly: true,
+                      onTap: () async {
+                        DateTime? pickedDate = await showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(1950),
+                            lastDate: DateTime(2100));
+
+                        if (pickedDate != null) {
+                          String formattedDate =
+                              DateFormat('yyyy-MM-dd').format(pickedDate);
+
+                          setState(() {
+                            dateOfBirthController.text = formattedDate;
+                          });
+                        } else {}
+                      },
+                    ),
                     Row(
                       children: [
                         Checkbox(
@@ -342,20 +373,30 @@ class _RegisterFormState extends State<RegisterForm> {
                           LocaleKeys.appPolicy.tr(),
                           style: const TextStyle(
                             fontWeight: FontWeight.w400,
-                            fontSize: 15,
+                            fontSize: 14,
                           ),
                         ),
                       ],
                     ),
                     isChecked
                         ? CustomButton(
+                            height: 40,
                             onPressed: () {
                               if (formKey.currentState!.validate()) {
                                 BlocProvider.of<AuthCubit>(context)
                                     .registerUser(
-                                        userName: userNameController.text,
-                                        email: emailController.text,
-                                        password: passController.text);
+                                  firstName: firstNameController.text,
+                                  lastName: lastNameController.text,
+                                  email: emailController.text,
+                                  userName: userNameController.text,
+                                  password: passController.text,
+                                  phoneNumber: phoneController.text,
+                                  maleGender: gender,
+                                  city: int.tryParse(cityController.text) ?? 0,
+                                  state: stateController.text,
+                                  dateOfBirth: DateTime.parse(
+                                      dateOfBirthController.text),
+                                );
                               }
                             },
                             text: state is RegisterLoadingState
@@ -363,11 +404,12 @@ class _RegisterFormState extends State<RegisterForm> {
                                 : LocaleKeys.Signup.tr().toUpperCase(),
                           )
                         : CustomButton(
-                            backgroundColor: const Color(0xff7F53AC5F),
+                            height: 40,
+                            backgroundColor: const Color(0x7F53AC5F),
                             text: LocaleKeys.Signup.tr().toUpperCase(),
                           ),
                     SizedBox(
-                      height: blockHeight * 1.5,
+                      height: blockHeight * 1,
                     ),
                     const GoogleFacebookLogin(),
                   ],

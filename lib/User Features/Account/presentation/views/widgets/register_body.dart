@@ -21,6 +21,7 @@ class RegisterPageBody extends StatelessWidget {
               aspectRatio: 1,
               child: Image.asset(
                 AssetsData.signUpImage,
+                fit: BoxFit.cover,
               ),
             ),
           ),

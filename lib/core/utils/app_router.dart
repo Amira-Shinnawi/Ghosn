@@ -1,4 +1,5 @@
 import 'package:ghosn_app/Admin%20Features/Article/presentation/views/latest_article_home.dart';
+import 'package:ghosn_app/Admin%20Features/Community/presentation/views/community_home.dart';
 import 'package:ghosn_app/User%20Features/Account/presentation/views/change_pass.dart';
 import 'package:ghosn_app/User%20Features/Account/presentation/views/edit_profile.dart';
 import 'package:ghosn_app/User%20Features/Account/presentation/views/login_options_view.dart';
@@ -11,6 +12,7 @@ import 'package:ghosn_app/User%20Features/home/presentation/views/notification_h
 import 'package:ghosn_app/User%20Features/splash/presentation/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../Admin Features/Community/presentation/views/create_post_view.dart';
 import '../../User Features/Account/presentation/views/profile_view.dart';
 import '../../User Features/home/presentation/views/favorite_home.dart';
 import '../../User Features/home/presentation/views/home.dart';
@@ -38,6 +40,8 @@ abstract class AppRouter {
 
   // Admin //
   static const kLatestArticle = '/latestArticle';
+  static const kCommunity = '/community';
+  static const kCreatePost = '/createPost';
 
   static final router = GoRouter(
       initialLocation: (userToken != null || tokenFacebookOrGoogle != null)
@@ -109,9 +113,17 @@ abstract class AppRouter {
           builder: (context, state) => const ArticleHome(),
         ),
         // Admin//
-         GoRoute(
+        GoRoute(
           path: kLatestArticle,
           builder: (context, state) => const LatestArticleHome(),
+        ),
+        GoRoute(
+          path: kCommunity,
+          builder: (context, state) => const CommunityHome(),
+        ),
+        GoRoute(
+          path: kCreatePost,
+          builder: (context, state) => const CreatePostView(),
         ),
       ]);
 }

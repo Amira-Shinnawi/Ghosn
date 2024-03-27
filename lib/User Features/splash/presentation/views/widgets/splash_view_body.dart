@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:ghosn_app/User%20Features/home/presentation/views/bottom_bar.dart';
 import 'package:ghosn_app/core/utils/app_router.dart';
 import 'package:ghosn_app/translations/local_keys.g.dart';
 import 'package:go_router/go_router.dart';
@@ -67,7 +68,9 @@ class SplashViewBody extends StatelessWidget {
           CustomButton(
             text: LocaleKeys.getStarted.tr(),
             onPressed: () {
-              GoRouter.of(context).push(AppRouter.kLatestArticle);
+              // GoRouter.of(context).push(AppRouter.kCommunity);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => BottomBar()));
             },
           ),
           SizedBox(

@@ -26,7 +26,7 @@ class GoogleFacebookLogin extends StatelessWidget {
           ),
         ),
         SizedBox(
-          width: width * .05,
+          width: width * .1,
         ),
         GestureDetector(
           onTap: () {

@@ -29,11 +29,11 @@ class _AddCartState extends State<AddCart> {
         children: [
           Expanded(
             child: CustomElevatedButton(
+              padding: const EdgeInsets.all(10),
               onPressed: () {
                 GoRouter.of(context).push(AppRouter.kChart);
               },
               buttonName: 'Add Cart',
-              
             ),
           ),
           Row(
