@@ -29,23 +29,17 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   badges: ^3.1.2
-  comment_tree: ^0.3.0
   connectivity_plus: ^5.0.2
-  
   country_state_city_picker: ^1.2.8
   csc_picker: ^0.2.7
-  
   cupertino_icons: ^1.0.2
   device_preview: ^1.1.0
-  dotted_border: ^2.1.0
   easy_localization: ^3.0.3
-  file_picker: ^8.0.0+1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.4
   flutter_credit_card: ^4.0.1
   flutter_facebook_auth: ^6.0.4
-  flutter_image_slideshow: ^0.1.6
   flutter_paypal_payment: ^1.0.6
   flutter_svg: ^2.0.9
   font_awesome_flutter: ^10.7.0
@@ -55,16 +49,10 @@ dependencies:
   loading_overlay: ^0.3.0
   provider: ^6.1.1
   shared_preferences: ^2.2.2
-  gap: ^3.0.1
-  
-  
+  flutter_image_slideshow: ^0.1.6
+  file_picker: ^8.0.0+1
+  dotted_border: ^2.1.0
   camera: ^0.10.5+9
-  media_scanner: ^2.1.0
-  external_path: ^1.0.3
-  path_provider: ^2.1.2
- 
-   
-
 dev_dependencies:
   flutter_lints: ^3.0.1
   flutter_test:
