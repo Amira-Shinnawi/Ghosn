@@ -19,7 +19,7 @@ class CameraBody extends StatefulWidget {
 
 class _CameraBodyState extends State<CameraBody> {
   late CameraController _controller;
-  late Future<void> _initializeControllerFuture;
+  Future<void>? _initializeControllerFuture;
 
   @override
   void initState() {
