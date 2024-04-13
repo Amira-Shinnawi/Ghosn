@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../constants.dart';
 import 'widgets/categoriesBar.dart';
 import 'widgets/search&filter.dart';
+import 'widgets/search&filter.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -28,6 +29,13 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
+      body: Expanded(
+        child: Column(
+          children: [
+            Padding(padding: const EdgeInsets.all(8.0), child: searchPfilter()),
+            categoriesBar()
+          ],
+        ),
       body: Column(
         children: [
           Padding(padding: const EdgeInsets.all(8.0), child: searchPfilter()),
