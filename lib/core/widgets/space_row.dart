@@ -6,12 +6,10 @@ class SpaceBetweenRow extends StatelessWidget {
   final String label;
   final String value;
 
-
   const SpaceBetweenRow({
     super.key,
     required this.label,
     required this.value,
- 
   });
 
   @override

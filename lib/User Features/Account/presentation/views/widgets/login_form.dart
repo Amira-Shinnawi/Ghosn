@@ -87,9 +87,6 @@ class _LoginFormState extends State<LoginForm> {
                       hintText: 'UserName',
                       keyboardType: TextInputType.emailAddress,
                     ),
-                    SizedBox(
-                      height: height * .03,
-                    ),
                     CustomTextField(
                       pass: obscureText,
                       controller: passController,

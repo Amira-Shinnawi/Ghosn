@@ -1,22 +1,27 @@
 import 'package:ghosn_app/Admin%20Features/Article/presentation/views/latest_article_home.dart';
 import 'package:ghosn_app/Admin%20Features/Community/presentation/views/community_home.dart';
+import 'package:ghosn_app/Admin%20Features/Products/presentation/views/create_plant.dart';
+import 'package:ghosn_app/Admin%20Features/Transaction/presentation/views/transaction_view.dart';
 import 'package:ghosn_app/User%20Features/Account/presentation/views/change_pass.dart';
 import 'package:ghosn_app/User%20Features/Account/presentation/views/edit_profile.dart';
 import 'package:ghosn_app/User%20Features/Account/presentation/views/login_options_view.dart';
 import 'package:ghosn_app/User%20Features/Account/presentation/views/login_page.dart';
 import 'package:ghosn_app/User%20Features/Account/presentation/views/register_page.dart';
 import 'package:ghosn_app/User%20Features/Article/presentation/views/article_home.dart';
+import 'package:ghosn_app/User%20Features/Cart&Fav&Notify/presentation/views/chart.dart';
 import 'package:ghosn_app/User%20Features/Payment/presentation/views/payment_method.dart';
 import 'package:ghosn_app/User%20Features/detection/presentation/views/tips_page.dart';
-import 'package:ghosn_app/User%20Features/home/presentation/views/chart.dart';
-import 'package:ghosn_app/User%20Features/home/presentation/views/notification_home.dart';
+import 'package:ghosn_app/User%20Features/home/presentation/views/home_view.dart';
 import 'package:ghosn_app/User%20Features/splash/presentation/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../Admin Features/Community/presentation/views/create_post_view.dart';
+import '../../Admin Features/Products/presentation/views/create_pot.dart';
+import '../../Admin Features/Products/presentation/views/product_view.dart';
+import '../../Admin Features/Shipments/presentation/views/shipment_view.dart';
 import '../../User Features/Account/presentation/views/profile_view.dart';
-import '../../User Features/home/presentation/views/favorite_home.dart';
-import '../../User Features/home/presentation/views/home.dart';
+import '../../User Features/Cart&Fav&Notify/presentation/views/favorite_home.dart';
+import '../../User Features/Cart&Fav&Notify/presentation/views/notification_home.dart';
 import '../../User Features/home/presentation/views/product_details_home.dart';
 import '../../constants.dart';
 
@@ -47,6 +52,11 @@ abstract class AppRouter {
   static const kLatestArticle = '/latestArticle';
   static const kCommunity = '/community';
   static const kCreatePost = '/createPost';
+  static const kAdminProduct = '/adminProduct';
+  static const kCreatePlant = '/createPlant';
+  static const kCreatePot = '/createPot';
+  static const kShipment = '/shipment';
+  static const kTransaction = '/transaction';
 
   static final router = GoRouter(
       initialLocation: (userToken != null || tokenFacebookOrGoogle != null)
@@ -91,7 +101,7 @@ abstract class AppRouter {
         ),
         GoRoute(
           path: kHomePage,
-          builder: (context, state) => HomePage(),
+          builder: (context, state) => const HomeView(),
         ),
         GoRoute(
           path: kChart,
@@ -129,6 +139,26 @@ abstract class AppRouter {
         GoRoute(
           path: kCreatePost,
           builder: (context, state) => const CreatePostView(),
+        ),
+        GoRoute(
+          path: kAdminProduct,
+          builder: (context, state) => const ProductAdminView(),
+        ),
+        GoRoute(
+          path: kCreatePlant,
+          builder: (context, state) => const CreatePlantView(),
+        ),
+        GoRoute(
+          path: kCreatePot,
+          builder: (context, state) => const CreatePotView(),
+        ),
+        GoRoute(
+          path: kShipment,
+          builder: (context, state) => const ShipmentView(),
+        ),
+        GoRoute(
+          path: kTransaction,
+          builder: (context, state) => const TransactionView(),
         ),
         GoRoute(
           path: ktips,

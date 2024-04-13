@@ -15,6 +15,8 @@ class CustomTextFormEditing extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.validator,
+    this.formKey,
+    this.labelText,
   });
   final String hintText;
   final void Function(String?)? onSaved;
@@ -25,14 +27,16 @@ class CustomTextFormEditing extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final String? Function(String?)? validator;
-
+  final Key? formKey;
+  final String? labelText;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double blockHeight = (height / 100);
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: blockHeight * 2),
+      padding: EdgeInsets.symmetric(vertical: blockHeight * 1),
       child: TextFormField(
+        key: formKey,
         readOnly: readOnly,
         controller: controller,
         onTap: onTap,
@@ -57,6 +61,11 @@ class CustomTextFormEditing extends StatelessWidget {
           contentPadding: const EdgeInsets.fromLTRB(20, 10.0, 20.0, 10.0),
           hintText: hintText,
           hintStyle: Styles.textStyle16Inter.copyWith(
+            fontSize: 14,
+            color: kHintColor,
+          ),
+          labelText: labelText,
+          labelStyle: Styles.textStyle16Inter.copyWith(
             fontSize: 14,
             color: kHintColor,
           ),

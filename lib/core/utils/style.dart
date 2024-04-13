@@ -63,15 +63,14 @@ abstract class Styles {
     fontSize: 18,
   );
   static const textStyle16green = TextStyle(
-     color:kGreenColor ,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        decoration: TextDecoration.underline,
+    color: kGreenColor,
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
+    decoration: TextDecoration.underline,
   );
-    static const textStyle16 = TextStyle(
+  static const textStyle16 = TextStyle(
     color: Colors.black,
     fontSize: 16,
     fontFamily: 'Almarai',
-  
   );
 }

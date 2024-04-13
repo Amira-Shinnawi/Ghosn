@@ -16,7 +16,7 @@ class ArticleHome extends StatefulWidget {
 }
 
 class _ArticleHomeState extends State<ArticleHome> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey =  GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {

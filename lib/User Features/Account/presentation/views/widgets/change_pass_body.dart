@@ -35,7 +35,7 @@ class _ChangePasswordBodyState extends State<ChangePasswordBody> {
               ),
             ),
             SizedBox(
-              height: height * .1,
+              height: height * .05,
             ),
             CustomTextField(
               pass: obscureText,
@@ -52,9 +52,6 @@ class _ChangePasswordBodyState extends State<ChangePasswordBody> {
                 ),
               ),
               keyboardType: TextInputType.visiblePassword,
-            ),
-            SizedBox(
-              height: height * .018,
             ),
             CustomTextField(
               pass: obscureText,

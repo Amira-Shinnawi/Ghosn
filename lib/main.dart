@@ -11,7 +11,7 @@ import 'package:ghosn_app/core/utils/functions/shared_pref_cache.dart';
 import 'package:ghosn_app/translations/codegen_loader.g.dart';
 
 List<CameraDescription> camerasList = [];
-Future <void> main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   camerasList = await availableCameras();

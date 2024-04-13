@@ -8,7 +8,7 @@ class LatestArticleBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  double height = MediaQuery.of(context).size.height;
+    double height = MediaQuery.of(context).size.height;
     double blocHeight = (height / 100);
     double width = MediaQuery.of(context).size.width;
     double blocWidth = (width / 100);
@@ -40,4 +40,3 @@ class LatestArticleBody extends StatelessWidget {
     );
   }
 }
-

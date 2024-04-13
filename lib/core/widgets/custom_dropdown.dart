@@ -115,7 +115,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
               border: Border.all(color: Colors.black),
             ),
             padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 12),
-            child:  Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(LocaleKeys.select.tr()),

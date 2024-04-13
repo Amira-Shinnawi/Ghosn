@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ghosn_app/User%20Features/home/presentation/views/widgets/total_amount.dart';
+import 'package:ghosn_app/User%20Features/Cart&Fav&Notify/presentation/views/widgets/total_amount.dart';
 
 import 'chart_item.dart';
 

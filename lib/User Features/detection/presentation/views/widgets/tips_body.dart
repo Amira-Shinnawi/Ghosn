@@ -68,7 +68,7 @@ class TipsBody extends StatelessWidget {
             ),
           ),
           Padding(
-            padding:  EdgeInsets.only(top:blocWidth * .001 ),
+            padding: EdgeInsets.only(top: blocWidth * .001),
             child: const Text(
               "The following will cause bad results:",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
@@ -91,7 +91,7 @@ class TipsBody extends StatelessWidget {
                       children: [
                         Container(
                           height: height * .13,
-                          width: width*.37,
+                          width: width * .37,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30.0),
                             image: DecorationImage(
@@ -129,12 +129,12 @@ class TipsBody extends StatelessWidget {
             text: 'OK',
             height: 48,
             width: 150,
-          onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Camera()),
-                );
-              },
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Camera()),
+              );
+            },
           )
         ],
       ),

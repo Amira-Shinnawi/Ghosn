@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:ghosn_app/User%20Features/home/presentation/views/widgets/favorite_list_view_body.dart';
+import 'package:ghosn_app/User%20Features/Cart&Fav&Notify/presentation/views/widgets/favorite_list_view_body.dart';
 import 'package:ghosn_app/core/widgets/custom_appbar.dart';
 
 import '../../../../core/utils/style.dart';

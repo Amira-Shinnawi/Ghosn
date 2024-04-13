@@ -2,6 +2,9 @@ import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ghosn_app/User%20Features/Account/data/model/user_profile_model.dart';
+import 'package:ghosn_app/User%20Features/Account/presentation/manager/cubit/auth_cubit.dart';
 import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/utils/assets_data.dart';
 import 'package:ghosn_app/core/utils/style.dart';
@@ -11,16 +14,34 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../../../core/widgets/custom_text_editing.dart';
 import '../../../../../translations/local_keys.g.dart';
-import 'continue_editing_body.dart';
 
 class EditProfileBody extends StatefulWidget {
-  const EditProfileBody({super.key});
-
+  EditProfileBody({super.key});
+  UserProfileModel? userProfileModel;
   @override
   State<EditProfileBody> createState() => _EditProfileBodyState();
 }
 
 class _EditProfileBodyState extends State<EditProfileBody> {
+  final firstNameKey = GlobalKey<FormState>();
+  final lastNameKey = GlobalKey<FormState>();
+  final userNameKey = GlobalKey<FormState>();
+  final birthdayKey = GlobalKey<FormState>();
+  final phoneKey = GlobalKey<FormState>();
+  final emailKey = GlobalKey<FormState>();
+  final passKey = GlobalKey<FormState>();
+
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController userNameController = TextEditingController();
+  TextEditingController passController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController cityController = TextEditingController();
+  TextEditingController stateController = TextEditingController();
+  TextEditingController dateOfBirthController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   XFile? _pickedImage;
 
   Future<void> _pickImage() async {
@@ -37,9 +58,18 @@ class _EditProfileBodyState extends State<EditProfileBody> {
 
   @override
   void initState() {
-    dateInput.text = "";
+    // firstNameController.text = widget.userProfileModel!.firstName!;
+    // lastNameController.text = widget.userProfileModel!.lastName!;
+    // emailController.text = widget.userProfileModel!.email!;
+    // userNameController.text = widget.userProfileModel!.userName!;
+    // passController.text = widget.userProfileModel!.password!;
+    // phoneController.text = widget.userProfileModel!.phoneNumber!;
+    // dateOfBirthController.text = widget.userProfileModel!.dateOfBirth!;
+
     super.initState();
   }
+
+  bool gender = true;
 
   @override
   Widget build(BuildContext context) {
@@ -118,12 +148,28 @@ class _EditProfileBodyState extends State<EditProfileBody> {
             SizedBox(
               height: blockHeight * 1,
             ),
-            const CustomTextFormEditing(
+            CustomTextFormEditing(
+              hintText: 'First Name',
+              controller: firstNameController,
+              formKey: firstNameKey,
+            ),
+            CustomTextFormEditing(
+              hintText: 'Last Name',
+              controller: lastNameController,
+              formKey: lastNameKey,
+            ),
+            CustomTextFormEditing(
               hintText: 'User Name',
+              controller: userNameController,
+              formKey: userNameKey,
+            ),
+            SizedBox(
+              height: blockHeight * 1,
             ),
             CustomTextField(
+              width: 2,
               hintText: 'Choose your Birthday',
-              controller: dateInput,
+              controller: dateOfBirthController,
               readOnly: true,
               onTap: () async {
                 DateTime? pickedDate = await showDatePicker(
@@ -142,8 +188,34 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                 } else {}
               },
             ),
-            const CustomTextFormEditing(
+            SizedBox(
+              height: blockHeight * 1,
+            ),
+            const Divider(),
+            SizedBox(
+              height: blockHeight * 2,
+            ),
+            const Text(
+              'Contact Info',
+              style: Styles.textStyle18Inter,
+            ),
+            SizedBox(
+              height: blockHeight * 1,
+            ),
+            CustomTextFormEditing(
               hintText: '+20 01025167595',
+              controller: phoneController,
+              formKey: phoneKey,
+            ),
+            CustomTextFormEditing(
+              hintText: 'Email',
+              controller: emailController,
+              formKey: emailKey,
+            ),
+            CustomTextFormEditing(
+              hintText: 'Password',
+              controller: passController,
+              formKey: passKey,
             ),
             SizedBox(
               height: blockHeight * 2,
@@ -151,10 +223,18 @@ class _EditProfileBodyState extends State<EditProfileBody> {
             CustomElevatedButton(
               padding: const EdgeInsets.all(10),
               onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) {
-                  return const ContinueEditing();
-                }));
+                // Navigator.of(context)
+                //     .push(MaterialPageRoute(builder: (context) {
+                //   return const ContinueEditing();
+                // }));
+                // BlocProvider.of<AuthCubit>(context).editUser(
+                //     firstName: firstNameController.text,
+                //     lastName: lastNameController.text,
+                //     email: emailController.text,
+                //     userName: userNameController.text,
+                //     password: passController.text,
+                //     phoneNumber: phoneController.text,
+                //     dateOfBirth: dateOfBirthController.text);
               },
               buttonName: LocaleKeys.okContinue.tr(),
             ),

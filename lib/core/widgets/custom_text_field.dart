@@ -21,6 +21,7 @@ class CustomTextField extends StatelessWidget {
     this.validator,
     this.maxLength,
     this.minLength,
+    this.labelText,
   });
 
   final Widget? prefixIcon;
@@ -38,44 +39,55 @@ class CustomTextField extends StatelessWidget {
   final bool readOnly;
   final String? Function(String?)? validator;
   int? maxLength, minLength;
-
+  final String? labelText;
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      obscureText: pass,
-      onChanged: onChanged,
-      controller: controller,
-      maxLength: maxLength ?? null,
-      maxLines: minLength ?? 1,
-      validator: validator ??
-          (data) {
-            if (data!.isEmpty) {
-              return 'Please Enter $hintText';
-            }
-            return null;
-          },
-      onTap: onTap,
-      cursorColor: kGreenColor,
-      readOnly: readOnly,
-      keyboardType: keyboardType,
-      inputFormatters: inputFormatters,
-      style: Styles.textStyle22Inter.copyWith(
-        fontSize: 14,
-        color: Colors.black,
-      ),
-      decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: TextStyle(
-          color: Colors.black.withOpacity(0.4000000059604645),
+    double height = MediaQuery.of(context).size.height;
+    double blockHeight = (height / 100);
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: blockHeight * 1),
+      child: TextFormField(
+        obscureText: pass,
+        onChanged: onChanged,
+        controller: controller,
+        maxLength: maxLength ?? null,
+        maxLines: minLength ?? 1,
+        validator: validator ??
+            (data) {
+              if (data!.isEmpty) {
+                return 'Please Enter $hintText';
+              }
+              return null;
+            },
+        onTap: onTap,
+        cursorColor: kGreenColor,
+        readOnly: readOnly,
+        keyboardType: keyboardType,
+        inputFormatters: inputFormatters,
+        style: Styles.textStyle22Inter.copyWith(
           fontSize: 14,
-          fontWeight: FontWeight.w400,
+          color: Colors.black,
         ),
-        contentPadding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-        border: builtOutLineBorder(width: width, color: color),
-        enabledBorder: builtOutLineBorder(width: width, color: color),
-        focusedBorder: builtOutLineBorder(width: width, color: color),
-        prefixIcon: prefixIcon,
-        suffixIcon: suffixIcon,
+        decoration: InputDecoration(
+          hintText: hintText,
+          hintStyle: TextStyle(
+            color: Colors.black.withOpacity(0.4000000059604645),
+            fontSize: 14,
+            fontWeight: FontWeight.w400,
+          ),
+          labelText: labelText,
+          labelStyle: TextStyle(
+            color: Colors.black.withOpacity(0.4000000059604645),
+            fontSize: 14,
+            fontWeight: FontWeight.w400,
+          ),
+          contentPadding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+          border: builtOutLineBorder(width: width, color: color),
+          enabledBorder: builtOutLineBorder(width: width, color: color),
+          focusedBorder: builtOutLineBorder(width: width, color: color),
+          prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
+        ),
       ),
     );
   }
@@ -88,7 +100,7 @@ class CustomTextField extends StatelessWidget {
       ),
       borderSide: BorderSide(
         color: color ?? kGreenColor,
-        width: width ?? 3,
+        width: width ?? 2,
       ),
     );
   }

@@ -33,29 +33,27 @@ class DisplayPictureScreenBody extends StatelessWidget {
             ),
           ),
           SizedBox(height: height * .01),
-           CustomButton(
+          CustomButton(
             text: "Identify the plant",
             width: 265,
             height: 50,
-             onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const DetectResult()),
-                );
-              },
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const DetectResult()),
+              );
+            },
           ),
-        
           CustomButton(
             text: "Identify plants disease ",
             width: 265,
             height: 50,
-             onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const DetectResult()),
-                );
-              },
-
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const DetectResult()),
+              );
+            },
           ),
         ],
       ),

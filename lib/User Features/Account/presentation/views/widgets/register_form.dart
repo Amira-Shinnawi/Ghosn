@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ghosn_app/User%20Features/Account/presentation/manager/cubit/auth_cubit.dart';
@@ -116,9 +115,6 @@ class _RegisterFormState extends State<RegisterForm> {
                       hintText: 'First Name',
                       keyboardType: TextInputType.text,
                     ),
-                    SizedBox(
-                      height: blockHeight * 2,
-                    ),
                     CustomTextField(
                       prefixIcon: const Icon(
                         FontAwesomeIcons.user,
@@ -128,9 +124,6 @@ class _RegisterFormState extends State<RegisterForm> {
                       controller: lastNameController,
                       hintText: 'Last Name',
                       keyboardType: TextInputType.name,
-                    ),
-                    SizedBox(
-                      height: blockHeight * 2,
                     ),
                     CustomTextField(
                       prefixIcon: const Icon(
@@ -142,9 +135,6 @@ class _RegisterFormState extends State<RegisterForm> {
                       hintText: LocaleKeys.Email.tr(),
                       keyboardType: TextInputType.emailAddress,
                     ),
-                    SizedBox(
-                      height: blockHeight * 2,
-                    ),
                     CustomTextField(
                       prefixIcon: const Icon(
                         FontAwesomeIcons.circleUser,
@@ -154,9 +144,6 @@ class _RegisterFormState extends State<RegisterForm> {
                       controller: userNameController,
                       hintText: 'UserName',
                       keyboardType: TextInputType.name,
-                    ),
-                    SizedBox(
-                      height: blockHeight * 2,
                     ),
                     CustomTextField(
                       pass: obscureText,
@@ -176,182 +163,170 @@ class _RegisterFormState extends State<RegisterForm> {
                       ),
                       keyboardType: TextInputType.visiblePassword,
                     ),
-                    SizedBox(
-                      height: blockHeight * 2,
-                    ),
-                    CustomTextField(
-                      prefixIcon: const Icon(
-                        Icons.phone,
-                        color: kHintColor,
-                        size: 20,
-                      ),
-                      controller: phoneController,
-                      hintText: LocaleKeys.phone.tr(),
-                      keyboardType: TextInputType.number,
-                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                    ),
-                    SizedBox(
-                      height: blockHeight * 2,
-                    ),
-                    Container(
-                      height: blockHeight * 6.5,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        border: Border.all(
-                          color: kGreenColor,
-                          width: 3,
-                        ),
-                      ),
-                      child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: blockWidth * 2.5),
-                        child: Row(
-                          children: [
-                            const Icon(
-                              FontAwesomeIcons.venusMars,
-                              size: 20,
-                              color: kHintColor,
-                            ),
-                            SizedBox(
-                              width: blockWidth * 4,
-                            ),
-                            Text(
-                              LocaleKeys.gender.tr(),
-                              style: TextStyle(
-                                color: Colors.black
-                                    .withOpacity(0.4000000059604645),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                Radio<bool>(
-                                  value: true,
-                                  activeColor: kGreenColor,
-                                  groupValue: gender,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      gender = value!;
-                                    });
-                                  },
-                                ),
-                                Text(
-                                  LocaleKeys.Male.tr(),
-                                  style: Styles.textStyle16Inter,
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Radio<bool>(
-                                  value: false,
-                                  groupValue: gender,
-                                  activeColor: kGreenColor,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      gender = value!;
-                                    });
-                                  },
-                                ),
-                                Text(
-                                  LocaleKeys.Female.tr(),
-                                  style: Styles.textStyle16Inter,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: blockHeight * 2,
-                    ),
-                    CustomTextField(
-                      onTap: () {
-                        setState(() {
-                          showLocationFields = !showLocationFields;
-                        });
-                      },
-                      hintText: LocaleKeys.chooseLocation.tr(),
-                      suffixIcon: const Icon(
-                        FontAwesomeIcons.chevronDown,
-                        size: 20,
-                        color: kGreenColor,
-                      ),
-                      controller: TextEditingController(
-                          text:
-                              '${cityController.text}${stateController.text}'),
-                      readOnly: true,
-                      prefixIcon: const Icon(
-                        FontAwesomeIcons.locationDot,
-                        size: 20,
-                        color: kHintColor,
-                      ),
-                    ),
-                    SizedBox(
-                      height: blockHeight * 1,
-                    ),
-                    if (showLocationFields)
-                      Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: blockWidth * 2.5),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: CustomTextField(
-                                    hintText: LocaleKeys.city.tr(),
-                                    controller: cityController,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        city = int.tryParse(value) ?? 0;
-                                      });
-                                    },
-                                  ),
-                                ),
-                                SizedBox(width: blockWidth * 2),
-                                Expanded(
-                                  child: CustomTextField(
-                                    hintText: LocaleKeys.state.tr(),
-                                    controller: stateController,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        yourState = value;
-                                      });
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    SizedBox(
-                      height: blockHeight * 2,
-                    ),
-                    CustomTextField(
-                      hintText: 'Choose your Birthday',
-                      controller: dateOfBirthController,
-                      readOnly: true,
-                      onTap: () async {
-                        DateTime? pickedDate = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(1950),
-                            lastDate: DateTime(2100));
+                    // CustomTextField(
+                    //   prefixIcon: const Icon(
+                    //     Icons.phone,
+                    //     color: kHintColor,
+                    //     size: 20,
+                    //   ),
+                    //   controller: phoneController,
+                    //   hintText: LocaleKeys.phone.tr(),
+                    //   keyboardType: TextInputType.number,
+                    //   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    // ),
+                    // Container(
+                    //   height: blockHeight * 6.5,
+                    //   decoration: BoxDecoration(
+                    //     borderRadius: BorderRadius.circular(50),
+                    //     border: Border.all(
+                    //       color: kGreenColor,
+                    //       width: 2,
+                    //     ),
+                    //   ),
+                    //   child: Padding(
+                    //     padding:
+                    //         EdgeInsets.symmetric(horizontal: blockWidth * 2.5),
+                    //     child: Row(
+                    //       children: [
+                    //         const Icon(
+                    //           FontAwesomeIcons.venusMars,
+                    //           size: 20,
+                    //           color: kHintColor,
+                    //         ),
+                    //         SizedBox(
+                    //           width: blockWidth * 4,
+                    //         ),
+                    //         Text(
+                    //           LocaleKeys.gender.tr(),
+                    //           style: TextStyle(
+                    //             color: Colors.black
+                    //                 .withOpacity(0.4000000059604645),
+                    //             fontSize: 14,
+                    //             fontWeight: FontWeight.w400,
+                    //           ),
+                    //         ),
+                    //         Row(
+                    //           children: [
+                    //             Radio<bool>(
+                    //               value: true,
+                    //               activeColor: kGreenColor,
+                    //               groupValue: gender,
+                    //               onChanged: (value) {
+                    //                 setState(() {
+                    //                   gender = value!;
+                    //                 });
+                    //               },
+                    //             ),
+                    //             Text(
+                    //               LocaleKeys.Male.tr(),
+                    //               style: Styles.textStyle16Inter,
+                    //             ),
+                    //           ],
+                    //         ),
+                    //         Row(
+                    //           children: [
+                    //             Radio<bool>(
+                    //               value: false,
+                    //               groupValue: gender,
+                    //               activeColor: kGreenColor,
+                    //               onChanged: (value) {
+                    //                 setState(() {
+                    //                   gender = value!;
+                    //                 });
+                    //               },
+                    //             ),
+                    //             Text(
+                    //               LocaleKeys.Female.tr(),
+                    //               style: Styles.textStyle16Inter,
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
+                    // SizedBox(
+                    //   height: blockHeight * 1,
+                    // ),
+                    // CustomTextField(
+                    //   onTap: () {
+                    //     setState(() {
+                    //       showLocationFields = !showLocationFields;
+                    //     });
+                    //   },
+                    //   hintText: LocaleKeys.chooseLocation.tr(),
+                    //   suffixIcon: const Icon(
+                    //     FontAwesomeIcons.chevronDown,
+                    //     size: 20,
+                    //     color: kGreenColor,
+                    //   ),
+                    //   controller: TextEditingController(
+                    //       text:
+                    //           '${cityController.text}${stateController.text}'),
+                    //   readOnly: true,
+                    //   prefixIcon: const Icon(
+                    //     FontAwesomeIcons.locationDot,
+                    //     size: 20,
+                    //     color: kHintColor,
+                    //   ),
+                    // ),
+                    // if (showLocationFields)
+                    //   Padding(
+                    //     padding:
+                    //         EdgeInsets.symmetric(horizontal: blockWidth * 2.5),
+                    //     child: Column(
+                    //       children: [
+                    //         Row(
+                    //           children: [
+                    //             Expanded(
+                    //               child: CustomTextField(
+                    //                 hintText: LocaleKeys.city.tr(),
+                    //                 controller: cityController,
+                    //                 onChanged: (value) {
+                    //                   setState(() {
+                    //                     city = int.tryParse(value) ?? 0;
+                    //                   });
+                    //                 },
+                    //               ),
+                    //             ),
+                    //             SizedBox(width: blockWidth * 2),
+                    //             Expanded(
+                    //               child: CustomTextField(
+                    //                 hintText: LocaleKeys.state.tr(),
+                    //                 controller: stateController,
+                    //                 onChanged: (value) {
+                    //                   setState(() {
+                    //                     yourState = value;
+                    //                   });
+                    //                 },
+                    //               ),
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // CustomTextField(
+                    //   hintText: 'Choose your Birthday',
+                    //   controller: dateOfBirthController,
+                    //   readOnly: true,
+                    //   onTap: () async {
+                    //     DateTime? pickedDate = await showDatePicker(
+                    //         context: context,
+                    //         initialDate: DateTime.now(),
+                    //         firstDate: DateTime(1950),
+                    //         lastDate: DateTime(2100));
 
-                        if (pickedDate != null) {
-                          String formattedDate =
-                              DateFormat('yyyy-MM-dd').format(pickedDate);
+                    //     if (pickedDate != null) {
+                    //       String formattedDate =
+                    //           DateFormat('yyyy-MM-dd').format(pickedDate);
 
-                          setState(() {
-                            dateOfBirthController.text = formattedDate;
-                          });
-                        } else {}
-                      },
-                    ),
+                    //       setState(() {
+                    //         dateOfBirthController.text = formattedDate;
+                    //       });
+                    //     } else {}
+                    //   },
+                    // ),
                     Row(
                       children: [
                         Checkbox(
@@ -390,12 +365,12 @@ class _RegisterFormState extends State<RegisterForm> {
                                   email: emailController.text,
                                   userName: userNameController.text,
                                   password: passController.text,
-                                  phoneNumber: phoneController.text,
-                                  maleGender: gender,
-                                  city: int.tryParse(cityController.text) ?? 0,
-                                  state: stateController.text,
-                                  dateOfBirth: DateTime.parse(
-                                      dateOfBirthController.text),
+                                  // phoneNumber: phoneController.text,
+                                  // maleGender: gender,
+                                  // city: int.tryParse(cityController.text) ?? 0,
+                                  // state: stateController.text,
+                                  // dateOfBirth: DateTime.parse(
+                                  //     dateOfBirthController.text),
                                 );
                               }
                             },

@@ -17,18 +17,15 @@ class LoginOptionsView extends StatelessWidget {
         ),
       ],
       child: Scaffold(
-              body: Consumer<AuthController>(
-                builder: (context, model, child) {
-                if (model.userDetailsModel != null) {
-                  return const ChangePassword();
-                } else {
-                  return const SafeArea(
-                    child: LoginOptionsBody(),
-                  );
-                }
-              }),
-      
-        
+        body: Consumer<AuthController>(builder: (context, model, child) {
+          if (model.userDetailsModel != null) {
+            return const ChangePassword();
+          } else {
+            return const SafeArea(
+              child: LoginOptionsBody(),
+            );
+          }
+        }),
       ),
     );
   }

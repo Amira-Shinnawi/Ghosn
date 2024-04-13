@@ -19,6 +19,7 @@ class _ProductDetailsHomeState extends State<ProductDetailsHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kGreenColor,
       appBar: CustomAppBar(
         backgroundColor: kGreenColor,
         leading: IconButton(

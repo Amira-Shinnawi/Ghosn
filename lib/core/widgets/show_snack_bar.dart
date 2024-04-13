@@ -7,7 +7,7 @@ void showSnackBar(BuildContext context, String message) {
       content: Center(
         child: Text(
           message,
-          style:const TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
           ),
           textAlign: TextAlign.center,

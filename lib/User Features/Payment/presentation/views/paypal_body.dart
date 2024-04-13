@@ -6,7 +6,7 @@ class Paypal_body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body:Text("PAYPAL") ,
+      body: Text("PAYPAL"),
     );
   }
 }

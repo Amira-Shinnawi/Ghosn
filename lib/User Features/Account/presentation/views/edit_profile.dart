@@ -44,7 +44,7 @@ class EditProfile extends StatelessWidget {
               ),
             ),
           ]),
-      body: const SafeArea(
+      body: SafeArea(
         child: EditProfileBody(),
       ),
     );

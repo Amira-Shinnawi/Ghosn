@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ghosn_app/User%20Features/home/presentation/views/widgets/favorite_item.dart';
+import 'package:ghosn_app/User%20Features/Cart&Fav&Notify/presentation/views/widgets/favorite_item.dart';
 
 class FavoriteListViewBody extends StatelessWidget {
   const FavoriteListViewBody({super.key});

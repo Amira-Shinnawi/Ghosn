@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
@@ -14,7 +13,7 @@ part 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
 
-  final _baseURL = 'https://9838mzjl-7268.uks1.devtunnels.ms/api/Auth';
+  final _baseURL = 'https://qs2d9q4n-7268.uks1.devtunnels.ms/api/Auth';
 
   Future<void> registerUser({
     required String firstName,
@@ -22,25 +21,14 @@ class AuthCubit extends Cubit<AuthState> {
     required String email,
     required String userName,
     required String password,
-    required String phoneNumber,
-    required bool maleGender,
-    required int city,
-    required String state,
-    required DateTime dateOfBirth,
   }) async {
     emit(RegisterLoadingState());
-    String formattedDateOfBirth = DateFormat('yyyy-MM-dd').format(dateOfBirth);
     String body = json.encode({
       'email': email,
       'firstName': firstName,
       'lastName': lastName,
-      'maleGender': maleGender,
       'password': password,
       'userName': userName,
-      'phoneNumber': phoneNumber,
-      'cityId': city,
-      'street': state,
-      'dateOfBirth': formattedDateOfBirth,
     });
     Response response = await http.post(
       Uri.parse(
@@ -56,13 +44,15 @@ class AuthCubit extends Cubit<AuthState> {
 
     if (responseBody['successfulOperation'] == true) {
       print(responseBody);
+      await SharedPrefCache.insertToCache(
+          key: 'token', value: responseBody['accessToken']);
+      log(responseBody['accessToken']);
       emit(RegisterSuccessState());
     } else {
       print(responseBody);
       //responseBody['errorMessages']
       emit(RegisterFailureState(
-          errorMessage:
-              'This account has already Registered Please Try Again Later'));
+          errorMessage: '${responseBody['errors']}, Please Try Again Later'));
     }
   }
 
@@ -70,8 +60,8 @@ class AuthCubit extends Cubit<AuthState> {
       {required String userName, required String password}) async {
     emit(LoginLoadingState());
     String body = json.encode({
-      'UserName': userName,
-      'Password': password,
+      'userName': userName,
+      'password': password,
     });
     try {
       Response response = await http.post(

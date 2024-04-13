@@ -1,14 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ghosn_app/User%20Features/home/presentation/views/widgets/chart_body.dart';
 
 import '../../../../core/utils/style.dart';
 import '../../../../core/widgets/custom_appbar.dart';
 import '../../../../translations/local_keys.g.dart';
+import 'widgets/notification_body.dart';
 
-class Chart extends StatelessWidget {
-  const Chart({super.key});
+class NotificationHome extends StatelessWidget {
+  const NotificationHome({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,24 +23,15 @@ class Chart extends StatelessWidget {
           ),
         ),
         titleAppBar: Text(
-          LocaleKeys.ShoppingCart.tr(),
+          LocaleKeys.Notifications.tr(),
           style: Styles.textStyle20Inter.copyWith(
             color: Colors.black,
             fontWeight: FontWeight.w600,
           ),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              FontAwesomeIcons.trashCan,
-              size: 20,
-            ),
-          ),
-        ],
       ),
       body: const SafeArea(
-        child: ShoppingCartBody(),
+        child: NotificationBody(),
       ),
     );
   }

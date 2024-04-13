@@ -10,9 +10,10 @@ import 'dart:async';
 import '../../data/model/payment_date_model.dart';
 import 'confirm_payment.dart';
 
-
-  Future<bool> ExecutePaypal(BuildContext context, 
-    {required PaymentDataModel paymentData,required AmountModel amount, required ItemListModel itemlist}) async {
+Future<bool> ExecutePaypal(BuildContext context,
+    {required PaymentDataModel paymentData,
+    required AmountModel amount,
+    required ItemListModel itemlist}) async {
   Completer<bool> completer = Completer<bool>();
 
   Navigator.of(context).push(MaterialPageRoute(
@@ -22,7 +23,7 @@ import 'confirm_payment.dart';
       secretKey: ApiKeys.paypalSecretKey,
       transactions: [
         {
-          "amount":amount.toJson(),
+          "amount": amount.toJson(),
           "description": "The payment transaction description.",
           "item_list": itemlist.toJson(),
         }
@@ -32,16 +33,16 @@ import 'confirm_payment.dart';
         log("onSuccess: $params");
         completer.complete(true); // Transaction completed successfully
         Navigator.pop(context); // Pop the PayPal view
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => ConfirmPayment(
-        paymentData: paymentData,
-        paymentMethod: 'PayPal',
-      ),
-    ),
-  );
-},
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ConfirmPayment(
+              paymentData: paymentData,
+              paymentMethod: 'PayPal',
+            ),
+          ),
+        );
+      },
       onError: (error) {
         log("onError: $error");
         completer.complete(false); // Transaction failed
@@ -57,4 +58,3 @@ import 'confirm_payment.dart';
 
   return completer.future;
 }
-    
