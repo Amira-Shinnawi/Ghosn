@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ghosn_app/core/utils/assets_data.dart';
 
 import '../../../data/categoryModel.dart';
 
@@ -65,7 +66,7 @@ class _searchPfilterState extends State<searchPfilter> {
             height: 50,
             decoration: BoxDecoration(
                 color: Colors.green,
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                       blurRadius: 4,
                       color: Colors.black12,
@@ -233,7 +234,7 @@ class _searchPfilterState extends State<searchPfilter> {
                         );
                       });
                 },
-                icon: Image.asset('assets/image 14.png')),
+                icon: Image.asset(AssetsData.imageTest2)),
           ),
         )
       ],

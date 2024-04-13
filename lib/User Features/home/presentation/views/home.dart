@@ -28,15 +28,12 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
-      body: Expanded(
-        child: Column(
-          children: [
-            Padding(padding: const EdgeInsets.all(8.0), child: searchPfilter()),
-            categoriesBar()
-          ],
-        ),
+      body: Column(
+        children: [
+          Padding(padding: const EdgeInsets.all(8.0), child: searchPfilter()),
+          categoriesBar()
+        ],
       ),
     );
   }
 }
-

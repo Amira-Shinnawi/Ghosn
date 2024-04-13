@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/User%20Features/home/data/plantModel.dart';
+import 'package:ghosn_app/core/utils/assets_data.dart';
 
 import '../../../../../constants.dart';
 
@@ -42,7 +43,9 @@ class PlantContainer extends StatelessWidget {
                         fontSize: 20,
                       )),
                   const Spacer(),
-                  const ImageIcon(AssetImage('assets/image 24.png'))
+                  const ImageIcon(AssetImage(
+                    AssetsData.imageTest2,
+                  ))
                 ],
               ),
             ),

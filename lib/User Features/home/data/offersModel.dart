@@ -1,7 +1,9 @@
+import 'package:ghosn_app/core/utils/assets_data.dart';
+
 String offerText = 'offers up to 30%';
 
 List<String> offerimages = [
-  'assets/Component 1.jpg',
-  'assets/Component 1.jpg',
-  'assets/Component 1.jpg'
+  AssetsData.imageTest2,
+  AssetsData.imageTest2,
+  AssetsData.imageTest2
 ];

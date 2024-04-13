@@ -1,3 +1,5 @@
+import 'package:ghosn_app/core/utils/assets_data.dart';
+
 class PlantModel {
   final String image;
   final String name;
@@ -12,32 +14,32 @@ class PlantModel {
 
 List<PlantModel> plants = [
   PlantModel(
-    image: 'assets/na 2.png',
+    image: AssetsData.imageTest2,
     name: 'silver snak plant',
     price: '150',
   ),
   PlantModel(
-    image: 'assets/na 2.png',
+    image: AssetsData.imageTest2,
     name: 'silver snak plant',
     price: '150',
   ),
   PlantModel(
-    image: 'assets/na 2.png',
+    image: AssetsData.imageTest2,
     name: 'silver snak plant',
     price: '150',
   ),
   PlantModel(
-    image: 'assets/na 2.png',
+    image: AssetsData.imageTest2,
     name: 'silver snak plant',
     price: '150',
   ),
   PlantModel(
-    image: 'assets/na 2.png',
+    image: AssetsData.imageTest2,
     name: 'silver snak plant',
     price: '150',
   ),
   PlantModel(
-    image: 'assets/na 2.png',
+    image: AssetsData.imageTest2,
     name: 'silver snak plant',
     price: '150',
   ),
