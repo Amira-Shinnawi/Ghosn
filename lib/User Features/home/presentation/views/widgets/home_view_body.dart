@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 
 import 'all_category_section.dart';
+import 'filter.dart';
 import 'header_home_body.dart';
 import 'popular_plant_home.dart';
 import 'title_with_more_button.dart';
 
-class HomeViewBody extends StatelessWidget {
+class HomeViewBody extends StatefulWidget {
   const HomeViewBody({super.key});
 
+  @override
+  State<HomeViewBody> createState() => _HomeViewBodyState();
+}
+
+class _HomeViewBodyState extends State<HomeViewBody> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -17,7 +23,10 @@ class HomeViewBody extends StatelessWidget {
       child: Column(
         children: [
           const HeaderWithSearchField(),
-          TitleWithMoreButton(title: "Popular Plant", morePressed: () {}),
+          TitleWithMoreButton(title: "Popular Plant", morePressed: () { showModalBottomSheet(
+    isScrollControlled: true,
+    context: context,
+    builder: (BuildContext context) {return filter();});}),
           SizedBox(
             height: blockHeight * 2,
           ),
