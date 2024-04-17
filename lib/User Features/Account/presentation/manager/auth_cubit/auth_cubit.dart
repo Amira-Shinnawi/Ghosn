@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:ghosn_app/core/utils/Api_Key.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
@@ -12,8 +13,6 @@ part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
-
-  final _baseURL = 'https://qs2d9q4n-7268.uks1.devtunnels.ms/api/Auth';
 
   Future<void> registerUser({
     required String firstName,
@@ -32,7 +31,7 @@ class AuthCubit extends Cubit<AuthState> {
     });
     Response response = await http.post(
       Uri.parse(
-        '$_baseURL/register',
+        '${ApiKeys.BASE_URL}/Auth/register',
       ),
       headers: {
         "Content-Type": "application/json",
@@ -66,7 +65,7 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       Response response = await http.post(
         Uri.parse(
-          '$_baseURL/login',
+          '${ApiKeys.BASE_URL}/Auth/login',
         ),
         headers: {
           "Content-Type": "application/json",

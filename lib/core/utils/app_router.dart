@@ -11,6 +11,7 @@ import 'package:ghosn_app/User%20Features/Article/presentation/views/article_hom
 import 'package:ghosn_app/User%20Features/Cart&Fav&Notify/presentation/views/chart.dart';
 import 'package:ghosn_app/User%20Features/Payment/presentation/views/payment_method.dart';
 import 'package:ghosn_app/User%20Features/detection/presentation/views/tips_page.dart';
+import 'package:ghosn_app/User%20Features/home/presentation/views/bottom_bar.dart';
 import 'package:ghosn_app/User%20Features/home/presentation/views/home_view.dart';
 import 'package:ghosn_app/User%20Features/splash/presentation/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
@@ -68,7 +69,7 @@ abstract class AppRouter {
           path: '/',
           builder: (context, state) =>
               (userToken != null || tokenFacebookOrGoogle != null)
-                  ? const ChangePassword()
+                  ? const BottomBar()
                   : const SplashView(),
         ),
         GoRoute(

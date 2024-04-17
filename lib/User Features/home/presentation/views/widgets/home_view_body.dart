@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'all_category_section.dart';
+import 'best_seller_list_view.dart';
 import 'header_home_body.dart';
 import 'popular_plant_home.dart';
 import 'title_with_more_button.dart';
@@ -23,9 +24,11 @@ class HomeViewBody extends StatelessWidget {
           ),
           const AllCategorySection(),
           SizedBox(
-            height: blockHeight * 4,
+            height: blockHeight * 2,
           ),
-          const PopularPlant()
+          const PopularPlant(),
+          TitleWithMoreButton(title: 'Best Seller', morePressed: () {}),
+          const BestSellerListView(),
         ],
       ),
     );
