@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'all_category_section.dart';
 import 'best_seller_list_view.dart';
+import 'filter.dart';
 import 'header_home_body.dart';
 import 'popular_plant_home.dart';
 import 'title_with_more_button.dart';
@@ -23,10 +24,16 @@ class _HomeViewBodyState extends State<HomeViewBody> {
       child: Column(
         children: [
           const HeaderWithSearchField(),
-          TitleWithMoreButton(title: "Popular Plant", morePressed: () { showModalBottomSheet(
-    isScrollControlled: true,
-    context: context,
-    builder: (BuildContext context) {return filter();});}),
+          TitleWithMoreButton(
+              title: "Popular Plant",
+              morePressed: () {
+                showModalBottomSheet(
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (BuildContext context) {
+                      return filter();
+                    });
+              }),
           SizedBox(
             height: blockHeight * 2,
           ),
