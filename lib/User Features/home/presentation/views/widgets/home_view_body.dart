@@ -31,7 +31,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                     isScrollControlled: true,
                     context: context,
                     builder: (BuildContext context) {
-                      return filter();
+                      return const Filter();
                     });
               }),
           SizedBox(
@@ -42,7 +42,16 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             height: blockHeight * 2,
           ),
           const PopularPlant(),
-          TitleWithMoreButton(title: 'Best Seller', morePressed: () {}),
+          TitleWithMoreButton(
+              title: 'Best Seller',
+              morePressed: () {
+                showModalBottomSheet(
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (BuildContext context) {
+                      return const Filter();
+                    });
+              }),
           const BestSellerListView(),
         ],
       ),
