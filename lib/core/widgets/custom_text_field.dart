@@ -21,11 +21,16 @@ class CustomTextField extends StatelessWidget {
     this.validator,
     this.maxLength,
     this.minLength,
+     this.borderRadius = 30,
+      this.onSuffixIconPressed,
+      this.showSuffixIcon = false,
   });
 
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final String hintText;
+   final void Function()? onSuffixIconPressed;
+   final bool showSuffixIcon;
 
   TextEditingController? controller;
   void Function(String)? onChanged;
@@ -38,9 +43,17 @@ class CustomTextField extends StatelessWidget {
   final bool readOnly;
   final String? Function(String?)? validator;
   int? maxLength, minLength;
+  final double borderRadius;
 
   @override
   Widget build(BuildContext context) {
+     Widget? suffixWidget;
+    if (showSuffixIcon && suffixIcon != null) {
+      suffixWidget = IconButton(
+        icon: suffixIcon!,
+        onPressed: onSuffixIconPressed != null ? () => onSuffixIconPressed!() : null,
+      );
+    }
     return TextFormField(
       obscureText: pass,
       onChanged: onChanged,
@@ -48,6 +61,7 @@ class CustomTextField extends StatelessWidget {
       maxLength: maxLength ?? null,
       maxLines: minLength ?? 1,
       validator: validator ??
+      
           (data) {
             if (data!.isEmpty) {
               return 'Please Enter $hintText';
@@ -75,7 +89,9 @@ class CustomTextField extends StatelessWidget {
         enabledBorder: builtOutLineBorder(width: width, color: color),
         focusedBorder: builtOutLineBorder(width: width, color: color),
         prefixIcon: prefixIcon,
-        suffixIcon: suffixIcon,
+         suffixIcon: suffixWidget,
+      
+    
       ),
     );
   }
@@ -83,13 +99,13 @@ class CustomTextField extends StatelessWidget {
   OutlineInputBorder builtOutLineBorder(
       {required final double? width, required final Color? color}) {
     return OutlineInputBorder(
-      borderRadius: const BorderRadius.all(
-        Radius.circular(30),
-      ),
+      borderRadius:  BorderRadius.circular(borderRadius),
+      
       borderSide: BorderSide(
         color: color ?? kGreenColor,
         width: width ?? 3,
       ),
     );
+   
   }
 }

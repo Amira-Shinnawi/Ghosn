@@ -16,7 +16,7 @@ class DisplayPictureScreenBody extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
 
     double blocHeight = (height / 100);
-    double blocWidth = (width / 100);
+   
     return Padding(
       padding: EdgeInsets.only(left: blocHeight * 3, right: blocHeight * 3),
       child: Column(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ghosn_app/Admin%20Features/Community/presentation/views/community_home.dart';
+import 'package:ghosn_app/User%20Features/Reminder/presentation/views/reminder_main.dart';
 
 import '../../../Account/presentation/views/profile_view.dart';
 import '../../../detection/presentation/views/tips_page.dart';
@@ -19,7 +20,7 @@ class _BottomBarState extends State<BottomBar> {
     const ProfileView(),
     const CommunityHome(),
     const Tips(),
-    const FavoriteHome(),
+    const ReminderMain(),
     const ProfileView(),
   ];
   void _onItemTap(int index) {

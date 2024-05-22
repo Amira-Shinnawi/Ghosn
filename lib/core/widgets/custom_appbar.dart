@@ -6,7 +6,13 @@ AppBar CustomAppBar(
     Color? backgroundColor,
     List<Widget>? actions,
     bool? automaticallyImplyLeading,
-    bool? centerTitle}) {
+    bool? centerTitle, 
+     int ? elevation, 
+      int? height,
+
+     
+    
+    }) {
   return AppBar(
     leading: leading,
     elevation: 0.0,
