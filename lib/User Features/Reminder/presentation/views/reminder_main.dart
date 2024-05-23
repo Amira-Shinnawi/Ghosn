@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/utils/app_router.dart';
 import '../../../../core/widgets/custom_appbar.dart';
 import '../../../Account/presentation/views/widgets/user_custom_drawer.dart';
+import '../../../home/presentation/views/home_view.dart';
 
 class ReminderMain extends StatefulWidget {
   const ReminderMain({super.key});
@@ -20,6 +21,9 @@ class _ReminderMainState extends State<ReminderMain> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
+       double height = MediaQuery.of(context).size.height;
+   
+    double blockHeight= (height / 100);
   return Scaffold(
     appBar: CustomAppBar(
       backgroundColor: kGreenColor,
@@ -37,10 +41,11 @@ class _ReminderMainState extends State<ReminderMain> {
           automaticallyImplyLeading: false,
           centerTitle: false, leading: IconButton(
             onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.arrow_back_ios, color: Colors.white,),
-          ),
+              
+       GoRouter.of(context).push(AppRouter.kSplashView);
+  },
+  icon: const Icon(Icons.arrow_back_ios, color: Colors.white,),
+),
         
           actions: [
             IconButton(
@@ -70,32 +75,39 @@ class _ReminderMainState extends State<ReminderMain> {
   
     drawer: const UserCustomDrawer(),
     key: _scaffoldKey,
-     body: Stack(
-      children: [
-        const ReminderMainBody(),
-        Positioned(
-          bottom: 20,
-          right: 20,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(30), 
-            child: FloatingActionButton(
-              backgroundColor: kGreenColor,
-              onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const AddNewReminder()
-                ));
-                
-              },
-              child: const Icon(
-                Icons.add_outlined,
-                color: Colors.white,
-                size: 35,
+     body: Padding(
+       padding:  EdgeInsets.only(bottom: blockHeight*5),
+       child: Stack(
+        children: [
+          const ReminderMainBody(),
+          Positioned(
+            bottom: 20,
+            right: 20,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(30), 
+              child: SizedBox(
+                width: 50,
+                height: 50,
+                child: FloatingActionButton(
+                  backgroundColor: kGreenColor,
+                  onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const AddNewReminder()
+                    ));
+                    
+                  },
+                  child: const Icon(
+                    Icons.add_outlined,
+                    color: Colors.white,
+                    size: 30,
+                  ),
+                ),
               ),
             ),
           ),
-        ),
-      ],
-    ),
+        ],
+           ),
+     ),
   );
 }
 }

@@ -152,7 +152,7 @@ class _AddNewReminderBodyState extends State<AddNewReminderBody> {
                   SizedBox(width: width * .02),
                   Expanded(
                     child: CustomTextField(
-                      borderRadius: 12, 
+                      // borderRadius: 12, 
                       hintText: 'New Alert',
                       onChanged: (value) => setState(() => _title = value),
                       validator: (value) {
@@ -180,7 +180,7 @@ class _AddNewReminderBodyState extends State<AddNewReminderBody> {
                   SizedBox(width: width * .02),
                   Expanded(
                     child: CustomTextField(
-                      borderRadius: 12,
+                      // borderRadius: 12,
                       hintText: 'Enter note here',
                       minLength: 5,
 
@@ -203,7 +203,7 @@ class _AddNewReminderBodyState extends State<AddNewReminderBody> {
                   SizedBox(width: width * .02),
                   Expanded(
                     child: CustomTextField(
-                      borderRadius: 12, 
+                      // borderRadius: 12, 
                       hintText: '	DD/MM/YY',
                       readOnly: true,
                       showSuffixIcon: true,
@@ -234,7 +234,7 @@ class _AddNewReminderBodyState extends State<AddNewReminderBody> {
                   SizedBox(width: width * .02),
                   Expanded(
                     child: CustomTextField(
-                      borderRadius: 12, 
+                      // borderRadius: 12, 
                       hintText: '	HH:MM',
                       width: 2,
                       controller: _timeController,
