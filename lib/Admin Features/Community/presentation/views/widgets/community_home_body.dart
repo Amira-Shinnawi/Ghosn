@@ -51,67 +51,71 @@ class _CommunityHomeBodyState extends State<CommunityHomeBody> {
       padding: EdgeInsets.symmetric(
           horizontal: blockWidth * 3, vertical: blockHeight * 2),
       child: CustomScrollView(slivers: [
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: blockHeight * 2),
-            child: SizedBox(
-              height: blockHeight * 4,
-              width: double.infinity,
-              child: ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: sectionCommunity.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _selectedTextIndex = index;
-                        });
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: _selectedTextIndex == index
-                              ? kGreenColor
-                              : Colors.transparent,
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: IntrinsicWidth(
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: blockWidth * 4,
+        SliverFillRemaining(
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: blockHeight * 2),
+                child: SizedBox(
+                  height: blockHeight * 4,
+                  width: double.infinity,
+                  child: ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: sectionCommunity.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _selectedTextIndex = index;
+                            });
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: _selectedTextIndex == index
+                                  ? kGreenColor
+                                  : Colors.transparent,
+                              borderRadius: BorderRadius.circular(30),
                             ),
-                            child: Center(
-                              child: Text(
-                                sectionCommunity[index],
-                                style: Styles.textStyle16Inter.copyWith(
-                                  color: _selectedTextIndex == index
-                                      ? Colors.white
-                                      : Colors.black,
+                            child: IntrinsicWidth(
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: blockWidth * 4,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    sectionCommunity[index],
+                                    style: Styles.textStyle16Inter.copyWith(
+                                      color: _selectedTextIndex == index
+                                          ? Colors.white
+                                          : Colors.black,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ),
-                    );
-                  }),
-            ),
-          ),
-        ),
-        SliverFillRemaining(
-          child: PageView.builder(
-            physics: const BouncingScrollPhysics(),
-            itemCount: sectionCommunity.length,
-            controller: _pageController,
-            onPageChanged: (index) {
-              setState(() {
-                _selectedTextIndex = index;
-              });
-            },
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              return _buildSelectedListView();
-            },
+                        );
+                      }),
+                ),
+              ),
+              Expanded(
+                child: PageView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: sectionCommunity.length,
+                  controller: _pageController,
+                  onPageChanged: (index) {
+                    setState(() {
+                      _selectedTextIndex = index;
+                    });
+                  },
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return _buildSelectedListView();
+                  },
+                ),
+              ),
+            ],
           ),
         ),
       ]),

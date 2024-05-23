@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ghosn_app/User%20Features/home/presentation/views/widgets/add_cart.dart';
-import 'package:ghosn_app/User%20Features/home/presentation/views/widgets/color_item.dart';
+import 'package:ghosn_app/User%20Features/Cart&Fav&Notify/presentation/views/widgets/add_cart.dart';
 import 'package:ghosn_app/core/utils/assets_data.dart';
 
 import 'plant_details.dart';
@@ -16,11 +15,11 @@ class ProductDetailsBody extends StatefulWidget {
 class _ProductDetailsBodyState extends State<ProductDetailsBody> {
   int currentIndex = 0;
 
-  List<Color> colorBowl = [
-    const Color(0xffF0F0F0),
-    const Color(0xffF1AC5A),
-    Colors.red,
-  ];
+  // List<Color> colorBowl = [
+  //   const Color(0xffF0F0F0),
+  //   const Color(0xffF1AC5A),
+  //   Colors.red,
+  // ];
   List<String> imageAssets = [
     AssetsData.imageTest1,
     AssetsData.imageTest2,
@@ -56,32 +55,7 @@ class _ProductDetailsBodyState extends State<ProductDetailsBody> {
                 ),
               ),
             ),
-            child: PlantDetails(
-              colorBowlListView: SizedBox(
-                height: blockHeight * 5,
-                width: blockWidth * 25,
-                child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    itemCount: colorBowl.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: blockWidth * 1),
-                        child: GestureDetector(
-                          onTap: () {
-                            currentIndex = index;
-                            setState(() {});
-                          },
-                          child: ColorItem(
-                            color: colorBowl[index],
-                            isActive: currentIndex == index,
-                          ),
-                        ),
-                      );
-                    }),
-              ),
-            ),
+            child: const PlantDetails(),
           ),
         ),
         const Positioned(
@@ -97,7 +71,7 @@ class _ProductDetailsBodyState extends State<ProductDetailsBody> {
           child: Align(
             alignment: AlignmentDirectional.bottomEnd,
             child: Image.asset(
-              imageAssets[currentIndex],
+              imageAssets[currentIndex + 1],
               width: blockWidth * 50,
               height: blockHeight * 35,
               fit: BoxFit.fill,

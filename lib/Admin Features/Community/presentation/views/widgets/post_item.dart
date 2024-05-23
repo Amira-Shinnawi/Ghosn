@@ -8,7 +8,7 @@ import '../../../../../core/utils/style.dart';
 import '../add_comment_view.dart';
 
 class PostItem extends StatefulWidget {
-  const PostItem({super.key,this.allComments});
+  const PostItem({super.key, this.allComments});
   final int? allComments;
   @override
   State<PostItem> createState() => _PostItemState();
@@ -135,7 +135,7 @@ class _PostItemState extends State<PostItem> {
                     },
                   ),
                   const Spacer(),
-                   Text(
+                  Text(
                     widget.allComments.toString(),
                     style: Styles.textStyle16Inter,
                   ),

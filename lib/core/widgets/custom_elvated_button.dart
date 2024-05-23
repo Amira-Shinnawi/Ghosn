@@ -4,7 +4,7 @@ import 'package:ghosn_app/core/utils/style.dart';
 import '../../constants.dart';
 
 class CustomElevatedButton extends StatelessWidget {
-   CustomElevatedButton({
+  CustomElevatedButton({
     required this.onPressed,
     required this.buttonName,
     this.padding,
@@ -37,7 +37,7 @@ class CustomElevatedButton extends StatelessWidget {
         ),
         child: Container(
           alignment: Alignment.center,
-          padding:padding?? EdgeInsets.zero,
+          padding: padding ?? EdgeInsets.zero,
           child: Text(
             buttonName,
             style: Styles.textStyle22Inter.copyWith(

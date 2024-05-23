@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/style.dart';
@@ -17,8 +15,10 @@ class DisplayPictureScreen extends StatelessWidget {
       appBar: CustomAppBar(
         titleAppBar: Text(
           "Scanning Result",
-          style: Styles.textStyle22Inter.copyWith(
-              color: Colors.black, fontWeight: FontWeight.w600, fontSize: 20),
+          style: Styles.textStyle20Inter.copyWith(
+            color: Colors.black,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ),
       body: DisplayPictureScreenBody(imagePath: imagePath),

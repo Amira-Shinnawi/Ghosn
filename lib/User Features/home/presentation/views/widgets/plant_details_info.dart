@@ -8,10 +8,7 @@ import '../../../../../translations/local_keys.g.dart';
 class PlantDetailsInfo extends StatelessWidget {
   const PlantDetailsInfo({
     super.key,
-    required this.colorBowlListView,
   });
-
-  final Widget? colorBowlListView;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +19,7 @@ class PlantDetailsInfo extends StatelessWidget {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,26 +31,20 @@ class PlantDetailsInfo extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '150 EGP',
+                  'Outdoor',
                   style: Styles.textStyle20Inter.copyWith(
-                    fontSize: 18,
-                    color: kGreenColor,
+                    fontSize: 14,
+                    color: kHintColor,
                   ),
                 ),
               ],
             ),
-            Column(
-              children: [
-                Text(
-                  LocaleKeys.BowlColor.tr(),
-                  style: Styles.textStyle20Inter.copyWith(
-                    fontSize: 18,
-                  ),
-                ),
-                Container(
-                  child: colorBowlListView,
-                ),
-              ],
+            Text(
+              '150 EGP',
+              style: Styles.textStyle20Inter.copyWith(
+                fontSize: 18,
+                color: kGreenColor,
+              ),
             ),
           ],
         ),
@@ -68,7 +60,7 @@ class PlantDetailsInfo extends StatelessWidget {
         const Text(
           "This plant has long, broad leaves with dark green lines on the edges.This plant has long, broad leaves with dark green lines on the edgesThis plant has long, broad leaves with dark green lines on the edges",
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 14,
           ),
           maxLines: 3,
           overflow: TextOverflow.ellipsis,
@@ -78,27 +70,19 @@ class PlantDetailsInfo extends StatelessWidget {
             Text(
               LocaleKeys.moreInfo.tr(),
               style: const TextStyle(
-                fontSize: 16,
+                fontSize: 14,
               ),
             ),
             Text(
               LocaleKeys.clickHere.tr(),
               style: const TextStyle(
-                fontSize: 16,
+                fontSize: 14,
                 fontWeight: FontWeight.bold,
+                color: kGreenColor,
                 decoration: TextDecoration.underline,
               ),
             )
           ],
-        ),
-        SizedBox(
-          height: blockHeight * 1.5,
-        ),
-        Text(
-          LocaleKeys.OtherPhotos.tr(),
-          style: Styles.textStyle18Inter.copyWith(
-            fontWeight: FontWeight.bold,
-          ),
         ),
       ],
     );

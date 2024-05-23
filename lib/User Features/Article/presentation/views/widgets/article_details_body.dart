@@ -27,7 +27,6 @@ class ArticleDetailsBody extends StatelessWidget {
               height: blocHeight * 2,
             ),
           ),
-          
           const SliverFillRemaining(
             hasScrollBody: false,
             child: ArticleSimilarSection(),

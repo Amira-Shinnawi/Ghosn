@@ -8,11 +8,11 @@ class SharedPrefCache {
     sharedPref = await SharedPreferences.getInstance();
   }
 
- static Future<void> saveLanguage(Locale locale) async {
+  static Future<void> saveLanguage(Locale locale) async {
     await sharedPref.setString('languageCode', locale.languageCode);
   }
 
- static Future<Locale?> getSavedLanguage() async {
+  static Future<Locale?> getSavedLanguage() async {
     final languageCode = sharedPref.getString('languageCode');
     return languageCode != null ? Locale(languageCode) : null;
   }

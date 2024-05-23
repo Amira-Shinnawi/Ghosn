@@ -70,8 +70,8 @@ class NoInternetConnection extends StatelessWidget {
                     backgroundColor: MaterialStateProperty.all(kGreenColor),
                   ),
                   onPressed: () async {
-                    ConnectivityResult result =
-                        await Connectivity().checkConnectivity();
+                    ConnectivityResult result = (await Connectivity()
+                        .checkConnectivity()) as ConnectivityResult;
                     print(result.name);
                   },
                   child: Text(

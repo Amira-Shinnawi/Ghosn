@@ -45,7 +45,9 @@ class AdminCustomDrawer extends StatelessWidget {
           ListTile(
             title: const Text('Products'),
             leading: const Icon(Icons.grid_view_rounded),
-            onTap: () {},
+            onTap: () {
+              GoRouter.of(context).push(AppRouter.kAdminProduct);
+            },
           ),
           ListTile(
             title: const Text('Customers'),
@@ -60,12 +62,16 @@ class AdminCustomDrawer extends StatelessWidget {
           ListTile(
             title: const Text('Shipments'),
             leading: const Icon(Icons.local_shipping_rounded),
-            onTap: () {},
+            onTap: () {
+              GoRouter.of(context).push(AppRouter.kShipment);
+            },
           ),
           ListTile(
             title: const Text('Transactions'),
             leading: const Icon(FontAwesomeIcons.creditCard),
-            onTap: () {},
+            onTap: () {
+              GoRouter.of(context).push(AppRouter.kTransaction);
+            },
           ),
           ListTile(
             title: const Text('Articles'),

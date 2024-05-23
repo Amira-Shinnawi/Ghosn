@@ -33,9 +33,7 @@ class DetectResultRow extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
-              height:
-                  height * .01), 
+          SizedBox(height: height * .01),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -57,4 +55,3 @@ class DetectResultRow extends StatelessWidget {
     );
   }
 }
-

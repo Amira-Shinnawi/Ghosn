@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ghosn_app/User%20Features/Account/data/model/user_profile_model.dart';
 import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/utils/assets_data.dart';
 import 'package:ghosn_app/core/utils/style.dart';
@@ -11,10 +13,34 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../../../core/widgets/custom_text_editing.dart';
 import '../../../../../translations/local_keys.g.dart';
-import 'continue_editing_body.dart';
 
 class EditProfileBody extends StatefulWidget {
-  const EditProfileBody({super.key});
+  const EditProfileBody({
+    required this.userProfileModel,
+    required this.firstNameController,
+    required this.lastNameController,
+    // required this.passController,
+    required this.phoneController,
+    required this.onUpdatePressed,
+    required this.emailController,
+    required this.cityController,
+    required this.stateController,
+    required this.dateOfBirthController,
+    required this.userNameController,
+  });
+
+  final UserProfileModel userProfileModel;
+  final TextEditingController firstNameController;
+  final TextEditingController lastNameController;
+  final TextEditingController emailController;
+  final TextEditingController userNameController;
+  // final TextEditingController passController;
+  final TextEditingController phoneController;
+  final TextEditingController cityController;
+  final TextEditingController stateController;
+  final TextEditingController dateOfBirthController;
+
+  final Function(UserProfileModel) onUpdatePressed;
 
   @override
   State<EditProfileBody> createState() => _EditProfileBodyState();
@@ -35,12 +61,8 @@ class _EditProfileBodyState extends State<EditProfileBody> {
 
   TextEditingController dateInput = TextEditingController();
 
-  @override
-  void initState() {
-    dateInput.text = "";
-    super.initState();
-  }
-
+  bool showLocationFields = false;
+  bool gender = true;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -118,12 +140,25 @@ class _EditProfileBodyState extends State<EditProfileBody> {
             SizedBox(
               height: blockHeight * 1,
             ),
-            const CustomTextFormEditing(
+            CustomTextFormEditing(
+              hintText: 'First Name',
+              controller: widget.firstNameController,
+            ),
+            CustomTextFormEditing(
+              hintText: 'Last Name',
+              controller: widget.lastNameController,
+            ),
+            CustomTextFormEditing(
               hintText: 'User Name',
+              controller: widget.userNameController,
+            ),
+            SizedBox(
+              height: blockHeight * 1,
             ),
             CustomTextField(
+              width: 2,
               hintText: 'Choose your Birthday',
-              controller: dateInput,
+              controller: widget.dateOfBirthController,
               readOnly: true,
               onTap: () async {
                 DateTime? pickedDate = await showDatePicker(
@@ -142,20 +177,183 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                 } else {}
               },
             ),
-            const CustomTextFormEditing(
-              hintText: '+20 01025167595',
+            SizedBox(
+              height: blockHeight * 1,
             ),
+            const Divider(),
+            SizedBox(
+              height: blockHeight * 2,
+            ),
+            const Text(
+              'Contact Info',
+              style: Styles.textStyle18Inter,
+            ),
+            SizedBox(
+              height: blockHeight * 1,
+            ),
+            CustomTextFormEditing(
+              hintText: '+20 01025167595',
+              controller: widget.phoneController,
+            ),
+            CustomTextFormEditing(
+              hintText: 'Email',
+              controller: widget.emailController,
+            ),
+            // CustomTextFormEditing(
+            //   hintText: 'Password',
+            //   controller: widget.passController,
+            // ),
+            SizedBox(
+              width: blockWidth * 4,
+            ),
+            Text(
+              LocaleKeys.gender.tr(),
+              style: TextStyle(
+                color: Colors.black.withOpacity(0.4000000059604645),
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            Row(
+              children: [
+                Radio<bool>(
+                  value: true,
+                  activeColor: kGreenColor,
+                  groupValue: gender,
+                  onChanged: (value) {
+                    setState(() {
+                      gender = value!;
+                    });
+                  },
+                ),
+                Text(
+                  LocaleKeys.Male.tr(),
+                  style: Styles.textStyle16Inter,
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Radio<bool>(
+                  value: false,
+                  groupValue: gender,
+                  activeColor: kGreenColor,
+                  onChanged: (value) {
+                    setState(() {
+                      gender = value!;
+                    });
+                  },
+                ),
+                Text(
+                  LocaleKeys.Female.tr(),
+                  style: Styles.textStyle16Inter,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: blockHeight * 2,
+            ),
+            const Divider(),
+            SizedBox(
+              height: blockHeight * 2,
+            ),
+            Text(
+              LocaleKeys.currentCity.tr(),
+              style: Styles.textStyle18Inter,
+            ),
+            SizedBox(
+              height: blockHeight * 1,
+            ),
+            CustomTextField(
+              width: 2,
+              onTap: () {
+                setState(() {
+                  showLocationFields = !showLocationFields;
+                });
+              },
+              hintText: LocaleKeys.chooseLocation.tr(),
+              suffixIcon: const Icon(
+                FontAwesomeIcons.chevronDown,
+                size: 20,
+                color: kGreenColor,
+              ),
+              controller: TextEditingController(text: ''),
+              readOnly: true,
+              prefixIcon: const Icon(
+                FontAwesomeIcons.locationDot,
+                size: 20,
+                color: kHintColor,
+              ),
+            ),
+            SizedBox(
+              height: blockHeight * 2,
+            ),
+            if (showLocationFields)
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: blockWidth * 2.5),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CustomTextField(
+                            width: 1,
+                            hintText: LocaleKeys.city.tr(),
+                            controller: widget.cityController,
+                            onChanged: (value) {
+                              setState(() {});
+                            },
+                          ),
+                        ),
+                        SizedBox(width: blockWidth * 2),
+                        Expanded(
+                          child: CustomTextField(
+                            width: 1,
+                            hintText: LocaleKeys.state.tr(),
+                            controller: widget.stateController,
+                            onChanged: (value) {
+                              setState(() {});
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             SizedBox(
               height: blockHeight * 2,
             ),
             CustomElevatedButton(
               padding: const EdgeInsets.all(10),
               onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) {
-                  return const ContinueEditing();
-                }));
+                final updatedProfile = UserProfileModel(
+                  firstName: widget.firstNameController.text,
+                  lastName: widget.lastNameController.text,
+                  phoneNumber: widget.phoneController.text,
+                  // password: widget.passController.text,
+                  email: widget.emailController.text,
+                  userName: widget.userNameController.text,
+                  dateOfBirth: widget.dateOfBirthController.text,
+                  cityId: int.parse(widget.cityController.text),
+                  street: widget.stateController.text,
+                );
+                // Navigator.of(context)
+                //     .push(MaterialPageRoute(builder: (context) {
+                //   return const ContinueEditing();
+                // }));
+                widget.onUpdatePressed(updatedProfile);
               },
+
+              // BlocProvider.of<AuthCubit>(context).editUser(
+              //     firstName: firstNameController.text,
+              //     lastName: lastNameController.text,
+              //     email: emailController.text,
+              //     userName: userNameController.text,
+              //     password: passController.text,
+              //     phoneNumber: phoneController.text,
+              //     dateOfBirth: dateOfBirthController.text);
+
               buttonName: LocaleKeys.okContinue.tr(),
             ),
           ],

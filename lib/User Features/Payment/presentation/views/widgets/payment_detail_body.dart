@@ -61,14 +61,13 @@ class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
             ),
             child: Row(
               children: [
-               PaymentMethodRadioButton(
+                PaymentMethodRadioButton(
                   title: 'Credit Card',
                   value: 0,
                   groupValue: selectedPaymentMethod,
                   onChanged: (int? value) {
                     setState(() {
                       selectedPaymentMethod = value!;
-                     
                     });
                   },
                   imagePath: AssetsData.visa,
@@ -93,15 +92,13 @@ class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
             ),
             child: Row(
               children: [
-               PaymentMethodRadioButton(
+                PaymentMethodRadioButton(
                   title: 'PayPal',
                   value: 1,
                   groupValue: selectedPaymentMethod,
                   onChanged: (int? value) {
                     setState(() {
                       selectedPaymentMethod = value!;
-
-                    
                     });
                   },
                   imagePath: AssetsData.paypal,
@@ -119,7 +116,7 @@ class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
                 : CrossFadeState.showSecond,
             firstChild: CreditCard(
               formKey: formKey,
-              autovalidateMode: autovalidateMode, 
+              autovalidateMode: autovalidateMode,
             ),
             secondChild: SizedBox(
               height: height * .3,
@@ -129,59 +126,54 @@ class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
           height: height * .1,
         ),
         CustomButton(
-          text:  LocaleKeys.PayNow.tr(),
+          text: LocaleKeys.PayNow.tr(),
           onPressed: () async {
-  if (selectedPaymentMethod == 0) {
-    
-    if (formKey.currentState!.validate()) {
-      formKey.currentState!.save();
-      
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ConfirmPayment(
-            paymentData: widget.paymentData,
-            paymentMethod:  LocaleKeys.creditcard.tr(),
-          ),
-        ),
-      );
-    } else {
-      // If form validation fails, enable auto validation and update the UI
-      setState(() {
-        autovalidateMode = AutovalidateMode.always;
-      });
-    }
-  } else if (selectedPaymentMethod == 1) {
-    // If PayPal is selected, process the PayPal transaction
-    var transactionData = getTransactionsDate();
-   
-     bool transactionCompleted = await ExecutePaypal(
-      context,
-       paymentData: widget.paymentData,
-    
-      amount: transactionData.amount,
-      itemlist: transactionData.itemlist,
-    );
-    if (!transactionCompleted) {
-      // If PayPal transaction is completed, navigate to the confirmation page
- 
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ConfirmPayment(
-            paymentData: widget.paymentData,
-            paymentMethod: 'PayPal',
-          ),
-        ),
-      );
-    } else {
-      
-      print("please complete the process");
-    }
-  }
-},
+            if (selectedPaymentMethod == 0) {
+              if (formKey.currentState!.validate()) {
+                formKey.currentState!.save();
 
-          
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ConfirmPayment(
+                      paymentData: widget.paymentData,
+                      paymentMethod: LocaleKeys.creditcard.tr(),
+                    ),
+                  ),
+                );
+              } else {
+                // If form validation fails, enable auto validation and update the UI
+                setState(() {
+                  autovalidateMode = AutovalidateMode.always;
+                });
+              }
+            } else if (selectedPaymentMethod == 1) {
+              // If PayPal is selected, process the PayPal transaction
+              var transactionData = getTransactionsDate();
+
+              bool transactionCompleted = await ExecutePaypal(
+                context,
+                paymentData: widget.paymentData,
+                amount: transactionData.amount,
+                itemlist: transactionData.itemlist,
+              );
+              if (!transactionCompleted) {
+                // If PayPal transaction is completed, navigate to the confirmation page
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ConfirmPayment(
+                      paymentData: widget.paymentData,
+                      paymentMethod: 'PayPal',
+                    ),
+                  ),
+                );
+              } else {
+                print("please complete the process");
+              }
+            }
+          },
         ),
       ]),
     );

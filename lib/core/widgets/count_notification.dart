@@ -1,31 +1,30 @@
-import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
-
-import '../../constants.dart';
 
 class CustomNotification extends StatelessWidget {
   const CustomNotification({
-    super.key, this.child,
+    super.key,
   });
-  final Widget? child;
   @override
   Widget build(BuildContext context) {
-    return badges.Badge(
-      badgeContent: const Text(
-        '5',
-        style: TextStyle(
-          color: Colors.white,
+    return Stack(
+      children: [
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.notifications,
+            color: Colors.white,
+          ),
         ),
-      ),
-      badgeAnimation: const badges.BadgeAnimation.slide(
-        toAnimate: true,
-        animationDuration: Duration(
-          seconds: 1,
+        const Positioned(
+          top: 10,
+          left: 12,
+          right: 0,
+          child: CircleAvatar(
+            radius: 5,
+            backgroundColor: Colors.red,
+          ),
         ),
-      ),
-      position: badges.BadgePosition.topEnd(top: -5, end: 5),
-      badgeStyle: const badges.BadgeStyle(badgeColor: kGreenColor),
-      child:child,
+      ],
     );
   }
 }
