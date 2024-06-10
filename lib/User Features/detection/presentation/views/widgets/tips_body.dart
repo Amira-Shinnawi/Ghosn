@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:ghosn_app/core/utils/style.dart';
+
 import '../../../../../core/widgets/custom_button.dart';
 import '../camera_detect.dart';
 

@@ -13,22 +13,13 @@ class Tips extends StatelessWidget {
       appBar: CustomAppBar(
         titleAppBar: Text(
           "Photography tips",
-          style: Styles.textStyle20Inter.copyWith(
+          style: Styles.textStyle18Inter.copyWith(
             color: Colors.black,
             fontWeight: FontWeight.w600,
           ),
         ),
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            size: 20,
-          ),
-        ),
       ),
-      body: SafeArea(child: TipsBody()),
+      body: SafeArea(child: TipsBody(),),
     );
   }
 }

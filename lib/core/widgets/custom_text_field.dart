@@ -4,25 +4,26 @@ import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/utils/style.dart';
 
 class CustomTextField extends StatelessWidget {
-  CustomTextField({
-    super.key,
-    this.prefixIcon,
-    required this.hintText,
-    this.controller,
-    this.onChanged,
-    this.keyboardType,
-    this.pass = false,
-    this.inputFormatters,
-    this.suffixIcon,
-    this.width,
-    this.color,
-    this.onTap,
-    this.readOnly = false,
-    this.validator,
-    this.maxLength,
-    this.minLength,
-    this.labelText,
-  });
+  CustomTextField(
+      {super.key,
+      this.prefixIcon,
+      required this.hintText,
+      this.controller,
+      this.onChanged,
+      this.keyboardType,
+      this.pass = false,
+      this.inputFormatters,
+      this.suffixIcon,
+      this.width,
+      this.color,
+      this.onTap,
+      this.readOnly = false,
+      this.validator,
+      this.maxLength,
+      this.minLength,
+      this.labelText,
+      this.initialValue,
+      this.onFieldSubmitted});
 
   final Widget? prefixIcon;
   final Widget? suffixIcon;
@@ -40,6 +41,8 @@ class CustomTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   int? maxLength, minLength;
   final String? labelText;
+  final String? initialValue;
+  final void Function(String)? onFieldSubmitted;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -48,9 +51,11 @@ class CustomTextField extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: blockHeight * 1),
       child: TextFormField(
         obscureText: pass,
+        initialValue: initialValue,
         onChanged: onChanged,
+        onFieldSubmitted: onFieldSubmitted,
         controller: controller,
-        maxLength: maxLength ?? null,
+        maxLength: maxLength,
         maxLines: minLength ?? 1,
         validator: validator ??
             (data) {

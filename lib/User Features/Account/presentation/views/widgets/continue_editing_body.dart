@@ -1,14 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ghosn_app/User%20Features/Account/presentation/views/profile_view.dart';
 import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/widgets/custom_button.dart';
 import 'package:ghosn_app/translations/local_keys.g.dart';
 
+import '../../../../../core/utils/functions/shared_pref_cache.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_appbar.dart';
 import '../../../../../core/widgets/custom_text_editing.dart';
-import '../../../../../core/widgets/custom_text_field.dart';
 
 class ContinueEditing extends StatefulWidget {
   const ContinueEditing({super.key});
@@ -19,8 +20,8 @@ class ContinueEditing extends StatefulWidget {
 
 class _ContinueEditingState extends State<ContinueEditing> {
   List<Widget> socialLinks = [];
-  bool showLocationFields = false;
-  bool gender = true;
+  final workController = TextEditingController();
+  final linkController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +45,16 @@ class _ContinueEditingState extends State<ContinueEditing> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: blockWidth * 5),
             child: GestureDetector(
-              onTap: () {},
+              onTap: () async {
+                await SharedPrefCache.insertToCache(
+                    key: 'work', value: workController.text);
+                await SharedPrefCache.insertToCache(
+                    key: 'link', value: linkController.text);
+
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const ProfileView();
+                }));
+              },
               child: Text(
                 LocaleKeys.save.tr(),
                 style: Styles.textStyle18Inter.copyWith(
@@ -62,164 +72,13 @@ class _ContinueEditingState extends State<ContinueEditing> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Basic Info',
-                style: Styles.textStyle18Inter,
-              ),
-              SizedBox(
-                height: blockHeight * 1,
-              ),
-              Container(
-                height: blockHeight * 6,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  border: Border.all(
-                    color: kGreenColor,
-                    width: 2,
-                  ),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: blockWidth * 2.5),
-                  child: Row(
-                    children: [
-                      const Icon(
-                        FontAwesomeIcons.venusMars,
-                        size: 20,
-                        color: kHintColor,
-                      ),
-                      SizedBox(
-                        width: blockWidth * 4,
-                      ),
-                      Text(
-                        LocaleKeys.gender.tr(),
-                        style: TextStyle(
-                          color: Colors.black.withOpacity(0.4000000059604645),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          Radio<bool>(
-                            value: true,
-                            activeColor: kGreenColor,
-                            groupValue: gender,
-                            onChanged: (value) {
-                              setState(() {
-                                gender = value!;
-                              });
-                            },
-                          ),
-                          Text(
-                            LocaleKeys.Male.tr(),
-                            style: Styles.textStyle16Inter,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Radio<bool>(
-                            value: false,
-                            groupValue: gender,
-                            activeColor: kGreenColor,
-                            onChanged: (value) {
-                              setState(() {
-                                gender = value!;
-                              });
-                            },
-                          ),
-                          Text(
-                            LocaleKeys.Female.tr(),
-                            style: Styles.textStyle16Inter,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: blockHeight * 2,
-              ),
-              const Divider(),
-              SizedBox(
-                height: blockHeight * 2,
-              ),
-              Text(
-                LocaleKeys.currentCity.tr(),
-                style: Styles.textStyle18Inter,
-              ),
-              SizedBox(
-                height: blockHeight * 1,
-              ),
-              CustomTextField(
-                width: 2,
-                onTap: () {
-                  setState(() {
-                    showLocationFields = !showLocationFields;
-                  });
-                },
-                hintText: LocaleKeys.chooseLocation.tr(),
-                suffixIcon: const Icon(
-                  FontAwesomeIcons.chevronDown,
-                  size: 20,
-                  color: kGreenColor,
-                ),
-                controller: TextEditingController(text: ''),
-                readOnly: true,
-                prefixIcon: const Icon(
-                  FontAwesomeIcons.locationDot,
-                  size: 20,
-                  color: kHintColor,
-                ),
-              ),
-              SizedBox(
-                height: blockHeight * 2,
-              ),
-              if (showLocationFields)
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: blockWidth * 2.5),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: CustomTextField(
-                              width: 1,
-                              hintText: LocaleKeys.city.tr(),
-                              onChanged: (value) {
-                                setState(() {});
-                              },
-                            ),
-                          ),
-                          SizedBox(width: blockWidth * 2),
-                          Expanded(
-                            child: CustomTextField(
-                              width: 1,
-                              hintText: LocaleKeys.state.tr(),
-                              onChanged: (value) {
-                                setState(() {});
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              SizedBox(
-                height: blockHeight * 1,
-              ),
-              const Divider(),
-              SizedBox(
-                height: blockHeight * 1,
-              ),
               Text(
                 LocaleKeys.work.tr(),
                 style: Styles.textStyle18Inter,
               ),
-              const CustomTextFormEditing(
+              CustomTextFormEditing(
                 hintText: 'Your Work',
+                controller: workController,
               ),
               SizedBox(
                 height: blockHeight * 1,
@@ -260,6 +119,7 @@ class _ContinueEditingState extends State<ContinueEditing> {
                   ),
                 ),
                 hintText: 'http://www.facebok.com/profile',
+                controller: linkController,
               ),
               ...socialLinks,
               SizedBox(
@@ -284,6 +144,9 @@ class _ContinueEditingState extends State<ContinueEditing> {
                           size: 25,
                           color: kGreenColor,
                         ),
+                        SizedBox(
+                          height: blockHeight * 1,
+                        ),
                         Text(
                           LocaleKeys.needHelp.tr(),
                         ),
@@ -293,10 +156,14 @@ class _ContinueEditingState extends State<ContinueEditing> {
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                         ),
+                        SizedBox(
+                          height: blockHeight * 1,
+                        ),
                         CustomButton(
                           text: LocaleKeys.contactWith.tr(),
                           height: blockHeight * 5,
                           width: blockWidth * 50,
+                          onPressed: () async {},
                         ),
                       ]),
                 ),

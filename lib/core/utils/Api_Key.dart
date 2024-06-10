@@ -4,5 +4,5 @@ class ApiKeys {
   static String paypalSecretKey =
       'EP5-wLjlNIT5QDFG0jGu07TXhw7nh3-TLewfFTQMHOpttRvExtSc6daI-_ZWj5jgrSXFLkNI1tV5pPic';
 
-  static String BASE_URL = 'https://v35vqzhz-7268.uks1.devtunnels.ms/api';
+  static String BASE_URL = 'https://ghosn.runasp.net';
 }

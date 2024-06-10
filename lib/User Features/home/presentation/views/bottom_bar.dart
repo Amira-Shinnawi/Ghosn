@@ -5,6 +5,7 @@ import 'package:ghosn_app/Admin%20Features/Community/presentation/views/communit
 import 'package:ghosn_app/constants.dart';
 
 import '../../../Account/presentation/views/profile_view.dart';
+import '../../../Cart&Fav&Notify/presentation/views/chart.dart';
 import '../../../Cart&Fav&Notify/presentation/views/favorite_home.dart';
 import '../../../detection/presentation/views/tips_page.dart';
 import 'home_view.dart';
@@ -24,7 +25,7 @@ class _BottomBarState extends State<BottomBar> {
     const CommunityHome(),
     const Tips(),
     const HomeView(),
-    const FavoriteHome(),
+    const CartHome(),
     const ProfileView(),
   ];
 

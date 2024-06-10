@@ -1,10 +1,11 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
+
 import 'package:camera/camera.dart';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 // ignore: depend_on_referenced_packages
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
-import 'dart:io';
-import 'package:image_picker/image_picker.dart';
 
 import '../display_detect_img.dart';
 
@@ -62,12 +63,12 @@ class _CameraBodyState extends State<CameraBody> {
       await picture.saveTo(path);
 
       //  Navigate to the preview screen with the captured image
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => DisplayPictureScreen(imagePath: path),
-        ),
-      );
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => DisplayPictureScreen(imagePath: path),
+      //   ),
+      // );
     } catch (e) {
       print('Error taking picture: $e');
     }
@@ -93,8 +94,9 @@ class _CameraBodyState extends State<CameraBody> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => DisplayPictureScreen(imagePath: path),
-        ),
+            builder: (context) => DisplayPictureScreen(
+                  imagePath: path,
+                )),
       );
     } catch (e) {
       print('Error choosing image: $e');

@@ -27,7 +27,7 @@ class LoginOptionsBody extends StatelessWidget {
             ),
           ),
           CustomIconButton(
-            text: LocaleKeys.useEmailOrPhone.tr(),
+            text: 'I\'ll Use Email Or Phone',
             childIcon: const Icon(
               Icons.email_outlined,
               color: Color(0xff39579A),

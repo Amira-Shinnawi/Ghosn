@@ -8,20 +8,20 @@ class CreatePotView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
-      appBar: CustomAppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios_new_rounded,
-            size: 20,
+    return Scaffold(
+        appBar: CustomAppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios_new_rounded,
+              size: 20,
+            ),
           ),
         ),
-      ),
-      body: const SafeArea(
-        child: CreatePotBody(),
-      ));
+        body: const SafeArea(
+          child: CreatePotBody(),
+        ));
   }
 }

@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:ghosn_app/Admin%20Features/Community/presentation/views/widgets/post_list_view.dart';
 import 'package:ghosn_app/User%20Features/Account/presentation/views/widgets/follower_list_view.dart';
 import 'package:ghosn_app/User%20Features/Account/presentation/views/widgets/following_list_view.dart';
-import 'package:ghosn_app/Admin%20Features/Community/presentation/views/widgets/post_list_view.dart';
 import 'package:ghosn_app/User%20Features/Account/presentation/views/widgets/purchase_list_view.dart';
 import 'package:ghosn_app/constants.dart';
 
@@ -85,6 +85,7 @@ class _HistoryProfileItemsState extends State<HistoryProfileItems> {
                                 color: _selectedTextIndex == index
                                     ? Colors.white
                                     : Colors.black,
+                                fontSize: 14,
                               ),
                             ),
                           ),
@@ -95,14 +96,7 @@ class _HistoryProfileItemsState extends State<HistoryProfileItems> {
                 }),
           ),
         ),
-        Container(
-          width: double.infinity,
-          height: blockHeight * 55,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(
-              30,
-            ),
-          ),
+        Expanded(
           child: PageView.builder(
             physics: const BouncingScrollPhysics(),
             itemCount: historyList.length,

@@ -12,7 +12,9 @@ import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_text_field.dart';
+import '../../../../../core/widgets/show_snack_bar.dart';
 import '../../../../../translations/local_keys.g.dart';
+import '../../../../home/presentation/views/bottom_bar.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -43,10 +45,12 @@ class _LoginFormState extends State<LoginForm> {
           if (state is LoginLoadingState) {
             isLoading = true;
           } else if (state is LoginSuccessState) {
-            GoRouter.of(context).pushReplacement(AppRouter.kChangePassword);
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const BottomBar()));
+
             isLoading = false;
           } else if (state is LoginFailureState) {
-            // showSnackBar(context, state.errorMessage);
+            showSnackBar(context, state.errorMessage);
             showDialog(
                 context: context,
                 builder: (context) {
@@ -59,7 +63,7 @@ class _LoginFormState extends State<LoginForm> {
         },
         builder: (context, state) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 27),
+            padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 10),
             child: LoadingOverlay(
               isLoading: isLoading,
               child: Form(
@@ -67,12 +71,26 @@ class _LoginFormState extends State<LoginForm> {
                 child: ListView(
                   children: [
                     Center(
-                      child: Text(
-                        LocaleKeys.signInYourAccount.tr(),
-                        style: Styles.textStyle22Inter.copyWith(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600,
-                        ),
+                      child: Column(
+                        children: [
+                          Text('Welcome Back',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge!
+                                  .copyWith(
+                                    fontFamily: kArefRuqaa,
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                          Text(
+                            'Login to your account',
+                            style: Styles.textStyle16.copyWith(
+                              color: Colors.grey,
+                              fontFamily: kArefRuqaa,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     SizedBox(
@@ -131,7 +149,7 @@ class _LoginFormState extends State<LoginForm> {
                         textAlign: TextAlign.center,
                         style: Styles.textStyle22Inter.copyWith(
                             color: Colors.black,
-                            fontSize: 18,
+                            fontSize: 16,
                             fontWeight: FontWeight.w600),
                       ),
                     ),

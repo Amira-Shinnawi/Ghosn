@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 
+import '../../../../../User Features/Article/data/model/article_model.dart';
+import '../../../../../User Features/Article/presentation/views/article_detalis.dart';
 import '../../../../../constants.dart';
-import '../../../../../core/utils/assets_data.dart';
+import '../../../../../core/utils/functions/network_image_handler.dart';
 import '../../../../../core/utils/style.dart';
-import '../article_content.dart';
+import '../../../../../core/widgets/custom_network_image.dart';
 import 'editing_latest_article.dart';
 
 class LatestArticleItem extends StatelessWidget {
   const LatestArticleItem({
     super.key,
+    required this.articlesModel,
+    required this.gClient, this.onPressed, this.publishArticle,
   });
+  final AllArticles articlesModel;
+  final ValueNotifier<GraphQLClient> gClient;
+final void Function()? onPressed;
+  final void Function()? publishArticle;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +29,7 @@ class LatestArticleItem extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: blocHeight * 1),
       child: Container(
-        height: blocHeight * 18,
+        height: blocHeight * 17,
         width: double.infinity,
         decoration: BoxDecoration(
           border: Border.all(
@@ -37,24 +46,29 @@ class LatestArticleItem extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-                child: AspectRatio(
+                child: CustomNetworkImage(
+                  imageUrl: NetworkHandler()
+                      .getImage('${articlesModel.releventImgUrl}'),
                   aspectRatio: 1.5 / 2,
-                  child: Image.asset(
-                    AssetsData.article,
-                    fit: BoxFit.cover,
-                  ),
                 ),
               ),
               SizedBox(
-                width: blocWidth * 2,
+                width: blocWidth * 3,
               ),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      const EditingLatestArticle(),
-                      const Text(
-                        'Part of the article or a definition about it. Example (There is a mutual relationship between soil and plants. Fertile soil encourages plant growth by providing plants with nutrients and acting as a reservoir that holds water)',
+                      EditingLatestArticle(
+                        articlesModel: articlesModel,
+                        onPressed: onPressed,
+                        publishArticle:publishArticle ,
+                      ),
+                      SizedBox(
+                        height: blocHeight * 1,
+                      ),
+                      Text(
+                        '${articlesModel.title}',
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -68,7 +82,9 @@ class LatestArticleItem extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return const ArticleContent();
+                            return ArticleDetails(
+                              articlesModel: articlesModel,
+                            );
                           }));
                         },
                         child: Text(
@@ -78,9 +94,6 @@ class LatestArticleItem extends StatelessWidget {
                             fontSize: 14,
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: blocHeight * .5,
                       ),
                     ],
                   ),

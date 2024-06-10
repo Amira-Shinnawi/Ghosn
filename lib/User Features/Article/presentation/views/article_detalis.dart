@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ghosn_app/User%20Features/Article/data/model/article_model.dart';
 import 'package:ghosn_app/User%20Features/Article/presentation/views/widgets/article_details_body.dart';
 import 'package:ghosn_app/core/widgets/custom_appbar.dart';
-import 'package:go_router/go_router.dart';
 
-import '../../../../core/utils/app_router.dart';
-import '../../../Account/presentation/views/widgets/user_custom_drawer.dart';
+import '../../../../Admin Features/Drawer/presentation/views/user_custom_drawer.dart';
+import '../../../../core/utils/style.dart';
 
 class ArticleDetails extends StatefulWidget {
-  const ArticleDetails({super.key});
-
+  const ArticleDetails({super.key, required this.articlesModel});
+  final AllArticles articlesModel;
   @override
   State<ArticleDetails> createState() => _ArticleDetailsState();
 }
@@ -31,18 +31,16 @@ class _ArticleDetailsState extends State<ArticleDetails> {
               size: 20,
             ),
           ),
-          automaticallyImplyLeading: false,
-          centerTitle: false,
-          actions: [
-            IconButton(
-              onPressed: () {
-                GoRouter.of(context).push(AppRouter.kNotification);
-              },
-              icon: const Icon(
-                Icons.notifications_none,
-                size: 25,
-              ),
+          titleAppBar: Text(
+            '${widget.articlesModel.slug}',
+            style: Styles.textStyle18Inter.copyWith(
+              color: Colors.black,
+              fontWeight: FontWeight.w600,
             ),
+          ),
+          automaticallyImplyLeading: false,
+          centerTitle: true,
+          actions: [
             IconButton(
               onPressed: () {
                 _scaffoldKey.currentState!.openDrawer();
@@ -54,7 +52,9 @@ class _ArticleDetailsState extends State<ArticleDetails> {
             ),
           ]),
       drawer: const UserCustomDrawer(),
-      body: const ArticleDetailsBody(),
+      body: ArticleDetailsBody(
+        articlesModel: widget.articlesModel,
+      ),
     );
   }
 }

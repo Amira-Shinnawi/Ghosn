@@ -36,17 +36,17 @@ class BillPaymentBody extends StatelessWidget {
             children: [
               SpaceColumn(
                 label: LocaleKeys.date.tr(),
-                value: '26jan2025',
+                value: '24June2024',
               ),
               SpaceColumn(
                 label: LocaleKeys.time.tr(),
-                value: '12:20:20',
+                value: '3:31 AM',
               ),
             ],
           ),
           SizedBox(height: blocHeight * 2),
 
-          SpaceColumn(label: LocaleKeys.name.tr(), value: "esraa"),
+          SpaceColumn(label: LocaleKeys.name.tr(), value: "Amira"),
           SizedBox(height: blocHeight * 2),
 
           SpaceColumn(
@@ -66,7 +66,7 @@ class BillPaymentBody extends StatelessWidget {
             children: [
               SpaceColumn(
                 label: LocaleKeys.TotalAmount.tr(),
-                value: '123 EGP',
+                value: '54.0LE',
               ),
               const CompletedContainer(),
             ],

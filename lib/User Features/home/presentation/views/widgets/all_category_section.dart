@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ghosn_app/User%20Features/home/data/plant_model.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/style.dart';
@@ -6,7 +7,11 @@ import '../../../../../core/utils/style.dart';
 class AllCategorySection extends StatefulWidget {
   const AllCategorySection({
     super.key,
+    required this.categories,
+    required this.onCategorySelected,
   });
+  final List<Categories> categories;
+  final Function(String categoryName) onCategorySelected;
 
   @override
   State<AllCategorySection> createState() => _AllCategorySectionState();
@@ -15,13 +20,6 @@ class AllCategorySection extends StatefulWidget {
 class _AllCategorySectionState extends State<AllCategorySection> {
   int _selectedTextIndex = 0;
 
-  List<String> sectionCategory = ['All', 'Outdoor', 'Indoor', 'Garden'];
-  List<Color> categoryColor = [
-    kGreenColor,
-    Colors.lightGreenAccent,
-    Colors.orangeAccent,
-    Colors.pinkAccent,
-  ];
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -33,13 +31,16 @@ class _AllCategorySectionState extends State<AllCategorySection> {
       width: double.infinity,
       child: ListView.builder(
           physics: const BouncingScrollPhysics(),
-          itemCount: sectionCategory.length,
           scrollDirection: Axis.horizontal,
+          itemCount: widget.categories.length,
           itemBuilder: (context, index) {
+            Categories categories = widget.categories[index];
+
             return GestureDetector(
               onTap: () {
                 setState(() {
                   _selectedTextIndex = index;
+                  widget.onCategorySelected(categories.name.toString());
                 });
               },
               child: Padding(
@@ -59,15 +60,8 @@ class _AllCategorySectionState extends State<AllCategorySection> {
                       child: Center(
                         child: Row(
                           children: [
-                            CircleAvatar(
-                              radius: 5,
-                              backgroundColor: categoryColor[index],
-                            ),
-                            SizedBox(
-                              width: blockWidth * 2,
-                            ),
                             Text(
-                              sectionCategory[index],
+                              categories.name!,
                               style: Styles.textStyle16.copyWith(
                                 color: _selectedTextIndex == index
                                     ? Colors.white

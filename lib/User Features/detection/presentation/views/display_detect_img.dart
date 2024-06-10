@@ -7,8 +7,10 @@ import 'widgets/display_detect_img_body.dart';
 class DisplayPictureScreen extends StatelessWidget {
   final String imagePath;
 
-  const DisplayPictureScreen({super.key, required this.imagePath});
-
+  const DisplayPictureScreen({
+    super.key,
+    required this.imagePath,
+  });
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +23,11 @@ class DisplayPictureScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: DisplayPictureScreenBody(imagePath: imagePath),
+      body: SafeArea(
+        child: DisplayPictureScreenBody(
+          imagePath: imagePath,
+        ),
+      ),
     );
   }
 }

@@ -133,7 +133,7 @@ class _UploadArticleContentState extends State<UploadArticleContent> {
                       }
                     },
                     decoration: BoxDecoration(
-                      color: const Color(0xff7F53AC5F),
+                      color: const Color(0xff7f53ac5f),
                       borderRadius: BorderRadius.circular(40),
                     ),
                     height: 45,

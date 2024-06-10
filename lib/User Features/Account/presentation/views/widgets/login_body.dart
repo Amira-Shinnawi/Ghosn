@@ -12,20 +12,6 @@ class LoginPageBody extends StatelessWidget {
     return Stack(
       children: [
         Positioned(
-          top: 0,
-          right: 0,
-          left: 0,
-          child: Align(
-            alignment: Alignment.topCenter,
-            child: AspectRatio(
-              aspectRatio: 1,
-              child: Image.asset(
-                AssetsData.signUpImage,
-              ),
-            ),
-          ),
-        ),
-        Positioned(
           bottom: 0,
           left: 0,
           right: 0,
@@ -33,16 +19,30 @@ class LoginPageBody extends StatelessWidget {
             height: height * .55,
             decoration: const ShapeDecoration(
               color: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(50),
-                  topRight: Radius.circular(50),
-                ),
-              ),
+              shape: RoundedRectangleBorder(),
             ),
             child: const LoginForm(),
           ),
-        )
+        ),
+        Positioned(
+          top: -50,
+          right: 0,
+          left: 0,
+          child: ClipRRect(
+            borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(100),
+                bottomRight: Radius.circular(100)),
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: Image.asset(
+                  AssetsData.signUpImage,
+                ),
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }

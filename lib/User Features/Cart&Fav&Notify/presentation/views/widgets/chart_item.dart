@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/constants.dart';
+import 'package:ghosn_app/core/utils/functions/network_image_handler.dart';
 
-import '../../../../../core/utils/assets_data.dart';
 import '../../../../../core/utils/style.dart';
+import '../../../data/model/cart_model/cart_model.dart';
 
 class ChartItem extends StatefulWidget {
   const ChartItem({
     super.key,
     required this.onChanged,
     this.value,
+    required this.cartModel,
+    this.onTap,
   });
   final void Function(bool?)? onChanged;
   final bool? value;
-
+  final CartItems cartModel;
+  final void Function()? onTap;
   @override
   State<ChartItem> createState() => _ChartItemState();
 }
@@ -26,7 +30,6 @@ class _ChartItemState extends State<ChartItem> {
     double width = MediaQuery.of(context).size.width;
     double blockHeight = (height / 100);
     double blockWidth = (width / 100);
-    int totalPrice = count * 150;
 
     return SizedBox(
       height: blockHeight * 16,
@@ -42,25 +45,41 @@ class _ChartItemState extends State<ChartItem> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 CheckboxListTile(
-                  title: const Text(
-                    'Sliver Plant',
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
+                  title: Text(widget.cartModel.name.toString(),
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            fontWeight: FontWeight.bold,
+                          )),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '${widget.cartModel.description}',
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                              color: kGreyColor,
+                            ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      SizedBox(
+                        height: blockHeight * .5,
+                      ),
+                      Text(
+                        '${widget.cartModel.defaultPrice!.roundToDouble().toString()}.LE',
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            fontWeight: FontWeight.bold, color: kGreenColor),
+                      ),
+                    ],
                   ),
-                  subtitle: Text(
-                    '${totalPrice} EGP ',
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  secondary: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      AssetsData.imageTest3,
+                  secondary: AspectRatio(
+                    aspectRatio: 2 / 2,
+                    child: Image(
+                      image: NetworkHandler()
+                          .getImage('${widget.cartModel.imageurl}'),
+                      errorBuilder: (context, error, stackTrace) {
+                        return Image.network(
+                            'https://www.mashtalegypt.com/media/Classic-Terracotta-plant.png');
+                      },
                       fit: BoxFit.cover,
-                      width: blockWidth * 25,
                     ),
                   ),
                   autofocus: false,
@@ -78,43 +97,22 @@ class _ChartItemState extends State<ChartItem> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const Text(
-                        'Remove',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.red,
+                      GestureDetector(
+                        onTap: widget.onTap,
+                        child: const Text(
+                          'Remove',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.red,
+                          ),
                         ),
                       ),
                       const Spacer(),
-                      IconButton(
-                        onPressed: () {
-                          setState(() {
-                            count++;
-                          });
-                        },
-                        icon: const Icon(
-                          Icons.add,
-                          size: 25,
-                          color: Colors.black,
-                        ),
-                      ),
                       Text(
-                        '$count',
-                        style: Styles.textStyle16Inter,
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          if (count > 0) {
-                            setState(() {
-                              count--;
-                            });
-                          }
-                        },
-                        icon: const Icon(
-                          Icons.remove,
-                          size: 25,
-                          color: Colors.black,
+                        'Q: ${widget.cartModel.quantity} Item',
+                        style: Styles.textStyle16Inter.copyWith(
+                          color: kGreenColor,
                         ),
                       ),
                     ],

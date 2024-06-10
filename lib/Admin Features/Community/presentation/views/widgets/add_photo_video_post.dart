@@ -9,8 +9,11 @@ import '../../../../../core/utils/style.dart';
 class AddPhotoVideo extends StatefulWidget {
   const AddPhotoVideo({
     super.key,
+    this.onPressed,
+    required this.imagePath,
   });
-
+  final void Function()? onPressed;
+  final String imagePath;
   @override
   State<AddPhotoVideo> createState() => _AddPhotoVideoState();
 }
@@ -82,9 +85,7 @@ class _AddPhotoVideoState extends State<AddPhotoVideo> {
                   ),
                 ),
                 child: IconButton(
-                  onPressed: () {
-                    _pickImage();
-                  },
+                  onPressed: widget.onPressed,
                   icon: const Icon(
                     Icons.add,
                   ),

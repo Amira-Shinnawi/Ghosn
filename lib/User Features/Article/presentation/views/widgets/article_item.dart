@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:ghosn_app/User%20Features/Article/data/model/article_model.dart';
 import 'package:ghosn_app/User%20Features/Article/presentation/views/article_detalis.dart';
+import 'package:ghosn_app/core/utils/functions/network_image_handler.dart';
+import 'package:ghosn_app/core/widgets/custom_network_image.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 
 import '../../../../../constants.dart';
-import '../../../../../core/utils/assets_data.dart';
 import '../../../../../core/utils/style.dart';
 
 class ArticleItem extends StatelessWidget {
   const ArticleItem({
     super.key,
+    required this.articlesModel,
+    required this.gClient,
   });
+  final AllArticles articlesModel;
+  final ValueNotifier<GraphQLClient> gClient;
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +23,7 @@ class ArticleItem extends StatelessWidget {
     double blocHeight = (height / 100);
     double width = MediaQuery.of(context).size.width;
     double blocWidth = (width / 100);
+
     return Padding(
       padding: EdgeInsets.symmetric(vertical: blocHeight * 1),
       child: Container(
@@ -36,30 +44,28 @@ class ArticleItem extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-                child: AspectRatio(
+                child: CustomNetworkImage(
+                  imageUrl: NetworkHandler()
+                      .getImage('${articlesModel.releventImgUrl}'),
                   aspectRatio: 1.5 / 2,
-                  child: Image.asset(
-                    AssetsData.article,
-                    fit: BoxFit.cover,
-                  ),
                 ),
               ),
               SizedBox(
-                width: blocWidth * 2,
+                width: blocWidth * 3,
               ),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      const Text(
-                        'Article Title',
+                      Text(
+                        '${articlesModel.slug}',
                         style: Styles.textStyle16Inter,
                       ),
                       SizedBox(
-                        height: blocHeight * .2,
+                        height: blocHeight * 1,
                       ),
-                      const Text(
-                        'Part of the article or a definition about it. Example (There is a mutual relationship between soil and plants. Fertile soil encourages plant growth by providing plants with nutrients and acting as a reservoir that holds water)',
+                      Text(
+                        '${articlesModel.title}',
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -73,7 +79,9 @@ class ArticleItem extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return const ArticleDetails();
+                            return ArticleDetails(
+                              articlesModel: articlesModel,
+                            );
                           }));
                         },
                         child: Text(
@@ -83,9 +91,6 @@ class ArticleItem extends StatelessWidget {
                             fontSize: 14,
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: blocHeight * .5,
                       ),
                     ],
                   ),

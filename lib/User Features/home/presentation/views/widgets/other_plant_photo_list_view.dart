@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/User%20Features/home/presentation/views/widgets/show_image.dart';
+import 'package:ghosn_app/core/utils/functions/network_image_handler.dart';
 
-import '../../../../../core/utils/assets_data.dart';
+import '../../../../../core/widgets/custom_network_image.dart';
+import '../../../data/plant_model.dart';
 
 class OtherPlantsPhotoListView extends StatefulWidget {
   const OtherPlantsPhotoListView({
     super.key,
+    required this.plantModel,
   });
+  final Plants plantModel;
 
   @override
   State<OtherPlantsPhotoListView> createState() =>
@@ -23,20 +27,15 @@ class _OtherPlantsPhotoListViewState extends State<OtherPlantsPhotoListView> {
     double blockHeight = (height / 100);
     double blockWidth = (width / 100);
 
-    List<String> imageAssets = [
-      AssetsData.imageTest1,
-      AssetsData.imageTest2,
-      AssetsData.imageTest3,
-    ];
-
     return SizedBox(
       height: blockHeight * 15,
       child: ListView.builder(
         physics: const BouncingScrollPhysics(),
-        itemCount: imageAssets.length,
+        itemCount: widget.plantModel.category!.products!.length,
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemBuilder: ((context, index) {
+          Products products = widget.plantModel.category!.products![index];
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: blockWidth * 3),
             child: GestureDetector(
@@ -46,16 +45,16 @@ class _OtherPlantsPhotoListViewState extends State<OtherPlantsPhotoListView> {
                   MaterialPageRoute(
                     builder: (context) => ShowImage(
                       startingIndex: selectedIndex = index,
-                      image: imageAssets,
+                      plantModel: widget.plantModel,
                     ),
                   ),
                 );
               },
-              child: AspectRatio(
-                aspectRatio: 2 / 3,
-                child: Image.asset(
-                  imageAssets[index],
-                ),
+              child: CustomNetworkImage(
+                imageUrl: NetworkHandler()
+                    .getImage('/plant_images/${products.imageUrl}')
+                    ,
+                aspectRatio: 2 / 2.5,
               ),
             ),
           );

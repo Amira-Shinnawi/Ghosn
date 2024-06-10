@@ -1,5 +1,6 @@
 import 'package:ghosn_app/Admin%20Features/Article/presentation/views/latest_article_home.dart';
 import 'package:ghosn_app/Admin%20Features/Community/presentation/views/community_home.dart';
+import 'package:ghosn_app/Admin%20Features/Products/presentation/views/create_category.dart';
 import 'package:ghosn_app/Admin%20Features/Products/presentation/views/create_plant.dart';
 import 'package:ghosn_app/Admin%20Features/Transaction/presentation/views/transaction_view.dart';
 import 'package:ghosn_app/User%20Features/Account/presentation/views/change_pass.dart';
@@ -23,7 +24,6 @@ import '../../Admin Features/Shipments/presentation/views/shipment_view.dart';
 import '../../User Features/Account/presentation/views/profile_view.dart';
 import '../../User Features/Cart&Fav&Notify/presentation/views/favorite_home.dart';
 import '../../User Features/Cart&Fav&Notify/presentation/views/notification_home.dart';
-import '../../User Features/home/presentation/views/product_details_home.dart';
 import '../../constants.dart';
 
 abstract class AppRouter {
@@ -36,7 +36,7 @@ abstract class AppRouter {
   static const kChangePassword = '/changePassword';
   static const kRadioListTitleWidget = '/radioListTitleWidget';
   static const kProductDetailsHome = '/product';
-  static const kHomePage = '/homePage';
+  static const kHomeView = '/homeView';
   static const kChart = '/chartPage';
   static const kFavorite = '/favorite';
   static const kMainHome = '/main';
@@ -56,8 +56,11 @@ abstract class AppRouter {
   static const kAdminProduct = '/adminProduct';
   static const kCreatePlant = '/createPlant';
   static const kCreatePot = '/createPot';
+  static const kCreateCategory = '/createCategory';
+
   static const kShipment = '/shipment';
   static const kTransaction = '/transaction';
+  static const kFriendProfile = '/FriendProfile';
 
   static final router = GoRouter(
       initialLocation: (userToken != null || tokenFacebookOrGoogle != null)
@@ -96,17 +99,17 @@ abstract class AppRouter {
           path: kChangePassword,
           builder: (context, state) => const ChangePassword(),
         ),
+        // GoRoute(
+        //   path: kProductDetailsHome,
+        //   builder: (context, state) => const ProductDetailsHome(),
+        // ),
         GoRoute(
-          path: kProductDetailsHome,
-          builder: (context, state) => const ProductDetailsHome(),
-        ),
-        GoRoute(
-          path: kHomePage,
+          path: kHomeView,
           builder: (context, state) => const HomeView(),
         ),
         GoRoute(
           path: kChart,
-          builder: (context, state) => const Chart(),
+          builder: (context, state) => const CartHome(),
         ),
         GoRoute(
           path: kFavorite,
@@ -152,6 +155,10 @@ abstract class AppRouter {
         GoRoute(
           path: kCreatePot,
           builder: (context, state) => const CreatePotView(),
+        ),
+        GoRoute(
+          path: kCreateCategory,
+          builder: (context, state) => const CreateCategoryView(),
         ),
         GoRoute(
           path: kShipment,

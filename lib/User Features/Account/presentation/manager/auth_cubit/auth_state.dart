@@ -22,4 +22,3 @@ final class LoginFailureState extends AuthState {
   final String errorMessage;
   LoginFailureState({required this.errorMessage});
 }
-

@@ -38,9 +38,12 @@ class _PostPrivacyState extends State<PostPrivacy> {
                     });
                   },
                 ),
-                const Text(
+                Text(
                   'Public',
-                  style: Styles.textStyle16Inter,
+                  style: Styles.textStyle16Inter.copyWith(
+                    decoration: TextDecoration.underline,
+                    fontSize: 14,
+                  ),
                 ),
               ],
             ),
@@ -56,9 +59,12 @@ class _PostPrivacyState extends State<PostPrivacy> {
                     });
                   },
                 ),
-                const Text(
+                Text(
                   'Followers Only',
-                  style: Styles.textStyle16Inter,
+                  style: Styles.textStyle16Inter.copyWith(
+                    decoration: TextDecoration.underline,
+                    fontSize: 14,
+                  ),
                 ),
               ],
             ),

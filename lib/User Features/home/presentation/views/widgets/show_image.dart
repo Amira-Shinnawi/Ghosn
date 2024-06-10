@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/constants.dart';
 
+import '../../../../../core/utils/functions/network_image_handler.dart';
+import '../../../../../core/widgets/custom_network_image.dart';
+import '../../../data/plant_model.dart';
+
 class ShowImage extends StatefulWidget {
   const ShowImage({
     super.key,
-    required this.image,
     required this.startingIndex,
+    required this.plantModel,
   });
-  final List image;
   final int startingIndex;
+  final Plants plantModel;
+
   @override
   State<ShowImage> createState() => _ShowImageState();
 }
@@ -54,7 +59,7 @@ class _ShowImageState extends State<ShowImage> {
                   height: blockHeight * 50,
                   child: PageView.builder(
                     physics: const BouncingScrollPhysics(),
-                    itemCount: widget.image.length,
+                    itemCount: widget.plantModel.category!.products!.length,
                     controller: _pageController,
                     onPageChanged: (index) {
                       setState(() {
@@ -63,11 +68,13 @@ class _ShowImageState extends State<ShowImage> {
                     },
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      return AspectRatio(
+                      Products products =
+                          widget.plantModel.category!.products![index];
+
+                      return CustomNetworkImage(
+                        imageUrl: NetworkHandler()
+                            .getImage('/plant_images/${products.imageUrl}'),
                         aspectRatio: 2 / 3,
-                        child: Image.asset(
-                          widget.image[index],
-                        ),
                       );
                     },
                   ),
@@ -77,7 +84,7 @@ class _ShowImageState extends State<ShowImage> {
                 height: blockHeight * 5,
               ),
               Text(
-                '${(_selectedIndex + 1).toString()}/${widget.image.length.toString()}',
+                '${(_selectedIndex + 1).toString()}/${widget.plantModel.category!.products!.length.toString()}',
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
@@ -90,10 +97,13 @@ class _ShowImageState extends State<ShowImage> {
                 height: blockHeight * 20,
                 child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
-                  itemCount: widget.image.length,
+                  itemCount: widget.plantModel.category!.products!.length,
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: ((context, index) {
+                    Products products =
+                        widget.plantModel.category!.products![index];
+
                     return Padding(
                       padding: EdgeInsets.symmetric(horizontal: blockWidth * 3),
                       child: GestureDetector(
@@ -117,13 +127,22 @@ class _ShowImageState extends State<ShowImage> {
                                     ),
                                     borderRadius: BorderRadius.circular(20),
                                   ),
-                                  child: Image.asset(
-                                    widget.image[index],
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: CustomNetworkImage(
+                                      imageUrl: NetworkHandler().getImage(
+                                          '/plant_images/${products.imageUrl}'),
+                                      aspectRatio: 2 / 3,
+                                    ),
                                   ),
                                 )
-                              : Image.asset(
-                                  widget.image[index],
-                                  fit: BoxFit.cover,
+                              : Image(
+                                  image: NetworkHandler().getImage(
+                                      '/plant_images/${products.imageUrl}'),
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return const Center(
+                                        child: Icon(Icons.error));
+                                  },
                                 ),
                         ),
                       ),

@@ -30,7 +30,7 @@ class ConfirmPaymentBody extends StatelessWidget {
           children: [
             SpaceBetweenRow(
               label: LocaleKeys.date.tr(),
-              value: '26jan2025',
+              value: '10June2024',
             ),
             SpaceBetweenRow(
               label: LocaleKeys.address.tr(),
@@ -46,7 +46,7 @@ class ConfirmPaymentBody extends StatelessWidget {
             ),
             SpaceBetweenRow(
               label: LocaleKeys.TotalAmount.tr(),
-              value: '123 EGP',
+              value: '54.0LE',
             ),
             SizedBox(height: blocHeight * 4),
             Center(

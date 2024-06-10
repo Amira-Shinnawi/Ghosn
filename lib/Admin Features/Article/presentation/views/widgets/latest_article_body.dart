@@ -3,8 +3,16 @@ import 'package:flutter/material.dart';
 import '../../../../../core/widgets/custom_text_field.dart';
 import 'latest_item_list_view.dart';
 
-class LatestArticleBody extends StatelessWidget {
+class LatestArticleBody extends StatefulWidget {
   const LatestArticleBody({super.key});
+
+  @override
+  State<LatestArticleBody> createState() => _LatestArticleBodyState();
+}
+
+class _LatestArticleBodyState extends State<LatestArticleBody> {
+  String searchQuery = '';
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -15,16 +23,27 @@ class LatestArticleBody extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(
           horizontal: blocWidth * 3, vertical: blocHeight * 1),
-      child: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: Padding(
+      child: CustomScrollView(slivers: [
+        SliverFillRemaining(
+            child: Column(
+          children: [
+            Padding(
               padding: EdgeInsets.only(
                 bottom: blocHeight * .5,
               ),
               child: CustomTextField(
+                controller: _searchController,
+                onFieldSubmitted: (value) {
+                  setState(() {
+                    searchQuery = value;
+                  });
+                },
                 prefixIcon: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      searchQuery = _searchController.text;
+                    });
+                  },
                   icon: const Icon(Icons.search),
                   color: Colors.black.withOpacity(.5),
                 ),
@@ -33,10 +52,14 @@ class LatestArticleBody extends StatelessWidget {
                 color: Colors.black.withOpacity(.3),
               ),
             ),
-          ),
-          const ArticleItemListView(),
-        ],
-      ),
+            Expanded(
+              child: ArticleItemListView(
+                searchQuery: searchQuery,
+              ),
+            ),
+          ],
+        ))
+      ]),
     );
   }
 }

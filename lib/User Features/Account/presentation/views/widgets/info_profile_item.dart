@@ -20,14 +20,20 @@ class InfoProfileItem extends StatelessWidget {
         Icon(
           icon,
           color: Colors.white,
+          size: 16,
         ),
         SizedBox(
           width: width * 3,
         ),
-        Text(
-          infoItem,
-          style: Styles.textStyle22Inter.copyWith(
-            fontSize: 14,
+        Expanded(
+          child: Text(
+            infoItem,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: Styles.textStyle16Inter.copyWith(
+              fontSize: 14,
+              color: Colors.white,
+            ),
           ),
         ),
       ],

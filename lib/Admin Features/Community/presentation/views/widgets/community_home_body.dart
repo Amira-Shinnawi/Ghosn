@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ghosn_app/Admin%20Features/Community/data/repo/community_repo_imple.dart';
+import 'package:ghosn_app/Admin%20Features/Community/presentation/manager/community_cubit/community_cubit.dart';
+import 'package:ghosn_app/core/utils/service_locator.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/style.dart';
 import 'following_posts_list_view.dart';
-import 'question_answer_posts_list_view.dart';
 import 'recommended_posts_list_view.dart';
 import 'who_to_follow.dart';
 
@@ -20,24 +23,21 @@ class _CommunityHomeBodyState extends State<CommunityHomeBody> {
     initialPage: _selectedTextIndex,
   );
 
-  List<String> sectionCommunity = [
-    'Recommended',
-    'Following',
-    'Q&A',
-    'Who to follow'
-  ];
+  List<String> sectionCommunity = ['Recommended', 'Following', 'Who to follow'];
   Widget _buildSelectedListView() {
     switch (_selectedTextIndex) {
       case 0:
-        return const RecommendedPostsListView();
+        return const PublicPostsListView();
       case 1:
         return const FollowingPostsListView();
       case 2:
-        return const QuestionANswerListView();
-      case 3:
-        return const WhoToFollow();
+        return BlocProvider(
+          create: (context) =>
+              CommunityCubit(getIt.get<CommunityRepoImplement>()),
+          child: const WhoToFollow(),
+        );
       default:
-        return const RecommendedPostsListView();
+        return const PublicPostsListView();
     }
   }
 

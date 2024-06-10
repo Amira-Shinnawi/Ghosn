@@ -1,15 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../User Features/Account/presentation/views/widgets/follower_list_view.dart';
-import '../../../../../User Features/Account/presentation/views/widgets/following_list_view.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../translations/local_keys.g.dart';
-import 'post_list_view.dart';
+import '../../../data/model/following_user_model/following_user_model.dart';
+import 'following_list_post_view.dart';
 
 class FriendProfileActivity extends StatefulWidget {
-  const FriendProfileActivity({super.key});
+  const FriendProfileActivity({super.key, required this.followingsModel});
+  final Followings followingsModel;
 
   @override
   State<FriendProfileActivity> createState() => _FriendProfileActivityState();
@@ -23,17 +23,18 @@ class _FriendProfileActivityState extends State<FriendProfileActivity> {
 
   List<String> historyList = [
     LocaleKeys.posts.tr(),
-    LocaleKeys.followers.tr(),
-    LocaleKeys.following.tr(),
   ];
   Widget _buildSelectedListView() {
     switch (_selectedTextIndex) {
       case 0:
-        return const PostsListView();
-      case 1:
-        return const FollowersListView();
+        return FollowerFollowingPostsListView(
+          followingsModel: widget.followingsModel,
+        );
+
       default:
-        return const FollowingListView();
+        return FollowerFollowingPostsListView(
+          followingsModel: widget.followingsModel,
+        );
     }
   }
 
@@ -91,14 +92,7 @@ class _FriendProfileActivityState extends State<FriendProfileActivity> {
                 }),
           ),
         ),
-        Container(
-          width: double.infinity,
-          height: blockHeight * 55,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(
-              30,
-            ),
-          ),
+        Expanded(
           child: PageView.builder(
             physics: const BouncingScrollPhysics(),
             itemCount: historyList.length,

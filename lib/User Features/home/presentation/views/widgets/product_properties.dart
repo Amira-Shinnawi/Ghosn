@@ -5,12 +5,15 @@ import 'package:flutter/widgets.dart';
 import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/translations/local_keys.g.dart';
 
+import '../../../data/plant_model.dart';
 import 'product_property.dart';
 
 class ProductProperties extends StatelessWidget {
   const ProductProperties({
     super.key,
+    required this.plantModel,
   });
+  final Plants plantModel;
 
   @override
   Widget build(BuildContext context) {
@@ -33,19 +36,20 @@ class ProductProperties extends StatelessWidget {
           children: [
             ProductProperty(
               propertyName: LocaleKeys.Temperature.tr(),
-              propertyValue: '19-29 C',
+              propertyValue:
+                  '${plantModel.minTemperature}-${plantModel.maxTemperature}C',
             ),
             ProductProperty(
               propertyName: LocaleKeys.Humidity.tr(),
-              propertyValue: '70%',
+              propertyValue: '${plantModel.humdity}%',
             ),
             ProductProperty(
               propertyName: LocaleKeys.Sunlight.tr(),
-              propertyValue: '30%',
+              propertyValue: '${plantModel.amountSunlight}%',
             ),
             ProductProperty(
               propertyName: LocaleKeys.Height.tr(),
-              propertyValue: '30cm',
+              propertyValue: '${plantModel.height}cm',
             ),
           ],
         ),

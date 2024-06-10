@@ -16,7 +16,7 @@ class DetectResultRow extends StatelessWidget {
     double blocHeight = (height / 100);
 
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: blocHeight * 2),
+      padding: EdgeInsets.symmetric(vertical: blocHeight * 1),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -24,11 +24,9 @@ class DetectResultRow extends StatelessWidget {
             children: [
               Text(
                 label,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
                 maxLines: 2,
               ),
             ],
@@ -41,11 +39,8 @@ class DetectResultRow extends StatelessWidget {
                 child: Text(
                   value,
                   overflow: TextOverflow.ellipsis,
-                  maxLines: 3,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                  ),
+                  maxLines: 10,
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
             ],

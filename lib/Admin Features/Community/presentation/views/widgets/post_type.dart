@@ -22,6 +22,7 @@ class _PostTypeState extends State<PostType> {
           'Post Type',
           style: Styles.textStyle16Inter.copyWith(
             decoration: TextDecoration.underline,
+            fontSize: 14,
           ),
         ),
         Row(
@@ -38,9 +39,12 @@ class _PostTypeState extends State<PostType> {
                     });
                   },
                 ),
-                const Text(
+                Text(
                   'Q&A',
-                  style: Styles.textStyle16Inter,
+                  style: Styles.textStyle16Inter.copyWith(
+                    decoration: TextDecoration.underline,
+                    fontSize: 14,
+                  ),
                 ),
               ],
             ),
@@ -56,9 +60,12 @@ class _PostTypeState extends State<PostType> {
                     });
                   },
                 ),
-                const Text(
+                Text(
                   'Share Experience',
-                  style: Styles.textStyle16Inter,
+                  style: Styles.textStyle16Inter.copyWith(
+                    decoration: TextDecoration.underline,
+                    fontSize: 14,
+                  ),
                 ),
               ],
             ),

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/Admin%20Features/Community/presentation/views/widgets/friend_profile_body.dart';
+import 'package:ghosn_app/core/utils/app_router.dart';
 import 'package:ghosn_app/core/widgets/custom_appbar.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/utils/app_router.dart';
+import '../../data/model/following_user_model/following_user_model.dart';
 
 class FriendProfileView extends StatelessWidget {
-  const FriendProfileView({super.key});
+  const FriendProfileView({super.key, required this.followingsModel});
+  final Followings followingsModel;
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +35,10 @@ class FriendProfileView extends StatelessWidget {
           ),
         ],
       ),
-      body: const SafeArea(
-        child: FriendProfileBody(),
+      body:  SafeArea(
+        child: FriendProfileBody(
+          followingsModel: followingsModel,
+        ),
       ),
     );
   }

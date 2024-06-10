@@ -1,21 +1,26 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
-import '../../../../../User Features/Account/presentation/views/widgets/user_profile.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:ghosn_app/Admin%20Features/Community/presentation/views/widgets/friend_profile.dart';
+
 import '../../../../../constants.dart';
+import '../../../../../core/utils/Api_Key.dart';
 import '../../../../../core/utils/style.dart';
+import '../../../data/model/following_user_model/following_user_model.dart';
 
 class FriendProfileItem extends StatefulWidget {
   const FriendProfileItem({
     super.key,
+    required this.followingsModel,
   });
+  final Followings followingsModel;
 
   @override
   State<FriendProfileItem> createState() => _FriendProfileItemState();
 }
 
 class _FriendProfileItemState extends State<FriendProfileItem> {
-  bool isAccept = true;
-
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -23,7 +28,7 @@ class _FriendProfileItemState extends State<FriendProfileItem> {
     double width = MediaQuery.of(context).size.width;
     double blockWidth = (width / 100);
     return Container(
-      height: blockHeight * 32,
+      height: blockHeight * 30,
       width: double.infinity,
       decoration: BoxDecoration(
         gradient: const LinearGradient(
@@ -40,9 +45,11 @@ class _FriendProfileItemState extends State<FriendProfileItem> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            const UserProfile(),
+            FriendUserProfile(
+              followingsModel: widget.followingsModel,
+            ),
             SizedBox(
-              height: blockHeight * 1,
+              height: blockHeight * .5,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -63,20 +70,35 @@ class _FriendProfileItemState extends State<FriendProfileItem> {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
+                    backgroundColor:
+                        widget.followingsModel.isFollowingBack == true
+                            ? Colors.white
+                            : kGreenColor,
                     shadowColor: Colors.greenAccent,
                     minimumSize: const Size(100, 30),
                   ),
                   onPressed: () {
                     setState(() {
-                      isAccept = !isAccept;
+                      if (widget.followingsModel.isFollowingBack == true) {
+                        widget.followingsModel.isFollowingBack =
+                            !widget.followingsModel.isFollowingBack!;
+                        followUser(widget.followingsModel.followee!.id!);
+                      } else {
+                        widget.followingsModel.isFollowingBack =
+                            !widget.followingsModel.isFollowingBack!;
+                        unFollowUser(widget.followingsModel.followee!.id!);
+                      }
                     });
                   },
                   child: Text(
-                    isAccept ? 'Follow' : 'Following',
+                    widget.followingsModel.isFollowingBack == true
+                        ? 'Follow'
+                        : 'Following',
                     style: Styles.textStyle16Inter.copyWith(
                       fontSize: 12,
-                      color: kGreenColor,
+                      color: widget.followingsModel.isFollowingBack == true
+                          ? kGreenColor
+                          : Colors.white,
                     ),
                   ),
                 ),
@@ -100,5 +122,71 @@ class _FriendProfileItemState extends State<FriendProfileItem> {
         ),
       ),
     );
+  }
+
+  Future<void> followUser(int userId) async {
+    var headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $userToken'
+    };
+    var dio = Dio();
+
+    try {
+      var response = await dio.request(
+        '${ApiKeys.BASE_URL}/api/Follow/followUser?FolloweeId=$userId',
+        options: Options(
+          method: 'POST',
+          headers: headers,
+        ),
+      );
+
+      if (response.statusCode == 200 || response.statusCode == 204) {
+        // showSnackBar(context, 'Success Follow User.');
+        print(json.encode(response.data));
+      } else {
+        throw Exception('An error occurred while adding the Like.');
+      }
+    } on DioException catch (error) {
+      if (error.response?.statusCode == 400 ||
+          error.response?.statusCode == 500) {
+        // showSnackBar(context, 'You Already Follow this user !');
+        print(error.response?.statusMessage);
+      } else {
+        rethrow;
+      }
+    }
+  }
+
+  Future<void> unFollowUser(int userId) async {
+    var headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $userToken'
+    };
+    var dio = Dio();
+
+    try {
+      var response = await dio.request(
+        '${ApiKeys.BASE_URL}/api/Follow/unfollow/$userId',
+        options: Options(
+          method: 'DELETE',
+          headers: headers,
+        ),
+      );
+
+      if (response.statusCode == 200 || response.statusCode == 204) {
+        // showSnackBar(context, 'Success UnFollow User.');
+        print(json.encode(response.data));
+      } else {
+        throw Exception('An error occurred while adding the Like.');
+      }
+    } on DioException catch (error) {
+      if (error.response?.statusCode == 400 ||
+          error.response?.statusCode == 500) {
+        // showSnackBar(context, 'User is Not Found !');
+        print(error.response?.statusMessage);
+      } else {
+        rethrow;
+      }
+    }
   }
 }

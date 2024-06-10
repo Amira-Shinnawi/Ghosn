@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:ghosn_app/core/utils/style.dart';
 
 import '../../constants.dart';
@@ -17,6 +18,9 @@ class CustomTextFormEditing extends StatelessWidget {
     this.validator,
     this.formKey,
     this.labelText,
+    this.initialValue,
+    this.keyboardType,
+    this.inputFormatters,
   });
   final String hintText;
   final void Function(String?)? onSaved;
@@ -29,6 +33,9 @@ class CustomTextFormEditing extends StatelessWidget {
   final String? Function(String?)? validator;
   final Key? formKey;
   final String? labelText;
+  final String? initialValue;
+  final TextInputType? keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -37,9 +44,12 @@ class CustomTextFormEditing extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: blockHeight * 1),
       child: TextFormField(
         key: formKey,
+        initialValue: initialValue,
         readOnly: readOnly,
         controller: controller,
         onTap: onTap,
+        keyboardType: keyboardType,
+        inputFormatters: inputFormatters,
         onSaved: onSaved,
         onChanged: onChanged,
         cursorColor: kGreenColor,

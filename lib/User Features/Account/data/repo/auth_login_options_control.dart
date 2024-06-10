@@ -37,7 +37,7 @@ class AuthController with ChangeNotifier {
       );
       notifyListeners();
     } else {
-      return null;
+      return;
     }
   }
 
@@ -54,7 +54,7 @@ class AuthController with ChangeNotifier {
     );
     AccessToken? accessToken = result.accessToken;
     if (accessToken != null) {
-      String token = accessToken.token;
+      String token = accessToken.tokenString;
 
       if (result.status == LoginStatus.success) {
         final requestData = await _facebookAuth.getUserData(
@@ -74,7 +74,7 @@ class AuthController with ChangeNotifier {
         );
         notifyListeners();
       } else {
-        return null;
+        return;
       }
     }
   }

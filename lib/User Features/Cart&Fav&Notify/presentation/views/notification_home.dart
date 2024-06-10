@@ -24,7 +24,7 @@ class NotificationHome extends StatelessWidget {
         ),
         titleAppBar: Text(
           LocaleKeys.Notifications.tr(),
-          style: Styles.textStyle20Inter.copyWith(
+          style: Styles.textStyle18Inter.copyWith(
             color: Colors.black,
             fontWeight: FontWeight.w600,
           ),

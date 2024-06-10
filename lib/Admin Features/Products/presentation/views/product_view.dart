@@ -91,6 +91,24 @@ class _ProductAdminViewState extends State<ProductAdminView> {
                     Styles.textStyle16Inter.copyWith(color: Colors.white),
                 labelBackgroundColor: kGreenColor,
               ),
+              SpeedDialChild(
+                child: const Icon(
+                  FontAwesomeIcons.sitemap,
+                  color: Colors.white,
+                  size: 20,
+                ),
+                backgroundColor: kGreenColor,
+                onTap: () {
+                  setState(() {
+                    _counter = 0;
+                    GoRouter.of(context).push(AppRouter.kCreateCategory);
+                  });
+                },
+                label: 'Add Category',
+                labelStyle:
+                    Styles.textStyle16Inter.copyWith(color: Colors.white),
+                labelBackgroundColor: kGreenColor,
+              ),
             ]));
   }
 }

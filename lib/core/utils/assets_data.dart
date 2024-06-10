@@ -15,4 +15,6 @@ class AssetsData {
   static const noInternetConnection =
       'assets/images/no_internet_connection.png';
   static const article = 'assets/images/article_image.png';
+  static const plantTest = 'assets/images/plantTest.gif';
+  static const onBoarding = 'assets/images/onboarding.png';
 }

@@ -1,74 +1,104 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ghosn_app/constants.dart';
-import 'package:ghosn_app/core/utils/app_router.dart';
-import 'package:ghosn_app/core/utils/assets_data.dart';
-import 'package:ghosn_app/core/utils/style.dart';
-import 'package:ghosn_app/translations/local_keys.g.dart';
-import 'package:go_router/go_router.dart';
+import 'package:ghosn_app/core/utils/functions/network_image_handler.dart';
 
-class FavoriteItem extends StatelessWidget {
-  const FavoriteItem({super.key});
+import '../../../data/model/fav_model/fav_model.dart';
 
+class FavoriteItem extends StatefulWidget {
+  const FavoriteItem({super.key, required this.favModel, this.onTap});
+  final FavModel favModel;
+  final void Function()? onTap;
+  @override
+  State<FavoriteItem> createState() => _FavoriteItemState();
+}
+
+class _FavoriteItemState extends State<FavoriteItem> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
     double blockHeight = (height / 100);
+    double width = MediaQuery.of(context).size.width;
     double blockWidth = (width / 100);
-    return Container(
-      height: blockHeight * 12,
-      width: blockWidth * 80,
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: kGreyColor.withOpacity(.2),
-          width: 2,
+
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: blockWidth * 3, vertical: blockHeight * 1),
+      child: Container(
+        height: blockHeight * 10,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: kHintColor.withOpacity(.2),
+            width: 2,
+          ),
         ),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: blockWidth * 1, vertical: blockHeight * .5),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AspectRatio(
-              aspectRatio: 2 / 2,
-              child: Image.asset(
-                AssetsData.imageTest2,
-                fit: BoxFit.contain,
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: blockWidth * 3, vertical: blockHeight * 1),
+          child: Row(
+            children: [
+              AspectRatio(
+                aspectRatio: 2 / 2,
+                child: Image(
+                  image: NetworkHandler()
+                      .getImage('Plant_Images/${widget.favModel.imageUrl}'),
+                  errorBuilder: (context, error, stackTrace) {
+                    return Image.network(
+                        'https://www.mashtalegypt.com/media/Classic-Terracotta-plant.png');
+                  },
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-            Expanded(
-              child: SingleChildScrollView(
+              SizedBox(
+                width: blockWidth * 4,
+              ),
+              Expanded(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Sliver Plant',
-                      style: Styles.textStyle18Inter,
+                    Expanded(
+                      child: Text(
+                        '${widget.favModel.name}',
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
-                    ElevatedButton(
-                        style: const ButtonStyle(
-                          backgroundColor: MaterialStatePropertyAll(
-                            kGreenColor,
-                          ),
-                        ),
-                        onPressed: () {
-                          GoRouter.of(context)
-                              .push(AppRouter.kProductDetailsHome);
-                        },
-                        child: Text(
-                          LocaleKeys.ShowProduct.tr(),
-                          style: Styles.textStyle16Inter.copyWith(
-                            color: Colors.white,
-                          ),
-                        ))
+                    Expanded(
+                      child: Text(
+                        'Type: ${widget.favModel.categoryName}',
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: kGreenColor,
+                            ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
                   ],
                 ),
               ),
-            ),
-          ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: widget.onTap,
+                      child: const Icon(
+                        FontAwesomeIcons.heartCircleMinus,
+                        color: kGreenColor,
+                        size: 20,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

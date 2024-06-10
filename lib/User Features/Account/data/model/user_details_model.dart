@@ -17,7 +17,7 @@ class UserDetailsModel {
     token = json['accessToken'];
   }
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> mapData = Map<String, dynamic>();
+    final Map<String, dynamic> mapData = <String, dynamic>{};
 
     mapData['displayName'] = displayName;
     mapData['email'] = email;

@@ -1,16 +1,19 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../../../../core/utils/style.dart';
-import '../../../../../translations/local_keys.g.dart';
+import '../../../../../core/widgets/custom_rating.dart';
+import '../../../data/plant_model.dart';
 import 'other_plant_photo_list_view.dart';
 import 'plant_details_info.dart';
 
 class PlantDetails extends StatefulWidget {
   const PlantDetails({
     super.key,
+    required this.plantModel,
   });
+  final Plants plantModel;
+
   @override
   State<PlantDetails> createState() => _PlantDetailsState();
 }
@@ -27,8 +30,10 @@ class _PlantDetailsState extends State<PlantDetails> {
       padding: EdgeInsets.symmetric(
           horizontal: blockWidth * 6, vertical: blockHeight * 4),
       child: CustomScrollView(slivers: [
-        const SliverToBoxAdapter(
-          child: PlantDetailsInfo(),
+        SliverToBoxAdapter(
+          child: PlantDetailsInfo(
+            plantModel: widget.plantModel,
+          ),
         ),
         SliverToBoxAdapter(
           child: Column(
@@ -38,16 +43,21 @@ class _PlantDetailsState extends State<PlantDetails> {
                 height: blockHeight * 1.5,
               ),
               Text(
-                LocaleKeys.OtherPhotos.tr(),
+                'Other Product Image',
                 style: Styles.textStyle18Inter.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              SizedBox(
+                height: blockHeight * 1.5,
+              ),
             ],
           ),
         ),
-        const SliverToBoxAdapter(
-          child: OtherPlantsPhotoListView(),
+        SliverToBoxAdapter(
+          child: OtherPlantsPhotoListView(
+            plantModel: widget.plantModel,
+          ),
         ),
         SliverToBoxAdapter(
           child: Column(
@@ -57,7 +67,7 @@ class _PlantDetailsState extends State<PlantDetails> {
                 height: blockHeight * 1.5,
               ),
               Text(
-                'Other Bowls',
+                'Reviews',
                 style: Styles.textStyle18Inter.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -65,9 +75,27 @@ class _PlantDetailsState extends State<PlantDetails> {
             ],
           ),
         ),
-        const SliverToBoxAdapter(
-          child: OtherPlantsPhotoListView(),
-        ),
+        SliverToBoxAdapter(
+            child: SizedBox(
+          height: blockHeight * 5,
+          child: ListView.builder(
+              scrollDirection: Axis.vertical,
+              itemCount: widget.plantModel.userReviews!.length,
+              itemBuilder: (context, index) {
+                UserReviews userReviews = widget.plantModel.userReviews!.first;
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '${userReviews.comment}',
+                    ),
+                    CustomRatingBar(
+                      rating: userReviews.rating!.toDouble(),
+                    ),
+                  ],
+                );
+              }),
+        )),
         SliverToBoxAdapter(
           child: SizedBox(
             height: blockHeight * 5,

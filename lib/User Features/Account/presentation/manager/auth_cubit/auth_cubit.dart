@@ -31,7 +31,7 @@ class AuthCubit extends Cubit<AuthState> {
     });
     Response response = await http.post(
       Uri.parse(
-        '${ApiKeys.BASE_URL}/Auth/register',
+        '${ApiKeys.BASE_URL}/api/Auth/register',
       ),
       headers: {
         "Content-Type": "application/json",
@@ -65,7 +65,7 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       Response response = await http.post(
         Uri.parse(
-          '${ApiKeys.BASE_URL}/Auth/login',
+          '${ApiKeys.BASE_URL}/api/Auth/login',
         ),
         headers: {
           "Content-Type": "application/json",
