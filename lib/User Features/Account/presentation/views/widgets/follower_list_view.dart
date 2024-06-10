@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 import '../../../../../Admin Features/Community/data/model/follower_user_model.dart';
-import '../../../../../Admin Features/Community/data/model/following_user_model/following_user_model.dart';
 import '../../../../../Admin Features/Community/presentation/views/widgets/follower_user.dart';
-import '../../../../../Admin Features/Community/presentation/views/widgets/following_user.dart';
 import '../../../../../core/utils/functions/graph_ql_config.dart';
 
 class FollowersListView extends StatefulWidget {

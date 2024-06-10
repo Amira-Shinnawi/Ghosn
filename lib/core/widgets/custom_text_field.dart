@@ -22,13 +22,15 @@ import 'package:ghosn_app/core/utils/style.dart';
 //     this.maxLength,
 //     this.minLength,
 //     this.labelText,
+//     this.onSuffixIconPressed,
+//     required this.showSuffixIcon,
 //   });
 
 //   final Widget? prefixIcon;
 //   final Widget? suffixIcon;
 //   final String hintText;
-//    final void Function()? onSuffixIconPressed;
-//    final bool showSuffixIcon;
+//   final void Function()? onSuffixIconPressed;
+//   final bool showSuffixIcon;
 
 //   TextEditingController? controller;
 //   void Function(String)? onChanged;
@@ -51,6 +53,7 @@ import 'package:ghosn_app/core/utils/style.dart';
 //       child: TextFormField(
 //         obscureText: pass,
 //         onChanged: onChanged,
+//         onFieldSubmitted: onf,
 //         controller: controller,
 //         maxLength: maxLength ?? null,
 //         maxLines: minLength ?? 1,
@@ -97,14 +100,12 @@ import 'package:ghosn_app/core/utils/style.dart';
 //   OutlineInputBorder builtOutLineBorder(
 //       {required final double? width, required final Color? color}) {
 //     return OutlineInputBorder(
-//       borderRadius:  BorderRadius.circular(borderRadius),
-      
+//       borderRadius: BorderRadius.circular(12),
 //       borderSide: BorderSide(
 //         color: color ?? kGreenColor,
 //         width: width ?? 2,
 //       ),
 //     );
-   
 //   }
 // }
 class CustomTextField extends StatelessWidget {
@@ -127,13 +128,15 @@ class CustomTextField extends StatelessWidget {
       this.minLength,
       this.labelText,
       this.initialValue,
-      this.onFieldSubmitted});
+      this.onFieldSubmitted,
+      this.onSuffixIconPressed,
+      this.showSuffixIcon});
 
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final String hintText;
   final void Function()? onSuffixIconPressed;
-  final bool showSuffixIcon;
+  final bool? showSuffixIcon;
 
   final TextEditingController? controller;
   final void Function(String)? onChanged;
@@ -162,34 +165,39 @@ class CustomTextField extends StatelessWidget {
         onFieldSubmitted: onFieldSubmitted,
         controller: controller,
         maxLength: maxLength,
-        maxLength: maxLength,
         maxLines: minLength ?? 1,
-        validator: validator ?? ((data) {
-          if (data!.isEmpty) {
-            return 'Please Enter $hintText';
-          }
-          return null;
-        }),
+        validator: validator ??
+            ((data) {
+              if (data!.isEmpty) {
+                return 'Please Enter $hintText';
+              }
+              return null;
+            }),
         onTap: onTap,
         cursorColor: kGreenColor,
         readOnly: readOnly,
         keyboardType: keyboardType,
         inputFormatters: inputFormatters,
-        style: Styles.textStyle22Inter.copyWith(fontSize: 14, color: Colors.black),
+        style:
+            Styles.textStyle22Inter.copyWith(fontSize: 14, color: Colors.black),
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: TextStyle(color: Colors.black.withOpacity(0.4), fontSize: 14),
+          hintStyle:
+              TextStyle(color: Colors.black.withOpacity(0.4), fontSize: 14),
           labelText: labelText,
-          labelStyle: TextStyle(color: Colors.black.withOpacity(0.4), fontSize: 14),
+          labelStyle:
+              TextStyle(color: Colors.black.withOpacity(0.4), fontSize: 14),
           contentPadding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
           border: _buildOutlineBorder(width: width, color: color),
           enabledBorder: _buildOutlineBorder(width: width, color: color),
           focusedBorder: _buildOutlineBorder(width: width, color: color),
           prefixIcon: prefixIcon,
-          suffixIcon: showSuffixIcon ? GestureDetector(
-            onTap: onSuffixIconPressed,
-            child: suffixIcon,
-          ) : null,
+          suffixIcon: showSuffixIcon!
+              ? GestureDetector(
+                  onTap: onSuffixIconPressed,
+                  child: suffixIcon,
+                )
+              : null,
         ),
       ),
     );
@@ -202,4 +210,3 @@ class CustomTextField extends StatelessWidget {
     );
   }
 }
-

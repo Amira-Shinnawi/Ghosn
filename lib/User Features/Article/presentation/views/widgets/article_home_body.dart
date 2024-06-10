@@ -54,7 +54,7 @@ class _ArticleHomeBodyState extends State<ArticleHomeBody> {
                   ),
                   hintText: 'What are you looking for?',
                   width: 1,
-                  color: Colors.black.withOpacity(.3),
+                  color: Colors.black.withOpacity(.3), showSuffixIcon: null,
                 ),
               ),
               Expanded(
