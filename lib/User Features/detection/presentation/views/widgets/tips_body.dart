@@ -96,7 +96,7 @@ class TipsBody extends StatelessWidget {
                             borderRadius: BorderRadius.circular(30.0),
                             image: DecorationImage(
                               image:
-                                  AssetImage(imagesWithText[index]['image']!),
+                                  AssetImage(imagesWithText[index]['image']),
                               fit: BoxFit.cover,
                             ),
                           ),

@@ -7,6 +7,7 @@ import 'package:ghosn_app/constants.dart';
 import '../../../Account/presentation/views/profile_view.dart';
 import '../../../Cart&Fav&Notify/presentation/views/chart.dart';
 import '../../../Cart&Fav&Notify/presentation/views/favorite_home.dart';
+import '../../../Reminder/presentation/views/reminder_main.dart';
 import '../../../detection/presentation/views/tips_page.dart';
 import 'home_view.dart';
 
@@ -25,7 +26,7 @@ class _BottomBarState extends State<BottomBar> {
     const CommunityHome(),
     const Tips(),
     const HomeView(),
-    const CartHome(),
+    const ReminderMain(),
     const ProfileView(),
   ];
 
@@ -67,7 +68,7 @@ class _BottomBarState extends State<BottomBar> {
                 backgroundColor: Colors.transparent,
                 color: kGreenColor,
                 buttonBackgroundColor: kGreenColor,
-                height: 60,
+                height: 50,
                 index: selectedIndex,
                 items: items,
                 animationCurve: Curves.easeInOut,
