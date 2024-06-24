@@ -16,6 +16,8 @@ import '../../../../core/utils/functions/shared_pref_cache.dart';
 import '../../../../core/utils/service_locator.dart';
 import '../../../../core/widgets/custom_network_image.dart';
 import '../../../../translations/local_keys.g.dart';
+import '../../../admin/presentation/view/DashBoard2.dart';
+import '../../../admin/presentation/view/customers.dart';
 
 class AdminCustomDrawer extends StatefulWidget {
   const AdminCustomDrawer({super.key});
@@ -72,7 +74,7 @@ class _AdminCustomDrawerState extends State<AdminCustomDrawer> {
                       borderRadius: BorderRadius.circular(50),
                       child: CustomNetworkImage(
                         imageUrl: NetworkHandler()
-                            .getImage(state.profileModel.first.imgUrl!),
+                            .getImage('${state.profileModel.first.imgUrl}'),
                         aspectRatio: 1,
                       ),
                     ),
@@ -93,9 +95,9 @@ class _AdminCustomDrawerState extends State<AdminCustomDrawer> {
             ),
           ),
           ListTile(
-            title: const Text(
-              'Dashboard',
-              style: TextStyle(
+            title: Text(
+              LocaleKeys.DashBoard.tr(),
+              style: const TextStyle(
                 fontSize: 14,
               ),
             ),
@@ -103,12 +105,15 @@ class _AdminCustomDrawerState extends State<AdminCustomDrawer> {
               FontAwesomeIcons.layerGroup,
               size: 14,
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const DashBoard()));
+            },
           ),
           ListTile(
-            title: const Text(
-              'Products',
-              style: TextStyle(
+            title: Text(
+              LocaleKeys.Products.tr(),
+              style: const TextStyle(
                 fontSize: 14,
               ),
             ),
@@ -121,9 +126,9 @@ class _AdminCustomDrawerState extends State<AdminCustomDrawer> {
             },
           ),
           ListTile(
-            title: const Text(
-              'Customers',
-              style: TextStyle(
+            title: Text(
+              LocaleKeys.Customers.tr(),
+              style: const TextStyle(
                 fontSize: 14,
               ),
             ),
@@ -131,25 +136,15 @@ class _AdminCustomDrawerState extends State<AdminCustomDrawer> {
               Icons.people_alt_rounded,
               size: 18,
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Customers()));
+            },
           ),
           ListTile(
-            title: const Text(
-              'Orders',
-              style: TextStyle(
-                fontSize: 14,
-              ),
-            ),
-            leading: const Icon(
-              FontAwesomeIcons.cartShopping,
-              size: 14,
-            ),
-            onTap: () {},
-          ),
-          ListTile(
-            title: const Text(
-              'Shipments',
-              style: TextStyle(
+            title: Text(
+              LocaleKeys.Shipments.tr(),
+              style: const TextStyle(
                 fontSize: 14,
               ),
             ),
@@ -162,9 +157,9 @@ class _AdminCustomDrawerState extends State<AdminCustomDrawer> {
             },
           ),
           ListTile(
-            title: const Text(
-              'Transactions',
-              style: TextStyle(
+            title: Text(
+              LocaleKeys.Transactions.tr(),
+              style: const TextStyle(
                 fontSize: 14,
               ),
             ),
@@ -177,9 +172,9 @@ class _AdminCustomDrawerState extends State<AdminCustomDrawer> {
             },
           ),
           ListTile(
-            title: const Text(
-              'Articles',
-              style: TextStyle(
+            title: Text(
+              LocaleKeys.Articles.tr(),
+              style: const TextStyle(
                 fontSize: 14,
               ),
             ),
@@ -192,9 +187,9 @@ class _AdminCustomDrawerState extends State<AdminCustomDrawer> {
             },
           ),
           ListTile(
-            title: const Text(
-              'Community',
-              style: TextStyle(
+            title: Text(
+              LocaleKeys.Community.tr(),
+              style: const TextStyle(
                 fontSize: 14,
               ),
             ),
@@ -233,7 +228,12 @@ class _AdminCustomDrawerState extends State<AdminCustomDrawer> {
                 fontSize: 14,
               ),
             ),
-            onTap: () {},
+            onTap: () async {
+              await SharedPrefCache.deleteCacheItem(key: 'token');
+              await SharedPrefCache.deleteCacheItem(key: 'accessToken');
+
+              GoRouter.of(context).pushReplacement(AppRouter.kLoginOptionView);
+            },
           ),
         ],
       ),

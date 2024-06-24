@@ -25,7 +25,7 @@ class _SimilarArticleListViewState extends State<SimilarArticleListView> {
   @override
   void initState() {
     super.initState();
-    _articles = widget.articlesModel.sections; // Copy initial data
+    _articles = widget.articlesModel.sections;
   }
 
   @override

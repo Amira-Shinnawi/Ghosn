@@ -266,7 +266,7 @@ class _PublicPostItemState extends State<PublicPostItem> {
       );
 
       if (response.statusCode == 200 || response.statusCode == 204) {
-        showSnackBar(context, 'Success Adding Like.');
+        // showSnackBar(context, 'Success Adding Like.');
         print(json.encode(response.data));
       } else {
         throw Exception('An error occurred while adding the Like.');
@@ -274,8 +274,8 @@ class _PublicPostItemState extends State<PublicPostItem> {
     } on DioException catch (error) {
       if (error.response?.statusCode == 400 ||
           error.response?.statusCode == 500) {
-        showSnackBar(context,
-            '"You have already reacted to this post with the same reaction !".');
+        // showSnackBar(context,
+        //     '"You have already reacted to this post with the same reaction !".');
         print(error.response?.statusMessage);
       } else {
         rethrow;

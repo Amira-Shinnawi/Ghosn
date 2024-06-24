@@ -87,6 +87,8 @@ class _PaymentMethodBody extends State<PaymentMethodBody> {
             ),
             SizedBox(height: blocHeight * 2),
             CustomTextField(
+                          showSuffixIcon: false,
+
               hintText: LocaleKeys.street.tr(),
               controller: _streetController,
               keyboardType: TextInputType.streetAddress,
@@ -100,6 +102,7 @@ class _PaymentMethodBody extends State<PaymentMethodBody> {
             ),
             SizedBox(height: blocHeight * 2),
             CustomTextField(
+              showSuffixIcon: false,
               hintText: LocaleKeys.phoneNumber.tr(),
               controller: _phoneNumberController,
               keyboardType: TextInputType.phone,

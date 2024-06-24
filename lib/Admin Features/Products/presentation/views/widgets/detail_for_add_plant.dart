@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ghosn_app/translations/local_keys.g.dart';
 
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_text_field.dart';
@@ -42,34 +44,38 @@ class DetailForAddPlant extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Plant Details',
+        Text(
+          LocaleKeys.PlantDetails.tr(),
           style: Styles.textStyle16Inter,
         ),
         SizedBox(
           height: blockHeight * 1,
         ),
         CustomTextField(
-          hintText: 'Plant Name',
-          labelText: 'Plant Name',
+          showSuffixIcon: false,
+          hintText: LocaleKeys.PlantName.tr(),
+          labelText: LocaleKeys.PlantName.tr(),
           controller: plantName,
         ),
         CustomTextField(
-          hintText: 'Plant Description',
-          labelText: 'Plant Description',
+          showSuffixIcon: false,
+          hintText: LocaleKeys.PlantDescription.tr(),
+          labelText: LocaleKeys.PlantDescription.tr(),
           controller: plantDesc,
           minLength: 4,
         ),
         CustomTextField(
-          hintText: 'Quantity',
-          labelText: 'Quantity',
+          showSuffixIcon: false,
+          hintText: LocaleKeys.Quantity.tr(),
+          labelText: LocaleKeys.Quantity.tr(),
           keyboardType: TextInputType.number,
           inputFormatters: [FilteringTextInputFormatter.digitsOnly],
           controller: quantity,
         ),
         CustomTextField(
-          hintText: 'Price',
-          labelText: 'Price',
+          showSuffixIcon: false,
+          hintText: LocaleKeys.Price.tr(),
+          labelText: LocaleKeys.Price.tr(),
           keyboardType: TextInputType.number,
           inputFormatters: [FilteringTextInputFormatter.digitsOnly],
           controller: price,
@@ -81,16 +87,17 @@ class DetailForAddPlant extends StatelessWidget {
         SizedBox(
           height: blockHeight * 1,
         ),
-        const Text(
-          'Plant Properties',
+        Text(
+          LocaleKeys.PlantProperties.tr(),
           style: Styles.textStyle16Inter,
         ),
         SizedBox(
           height: blockHeight * 1,
         ),
         CustomTextField(
-          hintText: 'Amount Of Water',
-          labelText: 'Amount Of Water',
+          showSuffixIcon: false,
+          hintText: LocaleKeys.AmountWater.tr(),
+          labelText: LocaleKeys.AmountWater.tr(),
           controller: amountofWater,
           prefixIcon: const Icon(
             Icons.water_drop_outlined,
@@ -100,8 +107,9 @@ class DetailForAddPlant extends StatelessWidget {
           inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         ),
         CustomTextField(
-          hintText: 'Amount Sunlight',
-          labelText: 'Amount Sunlight',
+          showSuffixIcon: false,
+          hintText: LocaleKeys.AmountSunlight.tr(),
+          labelText: LocaleKeys.AmountSunlight.tr(),
           controller: amountofSunlight,
           prefixIcon: const Icon(
             Icons.wb_sunny_outlined,
@@ -111,8 +119,9 @@ class DetailForAddPlant extends StatelessWidget {
           inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         ),
         CustomTextField(
-          hintText: 'Humidity',
-          labelText: 'Humidity',
+          showSuffixIcon: false,
+          hintText: LocaleKeys.Humidity.tr(),
+          labelText: LocaleKeys.Humidity.tr(),
           controller: humidity,
           prefixIcon: const Icon(
             Icons.opacity_outlined,
@@ -120,8 +129,9 @@ class DetailForAddPlant extends StatelessWidget {
           ),
         ),
         CustomTextField(
-          hintText: 'Min Temperature',
-          labelText: 'Min Temperature',
+          showSuffixIcon: false,
+          hintText: LocaleKeys.MinTemperature.tr(),
+          labelText: LocaleKeys.MinTemperature.tr(),
           controller: minTemp,
           prefixIcon: const Icon(
             FontAwesomeIcons.temperatureLow,
@@ -131,8 +141,9 @@ class DetailForAddPlant extends StatelessWidget {
           inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         ),
         CustomTextField(
-          hintText: 'Max Temperature',
-          labelText: 'Max Temperature',
+          showSuffixIcon: false,
+          hintText: LocaleKeys.MaxTemperature.tr(),
+          labelText: LocaleKeys.MaxTemperature.tr(),
           controller: maxTemp,
           prefixIcon: const Icon(
             FontAwesomeIcons.temperatureHigh,
@@ -142,8 +153,9 @@ class DetailForAddPlant extends StatelessWidget {
           inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         ),
         CustomTextField(
-          hintText: 'Height',
-          labelText: 'Height',
+          showSuffixIcon: false,
+          hintText: LocaleKeys.Height.tr(),
+          labelText: LocaleKeys.Height.tr(),
           controller: plantHeight,
           prefixIcon: const Icon(
             Icons.height_outlined,
@@ -153,12 +165,14 @@ class DetailForAddPlant extends StatelessWidget {
           inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         ),
         CustomTextField(
-          hintText: 'Soil Type',
-          labelText: 'Soil Type',
+          showSuffixIcon: false,
+          hintText: LocaleKeys.SoilType.tr(),
+          labelText: LocaleKeys.SoilType.tr(),
           controller: soilType,
         ),
         CustomTextField(
-          hintText: 'Category ID',
+          showSuffixIcon: false,
+          hintText: LocaleKeys.CategoryID.tr(),
           labelText: 'Category ID',
           controller: categoryId,
           keyboardType: TextInputType.number,

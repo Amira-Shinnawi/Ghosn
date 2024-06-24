@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/Admin%20Features/Community/presentation/views/edit_post.dart';
 import 'package:ghosn_app/constants.dart';
@@ -9,6 +10,7 @@ import 'package:http/http.dart' as http;
 import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/functions/graph_ql_config.dart';
 import '../../../../../core/utils/style.dart';
+import '../../../../../translations/local_keys.g.dart';
 import '../../../data/model/post_model/post_model.dart';
 import 'post_item.dart';
 
@@ -95,7 +97,7 @@ class _PostsListViewState extends State<PostsListView> {
                   GoRouter.of(context).push(AppRouter.kCreatePost);
                 },
                 child: Text(
-                  'Create your first post',
+                  LocaleKeys.Createyourfirstpost.tr(),
                   style: Styles.textStyle16Inter.copyWith(
                     color: kGreenColor,
                   ),

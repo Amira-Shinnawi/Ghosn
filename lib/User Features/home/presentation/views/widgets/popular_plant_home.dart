@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/User%20Features/home/data/plant_model.dart';
 import 'package:ghosn_app/User%20Features/home/presentation/views/product_details_home.dart';
 import 'package:ghosn_app/core/utils/functions/network_image_handler.dart';
+import 'package:ghosn_app/translations/local_keys.g.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 import '../../../../../constants.dart';
@@ -42,7 +44,7 @@ class _PopularPlantsState extends State<PopularPlants> {
     return Column(
       children: [
         TitleWithMoreButton(
-            title: "Popular Plant",
+            title: LocaleKeys.PopularPlant.tr(),
             morePressed: () {
               showModalBottomSheet(
                 isScrollControlled: true,

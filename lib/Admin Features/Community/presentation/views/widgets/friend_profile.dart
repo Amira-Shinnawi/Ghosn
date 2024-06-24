@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ghosn_app/translations/local_keys.g.dart';
 
 import '../../../../../User Features/Account/presentation/views/widgets/info_profile_item.dart';
 import '../../../../../core/utils/functions/network_image_handler.dart';
@@ -116,7 +118,7 @@ class FriendUserProfile extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        '${followingsModel.followee!.totalFollowersCount.toString()} Followers',
+                        '${followingsModel.followee!.totalFollowersCount.toString()} ${LocaleKeys.followers.tr()}',
                         style: Styles.textStyle22Inter.copyWith(
                           fontSize: 12,
                         ),
@@ -125,7 +127,7 @@ class FriendUserProfile extends StatelessWidget {
                         width: blockWidth * 4,
                       ),
                       Text(
-                        '${followingsModel.followee!.totalFolloweesCount.toString()} Following',
+                        '${followingsModel.followee!.totalFolloweesCount.toString()}  ${LocaleKeys.following.tr()}',
                         style: Styles.textStyle22Inter.copyWith(
                           fontSize: 12,
                         ),

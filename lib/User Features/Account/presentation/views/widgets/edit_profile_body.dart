@@ -181,7 +181,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                                       as ImageProvider
                                   : (userToken != null || profileImage != null)
                                       ? NetworkHandler().getImage(
-                                          state.profileModel.first.imgUrl!,
+                                          '${state.profileModel.first.imgUrl}',
                                         )
                                       : const NetworkImage(
                                           'https://developers.google.com/static/maps/documentation/streetview/images/error-image-generic.png'),
@@ -225,6 +225,8 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                         height: blockHeight * 1,
                       ),
                       CustomTextField(
+                                    showSuffixIcon: false,
+
                         width: 2,
                         hintText: '2002-12-12',
                         controller:
@@ -371,6 +373,8 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                         height: blockHeight * 1,
                       ),
                       CustomTextField(
+                                    showSuffixIcon: false,
+
                         width: 2,
                         onTap: () {
                           setState(() {
@@ -463,6 +467,8 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                                   SizedBox(width: blockWidth * 2),
                                   Expanded(
                                     child: CustomTextField(
+                                                  showSuffixIcon: false,
+
                                       width: 1,
                                       hintText: 'State',
                                       controller: stateController,

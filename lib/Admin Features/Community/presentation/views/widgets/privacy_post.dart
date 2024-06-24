@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/style.dart';
+import '../../../../../translations/local_keys.g.dart';
 
 class PostPrivacy extends StatefulWidget {
   const PostPrivacy({super.key});
@@ -19,7 +21,7 @@ class _PostPrivacyState extends State<PostPrivacy> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Post Privacy',
+          LocaleKeys.PostPrivacy.tr(),
           style: Styles.textStyle16Inter.copyWith(
             decoration: TextDecoration.underline,
           ),
@@ -39,7 +41,7 @@ class _PostPrivacyState extends State<PostPrivacy> {
                   },
                 ),
                 Text(
-                  'Public',
+                  LocaleKeys.Public.tr(),
                   style: Styles.textStyle16Inter.copyWith(
                     decoration: TextDecoration.underline,
                     fontSize: 14,
@@ -60,7 +62,7 @@ class _PostPrivacyState extends State<PostPrivacy> {
                   },
                 ),
                 Text(
-                  'Followers Only',
+                  LocaleKeys.FollowersOnly.tr(),
                   style: Styles.textStyle16Inter.copyWith(
                     decoration: TextDecoration.underline,
                     fontSize: 14,

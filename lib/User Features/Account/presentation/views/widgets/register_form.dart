@@ -3,16 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ghosn_app/User%20Features/Account/presentation/manager/auth_cubit/auth_cubit.dart';
-import 'package:ghosn_app/core/utils/app_router.dart';
+import 'package:ghosn_app/User%20Features/Account/presentation/manager/edit_profile_cubit/cubit/edit_profile_cubit.dart';
+import 'package:ghosn_app/core/utils/service_locator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 
 import '../../../../../constants.dart';
+import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_text_field.dart';
 import '../../../../../core/widgets/show_snack_bar.dart';
 import '../../../../../translations/local_keys.g.dart';
+import '../../../data/repo/profile/profile_repo_imple.dart';
 import 'google_facebook_login.dart';
 
 class RegisterForm extends StatefulWidget {
@@ -70,13 +72,17 @@ class _RegisterFormState extends State<RegisterForm> {
     double blockWidth = (width / 100);
 
     return BlocProvider(
-      create: (context) => AuthCubit(),
-      child: BlocConsumer<AuthCubit, AuthState>(
+      create: (context) => EditProfileCubit(
+        getIt.get<ProfileRepoImplement>(),
+      )..fetchProfile(),
+      child: BlocConsumer<EditProfileCubit, EditProfileState>(
         listener: (context, state) {
           if (state is RegisterLoadingState) {
             isLoading = true;
           } else if (state is RegisterSuccessState) {
             GoRouter.of(context).pushReplacement(AppRouter.kEditProfile);
+            // Navigator.push(
+            //     context, MaterialPageRoute(builder: (context) => HomeView()));
             isLoading = false;
           } else if (state is RegisterFailureState) {
             showSnackBar(context, state.errorMessage);
@@ -113,6 +119,7 @@ class _RegisterFormState extends State<RegisterForm> {
                       height: blockHeight * 2,
                     ),
                     CustomTextField(
+                      showSuffixIcon: false,
                       prefixIcon: const Icon(
                         FontAwesomeIcons.user,
                         color: kHintColor,
@@ -123,6 +130,7 @@ class _RegisterFormState extends State<RegisterForm> {
                       keyboardType: TextInputType.text,
                     ),
                     CustomTextField(
+                      showSuffixIcon: false,
                       prefixIcon: const Icon(
                         FontAwesomeIcons.user,
                         color: kHintColor,
@@ -133,6 +141,7 @@ class _RegisterFormState extends State<RegisterForm> {
                       keyboardType: TextInputType.name,
                     ),
                     CustomTextField(
+                      showSuffixIcon: false,
                       prefixIcon: const Icon(
                         FontAwesomeIcons.circleUser,
                         color: kHintColor,
@@ -149,6 +158,7 @@ class _RegisterFormState extends State<RegisterForm> {
                       },
                     ),
                     CustomTextField(
+                      showSuffixIcon: false,
                       prefixIcon: const Icon(
                         Icons.email_rounded,
                         color: kHintColor,
@@ -160,6 +170,7 @@ class _RegisterFormState extends State<RegisterForm> {
                       readOnly: true,
                     ),
                     CustomTextField(
+                      showSuffixIcon: false,
                       pass: obscureText,
                       controller: passController,
                       hintText: LocaleKeys.Password.tr(),
@@ -208,7 +219,7 @@ class _RegisterFormState extends State<RegisterForm> {
                             height: 40,
                             onPressed: () {
                               if (formKey.currentState!.validate()) {
-                                BlocProvider.of<AuthCubit>(context)
+                                BlocProvider.of<EditProfileCubit>(context)
                                     .registerUser(
                                   firstName: firstNameController.text,
                                   lastName: lastNameController.text,

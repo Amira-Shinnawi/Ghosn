@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ghosn_app/constants.dart';
@@ -11,6 +12,7 @@ import '../../../../../core/utils/functions/shared_pref_cache.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_network_image.dart';
 import '../../../../../core/widgets/custom_text_field.dart';
+import '../../../../../translations/local_keys.g.dart';
 import '../../../data/model/post_model/post_model.dart';
 
 class WritePostContent extends StatefulWidget {
@@ -65,7 +67,7 @@ class _WritePostContentState extends State<WritePostContent> {
                         radius: 20,
                         child: CustomNetworkImage(
                           imageUrl: NetworkHandler()
-                              .getImage(state.profileModel.first.imgUrl!),
+                              .getImage('${state.profileModel.first.imgUrl}'),
                           aspectRatio: 1 / 1,
                           fit: BoxFit.cover,
                         ),
@@ -89,8 +91,8 @@ class _WritePostContentState extends State<WritePostContent> {
                             builder: (BuildContext context) {
                               return SimpleDialog(
                                 backgroundColor: Colors.white,
-                                title: const Text(
-                                  'Are You Sure!\n You want to post it',
+                                title:  Text(
+                                  LocaleKeys.AreYouSureYouwanttopostit.tr(),
                                   textAlign: TextAlign.center,
                                   style: Styles.textStyle18Inter,
                                 ),
@@ -104,7 +106,7 @@ class _WritePostContentState extends State<WritePostContent> {
                                     ),
                                     onPressed: widget.onPressed,
                                     child: Text(
-                                      'Post',
+                                      LocaleKeys.Post.tr(),
                                       style: Styles.textStyle18Inter.copyWith(
                                         color: kGreenColor,
                                       ),
@@ -118,7 +120,7 @@ class _WritePostContentState extends State<WritePostContent> {
                                           .labelLarge,
                                     ),
                                     child: Text(
-                                      'Cancel',
+                                      LocaleKeys.Cancel.tr(),
                                       style: Styles.textStyle18Inter.copyWith(
                                         color: Colors.red,
                                       ),
@@ -132,7 +134,7 @@ class _WritePostContentState extends State<WritePostContent> {
                             });
                       },
                       child: Text(
-                        'Post',
+                        LocaleKeys.Post.tr(),
                         style: Styles.textStyle16Inter.copyWith(
                           color: Colors.white,
                         ),
@@ -156,7 +158,9 @@ class _WritePostContentState extends State<WritePostContent> {
           height: blockHeight * 2,
         ),
         CustomTextField(
-          hintText: 'What\'s on your Mind?',
+                      showSuffixIcon: false,
+
+          hintText: LocaleKeys.WhatsonyourMind.tr(),
           width: 0,
           color: Colors.black,
           minLength: 6,

@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/utils/functions/network_image_handler.dart';
 
 import '../../../../../core/utils/style.dart';
+import '../../../../../translations/local_keys.g.dart';
 import '../../../data/model/cart_model/cart_model.dart';
 
 class ChartItem extends StatefulWidget {
@@ -99,9 +101,9 @@ class _ChartItemState extends State<ChartItem> {
                     children: [
                       GestureDetector(
                         onTap: widget.onTap,
-                        child: const Text(
-                          'Remove',
-                          style: TextStyle(
+                        child: Text(
+                          LocaleKeys.Remove.tr(),
+                          style: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
                             color: Colors.red,
@@ -110,7 +112,7 @@ class _ChartItemState extends State<ChartItem> {
                       ),
                       const Spacer(),
                       Text(
-                        'Q: ${widget.cartModel.quantity} Item',
+                        'Q: ${widget.cartModel.quantity} ${LocaleKeys.Item.tr()}',
                         style: Styles.textStyle16Inter.copyWith(
                           color: kGreenColor,
                         ),

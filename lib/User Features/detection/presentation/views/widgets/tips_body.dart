@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/core/utils/style.dart';
+import 'package:ghosn_app/translations/local_keys.g.dart';
 
 import '../../../../../core/widgets/custom_button.dart';
 import '../camera_detect.dart';
@@ -10,22 +12,22 @@ class TipsBody extends StatelessWidget {
   final List<Map<String, dynamic>> imagesWithText = [
     {
       'image': 'assets/images/image 8.png',
-      'text': 'So Far',
+      'text': LocaleKeys.SoFar.tr(),
       'icon': Icons.close_sharp
     },
     {
       'image': 'assets/images/image 5.png',
-      'text': 'So Close',
+      'text': LocaleKeys.SoClose.tr(),
       'icon': Icons.close_sharp
     },
     {
       'image': 'assets/images/image 6.png',
-      'text': 'Hazy',
+      'text': LocaleKeys.Hazy.tr(),
       'icon': Icons.close_sharp
     },
     {
       'image': 'assets/images/image 9.png',
-      'text': 'Several plants',
+      'text': LocaleKeys.Severalplants.tr(),
       'icon': Icons.close_sharp
     },
   ];
@@ -69,9 +71,9 @@ class TipsBody extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(top: blocWidth * .001),
-            child: const Text(
-              "The following will cause bad results:",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+            child: Text(
+              LocaleKeys.Thefollowingwillcausebadresults.tr(),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
             ),
           ),
           Expanded(
@@ -95,8 +97,7 @@ class TipsBody extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30.0),
                             image: DecorationImage(
-                              image:
-                                  AssetImage(imagesWithText[index]['image']),
+                              image: AssetImage(imagesWithText[index]['image']),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -109,9 +110,7 @@ class TipsBody extends StatelessWidget {
                               size: 30,
                               color: Colors.red,
                             ),
-                            SizedBox(
-                                width:
-                                    width * .02), // Space between icon and text
+                            SizedBox(width: width * .02),
                             Text(
                               imagesWithText[index]['text']!,
                               style: Styles.textStyle16Inter,
@@ -126,7 +125,7 @@ class TipsBody extends StatelessWidget {
             ),
           ),
           CustomButton(
-            text: 'OK',
+            text: LocaleKeys.OK.tr(),
             height: 48,
             width: 150,
             onPressed: () {

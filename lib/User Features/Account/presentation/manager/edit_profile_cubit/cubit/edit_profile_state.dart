@@ -22,3 +22,12 @@ final class EditProfileFailure extends EditProfileState {
 
   const EditProfileFailure(this.errorMessage);
 }
+
+final class RegisterLoadingState extends EditProfileState {}
+
+final class RegisterSuccessState extends EditProfileState {}
+
+final class RegisterFailureState extends EditProfileState {
+  final String errorMessage;
+  RegisterFailureState({required this.errorMessage});
+}

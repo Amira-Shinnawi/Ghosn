@@ -38,6 +38,8 @@ class _ChangePasswordBodyState extends State<ChangePasswordBody> {
               height: height * .05,
             ),
             CustomTextField(
+                          showSuffixIcon: false,
+
               pass: obscureText,
               hintText: LocaleKeys.newPassword.tr(),
               prefixIcon: IconButton(
@@ -54,6 +56,8 @@ class _ChangePasswordBodyState extends State<ChangePasswordBody> {
               keyboardType: TextInputType.visiblePassword,
             ),
             CustomTextField(
+                          showSuffixIcon: false,
+
               pass: obscureText,
               hintText: LocaleKeys.confirmpassword.tr(),
               prefixIcon: IconButton(

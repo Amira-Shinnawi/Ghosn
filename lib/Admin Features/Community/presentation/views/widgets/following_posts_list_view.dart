@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/Admin%20Features/Community/data/model/following_post_model/following_post_model.dart';
 import 'package:go_router/go_router.dart';
@@ -7,6 +8,7 @@ import '../../../../../constants.dart';
 import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/functions/graph_ql_config.dart';
 import '../../../../../core/utils/style.dart';
+import '../../../../../translations/local_keys.g.dart';
 import 'following_post_item.dart';
 
 class FollowingPostsListView extends StatefulWidget {
@@ -89,7 +91,7 @@ class _FollowingPostsListViewState extends State<FollowingPostsListView> {
                   GoRouter.of(context).push(AppRouter.kCreatePost);
                 },
                 child: Text(
-                  'Create your first post',
+                  LocaleKeys.Youdontfollowanyoneyet.tr(),
                   style: Styles.textStyle16Inter.copyWith(
                     color: kGreenColor,
                   ),

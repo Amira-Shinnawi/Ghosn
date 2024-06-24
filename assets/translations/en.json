@@ -107,7 +107,173 @@
 "internetConnection":"Internet Connection",
 "refresh":"Refresh",
 "noInternetConnection":"No Internet Connection",
-"checkYourConnection":"Check your connection, then refresh the page"
+"checkYourConnection":"Check your connection, then refresh the page",
+
+"DashBoard":"DashBoard",
+"TotalRevenue":"Total Revenue",
+"ThisweekStatistic":"This week Statistic",
+"RevenueandSales":"Revenue and Sales",
+"MostSoldItems":"Most Sold Items",
+
+"Customers":"Customers",
+"informationaboutyourcustomer":"information about your customer",
+"currentcustomers":"Current Customers",
+"stateoverview":"State Overview",
+"informationaboutstorevisits":"information about store visits",
+"Women":"Women",
+"Men":"Men",
+
+"UnpublishedArticle":"Unpublished Articles",
+"Whatareyoulookingfor":"What are you looking for?",
+"ShowArticle":"Show Article",
+
+"EditPost":"Edit Post",
+"CreatePost":"Create Post",
+"PlantCommunity":"Plant Community",
+
+"Post":"Post",
+"Cancel":"Cancel"
+,"Search":"Search",
+"Createyourfirstpost":"Create your first post",
+"Follow":"Follow",
+"Following":"Following",
+"Delete":"Delete",
+"PostPrivacy":"Post Privacy",
+"Public":"Public",
+"FollowersOnly":"Followers Only",
+"Edit":"Edit",
+"Writeacomment":"Write a comment....",
+"Youdontfollowanyoneyet":"You don't follow anyone yet",
+"OnlyMe":"Only Me",
+"Followers":"Followers",
+"AddPhoto":"Add Photo",
+"PostAudience":"Post Audience",
+"AreYouSureYouwanttopostit":"Are You Sure!\n You want to post it",
+"Recommended":"Recommended",
+"Whotofollow":"Who to follow",
+"WhatsonyourMind":"What's on your Mind?",
+
+"Photographytips":"Photography tips",
+"ScanningResult":"Scanning Result",
+"Thefollowingwillcausebadresults":"The following will cause bad results:",
+"OK":"OK",
+"Identifyplant":"Identify the plant",
+"Identifyplantsdisease":"Identify plants disease",
+"FailedtoDetectDiseases":"Failed to Detect Diseases",
+"PlantHealthy":"Plant Healthy",
+"DiseaseName":"Disease Name",
+"TreatmentDescription":"Treatment Description",
+"Symptoms":"Symptoms",
+"pathogens":"Pathogens",
+"ConfidenceScore":"Confidence Score",
+"Fordetailsaboutplant":"For details about the plant",
+"clickhere":"click here"
+,
+
+
+"Cart":"Cart",
+"Dashboard":"Dashboard",
+"Products":"Products",
+"Shipments":"Shipments",
+"Transactions":"Transactions",
+"Articles":"Articles",
+"Community":"Community",
+
+"AddPlant":"Add Plant",
+"AddPot":"Add Pot",
+"AddCategory":"Add Category",
+"PotDetails":"Pot Details",
+"PotName":"Pot Name",
+"PotDescription":"Pot Description",
+"PotColor":"Pot Color",
+"PotMaterial":"Pot Material",
+"CategoryID":"Category ID",
+
+"PlantDetails":"Plant Details",
+"PlantName":"Plant Name",
+"PlantDescription":"Plant Description",
+"Quantity":"Quantity",
+"Price":"Price",
+"PlantProperties":"Plant Properties",
+"AmountWater":"Amount Of Water",
+"AmountSunlight":"Amount Sunlight",
+"MinTemperature":"Min Temperature",
+"MaxTemperature":"Max Temperature",
+"SoilType":"Soil Type",
+"Save":"Save",
+"CategoryName":"Category Name",
+"CategoryDescription":"Category Description",
+"AreYouSureYouwantAdd":"Are You Sure!\n You want to Add it",
+
+"SKIP":"SKIP",
+"weregladthathatyouarehere":"we’re glad that that\n you are here",
+"Welcome":"Welcome",
+"GhosnGreenParadise":"Ghosn's Green Paradise",
+"GhosnGreenParadiseDescription":"Ghosn allows you to purchase various plants to turn your home into a green paradise",
+"YourPlantsDoctor":"Your Plants Doctor",
+"YourPlantsDoctorDesc":"Ghosn enables you to discover the diseases that your plant is infected with ,treat and prevent diseases.",
+"CommunityPlantLovers":"Community For Plant Lovers",
+"CommunityPlantLoversDesc":"It also provides you with a community to share experiences and inquiries and make friends with many plant lovers."
+,"YourHiddenAssistant":"Your Hidden Assistant",
+
+"YourHiddenAssistantDesc":"It helps you remember important dates for plants, such as watering, fertilizing, lighting instructions, etc."
+
+,"AreYouSureYouwanttoSave":"Are You Sure!\n You want to Save it",
+"Add":"Add"
+
+
+,"SoFar":"So Far",
+"SoClose":"So Close"
+,"Hazy":"Hazy",
+"Severalplants":"Several Plants"
+,"hefollowingwillcausebadresults":"The following will cause bad results:"
+
+,
+"Doyoureallywanttoremovethisitemfromcart":"Do you really want to remove\nthis item from cart?",
+"SAVEFORLATER":"SAVE FOR LATER",
+"REMOVEITEM":"REMOVE ITEM",
+"AreYouSureYouwanttoConfirmOrder":"Are You Sure!\n You want to Confirm Order",
+"Confirm":"Confirm",
+"NoItemInYourCart":"No Item In Your Cart",
+"Productdeletedsuccessfully":"Product deleted successfully",
+"Productnotfoundinyourcart":"Product not found in your cart.",
+"ThisitemOutOfStock":"This item Out Of Stock.",
+"ThisitemalreadyexistsinyourFavorite":"This item already exists in your Favorite.",
+"Remove":"Remove"
+,"Item":"Item",
+
+"Hi":"Hi",
+"BestSeller":"Best Seller",
+"PopularPlant":"Popular Plant",
+"PlantPots":"Plant Pots",
+"Filter":"Filter",
+
+"ReminderMe":"Reminder Me",
+"NewAlert":"New Alert",
+"AllReminder":"All Reminder",
+"Title":"Title:",
+"Note":"Note:",
+"Enternotehere":"Enter note here",
+
+"Time":"Time:",
+"AlertType":"Alert Type",
+"Repeatalertmessage":"Repeat alert message:",
+"Daily":"Daily",
+"Weekly":"Weekly",
+"Monthly":"Monthly",
+"Success":"Success",
+"Hooray":"Hooray! 🥳 Your new reminder has been planted in the garden of time 🌱"
+
+
+
+
+
+
+
+
+
+
+
 
 
 

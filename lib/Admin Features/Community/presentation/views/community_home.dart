@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ghosn_app/constants.dart';
@@ -6,6 +7,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/utils/app_router.dart';
 import '../../../../core/utils/style.dart';
+import '../../../../translations/local_keys.g.dart';
 import '../../../Drawer/presentation/views/user_custom_drawer.dart';
 import 'widgets/community_home_body.dart';
 
@@ -26,7 +28,7 @@ class _CommunityHomeState extends State<CommunityHome> {
       key: scaffoldKey,
       appBar: CustomAppBar(
         titleAppBar: Text(
-          'Plant Community',
+          LocaleKeys.PlantCommunity.tr(),
           style: Styles.textStyle18Inter.copyWith(
             color: Colors.black,
             fontWeight: FontWeight.w600,

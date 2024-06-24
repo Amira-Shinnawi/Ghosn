@@ -11,7 +11,6 @@ import '../../../../../core/utils/Api_Key.dart';
 import '../../../../../core/utils/functions/network_image_handler.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_network_image.dart';
-import '../../../../../core/widgets/show_snack_bar.dart';
 import '../../../data/model/following_post_model/following_post_model.dart';
 import '../add_comment_following_post.dart';
 
@@ -268,7 +267,7 @@ class _FollowingPostItemState extends State<FollowingPostItem> {
       );
 
       if (response.statusCode == 200 || response.statusCode == 204) {
-        showSnackBar(context, 'Success Adding Like.');
+        // showSnackBar(context, 'Success Adding Like.');
         print(json.encode(response.data));
       } else {
         throw Exception('An error occurred while adding the Like.');
@@ -276,8 +275,8 @@ class _FollowingPostItemState extends State<FollowingPostItem> {
     } on DioException catch (error) {
       if (error.response?.statusCode == 400 ||
           error.response?.statusCode == 500) {
-        showSnackBar(context,
-            '"You have already reacted to this post with the same reaction !".');
+        // showSnackBar(context,
+        //     '"You have already reacted to this post with the same reaction !".');
         print(error.response?.statusMessage);
       } else {
         rethrow;
@@ -298,14 +297,14 @@ class _FollowingPostItemState extends State<FollowingPostItem> {
       );
 
       if (response.statusCode == 200 || response.statusCode == 204) {
-        showSnackBar(context, 'Like deleted successfully.');
+        // showSnackBar(context, 'Like deleted successfully.');
         print(json.encode(response.data));
       } else {
         throw Exception('An error occurred while deleting the Like.');
       }
     } on DioException catch (error) {
       if (error.response?.statusCode == 404) {
-        showSnackBar(context, 'Error unlike.');
+        // showSnackBar(context, 'Error unlike.');
         print(error.response?.statusMessage);
       } else {
         rethrow;

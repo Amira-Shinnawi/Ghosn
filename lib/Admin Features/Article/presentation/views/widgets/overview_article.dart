@@ -21,6 +21,7 @@ class ArticleOverView extends StatelessWidget {
         height: blocHeight * 2,
       ),
       CustomTextField(
+        showSuffixIcon: false,
         hintText: 'Write OverView',
         keyboardType: TextInputType.multiline,
         width: 2,

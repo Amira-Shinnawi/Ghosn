@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/Admin%20Features/Community/presentation/views/widgets/public_post_item.dart';
+import 'package:ghosn_app/translations/local_keys.g.dart';
 import 'package:go_router/go_router.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
@@ -94,7 +96,7 @@ class _PublicPostsListViewState extends State<PublicPostsListView> {
                   GoRouter.of(context).push(AppRouter.kCreatePost);
                 },
                 child: Text(
-                  'Create your first post',
+                  LocaleKeys.Createyourfirstpost.tr(),
                   style: Styles.textStyle16Inter.copyWith(
                     color: kGreenColor,
                   ),

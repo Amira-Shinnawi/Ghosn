@@ -1,12 +1,14 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/Admin%20Features/Community/presentation/views/widgets/friend_profile.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/Api_Key.dart';
 import '../../../../../core/utils/style.dart';
+import '../../../../../translations/local_keys.g.dart';
 import '../../../data/model/following_user_model/following_user_model.dart';
 
 class FriendProfileItem extends StatefulWidget {
@@ -92,8 +94,8 @@ class _FriendProfileItemState extends State<FriendProfileItem> {
                   },
                   child: Text(
                     widget.followingsModel.isFollowingBack == true
-                        ? 'Follow'
-                        : 'Following',
+                        ? ' ${LocaleKeys.followers.tr()}'
+                        : ' ${LocaleKeys.following.tr()}',
                     style: Styles.textStyle16Inter.copyWith(
                       fontSize: 12,
                       color: widget.followingsModel.isFollowingBack == true

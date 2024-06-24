@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_text_field.dart';
+import '../../../../../translations/local_keys.g.dart';
 
 class DetailForPot extends StatelessWidget {
   const DetailForPot({super.key});
@@ -13,33 +15,38 @@ class DetailForPot extends StatelessWidget {
     double blockHeight = (height / 100);
 
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      const Text(
-        'Pot Details',
+      Text(
+        LocaleKeys.PotDetails.tr(),
         style: Styles.textStyle18Inter,
       ),
       SizedBox(
         height: blockHeight * 1,
       ),
       CustomTextField(
-        hintText: 'Pot Name',
-        labelText: 'Pot Name',
+        showSuffixIcon: false,
+        hintText: LocaleKeys.PotName.tr(),
+        labelText: LocaleKeys.PotName.tr(),
       ),
       CustomTextField(
-        hintText: 'Pot Description',
-        labelText: 'Pot Description',
+        showSuffixIcon: false,
+        hintText: LocaleKeys.PotDescription.tr(),
+        labelText: LocaleKeys.PotDescription.tr(),
         minLength: 4,
       ),
       CustomTextField(
-        hintText: 'Pot Color',
-        labelText: 'Pot Color',
+        showSuffixIcon: false,
+        hintText: LocaleKeys.PotColor.tr(),
+        labelText: LocaleKeys.PotColor.tr(),
       ),
       CustomTextField(
-        hintText: 'Pot Material',
-        labelText: 'Pot Material',
+        showSuffixIcon: false,
+        hintText: LocaleKeys.PotMaterial.tr(),
+        labelText: LocaleKeys.PotMaterial.tr(),
       ),
       CustomTextField(
-        hintText: 'Category ID ',
-        labelText: 'Category ID',
+        showSuffixIcon: false,
+        hintText: LocaleKeys.CategoryID.tr(),
+        labelText: LocaleKeys.CategoryID.tr(),
         keyboardType: TextInputType.number,
         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
       ),

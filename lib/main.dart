@@ -9,12 +9,15 @@ import 'package:ghosn_app/core/utils/app_router.dart';
 import 'package:ghosn_app/core/utils/functions/shared_pref_cache.dart';
 import 'package:ghosn_app/translations/codegen_loader.g.dart';
 
+import 'core/utils/service_locator.dart';
+
 List<CameraDescription> camerasList = [];
 Future<void> main() async {
+  setupServiceLocator();
+
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   camerasList = await availableCameras();
-
   await Future.wait([
     LocalNotificationService.init(),
   ]);

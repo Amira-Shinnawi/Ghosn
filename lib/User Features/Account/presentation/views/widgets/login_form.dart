@@ -97,6 +97,8 @@ class _LoginFormState extends State<LoginForm> {
                       height: height * .028,
                     ),
                     CustomTextField(
+                                  showSuffixIcon: false,
+
                       prefixIcon: const Icon(
                         FontAwesomeIcons.circleUser,
                         color: kHintColor,
@@ -106,6 +108,8 @@ class _LoginFormState extends State<LoginForm> {
                       keyboardType: TextInputType.emailAddress,
                     ),
                     CustomTextField(
+                                  showSuffixIcon: false,
+
                       pass: obscureText,
                       controller: passController,
                       hintText: LocaleKeys.Password.tr(),

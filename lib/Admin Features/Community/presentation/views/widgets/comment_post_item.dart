@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ghosn_app/translations/local_keys.g.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 import '../../../../../constants.dart';
@@ -10,7 +12,6 @@ import '../../../../../core/utils/Api_Key.dart';
 import '../../../../../core/utils/functions/network_image_handler.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_network_image.dart';
-import '../../../../../core/widgets/show_snack_bar.dart';
 import '../../../data/model/post_model/post_model.dart';
 
 class CommentPostItem extends StatefulWidget {
@@ -178,9 +179,9 @@ class _CommentPostItemState extends State<CommentPostItem> {
                           PopupMenuItem(
                             value: 'delete',
                             onTap: widget.onDeleteTap,
-                            child: const Text(
-                              'Delete',
-                              style: TextStyle(
+                            child: Text(
+                              LocaleKeys.Delete.tr(),
+                              style: const TextStyle(
                                 color: Colors.white,
                               ),
                             ),
@@ -215,7 +216,7 @@ class _CommentPostItemState extends State<CommentPostItem> {
       );
 
       if (response.statusCode == 200 || response.statusCode == 204) {
-        showSnackBar(context, 'Like deleted successfully.');
+        // showSnackBar(context, 'Like deleted successfully.');
         print(json.encode(response.data));
       } else {
         throw Exception('An error occurred while deleting the Like.');
@@ -223,7 +224,7 @@ class _CommentPostItemState extends State<CommentPostItem> {
     } on DioException catch (error) {
       if (error.response?.statusCode == 404 ||
           error.response?.statusCode == 400) {
-        showSnackBar(context, 'Error unlike.');
+        // showSnackBar(context, 'Error unlike.');
         print(error.response?.statusMessage);
       } else {
         rethrow;
@@ -244,7 +245,7 @@ class _CommentPostItemState extends State<CommentPostItem> {
       );
 
       if (response.statusCode == 200 || response.statusCode == 204) {
-        showSnackBar(context, 'Like deleted successfully.');
+        // showSnackBar(context, 'Like deleted successfully.');
         print(json.encode(response.data));
       } else {
         throw Exception('An error occurred while deleting the Like.');
@@ -253,7 +254,7 @@ class _CommentPostItemState extends State<CommentPostItem> {
       if (error.response?.statusCode == 404 ||
           error.response?.statusCode == 400 ||
           error.response?.statusCode == 500) {
-        showSnackBar(context, 'Error unlike.');
+        // showSnackBar(context, 'Error unlike.');
         print(error.response?.statusMessage);
       } else {
         rethrow;

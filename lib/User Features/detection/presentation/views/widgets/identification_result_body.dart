@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../core/utils/functions/network_image_handler.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_detect_row.dart';
-import '../../../data/model/plant_disease_model.dart';
+import '../../../data/model/plant_identification_model.dart';
 
-class DetectResultBody extends StatelessWidget {
-  const DetectResultBody({
+class IdentificationResultBody extends StatelessWidget {
+  const IdentificationResultBody({
     super.key,
-    required this.plantDataModel,
+    required this.plantIdentificationDataModel,
   });
-  final PlantData plantDataModel;
+  final IdentifyData plantIdentificationDataModel;
   @override
   Widget build(BuildContext context) {
     const textDirection = TextDirection.ltr;
@@ -37,11 +36,10 @@ class DetectResultBody extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
                 image: DecorationImage(
-                  image: plantDataModel.submittedImgUrl != null
-                      ? NetworkHandler()
-                          .getImage('${plantDataModel.submittedImgUrl}')
-                      : const NetworkImage(
-                          'https://pbs.twimg.com/media/GPLNPLlXEAA8WkE?format=jpg&name=large'),
+                  image: NetworkHandler().getImage(
+                      'Images/IdentityPredictions/IMG-UID-5-IDENTITY-PREDICTION-20240611205854.jpg'),
+                  // : const NetworkImage(
+                  //     'https://pbs.twimg.com/media/GPLNPLlXEAA8WkE?format=jpg&name=large'),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -56,11 +54,8 @@ class DetectResultBody extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
                 image: DecorationImage(
-                  image: plantDataModel.submittedImgUrl != null
-                      ? NetworkHandler()
-                          .getImage('${plantDataModel.submittedImgUrl}')
-                      : const NetworkImage(
-                          'https://pbs.twimg.com/media/GPLNPLlXEAA8WkE?format=jpg&name=large'),
+                  image: NetworkHandler().getImage(
+                      'Images/IdentityPredictions/IMG-UID-5-IDENTITY-PREDICTION-20240611205854.jpg'),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -76,60 +71,50 @@ class DetectResultBody extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(
                       left: blocHeight * 19, bottom: blocHeight * 2.5),
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: blocWidth * 2,
-                      ),
-                      Icon(
-                        plantDataModel.isHealthy.toString() == 'true'
-                            ? FontAwesomeIcons.solidCircleCheck
-                            : FontAwesomeIcons.solidCircleXmark,
-                        color: plantDataModel.isHealthy.toString() == 'true'
-                            ? Colors.green
-                            : Colors.red,
-                        size: 20,
-                      ),
-                      SizedBox(
-                        width: blocWidth * 2,
-                      ),
-                      const Text(
-                        "Plant Healthy",
-                        style: Styles.textStyle16Inter,
-                      ),
-                    ],
+                  child:const Text(
+                    "Tulip ( Tulipa )",
+                    style: Styles.textStyle16Inter,
                   ),
                 ),
                 SizedBox(
                   height: blocHeight * 1,
                 ),
-                DetectResultRow(
-                  label: "Disease Name",
-                  value: textDirection == TextDirection.ltr
-                      ? '${plantDataModel.diseaseName}'
-                      : '${plantDataModel.diseaseNameArabic}',
-                ),
-                DetectResultRow(
-                  label: "Treatment Description",
-                  value: textDirection == TextDirection.ltr
-                      ? '${plantDataModel.treatmentDescription}'
-                      : '${plantDataModel.treatmentDescriptionArabic}',
-                ),
-                DetectResultRow(
-                  label: "Symptoms",
-                  value: textDirection == TextDirection.ltr
-                      ? '${plantDataModel.symptoms}'
-                      : '${plantDataModel.symptomsArabic}',
-                ),
-                DetectResultRow(
-                  label: "pathogens",
-                  value: textDirection == TextDirection.ltr
-                      ? '${plantDataModel.pathogens}'
-                      : '${plantDataModel.pathogensArabic}',
-                ),
-                DetectResultRow(
+const DetectResultRow(
                   label: "Confidence Score",
-                  value: '${plantDataModel.confidenceScore}%',
+                  value: '60%',
+                ),
+              const  DetectResultRow(
+                  label: "Plant Origin",
+                  value: 'Central Asia, Turkey, and surrounding regions',
+                ),
+              const  DetectResultRow(
+                  label: "Blossoming Season",
+                  value: 'March to May, depending on the variety and climate',
+                ),
+                DetectResultRow(
+                  label: "Description",
+                  value:
+                      'Tulips are spring-blooming perennials that come in a variety of bright colors including red, yellow, pink, purple, and white. They are popular in gardens and as cut flowers for their elegant shape and vibrant colors. Tulips prefer well-drained, fertile soil and need to be watered regularly during their growing season. They thrive in full sunlight and cooler climates.\r\n\r\nWhile most tulips have little to no scent, some varieties do have a light, pleasant fragrance. However, their stunning visual appeal makes them a favorite among gardeners and florists.',
+                ),
+                DetectResultRow(
+                  label: "MinTemperature",
+                  value: '5',
+                ),
+                DetectResultRow(
+                  label: "Max Temperature",
+                  value: '20%',
+                ),
+                DetectResultRow(
+                  label: "Humidity",
+                  value: '30% to 50%',
+                ),
+                DetectResultRow(
+                  label: "Height",
+                  value: "between 10 and 70 cm (4 and 28 inches) high.",
+                ),
+                DetectResultRow(
+                  label: "Sunlight Amount",
+                  value: 'Full sunlight, ideally 6 hours or more per day',
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

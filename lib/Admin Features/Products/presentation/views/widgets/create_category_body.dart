@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/core/utils/Api_Key.dart';
 import 'package:ghosn_app/core/utils/style.dart';
@@ -9,6 +10,7 @@ import '../../../../../constants.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_text_field.dart';
 import '../../../../../core/widgets/show_snack_bar.dart';
+import '../../../../../translations/local_keys.g.dart';
 
 class CreateCategoryBody extends StatefulWidget {
   const CreateCategoryBody({super.key});
@@ -38,7 +40,7 @@ class _CreateCategoryBodyState extends State<CreateCategoryBody> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Category Name',
+                LocaleKeys.CategoryName.tr(),
                 style: Styles.textStyle16Inter.copyWith(
                   fontSize: 14,
                 ),
@@ -47,14 +49,15 @@ class _CreateCategoryBodyState extends State<CreateCategoryBody> {
                 height: blockHeight * 1,
               ),
               CustomTextField(
-                hintText: 'Category Name',
+                showSuffixIcon: false,
+                hintText: LocaleKeys.CategoryName.tr(),
                 controller: categoryName,
               ),
               SizedBox(
                 height: blockHeight * 2,
               ),
               Text(
-                'Category Description',
+                LocaleKeys.CategoryDescription.tr(),
                 style: Styles.textStyle16Inter.copyWith(
                   fontSize: 14,
                 ),
@@ -63,7 +66,8 @@ class _CreateCategoryBodyState extends State<CreateCategoryBody> {
                 height: blockHeight * 1,
               ),
               CustomTextField(
-                hintText: 'Category Description',
+                showSuffixIcon: false,
+                hintText: LocaleKeys.CategoryDescription.tr(),
                 minLength: 4,
                 controller: categoryDesc,
               ),
@@ -73,7 +77,7 @@ class _CreateCategoryBodyState extends State<CreateCategoryBody> {
               Center(
                 child: CustomButton(
                     height: blockHeight * 5,
-                    text: 'Add',
+                    text: LocaleKeys.Add.tr(),
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
                         showDialog(
@@ -81,8 +85,8 @@ class _CreateCategoryBodyState extends State<CreateCategoryBody> {
                             builder: (BuildContext context) {
                               return SimpleDialog(
                                 backgroundColor: Colors.white,
-                                title: const Text(
-                                  'Are You Sure!\n You want to Add it',
+                                title: Text(
+                                  LocaleKeys.AreYouSureYouwantAdd.tr(),
                                   textAlign: TextAlign.center,
                                   style: Styles.textStyle18Inter,
                                 ),
@@ -95,7 +99,7 @@ class _CreateCategoryBodyState extends State<CreateCategoryBody> {
                                           .labelLarge,
                                     ),
                                     child: Text(
-                                      'Add',
+                                      LocaleKeys.Add.tr(),
                                       style: Styles.textStyle18Inter.copyWith(
                                         color: kGreenColor,
                                       ),
@@ -117,7 +121,7 @@ class _CreateCategoryBodyState extends State<CreateCategoryBody> {
                                           .labelLarge,
                                     ),
                                     child: Text(
-                                      'Cancel',
+                                      LocaleKeys.Cancel.tr(),
                                       style: Styles.textStyle18Inter.copyWith(
                                         color: Colors.red,
                                       ),

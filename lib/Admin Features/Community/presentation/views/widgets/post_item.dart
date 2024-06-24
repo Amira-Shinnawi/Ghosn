@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ghosn_app/core/widgets/custom_network_image.dart';
@@ -10,7 +11,7 @@ import '../../../../../constants.dart';
 import '../../../../../core/utils/Api_Key.dart';
 import '../../../../../core/utils/functions/network_image_handler.dart';
 import '../../../../../core/utils/style.dart';
-import '../../../../../core/widgets/show_snack_bar.dart';
+import '../../../../../translations/local_keys.g.dart';
 import '../../../data/model/post_model/post_model.dart';
 import '../add_comment_view.dart';
 
@@ -116,9 +117,9 @@ class _PostItemState extends State<PostItem> {
                           PopupMenuItem(
                             value: 'delete',
                             onTap: widget.onTapDelete,
-                            child: const Text(
-                              'Delete',
-                              style: TextStyle(
+                            child: Text(
+                              LocaleKeys.Delete.tr(),
+                              style: const TextStyle(
                                 color: Colors.white,
                               ),
                             ),
@@ -126,9 +127,9 @@ class _PostItemState extends State<PostItem> {
                           PopupMenuItem(
                             value: 'edit',
                             onTap: widget.onTapEdit,
-                            child: const Text(
-                              'Edit',
-                              style: TextStyle(
+                            child: Text(
+                              LocaleKeys.edit.tr(),
+                              style: const TextStyle(
                                 color: Colors.white,
                               ),
                             ),
@@ -293,7 +294,7 @@ class _PostItemState extends State<PostItem> {
       );
 
       if (response.statusCode == 200 || response.statusCode == 204) {
-        showSnackBar(context, 'Success Adding Like.');
+        // showSnackBar(context, 'Success Adding Like.');
         print(json.encode(response.data));
       } else {
         throw Exception('An error occurred while adding the Like.');
@@ -301,8 +302,8 @@ class _PostItemState extends State<PostItem> {
     } on DioException catch (error) {
       if (error.response?.statusCode == 400 ||
           error.response?.statusCode == 500) {
-        showSnackBar(context,
-            '"You have already reacted to this post with the same reaction !".');
+        // showSnackBar(context,
+        //     '"You have already reacted to this post with the same reaction !".');
         print(error.response?.statusMessage);
       } else {
         rethrow;
@@ -323,14 +324,14 @@ class _PostItemState extends State<PostItem> {
       );
 
       if (response.statusCode == 200 || response.statusCode == 204) {
-        showSnackBar(context, 'Like deleted successfully.');
+        // showSnackBar(context, 'Like deleted successfully.');
         print(json.encode(response.data));
       } else {
         throw Exception('An error occurred while deleting the Like.');
       }
     } on DioException catch (error) {
       if (error.response?.statusCode == 404) {
-        showSnackBar(context, 'Error unlike.');
+        // showSnackBar(context, 'Error unlike.');
         print(error.response?.statusMessage);
       } else {
         rethrow;

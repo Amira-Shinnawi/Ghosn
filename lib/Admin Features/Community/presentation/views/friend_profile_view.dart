@@ -7,7 +7,10 @@ import 'package:go_router/go_router.dart';
 import '../../data/model/following_user_model/following_user_model.dart';
 
 class FriendProfileView extends StatelessWidget {
-  const FriendProfileView({super.key, required this.followingsModel});
+  const FriendProfileView({
+    super.key,
+    required this.followingsModel,
+  });
   final Followings followingsModel;
 
   @override
@@ -35,7 +38,7 @@ class FriendProfileView extends StatelessWidget {
           ),
         ],
       ),
-      body:  SafeArea(
+      body: SafeArea(
         child: FriendProfileBody(
           followingsModel: followingsModel,
         ),

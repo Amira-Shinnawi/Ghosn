@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
@@ -10,6 +11,7 @@ import '../../../../../core/utils/Api_Key.dart';
 import '../../../../../core/utils/functions/network_image_handler.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_network_image.dart';
+import '../../../../../translations/local_keys.g.dart';
 import '../../../data/model/following_post_model/following_post_model.dart';
 
 class FollowingCommentPostItem extends StatefulWidget {
@@ -182,9 +184,9 @@ class _FollowingCommentPostItemState extends State<FollowingCommentPostItem> {
                           PopupMenuItem(
                             value: 'delete',
                             onTap: widget.onDeleteTap,
-                            child: const Text(
-                              'Delete',
-                              style: TextStyle(
+                            child: Text(
+                              LocaleKeys.Delete.tr(),
+                              style: const TextStyle(
                                 color: Colors.white,
                               ),
                             ),

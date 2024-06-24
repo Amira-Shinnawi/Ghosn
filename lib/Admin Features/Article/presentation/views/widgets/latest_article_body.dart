@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:ghosn_app/translations/local_keys.g.dart';
 
 import '../../../../../core/widgets/custom_text_field.dart';
 import 'latest_item_list_view.dart';
@@ -32,6 +34,7 @@ class _LatestArticleBodyState extends State<LatestArticleBody> {
                 bottom: blocHeight * .5,
               ),
               child: CustomTextField(
+                showSuffixIcon: false,
                 controller: _searchController,
                 onFieldSubmitted: (value) {
                   setState(() {
@@ -47,7 +50,7 @@ class _LatestArticleBodyState extends State<LatestArticleBody> {
                   icon: const Icon(Icons.search),
                   color: Colors.black.withOpacity(.5),
                 ),
-                hintText: 'What are you looking for?',
+                hintText: LocaleKeys.Whatareyoulookingfor.tr(),
                 width: 1,
                 color: Colors.black.withOpacity(.3),
               ),

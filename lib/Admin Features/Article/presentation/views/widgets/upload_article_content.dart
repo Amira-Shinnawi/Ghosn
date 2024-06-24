@@ -1,10 +1,14 @@
-import 'package:dotted_border/dotted_border.dart';
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/constants.dart';
+import 'package:ghosn_app/core/utils/Api_Key.dart';
+import 'package:ghosn_app/core/widgets/custom_button.dart';
 
 import '../../../../../core/utils/style.dart';
-import '../../../../../core/widgets/custom_button.dart';
+import '../../../../../core/widgets/custom_text_field.dart';
 
 class UploadArticleContent extends StatefulWidget {
   const UploadArticleContent({
@@ -17,6 +21,9 @@ class UploadArticleContent extends StatefulWidget {
 
 class _UploadArticleContentState extends State<UploadArticleContent> {
   FilePickerResult? result;
+  final titleController = TextEditingController();
+  final slugController = TextEditingController();
+  final tagsController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -36,116 +43,63 @@ class _UploadArticleContentState extends State<UploadArticleContent> {
         SizedBox(
           height: blocHeight * 2,
         ),
-        SizedBox(
-          height: blocHeight * 25,
-          child: DottedBorder(
-            borderType: BorderType.RRect,
-            color: kGreenColor,
-            strokeWidth: 3,
-            padding: EdgeInsets.zero,
-            dashPattern: const [8, 4],
-            radius: const Radius.circular(10),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (result == null)
-                    Column(
-                      children: [
-                        Icon(
-                          Icons.cloud_upload_rounded,
-                          color: Colors.black.withOpacity(.5),
-                        ),
-                        Text(
-                          'Drag and Drop your file here',
-                          style: Styles.textStyle16Inter.copyWith(
-                            color: Colors.black.withOpacity(.5),
-                          ),
-                        ),
-                        SizedBox(
-                          height: blocHeight * 1,
-                        ),
-                        Text(
-                          'Files supported Pdf, doc, jpg',
-                          style: Styles.textStyle16Inter.copyWith(
-                            color: Colors.black.withOpacity(.5),
-                            fontSize: 14,
-                          ),
-                        ),
-                      ],
-                    ),
-                  if (result != null && result!.files.isNotEmpty)
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: blocWidth * 2),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ListView.separated(
-                            shrinkWrap: true,
-                            itemCount: result?.files.length ?? 0,
-                            itemBuilder: (context, index) {
-                              return Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    result?.files[index].name ?? '',
-                                    style: Styles.textStyle16Inter,
-                                  ),
-                                  IconButton(
-                                    icon: const Icon(
-                                      Icons.remove_circle_outline_rounded,
-                                      color: Colors.red,
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                        result!.files.removeAt(index);
-                                        if (result!.files.isEmpty) {
-                                          result = null;
-                                        }
-                                      });
-                                    },
-                                  ),
-                                ],
-                              );
-                            },
-                            separatorBuilder:
-                                (BuildContext context, int index) {
-                              return SizedBox(
-                                height: blocHeight * 2,
-                              );
-                            },
-                          )
-                        ],
-                      ),
-                    ),
-                  CustomButton(
-                    onPressed: () async {
-                      result = await FilePicker.platform
-                          .pickFiles(allowMultiple: true);
-                      if (result == null) {
-                        print("No file selected");
-                      } else {
-                        setState(() {});
-                        for (var element in result!.files) {
-                          print(element.name);
-                        }
-                      }
-                    },
-                    decoration: BoxDecoration(
-                      color: const Color(0xff7f53ac5f),
-                      borderRadius: BorderRadius.circular(40),
-                    ),
-                    height: 45,
-                    width: 150,
-                    text: 'Choose File',
-                  ),
-                ],
-              ),
-            ),
-          ),
+        CustomTextField(
+          controller: titleController,
+          showSuffixIcon: false,
+          hintText: 'Title',
+          keyboardType: TextInputType.multiline,
+          width: 2,
         ),
+        CustomTextField(
+          controller: slugController,
+          showSuffixIcon: false,
+          hintText: 'Slug',
+          keyboardType: TextInputType.multiline,
+          width: 2,
+        ),
+        CustomTextField(
+          controller: tagsController,
+          showSuffixIcon: false,
+          hintText: 'tags',
+          keyboardType: TextInputType.multiline,
+          width: 2,
+        ),
+        CustomButton(
+          height: blocHeight * 5,
+          text: 'Create Article',
+          onPressed: () {
+            addArticle(
+                titleController.text, slugController.text, tagsController.text);
+          },
+        )
       ],
     );
+  }
+
+  Future<void> addArticle(String title, String slug, String tags) async {
+    var headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $userToken'
+    };
+    var data = json.encode({
+      "slug": slug,
+      "title": title,
+      "tags": [
+        tags,
+      ]
+    });
+    var dio = Dio();
+    var response = await dio.request(
+      '${ApiKeys.BASE_URL}/api/Article',
+      options: Options(
+        method: 'POST',
+        headers: headers,
+      ),
+      data: data,
+    );
+
+    if (response.statusCode == 200) {
+      print(json.encode(response.data));
+    }
   }
 }

@@ -5,14 +5,14 @@ sealed class AuthState {}
 
 final class AuthInitial extends AuthState {}
 
-final class RegisterLoadingState extends AuthState {}
+// final class RegisterLoadingState extends AuthState {}
 
-final class RegisterSuccessState extends AuthState {}
+// final class RegisterSuccessState extends AuthState {}
 
-final class RegisterFailureState extends AuthState {
-  final String errorMessage;
-  RegisterFailureState({required this.errorMessage});
-}
+// final class RegisterFailureState extends AuthState {
+//   final String errorMessage;
+//   RegisterFailureState({required this.errorMessage});
+// }
 
 final class LoginLoadingState extends AuthState {}
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:ghosn_app/Admin%20Features/Drawer/presentation/views/admin_custom_drawer.dart';
+import 'package:ghosn_app/Admin%20Features/Drawer/presentation/views/user_custom_drawer.dart';
 import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/widgets/custom_appbar.dart';
 
@@ -37,7 +37,7 @@ class _HomeViewState extends State<HomeView> {
           ),
         ],
       ),
-      drawer: const AdminCustomDrawer(),
+      drawer: const UserCustomDrawer(),
       body: const SafeArea(
         child: HomeViewBody(),
       ),

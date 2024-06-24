@@ -1,10 +1,12 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/style.dart';
+import '../../../../../translations/local_keys.g.dart';
 
 class AddPhotoVideo extends StatefulWidget {
   const AddPhotoVideo({
@@ -49,7 +51,7 @@ class _AddPhotoVideoState extends State<AddPhotoVideo> {
               width: blocWidth * 2,
             ),
             Text(
-              'Add Photo/Video',
+              LocaleKeys.AddPhoto.tr(),
               style: Styles.textStyle16Inter.copyWith(
                 decoration: TextDecoration.underline,
               ),

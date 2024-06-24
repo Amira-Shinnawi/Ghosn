@@ -102,20 +102,17 @@ class _PotDetailsBodyState extends State<PotDetailsBody> {
         Positioned(
           right: 10,
           left: 10,
-          top: 50,
+          top: 40,
           child: AspectRatio(
-            aspectRatio: 2 / 1,
+            aspectRatio: 3 / 2,
             child: Align(
               alignment: AlignmentDirectional.center,
               child: Image(
                 image: NetworkHandler()
                     .getImage('Pots-Images/${widget.potModel.imageUrl}'),
                 errorBuilder: (context, error, stackTrace) {
-                  return const Center(
-                      child: Icon(
-                    Icons.error,
-                    color: Colors.grey,
-                  ));
+                  return Image.network(
+                      'https://www.ikea.com/eg/en/images/products/foerenlig-plant-pot-in-outdoor-white__0817554_pe774233_s5.jpg');
                 },
               ),
             ),

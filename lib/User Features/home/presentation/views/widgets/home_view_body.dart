@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:ghosn_app/translations/local_keys.g.dart';
 
 import '../../../../../core/utils/style.dart';
 import 'best_seller_list_view.dart';
@@ -45,8 +47,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: blockWidth * 5),
-            child: const Text(
-              'Plant Pots',
+            child: Text(
+              LocaleKeys.PlantPots.tr(),
               style: Styles.textStyle18Inter,
             ),
           ),
@@ -55,8 +57,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: blockWidth * 5),
-            child: const Text(
-              'Best Seller',
+            child: Text(
+              LocaleKeys.BestSeller.tr(),
               style: Styles.textStyle18Inter,
             ),
           ),

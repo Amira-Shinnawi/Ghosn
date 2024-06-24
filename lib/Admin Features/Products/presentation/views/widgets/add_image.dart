@@ -1,6 +1,8 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:ghosn_app/translations/local_keys.g.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/style.dart';
@@ -67,7 +69,7 @@ class _AddPlantPhotoState extends State<AddPlantPhoto> {
               width: blocWidth * 2,
             ),
             Text(
-              'Add Photo',
+              LocaleKeys.AddPhoto.tr(),
               style: Styles.textStyle16Inter.copyWith(
                 decoration: TextDecoration.underline,
                 fontSize: 14,

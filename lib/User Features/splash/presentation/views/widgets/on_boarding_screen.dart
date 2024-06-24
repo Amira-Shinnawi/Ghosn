@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/utils/assets_data.dart';
 import 'package:ghosn_app/core/utils/style.dart';
+import 'package:ghosn_app/translations/local_keys.g.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/utils/app_router.dart';
@@ -34,7 +36,7 @@ class OnBoardingScreen extends StatelessWidget {
                   GoRouter.of(context).push(AppRouter.kLoginOptionView);
                 },
                 child: Text(
-                  'SKIP',
+                  LocaleKeys.SKIP.tr(),
                   style: Theme.of(context).textTheme.labelLarge,
                 ),
               ),
@@ -45,7 +47,7 @@ class OnBoardingScreen extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: blocWidth * 5),
               child: Text(
-                'Welcome',
+                LocaleKeys.Welcome.tr(),
                 style: Styles.textStyle16Itim.copyWith(
                   fontSize: 28,
                 ),
@@ -57,7 +59,7 @@ class OnBoardingScreen extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: blocWidth * 5),
               child: Text(
-                'we’re glad that that\n you are here',
+                LocaleKeys.weregladthathatyouarehere.tr(),
                 style: Styles.textStyle16Itim.copyWith(
                   fontSize: 18,
                 ),

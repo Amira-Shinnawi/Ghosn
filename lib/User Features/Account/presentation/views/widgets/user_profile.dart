@@ -66,7 +66,7 @@ class _UserProfileState extends State<UserProfile> {
                                 backgroundColor: Colors.transparent,
                                 content: CustomNetworkImage(
                                   imageUrl: NetworkHandler().getImage(
-                                      state.profileModel.first.imgUrl!),
+                                      '${state.profileModel.first.imgUrl}'),
                                   aspectRatio: 2 / 2,
                                   fit: BoxFit.cover,
                                 ));
@@ -79,7 +79,7 @@ class _UserProfileState extends State<UserProfile> {
                           radius: 35,
                           child: CustomNetworkImage(
                             imageUrl: NetworkHandler()
-                                .getImage(state.profileModel.first.imgUrl!),
+                                .getImage('${state.profileModel.first.imgUrl}'),
                             aspectRatio: 1,
                             fit: BoxFit.cover,
                           ),
@@ -137,7 +137,8 @@ class _UserProfileState extends State<UserProfile> {
                         InfoProfileItem(
                           icon: Icons.cake,
                           infoItem:
-                              state.profileModel.first.dateOfBirth!.toString(),
+                              state.profileModel.first.dateOfBirth.toString() ??
+                                  '1/1/2001',
                           width: blockWidth,
                         ),
                         SizedBox(

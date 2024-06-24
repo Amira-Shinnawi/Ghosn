@@ -1,7 +1,9 @@
 import 'dart:convert';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/constants.dart';
+import 'package:ghosn_app/translations/local_keys.g.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:http/http.dart' as http;
 
@@ -87,9 +89,10 @@ class _AddCommentBodyState extends State<AddCommentBody> {
             ),
           ),
           CustomTextField(
+            showSuffixIcon: true,
             controller: commentController,
             width: 1,
-            hintText: 'Write a comment...',
+            hintText: LocaleKeys.Writeacomment.tr(),
             suffixIcon: IconButton(
               onPressed: () async {
                 String commentContent = commentController.text.trim();

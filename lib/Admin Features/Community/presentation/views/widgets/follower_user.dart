@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
@@ -9,6 +10,7 @@ import '../../../../../core/utils/Api_Key.dart';
 import '../../../../../core/utils/functions/network_image_handler.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_network_image.dart';
+import '../../../../../translations/local_keys.g.dart';
 import '../../../data/model/follower_user_model.dart';
 import '../follower_profile_view.dart';
 
@@ -111,8 +113,8 @@ class _FollowerUserProfileState extends State<FollowerUserProfile> {
         },
         child: Text(
           widget.followersModel.isFollowingBack == true
-              ? 'Follow'
-              : 'Following',
+              ? LocaleKeys.Follow.tr()
+              : LocaleKeys.Following.tr(),
           style: Styles.textStyle16Inter.copyWith(
             fontSize: 12,
             color: widget.followersModel.isFollowingBack == true

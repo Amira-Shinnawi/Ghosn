@@ -7,7 +7,10 @@ import '../../../data/model/following_user_model/following_user_model.dart';
 import 'friend_profile_item.dart';
 
 class FriendProfileBody extends StatelessWidget {
-  const FriendProfileBody({super.key, required this.followingsModel});
+  const FriendProfileBody({
+    super.key,
+    required this.followingsModel,
+  });
   final Followings followingsModel;
 
   @override

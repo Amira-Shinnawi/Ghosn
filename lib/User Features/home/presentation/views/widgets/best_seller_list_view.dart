@@ -23,7 +23,7 @@ class BestSellerListView extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: blockWidth * 2),
       child: SizedBox(
-        height: blockHeight * 25,
+        height: blockHeight * 27,
         width: double.infinity,
         child: BlocProvider(
           create: (context) =>
@@ -117,10 +117,8 @@ class BestSellerListView extends StatelessWidget {
                                 height: blockHeight * 1,
                               ),
                               CustomNetworkImage(
-                                imageUrl: NetworkHandler()
-                                    .getImage(
-                                        'Plant_Images/${state.bestSeller[index].imageUrl!}')
-                                    ,
+                                imageUrl: NetworkHandler().getImage(
+                                    'Plant_Images/${state.bestSeller[index].imageUrl!}'),
                                 aspectRatio: 2 / 1,
                                 fit: BoxFit.contain,
                               ),

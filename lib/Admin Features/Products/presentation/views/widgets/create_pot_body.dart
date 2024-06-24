@@ -1,11 +1,13 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_button.dart';
+import '../../../../../translations/local_keys.g.dart';
 import 'detail_for_add_pot.dart';
 
 class CreatePotBody extends StatefulWidget {
@@ -59,7 +61,7 @@ class _CreatePotBodyState extends State<CreatePotBody> {
                     width: blockWidth * 2,
                   ),
                   Text(
-                    'Add Photo',
+                    LocaleKeys.AddPhoto.tr(),
                     style: Styles.textStyle16Inter.copyWith(
                       decoration: TextDecoration.underline,
                       fontSize: 14,
@@ -80,7 +82,7 @@ class _CreatePotBodyState extends State<CreatePotBody> {
           SliverToBoxAdapter(
               child: CustomButton(
                   height: blockHeight * 5,
-                  text: 'Save',
+                  text: LocaleKeys.Save.tr(),
                   onPressed: () {
                     // showDialog(
                     //     context: context,

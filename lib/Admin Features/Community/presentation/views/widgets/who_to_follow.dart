@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ghosn_app/Admin%20Features/Community/presentation/manager/community_cubit/community_cubit.dart';
 import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/widgets/custom_text_field.dart';
 
+import '../../../../../translations/local_keys.g.dart';
 import 'recommended_friend.dart';
 
 class WhoToFollow extends StatefulWidget {
@@ -26,6 +28,8 @@ class _WhoToFollowState extends State<WhoToFollow> {
   Widget build(BuildContext context) {
     return Column(children: [
       CustomTextField(
+                    showSuffixIcon: false,
+
         prefixIcon: const Icon(
           Icons.search,
           size: 20,
@@ -35,7 +39,7 @@ class _WhoToFollowState extends State<WhoToFollow> {
           BlocProvider.of<CommunityCubit>(context)
               .fetchSearchSuggestedUser(userName: subName!);
         },
-        hintText: 'Search',
+        hintText: LocaleKeys.Search.tr(),
         width: 1,
       ),
       Expanded(child: BlocBuilder<CommunityCubit, CommunityState>(

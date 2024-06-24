@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,6 +8,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/utils/app_router.dart';
 import '../../../../core/utils/style.dart';
+import '../../../../translations/local_keys.g.dart';
 import '../../../Drawer/presentation/views/admin_custom_drawer.dart';
 import 'widgets/product_view_body.dart';
 
@@ -26,7 +28,7 @@ class _ProductAdminViewState extends State<ProductAdminView> {
         key: scaffoldKey,
         appBar: CustomAppBar(
             titleAppBar: Text(
-              'Products',
+              LocaleKeys.Products.tr(),
               style: Styles.textStyle20Inter.copyWith(
                 color: Colors.black,
                 fontWeight: FontWeight.w600,
@@ -68,7 +70,7 @@ class _ProductAdminViewState extends State<ProductAdminView> {
                 onTap: () {
                   GoRouter.of(context).push(AppRouter.kCreatePlant);
                 },
-                label: 'Add Plant',
+                label: LocaleKeys.AddPlant.tr(),
                 labelStyle:
                     Styles.textStyle16Inter.copyWith(color: Colors.white),
                 labelBackgroundColor: kGreenColor,
@@ -86,7 +88,7 @@ class _ProductAdminViewState extends State<ProductAdminView> {
                     GoRouter.of(context).push(AppRouter.kCreatePot);
                   });
                 },
-                label: 'Add Pot',
+                label: LocaleKeys.AddPot.tr(),
                 labelStyle:
                     Styles.textStyle16Inter.copyWith(color: Colors.white),
                 labelBackgroundColor: kGreenColor,
@@ -104,7 +106,7 @@ class _ProductAdminViewState extends State<ProductAdminView> {
                     GoRouter.of(context).push(AppRouter.kCreateCategory);
                   });
                 },
-                label: 'Add Category',
+                label: LocaleKeys.AddCategory.tr(),
                 labelStyle:
                     Styles.textStyle16Inter.copyWith(color: Colors.white),
                 labelBackgroundColor: kGreenColor,

@@ -14,46 +14,46 @@ part 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
 
-  Future<void> registerUser({
-    required String firstName,
-    required String lastName,
-    required String email,
-    required String userName,
-    required String password,
-  }) async {
-    emit(RegisterLoadingState());
-    String body = json.encode({
-      'email': email,
-      'firstName': firstName,
-      'lastName': lastName,
-      'password': password,
-      'userName': userName,
-    });
-    Response response = await http.post(
-      Uri.parse(
-        '${ApiKeys.BASE_URL}/api/Auth/register',
-      ),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: body,
-    );
+  // Future<void> registerUser({
+  //   required String firstName,
+  //   required String lastName,
+  //   required String email,
+  //   required String userName,
+  //   required String password,
+  // }) async {
+  //   emit(RegisterLoadingState());
+  //   String body = json.encode({
+  //     'email': email,
+  //     'firstName': firstName,
+  //     'lastName': lastName,
+  //     'password': password,
+  //     'userName': userName,
+  //   });
+  //   Response response = await http.post(
+  //     Uri.parse(
+  //       '${ApiKeys.BASE_URL}/api/Auth/register',
+  //     ),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: body,
+  //   );
 
-    var responseBody = jsonDecode(response.body);
+  //   var responseBody = jsonDecode(response.body);
 
-    if (responseBody['successfulOperation'] == true) {
-      print(responseBody);
-      await SharedPrefCache.insertToCache(
-          key: 'token', value: responseBody['accessToken']);
-      log(responseBody['accessToken']);
-      emit(RegisterSuccessState());
-    } else {
-      print(responseBody);
-      //responseBody['errorMessages']
-      emit(RegisterFailureState(
-          errorMessage: '${responseBody['errors']}, Please Try Again Later'));
-    }
-  }
+  //   if (responseBody['successfulOperation'] == true) {
+  //     print(responseBody);
+  //     await SharedPrefCache.insertToCache(
+  //         key: 'token', value: responseBody['accessToken']);
+  //     log(responseBody['accessToken']);
+  //     emit(RegisterSuccessState());
+  //   } else {
+  //     print(responseBody);
+  //     //responseBody['errorMessages']
+  //     emit(RegisterFailureState(
+  //         errorMessage: '${responseBody['errors']}, Please Try Again Later'));
+  //   }
+  // }
 
   Future<void> loginUser(
       {required String userName, required String password}) async {

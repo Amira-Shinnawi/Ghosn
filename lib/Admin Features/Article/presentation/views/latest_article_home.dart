@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ghosn_app/Admin%20Features/Article/presentation/views/widgets/latest_article_body.dart';
@@ -5,6 +6,7 @@ import 'package:ghosn_app/core/widgets/custom_appbar.dart';
 
 import '../../../../constants.dart';
 import '../../../../core/utils/style.dart';
+import '../../../../translations/local_keys.g.dart';
 import '../../../Drawer/presentation/views/admin_custom_drawer.dart';
 import 'article_content.dart';
 
@@ -24,7 +26,7 @@ class _LatestArticleHomeState extends State<LatestArticleHome> {
       key: scaffoldKey,
       appBar: CustomAppBar(
           titleAppBar: Text(
-            'Latest Article',
+            LocaleKeys.UnpublishedArticle.tr(),
             style: Styles.textStyle20Inter.copyWith(
               color: Colors.black,
               fontWeight: FontWeight.w600,

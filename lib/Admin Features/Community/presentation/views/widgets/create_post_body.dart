@@ -2,16 +2,16 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/core/utils/Api_Key.dart';
-import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 
 import '../../../../../constants.dart';
-import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/show_snack_bar.dart';
+import '../../../../../translations/local_keys.g.dart';
 import 'write_content_post.dart';
 
 class CreatePostBody extends StatefulWidget {
@@ -29,10 +29,10 @@ class _CreatePostBodyState extends State<CreatePostBody> {
   int? _selectedId;
   String? _selectedPostAudience;
 
-  final List<DropdownMenuItem<int>> _audience = const [
-    DropdownMenuItem(value: 1, child: Text('Public')),
-    DropdownMenuItem(value: 2, child: Text('Followers')),
-    DropdownMenuItem(value: 3, child: Text('Only Me')),
+  final List<DropdownMenuItem<int>> _audience = [
+    DropdownMenuItem(value: 1, child: Text(LocaleKeys.Public.tr())),
+    DropdownMenuItem(value: 2, child: Text(LocaleKeys.Followers.tr())),
+    DropdownMenuItem(value: 3, child: Text(LocaleKeys.OnlyMe.tr())),
   ];
   Future<void> getImage() async {
     final pickedImage = await picker.pickImage(source: ImageSource.gallery);
@@ -137,7 +137,7 @@ class _CreatePostBodyState extends State<CreatePostBody> {
                     if (formKey.currentState!.validate()) {
                       createPost(_image, content.text, _selectedId!);
 
-                      GoRouter.of(context).pushReplacement(AppRouter.kProfile);
+                      Navigator.pop(context);
                     }
                   },
                 ),
@@ -160,7 +160,7 @@ class _CreatePostBodyState extends State<CreatePostBody> {
                         width: blockWidth * 2,
                       ),
                       Text(
-                        'Add Photo/Video',
+                        LocaleKeys.AddPhoto.tr(),
                         style: Styles.textStyle16Inter.copyWith(
                           decoration: TextDecoration.underline,
                           fontSize: 14,
@@ -215,7 +215,7 @@ class _CreatePostBodyState extends State<CreatePostBody> {
               SliverToBoxAdapter(
                 child: DropdownButtonFormField<int>(
                   value: _selectedId,
-                  hint: const Text('Post Audience'),
+                  hint: Text(LocaleKeys.PostAudience.tr()),
                   items: _audience,
                   onChanged: (int? newValue) {
                     setState(() {

@@ -2,11 +2,13 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ghosn_app/core/utils/Api_Key.dart';
 import 'package:ghosn_app/core/widgets/custom_button.dart';
+import 'package:ghosn_app/translations/local_keys.g.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../../constants.dart';
@@ -182,7 +184,7 @@ class _CreatePlantBodyState extends State<CreatePlantBody> {
                       width: blockWidth * 2,
                     ),
                     Text(
-                      'Add Photo',
+                      LocaleKeys.AddPhoto.tr(),
                       style: Styles.textStyle16Inter.copyWith(
                         decoration: TextDecoration.underline,
                         fontSize: 14,
@@ -201,34 +203,38 @@ class _CreatePlantBodyState extends State<CreatePlantBody> {
                 child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Plant Details',
+                Text(
+                  LocaleKeys.PlantDetails.tr(),
                   style: Styles.textStyle16Inter,
                 ),
                 SizedBox(
                   height: blockHeight * 1,
                 ),
                 CustomTextField(
-                  hintText: 'Plant Name',
-                  labelText: 'Plant Name',
+                  showSuffixIcon: false,
+                  hintText: LocaleKeys.PlantName.tr(),
+                  labelText: LocaleKeys.PlantName.tr(),
                   controller: plantNameController,
                 ),
                 CustomTextField(
-                  hintText: 'Plant Description',
-                  labelText: 'Plant Description',
+                  showSuffixIcon: false,
+                  hintText: LocaleKeys.PlantDescription.tr(),
+                  labelText: LocaleKeys.PlantDescription.tr(),
                   controller: plantDescController,
                   minLength: 4,
                 ),
                 CustomTextField(
-                  hintText: 'Quantity',
-                  labelText: 'Quantity',
+                  showSuffixIcon: false,
+                  hintText: LocaleKeys.Quantity.tr(),
+                  labelText: LocaleKeys.Quantity.tr(),
                   keyboardType: TextInputType.number,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   controller: quantityController,
                 ),
                 CustomTextField(
-                  hintText: 'Price',
-                  labelText: 'Price',
+                  showSuffixIcon: false,
+                  hintText: LocaleKeys.Price.tr(),
+                  labelText: LocaleKeys.Price.tr(),
                   keyboardType: TextInputType.number,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   controller: priceController,
@@ -240,16 +246,17 @@ class _CreatePlantBodyState extends State<CreatePlantBody> {
                 SizedBox(
                   height: blockHeight * 1,
                 ),
-                const Text(
-                  'Plant Properties',
+                Text(
+                  LocaleKeys.PlantProperties.tr(),
                   style: Styles.textStyle16Inter,
                 ),
                 SizedBox(
                   height: blockHeight * 1,
                 ),
                 CustomTextField(
-                  hintText: 'Amount Of Water',
-                  labelText: 'Amount Of Water',
+                  showSuffixIcon: false,
+                  hintText: LocaleKeys.AmountWater.tr(),
+                  labelText: LocaleKeys.AmountWater.tr(),
                   controller: amountofWaterController,
                   prefixIcon: const Icon(
                     Icons.water_drop_outlined,
@@ -259,8 +266,9 @@ class _CreatePlantBodyState extends State<CreatePlantBody> {
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 ),
                 CustomTextField(
-                  hintText: 'Amount Sunlight',
-                  labelText: 'Amount Sunlight',
+                  showSuffixIcon: false,
+                  hintText: LocaleKeys.AmountSunlight.tr(),
+                  labelText: LocaleKeys.AmountSunlight.tr(),
                   controller: amountofSunlightController,
                   prefixIcon: const Icon(
                     Icons.wb_sunny_outlined,
@@ -270,8 +278,9 @@ class _CreatePlantBodyState extends State<CreatePlantBody> {
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 ),
                 CustomTextField(
-                  hintText: 'Humidity',
-                  labelText: 'Humidity',
+                  showSuffixIcon: false,
+                  hintText: LocaleKeys.Humidity.tr(),
+                  labelText: LocaleKeys.Humidity.tr(),
                   controller: humidityController,
                   prefixIcon: const Icon(
                     Icons.opacity_outlined,
@@ -279,8 +288,9 @@ class _CreatePlantBodyState extends State<CreatePlantBody> {
                   ),
                 ),
                 CustomTextField(
-                  hintText: 'Min Temperature',
-                  labelText: 'Min Temperature',
+                  showSuffixIcon: false,
+                  hintText: LocaleKeys.MinTemperature.tr(),
+                  labelText: LocaleKeys.MinTemperature.tr(),
                   controller: minTempController,
                   prefixIcon: const Icon(
                     FontAwesomeIcons.temperatureLow,
@@ -290,8 +300,9 @@ class _CreatePlantBodyState extends State<CreatePlantBody> {
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 ),
                 CustomTextField(
-                  hintText: 'Max Temperature',
-                  labelText: 'Max Temperature',
+                  showSuffixIcon: false,
+                  hintText: LocaleKeys.MaxTemperature.tr(),
+                  labelText: LocaleKeys.MaxTemperature.tr(),
                   controller: maxTempController,
                   prefixIcon: const Icon(
                     FontAwesomeIcons.temperatureHigh,
@@ -301,8 +312,9 @@ class _CreatePlantBodyState extends State<CreatePlantBody> {
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 ),
                 CustomTextField(
-                  hintText: 'Height',
-                  labelText: 'Height',
+                  showSuffixIcon: false,
+                  hintText: LocaleKeys.Height.tr(),
+                  labelText: LocaleKeys.Height.tr(),
                   controller: plantHeightController,
                   prefixIcon: const Icon(
                     Icons.height_outlined,
@@ -312,13 +324,15 @@ class _CreatePlantBodyState extends State<CreatePlantBody> {
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 ),
                 CustomTextField(
-                  hintText: 'Soil Type',
-                  labelText: 'Soil Type',
+                  showSuffixIcon: false,
+                  hintText: LocaleKeys.SoilType.tr(),
+                  labelText: LocaleKeys.SoilType.tr(),
                   controller: soilTypeController,
                 ),
                 CustomTextField(
-                  hintText: 'Category ID',
-                  labelText: 'Category ID',
+                  showSuffixIcon: false,
+                  hintText: LocaleKeys.CategoryID.tr(),
+                  labelText: LocaleKeys.CategoryID.tr(),
                   controller: categoryIdController,
                   keyboardType: TextInputType.number,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -328,7 +342,7 @@ class _CreatePlantBodyState extends State<CreatePlantBody> {
             SliverToBoxAdapter(
                 child: CustomButton(
                     height: blockHeight * 5,
-                    text: 'Save',
+                    text: LocaleKeys.Save.tr(),
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
                         showDialog(
@@ -336,8 +350,8 @@ class _CreatePlantBodyState extends State<CreatePlantBody> {
                             builder: (BuildContext context) {
                               return SimpleDialog(
                                 backgroundColor: Colors.white,
-                                title: const Text(
-                                  'Are You Sure!\n You want to Save it',
+                                title: Text(
+                                  LocaleKeys.AreYouSureYouwanttoSave.tr(),
                                   textAlign: TextAlign.center,
                                   style: Styles.textStyle18Inter,
                                 ),
@@ -350,7 +364,7 @@ class _CreatePlantBodyState extends State<CreatePlantBody> {
                                           .labelLarge,
                                     ),
                                     child: Text(
-                                      'Save',
+                                      LocaleKeys.Save.tr(),
                                       style: Styles.textStyle18Inter.copyWith(
                                         color: kGreenColor,
                                       ),
@@ -389,7 +403,7 @@ class _CreatePlantBodyState extends State<CreatePlantBody> {
                                           .labelLarge,
                                     ),
                                     child: Text(
-                                      'Cancel',
+                                      LocaleKeys.Cancel.tr(),
                                       style: Styles.textStyle18Inter.copyWith(
                                         color: Colors.red,
                                       ),

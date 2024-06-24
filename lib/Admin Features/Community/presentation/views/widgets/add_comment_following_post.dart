@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/Admin%20Features/Community/presentation/views/widgets/following_post_item.dart';
 import 'package:ghosn_app/constants.dart';
@@ -8,6 +9,7 @@ import 'package:http/http.dart' as http;
 
 import '../../../../../core/utils/Api_Key.dart';
 import '../../../../../core/widgets/custom_text_field.dart';
+import '../../../../../translations/local_keys.g.dart';
 import '../../../data/model/following_post_model/following_post_model.dart';
 import 'following_comment_post_item.dart';
 
@@ -91,9 +93,10 @@ class _AddCommentFollowingBodyState extends State<AddCommentFollowingBody> {
             ),
           ),
           CustomTextField(
+            showSuffixIcon: true,
             controller: commentController,
             width: 1,
-            hintText: 'Write a comment...',
+            hintText: LocaleKeys.Writeacomment.tr(),
             suffixIcon: IconButton(
               onPressed: () async {
                 String commentContent = commentController.text.trim();

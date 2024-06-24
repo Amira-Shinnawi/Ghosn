@@ -1,13 +1,10 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
 import 'package:ghosn_app/User%20Features/Reminder/presentation/views/reminder_main.dart';
-
 import 'package:ghosn_app/constants.dart';
-
 import 'package:ghosn_app/core/utils/style.dart';
-
+import 'package:ghosn_app/translations/local_keys.g.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../core/widgets/custom_button.dart';
@@ -88,7 +85,7 @@ class _AddNewReminderBodyState extends State<AddNewReminderBody> {
               ),
               image: DecorationImage(
                 image: AssetImage(_iconPaths[index]),
-                fit: BoxFit.fill, 
+                fit: BoxFit.fill,
               ),
             ),
           ),
@@ -117,10 +114,9 @@ class _AddNewReminderBodyState extends State<AddNewReminderBody> {
         note: _note,
         dateTime: alertDateTime,
         alertType: _alertType,
-        alertIcon: _selectedIconPath, 
+        alertIcon: _selectedIconPath,
       );
 
-      
       await saveAlert(alert);
     }
   }
@@ -145,15 +141,17 @@ class _AddNewReminderBodyState extends State<AddNewReminderBody> {
               Row(
                 children: [
                   Text(
-                    'Title: ',
+                    LocaleKeys.Title.tr(),
                     style: Styles.textStyle18Inter
                         .copyWith(color: Colors.grey[800]),
                   ),
                   SizedBox(width: width * .02),
                   Expanded(
                     child: CustomTextField(
-                      // borderRadius: 12, 
-                      hintText: 'New Alert',
+                      // borderRadius: 12,
+                      showSuffixIcon: false,
+
+                      hintText: LocaleKeys.NewAlert.tr(),
                       onChanged: (value) => setState(() => _title = value),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -173,15 +171,17 @@ class _AddNewReminderBodyState extends State<AddNewReminderBody> {
               Row(
                 children: [
                   Text(
-                    'Note: ',
+                    LocaleKeys.Note.tr(),
                     style: Styles.textStyle18Inter
                         .copyWith(color: Colors.grey[800]),
                   ),
                   SizedBox(width: width * .02),
                   Expanded(
                     child: CustomTextField(
+                      showSuffixIcon: false,
+
                       // borderRadius: 12,
-                      hintText: 'Enter note here',
+                      hintText: LocaleKeys.Enternotehere.tr(),
                       minLength: 5,
 
                       width: 2,
@@ -196,14 +196,14 @@ class _AddNewReminderBodyState extends State<AddNewReminderBody> {
               Row(
                 children: [
                   Text(
-                    'Date: ',
+                    LocaleKeys.date.tr(),
                     style: Styles.textStyle18Inter
                         .copyWith(color: Colors.grey[800]),
                   ),
                   SizedBox(width: width * .02),
                   Expanded(
                     child: CustomTextField(
-                      // borderRadius: 12, 
+                      // borderRadius: 12,
                       hintText: '	DD/MM/YY',
                       readOnly: true,
                       showSuffixIcon: true,
@@ -227,14 +227,14 @@ class _AddNewReminderBodyState extends State<AddNewReminderBody> {
               Row(
                 children: [
                   Text(
-                    'Time: ',
+                    LocaleKeys.Time.tr(),
                     style: Styles.textStyle18Inter
                         .copyWith(color: Colors.grey[800]),
                   ),
                   SizedBox(width: width * .02),
                   Expanded(
                     child: CustomTextField(
-                      // borderRadius: 12, 
+                      // borderRadius: 12,
                       hintText: '	HH:MM',
                       width: 2,
                       controller: _timeController,
@@ -248,7 +248,7 @@ class _AddNewReminderBodyState extends State<AddNewReminderBody> {
               ),
               SizedBox(height: height * .02),
               Text(
-                "Alert Type",
+                LocaleKeys.AlertType.tr(),
                 style:
                     Styles.textStyle18Inter.copyWith(color: Colors.grey[800]),
               ),
@@ -256,7 +256,7 @@ class _AddNewReminderBodyState extends State<AddNewReminderBody> {
 
               SizedBox(height: height * .02),
               Text(
-                "Repeat alert message:",
+                LocaleKeys.Repeatalertmessage.tr(),
                 style:
                     Styles.textStyle18Inter.copyWith(color: Colors.grey[900]),
               ),
@@ -277,7 +277,7 @@ class _AddNewReminderBodyState extends State<AddNewReminderBody> {
                         },
                       ),
                       Text(
-                        'Daily',
+                        LocaleKeys.Daily.tr(),
                         style: Styles.textStyle16Inter
                             .copyWith(color: Colors.grey[900]),
                       ),
@@ -296,7 +296,7 @@ class _AddNewReminderBodyState extends State<AddNewReminderBody> {
                         },
                       ),
                       Text(
-                        'Weekly',
+                        LocaleKeys.Weekly.tr(),
                         style: Styles.textStyle16Inter
                             .copyWith(color: Colors.grey[800]),
                       ),
@@ -315,7 +315,7 @@ class _AddNewReminderBodyState extends State<AddNewReminderBody> {
                         },
                       ),
                       Text(
-                        'Monthly',
+                        LocaleKeys.Monthly.tr(),
                         style: Styles.textStyle16Inter
                             .copyWith(color: Colors.grey[900]),
                       ),
@@ -328,7 +328,7 @@ class _AddNewReminderBodyState extends State<AddNewReminderBody> {
               SizedBox(height: height * .02),
               Center(
                 child: CustomButton(
-                    text: "Add",
+                    text: LocaleKeys.Add.tr(),
                     width: 160,
                     height: 45,
                     onPressed: () async {
@@ -360,15 +360,13 @@ class _AddNewReminderBodyState extends State<AddNewReminderBody> {
                             context: context,
                             dialogType: DialogType.success,
                             animType: AnimType.bottomSlide,
-                            title: 'Success',
+                            title: LocaleKeys.Success.tr(),
                             titleTextStyle: Styles.textStyle22Inter
                                 .copyWith(color: Colors.black),
-                            desc:
-                                'Hooray! 🥳 Your new reminder has been planted in the garden of time 🌱',
+                            desc: LocaleKeys.Hooray.tr(),
                             descTextStyle: Styles.textStyle16Inter,
                             btnOkOnPress: () {
-                           // Go back to ReminderMain and refresh
-  
+                              // Go back to ReminderMain and refresh
 
                               Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/Admin%20Features/Community/data/model/post_model/post_model.dart';
 import 'package:ghosn_app/core/utils/Api_Key.dart';
@@ -13,6 +14,7 @@ import '../../../../../constants.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_text_field.dart';
 import '../../../../../core/widgets/show_snack_bar.dart';
+import '../../../../../translations/local_keys.g.dart';
 
 class EditPostBody extends StatefulWidget {
   const EditPostBody({super.key, required this.editPost});
@@ -170,7 +172,7 @@ class _EditPostBodyState extends State<EditPostBody> {
                         width: blockWidth * 2,
                       ),
                       Text(
-                        'Add Photo/Video',
+                        LocaleKeys.AddPhoto.tr(),
                         style: Styles.textStyle16Inter.copyWith(
                           decoration: TextDecoration.underline,
                           fontSize: 14,
@@ -234,7 +236,7 @@ class _EditPostBodyState extends State<EditPostBody> {
               SliverToBoxAdapter(
                 child: DropdownButtonFormField<int>(
                   value: _selectedId,
-                  hint: const Text('Post Audience'),
+                  hint: Text(LocaleKeys.PostAudience.tr()),
                   items: _audience,
                   onChanged: (int? newValue) {
                     setState(() {
@@ -341,8 +343,8 @@ class ContentEditPost extends StatelessWidget {
                     builder: (BuildContext context) {
                       return SimpleDialog(
                         backgroundColor: Colors.white,
-                        title: const Text(
-                          'Are You Sure!\n You want to post it',
+                        title: Text(
+                          LocaleKeys.AreYouSureYouwanttopostit.tr(),
                           textAlign: TextAlign.center,
                           style: Styles.textStyle18Inter,
                         ),
@@ -354,7 +356,7 @@ class ContentEditPost extends StatelessWidget {
                             ),
                             onPressed: onPressed,
                             child: Text(
-                              'Post',
+                              LocaleKeys.Post.tr(),
                               style: Styles.textStyle18Inter.copyWith(
                                 color: kGreenColor,
                               ),
@@ -366,7 +368,7 @@ class ContentEditPost extends StatelessWidget {
                               textStyle: Theme.of(context).textTheme.labelLarge,
                             ),
                             child: Text(
-                              'Cancel',
+                              LocaleKeys.Cancel.tr(),
                               style: Styles.textStyle18Inter.copyWith(
                                 color: Colors.red,
                               ),
@@ -380,7 +382,7 @@ class ContentEditPost extends StatelessWidget {
                     });
               },
               child: Text(
-                'Post',
+                LocaleKeys.Post.tr(),
                 style: Styles.textStyle16Inter.copyWith(
                   color: Colors.white,
                 ),
@@ -392,7 +394,8 @@ class ContentEditPost extends StatelessWidget {
           height: blockHeight * 2,
         ),
         CustomTextField(
-          hintText: 'What\'s on your Mind?',
+          showSuffixIcon: false,
+          hintText: LocaleKeys.WhatsonyourMind.tr(),
           width: 0,
           color: Colors.black,
           minLength: 6,

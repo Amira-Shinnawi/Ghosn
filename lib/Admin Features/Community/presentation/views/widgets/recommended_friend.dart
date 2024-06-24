@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/Admin%20Features/Community/data/model/suggested_user_model/suggested_user_model.dart';
 import 'package:ghosn_app/core/utils/functions/network_image_handler.dart';
@@ -9,6 +10,7 @@ import '../../../../../constants.dart';
 import '../../../../../core/utils/Api_Key.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_network_image.dart';
+import '../../../../../translations/local_keys.g.dart';
 
 class RecommendedFriendItem extends StatefulWidget {
   const RecommendedFriendItem({super.key, required this.suggestedUser});
@@ -73,7 +75,7 @@ class _RecommendedFriendItemState extends State<RecommendedFriendItem> {
           });
         },
         child: Text(
-          widget.suggestedUser.isFollowing == false ? 'Follow' : 'Following',
+          widget.suggestedUser.isFollowing == false ? LocaleKeys.Follow.tr() : LocaleKeys.following.tr(),
           style: Styles.textStyle16Inter.copyWith(
             fontSize: 12,
             color: widget.suggestedUser.isFollowing == false

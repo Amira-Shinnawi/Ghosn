@@ -66,7 +66,7 @@ class LoginOptionsBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                LocaleKeys.alreadyhaveaccount.tr(),
+                'I don\' have an Account? ',
                 style: Styles.textStyle16Inter.copyWith(
                   fontWeight: FontWeight.w400,
                 ),

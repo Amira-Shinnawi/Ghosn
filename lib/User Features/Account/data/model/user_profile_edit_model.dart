@@ -1,5 +1,3 @@
-import 'package:equatable/equatable.dart';
-
 class UserProfileEditModel {
   String? firstName;
   String? lastName;
@@ -45,8 +43,8 @@ class UserProfileEditModel {
     countryName = json['countryName'];
     stateName = json['stateName'];
     street = json['street'];
-    totalFollwers = json['totalFollwers'];
-    totalFollowees = json['totalFollowees'];
+    totalFollwers = int.tryParse(json['totalFollwers']?.toString() ?? '0');
+    totalFollowees = int.tryParse(json['totalFollowees']?.toString() ?? '0');
   }
 
   Map<String, dynamic> toJson() {

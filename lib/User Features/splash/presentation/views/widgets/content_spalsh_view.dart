@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_router.dart';
+import '../../../../../translations/local_keys.g.dart';
 import '../data/model/splash_model.dart';
 
 class ContentSplashView extends StatelessWidget {
@@ -27,7 +29,7 @@ class ContentSplashView extends StatelessWidget {
               GoRouter.of(context).push(AppRouter.kLoginOptionView);
             },
             child: Text(
-              'SKIP',
+              LocaleKeys.SKIP.tr(),
               style: Theme.of(context).textTheme.labelLarge!.copyWith(
                     color: kGreenColor,
                   ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
@@ -7,17 +8,20 @@ import '../../../../../constants.dart';
 import '../../../../../core/utils/functions/network_image_handler.dart';
 import '../../../../../core/utils/style.dart';
 import '../../../../../core/widgets/custom_network_image.dart';
+import '../../../../../translations/local_keys.g.dart';
 import 'editing_latest_article.dart';
 
 class LatestArticleItem extends StatelessWidget {
   const LatestArticleItem({
     super.key,
     required this.articlesModel,
-    required this.gClient, this.onPressed, this.publishArticle,
+    required this.gClient,
+    this.onPressed,
+    this.publishArticle,
   });
   final AllArticles articlesModel;
   final ValueNotifier<GraphQLClient> gClient;
-final void Function()? onPressed;
+  final void Function()? onPressed;
   final void Function()? publishArticle;
 
   @override
@@ -62,7 +66,7 @@ final void Function()? onPressed;
                       EditingLatestArticle(
                         articlesModel: articlesModel,
                         onPressed: onPressed,
-                        publishArticle:publishArticle ,
+                        publishArticle: publishArticle,
                       ),
                       SizedBox(
                         height: blocHeight * 1,
@@ -88,7 +92,7 @@ final void Function()? onPressed;
                           }));
                         },
                         child: Text(
-                          'Show Article',
+                          LocaleKeys.ShowArticle.tr(),
                           style: Styles.textStyle16Inter.copyWith(
                             color: Colors.white,
                             fontSize: 14,

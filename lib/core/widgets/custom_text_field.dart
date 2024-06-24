@@ -130,13 +130,13 @@ class CustomTextField extends StatelessWidget {
       this.initialValue,
       this.onFieldSubmitted,
       this.onSuffixIconPressed,
-      this.showSuffixIcon});
+      required this.showSuffixIcon});
 
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final String hintText;
   final void Function()? onSuffixIconPressed;
-  final bool? showSuffixIcon;
+  final bool showSuffixIcon;
 
   final TextEditingController? controller;
   final void Function(String)? onChanged;
@@ -192,7 +192,7 @@ class CustomTextField extends StatelessWidget {
           enabledBorder: _buildOutlineBorder(width: width, color: color),
           focusedBorder: _buildOutlineBorder(width: width, color: color),
           prefixIcon: prefixIcon,
-          suffixIcon: showSuffixIcon!
+          suffixIcon: showSuffixIcon
               ? GestureDetector(
                   onTap: onSuffixIconPressed,
                   child: suffixIcon,
@@ -205,7 +205,7 @@ class CustomTextField extends StatelessWidget {
 
   OutlineInputBorder _buildOutlineBorder({double? width, Color? color}) {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(30),
       borderSide: BorderSide(color: color ?? kGreenColor, width: width ?? 2),
     );
   }

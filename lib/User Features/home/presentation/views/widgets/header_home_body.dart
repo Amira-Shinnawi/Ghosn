@@ -1,11 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ghosn_app/core/utils/functions/network_image_handler.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:ghosn_app/translations/local_keys.g.dart';
 
 import '../../../../../constants.dart';
-import '../../../../../core/utils/functions/shared_pref_cache.dart';
 import '../../../../../core/utils/service_locator.dart';
 import '../../../../../core/widgets/custom_network_image.dart';
 import '../../../../Account/data/repo/profile/profile_repo_imple.dart';
@@ -22,19 +22,19 @@ class HeaderWithSearchField extends StatefulWidget {
 }
 
 class _HeaderWithSearchFieldState extends State<HeaderWithSearchField> {
-  @override
-  void initState() {
-    super.initState();
-    _loadUserData();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _loadUserData();
+  // }
 
-  Future<void> _loadUserData() async {
-    final sharedPref = await SharedPreferences.getInstance();
+  // Future<void> _loadUserData() async {
+  //   final sharedPref = await SharedPreferences.getInstance();
 
-    firstName = await SharedPrefCache.getCacheData(key: 'firstName');
-    profileImage = sharedPref.getString('path');
-    setState(() {});
-  }
+  //   firstName = await SharedPrefCache.getCacheData(key: 'firstName');
+  //   profileImage = sharedPref.getString('path');
+  //   setState(() {});
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +71,7 @@ class _HeaderWithSearchFieldState extends State<HeaderWithSearchField> {
                   return Row(
                     children: [
                       Text(
-                        'Hi, ${state.profileModel.first.firstName}!',
+                        '${LocaleKeys.Hi.tr()}, ${state.profileModel.first.firstName}!',
                         style: Theme.of(context)
                             .textTheme
                             .headlineSmall
@@ -84,8 +84,7 @@ class _HeaderWithSearchFieldState extends State<HeaderWithSearchField> {
                         borderRadius: BorderRadius.circular(30),
                         child: CustomNetworkImage(
                           imageUrl: NetworkHandler()
-                              .getImage(state.profileModel.first.imgUrl!)
-                              ,
+                              .getImage('${state.profileModel.first.imgUrl}'),
                           aspectRatio: 2 / 2,
                         ),
                       ),
@@ -129,7 +128,7 @@ class _HeaderWithSearchFieldState extends State<HeaderWithSearchField> {
                     child: TextField(
                       onSubmitted: widget.onSubmitted,
                       decoration: InputDecoration(
-                        hintText: "Search",
+                        hintText: LocaleKeys.Search.tr(),
                         hintStyle: TextStyle(
                           color: kGreenColor.withOpacity(0.5),
                         ),

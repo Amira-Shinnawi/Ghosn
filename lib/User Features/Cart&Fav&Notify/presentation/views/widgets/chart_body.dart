@@ -2,18 +2,20 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ghosn_app/User%20Features/Cart&Fav&Notify/data/model/cart_model/cart_model.dart';
 import 'package:ghosn_app/User%20Features/Cart&Fav&Notify/presentation/manager/cubit/cart_cubit.dart';
 import 'package:ghosn_app/User%20Features/Cart&Fav&Notify/presentation/views/widgets/total_amount.dart';
-import 'package:ghosn_app/core/utils/app_router.dart';
 import 'package:ghosn_app/core/utils/style.dart';
+import 'package:ghosn_app/translations/local_keys.g.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/Api_Key.dart';
+import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/functions/shared_pref_cache.dart';
 import '../../../../../core/widgets/show_snack_bar.dart';
 import 'chart_item.dart';
@@ -91,8 +93,10 @@ class _ShoppingCartBodyState extends State<ShoppingCartBody> {
                               builder: (BuildContext context) {
                                 return SimpleDialog(
                                   backgroundColor: Colors.white,
-                                  title: const Text(
-                                    'Do you really want to remove\nthis item from cart?',
+                                  title: Text(
+                                    LocaleKeys
+                                            .Doyoureallywanttoremovethisitemfromcart
+                                        .tr(),
                                     textAlign: TextAlign.center,
                                     style: Styles.textStyle18Inter,
                                   ),
@@ -105,14 +109,15 @@ class _ShoppingCartBodyState extends State<ShoppingCartBody> {
                                             .labelLarge,
                                       ),
                                       child: Text(
-                                        'SAVE FOR LATER',
+                                        LocaleKeys.SAVEFORLATER.tr(),
                                         style: Styles.textStyle18Inter.copyWith(
                                           color: kGreenColor,
                                         ),
                                       ),
                                       onPressed: () async {
                                         addFav(state.carts[index].id!);
-                                        _deleteItem(state.carts[index].id!);
+                                        _deleteItem(
+                                            state.carts[index].potParentId!);
                                         Navigator.pop(context);
                                       },
                                     ),
@@ -124,13 +129,14 @@ class _ShoppingCartBodyState extends State<ShoppingCartBody> {
                                             .labelLarge,
                                       ),
                                       child: Text(
-                                        'REMOVE ITEM',
+                                        LocaleKeys.REMOVEITEM.tr(),
                                         style: Styles.textStyle18Inter.copyWith(
                                           color: Colors.red,
                                         ),
                                       ),
                                       onPressed: () {
-                                        _deleteItem(state.carts[index].id!);
+                                        _deleteItem(
+                                            state.carts[index].potParentId!);
                                         Navigator.pop(context);
                                       },
                                     ),
@@ -161,8 +167,8 @@ class _ShoppingCartBodyState extends State<ShoppingCartBody> {
                         builder: (BuildContext context) {
                           return SimpleDialog(
                             backgroundColor: Colors.white,
-                            title: const Text(
-                              'Are You Sure!\n You want to Confirm Order',
+                            title: Text(
+                              LocaleKeys.AreYouSureYouwanttoConfirmOrder.tr(),
                               textAlign: TextAlign.center,
                               style: Styles.textStyle18Inter,
                             ),
@@ -174,13 +180,13 @@ class _ShoppingCartBodyState extends State<ShoppingCartBody> {
                                       Theme.of(context).textTheme.labelLarge,
                                 ),
                                 child: Text(
-                                  'Confirm',
+                                  LocaleKeys.Confirm.tr(),
                                   style: Styles.textStyle18Inter.copyWith(
                                     color: kGreenColor,
                                   ),
                                 ),
                                 onPressed: () async {
-                                  // await _createOrder(orderProducts);
+                                  await _createOrder(orderProducts);
                                   GoRouter.of(context)
                                       .push(AppRouter.kPaymentPage);
                                 },
@@ -192,7 +198,7 @@ class _ShoppingCartBodyState extends State<ShoppingCartBody> {
                                       Theme.of(context).textTheme.labelLarge,
                                 ),
                                 child: Text(
-                                  'Cancel',
+                                  LocaleKeys.Cancel.tr(),
                                   style: Styles.textStyle18Inter.copyWith(
                                     color: Colors.red,
                                   ),
@@ -211,7 +217,7 @@ class _ShoppingCartBodyState extends State<ShoppingCartBody> {
         } else if (state is CartFailure) {
           return Center(
             child: Text(
-              'No Item In Your Cart',
+              LocaleKeys.NoItemInYourCart.tr(),
               style: Styles.textStyle16Inter.copyWith(
                 color: kGreenColor,
               ),
@@ -240,14 +246,14 @@ class _ShoppingCartBodyState extends State<ShoppingCartBody> {
       );
 
       if (response.statusCode == 200 || response.statusCode == 204) {
-        showSnackBar(context, 'Product deleted successfully.');
+        showSnackBar(context, LocaleKeys.Productdeletedsuccessfully.tr());
         print(json.encode(response.data));
       } else {
         throw Exception('An error occurred while deleting the product.');
       }
     } on DioException catch (error) {
       if (error.response?.statusCode == 404) {
-        showSnackBar(context, 'Product not found in your cart.');
+        showSnackBar(context, LocaleKeys.Productnotfoundinyourcart.tr());
         print(error.response?.statusMessage);
       } else {
         rethrow;
@@ -263,7 +269,7 @@ class _ShoppingCartBodyState extends State<ShoppingCartBody> {
       'Authorization': 'Bearer $userToken'
     };
     String requestId = Uuid().v4();
-
+    print(requestId);
     var data = json.encode({
       "requestId": requestId,
       "orderProducts": orderProducts,
@@ -292,7 +298,7 @@ class _ShoppingCartBodyState extends State<ShoppingCartBody> {
           error.response?.statusCode == 400 ||
           error.response?.statusCode == 404) {
         print(error.response?.statusMessage);
-        showSnackBar(context, 'This item Out Of Stock.');
+        showSnackBar(context, LocaleKeys.ThisitemOutOfStock.tr());
       } else {
         rethrow;
       }
@@ -318,7 +324,8 @@ class _ShoppingCartBodyState extends State<ShoppingCartBody> {
       }
     } on DioException catch (error) {
       if (error.response?.statusCode == 400) {
-        showSnackBar(context, 'This item already exists in your Favorite.');
+        showSnackBar(
+            context, LocaleKeys.ThisitemalreadyexistsinyourFavorite.tr());
         print(error.response?.statusMessage);
       } else {
         rethrow;

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 
+// ignore: must_be_immutable
 class MostSold extends StatelessWidget {
   MostSold({super.key, required this.i, required this.p});
   int i;

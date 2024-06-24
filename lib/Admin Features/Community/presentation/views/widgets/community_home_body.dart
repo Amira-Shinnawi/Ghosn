@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ghosn_app/Admin%20Features/Community/data/repo/community_repo_imple.dart';
@@ -6,6 +7,7 @@ import 'package:ghosn_app/core/utils/service_locator.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/style.dart';
+import '../../../../../translations/local_keys.g.dart';
 import 'following_posts_list_view.dart';
 import 'recommended_posts_list_view.dart';
 import 'who_to_follow.dart';
@@ -23,7 +25,11 @@ class _CommunityHomeBodyState extends State<CommunityHomeBody> {
     initialPage: _selectedTextIndex,
   );
 
-  List<String> sectionCommunity = ['Recommended', 'Following', 'Who to follow'];
+  List<String> sectionCommunity = [
+    LocaleKeys.Recommended.tr(),
+    LocaleKeys.Following.tr(),
+    LocaleKeys.Whotofollow.tr()
+  ];
   Widget _buildSelectedListView() {
     switch (_selectedTextIndex) {
       case 0:

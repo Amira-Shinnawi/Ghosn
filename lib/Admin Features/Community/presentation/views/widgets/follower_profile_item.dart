@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ghosn_app/Admin%20Features/Community/data/model/follower_user_model.dart';
+import 'package:ghosn_app/translations/local_keys.g.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/Api_Key.dart';
@@ -92,8 +94,8 @@ class _FollowerProfileItemState extends State<FollowerProfileItem> {
                   },
                   child: Text(
                     widget.followersModel.isFollowingBack == true
-                        ? 'Follow'
-                        : 'Following',
+                        ? LocaleKeys.Follow.tr()
+                        : LocaleKeys.Following.tr(),
                     style: Styles.textStyle16Inter.copyWith(
                       fontSize: 12,
                       color: widget.followersModel.isFollowingBack == true

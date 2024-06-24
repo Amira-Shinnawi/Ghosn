@@ -12,11 +12,26 @@ class RegisterPageBody extends StatelessWidget {
     return Stack(
       children: [
         Positioned(
+          top: 0,
+          right: 0,
+          left: 0,
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: Image.asset(
+                AssetsData.signUpImage,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+        Positioned(
           bottom: 0,
           left: 0,
           right: 0,
           child: Container(
-            height: height * .63,
+            height: height * .65,
             decoration: const ShapeDecoration(
               color: Colors.white,
               shape: RoundedRectangleBorder(
@@ -28,26 +43,7 @@ class RegisterPageBody extends StatelessWidget {
             ),
             child: const RegisterForm(),
           ),
-        ),
-        Positioned(
-          top: -120,
-          right: 0,
-          left: 0,
-          child: ClipRRect(
-            borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(100),
-                bottomRight: Radius.circular(100)),
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: AspectRatio(
-                aspectRatio: 1,
-                child: Image.asset(
-                  AssetsData.signUpImage,
-                ),
-              ),
-            ),
-          ),
-        ),
+        )
       ],
     );
   }

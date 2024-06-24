@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ghosn_app/User%20Features/Reminder/presentation/views/add_new_reminder.dart';
 import 'package:ghosn_app/User%20Features/Reminder/presentation/views/widgets/reminder_main_body.dart';
 import 'package:ghosn_app/constants.dart';
 import 'package:ghosn_app/core/utils/style.dart';
+import 'package:ghosn_app/translations/local_keys.g.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../Admin Features/Drawer/presentation/views/user_custom_drawer.dart';
@@ -29,7 +31,7 @@ class _ReminderMainState extends State<ReminderMain> {
         backgroundColor: kGreenColor,
         elevation: 0,
         titleAppBar: Text(
-          'Reminder Me',
+          LocaleKeys.ReminderMe.tr(),
           style: Styles.textStyle20Inter.copyWith(
             color: Colors.white,
             fontWeight: FontWeight.w600,
